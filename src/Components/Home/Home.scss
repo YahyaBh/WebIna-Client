@@ -9,7 +9,27 @@
         position: fixed;
         top: 104px;
         z-index: 5;
+        background: linear-gradient(
+            45deg,
+            var(--primary-color),
+            transparent,
+            var(--secondary-color),
+            var(--primary-color),
+            var(--secondary-color),
+            transparent
+        );
+        background-size: 600% 100%;
+        animation: gradient 16s linear infinite;
+        animation-direction: alternate;
 
+        @keyframes gradient {
+            0% {
+                background-position: 0%;
+            }
+            100% {
+                background-position: 100%;
+            }
+        }
         .main-container {
             height: 100%;
             &::before {
@@ -18,7 +38,12 @@
                 left: 0;
                 width: 100%; /* Adjust the width as needed */
                 height: 100%; /* Adjust the height as needed */
-                background-image: radial-gradient(circle at bottom left, var(--secondary-color), #fff 30% 30%);
+                background: radial-gradient(
+                        farthest-side at bottom left,
+                        var(--secondary-color) -1000px,
+                        transparent 40%
+                    ),
+                    radial-gradient(farthest-corner at bottom right, var(--primary-color), transparent 70%);
                 z-index: 0;
                 opacity: 1;
                 pointer-events: none;
@@ -83,6 +108,7 @@
                         font-size: 45px;
                         color: var(--primary-color);
                         transition: all 0.3s ease;
+                        text-shadow: 0px 0px 3px var(--secondary-color);
                     }
 
                     &:hover {
@@ -91,10 +117,34 @@
                         svg {
                             color: var(--secondary-color);
                             font-size: 50px;
-                            animation: moveAndBack 1s forwards infinite;
-                            animation-delay: 1s;
+                            -webkit-animation: moveAndBack 3s forwards infinite;
+                            animation: moveAndBack 3s forwards infinite;
+                            -webkit-animation-delay: 0.3s;
+                            animation-delay: 0.3s;
                             rotate: -90deg;
                             transform: translateY(120px);
+                        }
+
+                        @-webkit-keyframes moveAndBack {
+                            0% {
+                                transform: translateX(0px) translateY(120px);
+                            }
+
+                            25% {
+                                transform: translateX(10px) translateY(120px);
+                            }
+
+                            50% {
+                                transform: translateX(-10px) translateY(120px);
+                            }
+
+                            75% {
+                                transform: translateX(10px) translateY(120px);
+                            }
+
+                            100% {
+                                transform: translateX(0px) translateY(120px);
+                            }
                         }
 
                         @keyframes moveAndBack {
@@ -133,8 +183,16 @@
                             text-fill-color: transparent;
                             -webkit-background-clip: text;
                             -webkit-text-fill-color: transparent;
+                            -webkit-animation: shine 3s linear infinite;
                             animation: shine 3s linear infinite;
                             font-size: 55px !important;
+                            text-shadow: 0px 0px transparent !important;
+
+                            @-webkit-keyframes shine {
+                                to {
+                                    background-position: 200% center;
+                                }
+                            }
 
                             @keyframes shine {
                                 to {
@@ -182,6 +240,21 @@
         flex-direction: column;
         position: relative;
 
+        &:hover {
+            .zipper-pull {
+                height: 40px;
+
+                .scroll-downs {
+                    height: 0;
+                    opacity: 0;
+                }
+
+                h4 {
+                    height: 0;
+                    opacity: 0;
+                }
+            }
+        }
         .zipper-pull {
             background-color: var(--primary-color);
             width: 140px;
@@ -189,12 +262,24 @@
             border-top-left-radius: 70px;
             border-top-right-radius: 70px;
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            color: var(--secondary-color);
+            text-decoration: none;
+
+            h4 {
+                margin-bottom: 10px;
+                transition: all 0.3s ease;
+            }
 
             .scroll-downs {
                 margin: auto;
-
                 width: 34px;
                 height: 55px;
+                transition: all 0.3s ease;
             }
             .mousey {
                 width: 3px;
@@ -210,10 +295,27 @@
                 height: 10px;
                 border-radius: 25%;
                 background-color: var(--black-color);
+                -webkit-animation-name: scroll;
                 animation-name: scroll;
+                -webkit-animation-duration: 2.2s;
                 animation-duration: 2.2s;
+                -webkit-animation-timing-function: cubic-bezier(0.15, 0.41, 0.69, 0.94);
                 animation-timing-function: cubic-bezier(0.15, 0.41, 0.69, 0.94);
+                -webkit-animation-iteration-count: infinite;
                 animation-iteration-count: infinite;
+            }
+            @-webkit-keyframes scroll {
+                0% {
+                    opacity: 0;
+                }
+                10% {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(15px);
+                    opacity: 0;
+                }
             }
             @keyframes scroll {
                 0% {

@@ -3,6 +3,7 @@ import './Home.scss'
 import Navbar from '../Layout/Navbar/Navbar'
 import Computer from '../../Assets/Home/Section 1 Main/ComputerSectionHome.png'
 import { BsArrowRight } from 'react-icons/bs'
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 const Home = () => {
     return (
@@ -41,14 +42,16 @@ const Home = () => {
                 </section>
 
                 <section id='section-second'>
-                    <div className="zipper-pull">
+                    <AnchorLink href='#section-secondary' className="zipper-pull">
                         <div class="scroll-downs">
                             <div class="mousey">
                                 <div class="scroller"></div>
                             </div>
                         </div>
-                    </div>
-                    <div className='section-container'>
+                        <h4>Scroll</h4>
+                    </AnchorLink>
+                    
+                    <div className='section-container' id='section-secondary'>
 
                     </div>
                 </section>
