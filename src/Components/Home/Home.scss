@@ -1,0 +1,143 @@
+#Home {
+    padding: 0px 100px;
+
+    #section-main {
+        background-color: var(--light-color);
+        height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        .main-container {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-direction: row;
+            gap: 20px;
+            height: 100%;
+
+            &::before {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%; /* Adjust the width as needed */
+                height: 80dvh; /* Adjust the height as needed */
+                background-image: radial-gradient(circle at bottom left, var(--secondary-color), transparent 40%);
+                opacity: 0.8;
+                pointer-events: none;
+            }
+
+            .left-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 30px;
+                max-width: 800px;
+
+                h1 {
+                    font-size: 61.04px;
+
+                    span {
+                        color: var(--primary-color);
+                    }
+                }
+
+                p {
+                    font-size: 24px;
+                }
+
+                button {
+                    background-color: var(--primary-color);
+                    padding: 10px 15px;
+                    border: none;
+                    border-radius: 15px;
+                    font-size: 25px;
+                    font-weight: 700;
+                    width: 40%;
+                    z-index: 2;
+                }
+
+                .undertext {
+                    transition: all 0.3s ease;
+                    z-index: 2;
+                    position: relative;
+                    bottom: 30px;
+
+                    svg {
+                        color: var(--primary-color);
+                        font-size: 50px;
+                        transition: all 0.3s ease;
+                    }
+
+                    h4 {
+                        font-size: 45px;
+                        color: var(--primary-color);
+                        transition: all 0.3s ease;
+                    }
+
+                    &:hover {
+                        cursor: pointer;
+
+                        svg {
+                            color: var(--secondary-color);
+                            transform: translateX(200px);
+                            font-size: 70px;
+                            animation: moveAndBack 1s forwards infinite;
+                            animation-delay: 0.5s;
+                        }
+
+                        @keyframes moveAndBack {
+                            0% {
+                                transform: translateX(200px);
+                            }
+
+                            50% {
+                                transform: translateX(220px);
+                            }
+
+                            100% {
+                                transform: translateX(200px);
+                            }
+                        }
+
+                        h4 {
+                            color: var(--secondary-color);
+                            font-size: 55px !important;
+                        }
+                    }
+
+                    &:not(:hover) i {
+                        svg {
+                            color: var(--primary-color);
+                            font-size: 50px;
+                            transition: all 0.3s ease;
+                        }
+
+                        h4 {
+                            font-size: 45px;
+                            color: var(--primary-color);
+                            transition: all 0.3s ease;
+                        }
+                    }
+                }
+            }
+
+            .right-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+
+#section-second {
+    height: 100vh;
+}
