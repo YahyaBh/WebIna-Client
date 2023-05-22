@@ -6,6 +6,9 @@
         justify-content: center;
         align-items: center;
         width: 100%;
+        position: fixed;
+        top: 104px;
+        z-index: 5;
 
         .main-container {
             height: 100%;
@@ -159,69 +162,69 @@
             }
         }
     }
-}
 
-#section-second {
-    height: 100vh;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
-
-    .zipper-pull {
-        background-color: var(--primary-color);
-        width: 140px;
-        height: 140px;
-        border-top-left-radius: 70px;
-        border-top-right-radius: 70px;
+    #section-second {
+        z-index: 99;
+        margin-top:80dvh;
+        height: 200vh;
         display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
 
+        .zipper-pull {
+            background-color: var(--primary-color);
+            width: 140px;
+            height: 140px;
+            border-top-left-radius: 70px;
+            border-top-right-radius: 70px;
+            display: flex;
 
-        .scroll-downs {
-            margin: auto;
+            .scroll-downs {
+                margin: auto;
 
-            width: 34px;
-            height: 55px;
-        }
-        .mousey {
-            width: 3px;
-            padding: 10px 15px;
-            height: 35px;
-            border: 2px solid var(--black-color);
-            border-radius: 25px;
-            opacity: 0.75;
-            box-sizing: content-box;
-        }
-        .scroller {
-            width: 3px;
-            height: 10px;
-            border-radius: 25%;
-            background-color: var(--black-color);
-            animation-name: scroll;
-            animation-duration: 2.2s;
-            animation-timing-function: cubic-bezier(0.15, 0.41, 0.69, 0.94);
-            animation-iteration-count: infinite;
-        }
-        @keyframes scroll {
-            0% {
-                opacity: 0;
+                width: 34px;
+                height: 55px;
             }
-            10% {
-                transform: translateY(0);
-                opacity: 1;
+            .mousey {
+                width: 3px;
+                padding: 10px 15px;
+                height: 35px;
+                border: 2px solid var(--black-color);
+                border-radius: 25px;
+                opacity: 0.75;
+                box-sizing: content-box;
             }
-            100% {
-                transform: translateY(15px);
-                opacity: 0;
+            .scroller {
+                width: 3px;
+                height: 10px;
+                border-radius: 25%;
+                background-color: var(--black-color);
+                animation-name: scroll;
+                animation-duration: 2.2s;
+                animation-timing-function: cubic-bezier(0.15, 0.41, 0.69, 0.94);
+                animation-iteration-count: infinite;
+            }
+            @keyframes scroll {
+                0% {
+                    opacity: 0;
+                }
+                10% {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(15px);
+                    opacity: 0;
+                }
             }
         }
-    }
 
-    .section-container {
-        background-color: var(--secondary-color);
-        height: 100%;
-        width: 100%;
+        .section-container {
+            background-color: var(--secondary-color);
+            height: 100%;
+            width: 100%;
+        }
     }
 }

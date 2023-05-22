@@ -8,9 +8,9 @@ const Home = () => {
     return (
         <Fragment>
 
-            <Navbar target={'home'} />
 
             <div id='Home'>
+                <Navbar target={'home'} />
 
 
                 <section id='section-main'>

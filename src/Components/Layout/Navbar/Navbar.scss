@@ -1,74 +1,81 @@
 #navbar {
     .navbar {
         padding: 20px 45px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        top: 0;
+        height: 100%;
 
-        .logo {
-            img {
-                width: 60px;
-            }
-        }
-
-        ul {
+        .container {
+            width: 100%;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
-            gap: 30px;
+            position: fixed;
 
-            font-family: "Inter", sans-serif;
-            font-weight: 700;
-
-            li {
-                list-style: none;
-                font-size: 20px;
-                transition: all .3s ease;
-                cursor: pointer;
-
-                svg {
-                    transform: translateY(2px);
-                }
-
-                &:hover {
-                    transform: translateY(-3px);
-                    border-bottom: 3px solid var(--secondary-color);
+            .logo {
+                img {
+                    width: 60px;
                 }
             }
-        }
 
-        .right-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 25px;
-
-            svg {
-                font-size: 20px;
-            }
-
-            .lang-mode {
-                display: flex;
-                gap: 10px;
-            }
-
-            .sign-buttons {
+            ul {
                 display: flex;
                 justify-content: space-around;
                 align-items: center;
-                gap: 15px;
+                gap: 30px;
 
-                button {
-                    font-family: "Inter", sans-serif;
-                    font-weight: 700;
-                    background-color: transparent;
-                    outline: none;
-                    border: none;
+                font-family: "Inter", sans-serif;
+                font-weight: 700;
+
+                li {
+                    list-style: none;
+                    font-size: 20px;
+                    transition: all 0.3s ease;
+                    cursor: pointer;
+
+                    svg {
+                        transform: translateY(2px);
+                    }
+
+                    &:hover {
+                        transform: translateY(-3px);
+                        border-bottom: 3px solid var(--secondary-color);
+                    }
+                }
+            }
+
+            .right-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 25px;
+
+                svg {
+                    font-size: 20px;
+                }
+
+                .lang-mode {
                     display: flex;
-                    justify-content: center;
-                    align-items: center;
                     gap: 10px;
-                    font-size: 16px;
+                }
+
+                .sign-buttons {
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    gap: 15px;
+
+                    button {
+                        font-family: "Inter", sans-serif;
+                        font-weight: 700;
+                        background-color: transparent;
+                        outline: none;
+                        border: none;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+                        font-size: 16px;
+                    }
                 }
             }
         }
