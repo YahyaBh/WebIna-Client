@@ -90,23 +90,32 @@
 
                         svg {
                             color: var(--secondary-color);
-                            transform: translateX(200px);
-                            font-size: 70px;
+                            font-size: 50px;
                             animation: moveAndBack 1s forwards infinite;
-                            animation-delay: 0.5s;
+                            animation-delay: 1s;
+                            rotate: -90deg;
+                            transform: translateY(120px);
                         }
 
                         @keyframes moveAndBack {
                             0% {
-                                transform: translateX(200px);
+                                transform: translateX(0px) translateY(120px);
+                            }
+
+                            25% {
+                                transform: translateX(10px) translateY(120px);
                             }
 
                             50% {
-                                transform: translateX(220px);
+                                transform: translateX(-10px) translateY(120px);
+                            }
+
+                            75% {
+                                transform: translateX(10px) translateY(120px);
                             }
 
                             100% {
-                                transform: translateX(200px);
+                                transform: translateX(0px) translateY(120px);
                             }
                         }
 
@@ -165,7 +174,7 @@
 
     #section-second {
         z-index: 99;
-        margin-top:80dvh;
+        margin-top: 77dvh;
         height: 200vh;
         display: flex;
         justify-content: center;
