@@ -1,83 +1,75 @@
 #navbar {
-    .navbar {
-        padding: 20px 45px;
-        top: 0;
-        height: 100%;
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 20;
+    padding: 20px;
 
-        .container {
-            width: 100%;
+
+    .container { 
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 150px;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+
+        .logo {
+            img {
+                width: 60px;
+            }
+        }
+
+        ul {
+            list-style: none;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: fixed;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 20px;
 
-            .logo {
-                img {
-                    width: 60px;
-                }
-            }
+            li {
+                color: var(--secondary-color);
+                font-size: 18px;
+                transition: all .3s ease;
 
-            ul {
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                gap: 30px;
-
-                font-family: "Inter", sans-serif;
-                font-weight: 700;
-
-                li {
-                    list-style: none;
-                    font-size: 20px;
-                    transition: all 0.3s ease;
-                    cursor: pointer;
-
-                    svg {
-                        transform: translateY(2px);
-                    }
-
-                    &:hover {
-                        transform: translateY(-3px);
-                        border-bottom: 3px solid var(--secondary-color);
-                    }
-                }
-            }
-
-            .right-container {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 25px;
-
-                svg {
-                    font-size: 20px;
-                }
-
-                .lang-mode {
-                    display: flex;
-                    gap: 10px;
-                }
-
-                .sign-buttons {
-                    display: flex;
-                    justify-content: space-around;
-                    align-items: center;
-                    gap: 15px;
-
-                    button {
-                        font-family: "Inter", sans-serif;
-                        font-weight: 700;
-                        background-color: transparent;
-                        outline: none;
-                        border: none;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        gap: 10px;
-                        font-size: 16px;
-                    }
+                &:hover {
+                    transform: translateY(-5px);
+                    border-bottom: 3px solid var(--secondary-color);
                 }
             }
         }
+
+        .right-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 20px;
+
+            .lang-mode {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: row;
+                gap: 5px;
+            }
+
+            .sign-buttons {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: row;
+                gap: 5px;
+            }
+        }
     }
+
 }

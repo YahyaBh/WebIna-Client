@@ -10,7 +10,6 @@ import { FiUserPlus } from 'react-icons/fi'
 const Navbar = ({ props }) => {
     return (
         <nav id='navbar'>
-
             <div className='navbar'>
 
                 <div className='container'>
