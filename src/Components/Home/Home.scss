@@ -1,31 +1,20 @@
 #Home {
     #section-main {
         background-color: var(--light-color);
-        height: 80dvh;
+        height: 90dvh;
         display: flex;
         justify-content: center;
         align-items: center;
         width: 100%;
         position: fixed;
-        top: 104px;
+        top: 80px;
         z-index: 5;
         background-size: 600% 100%;
         -webkit-animation: gradient 16s linear infinite;
-                animation: gradient 16s linear infinite;
+        animation: gradient 16s linear infinite;
         -webkit-animation-direction: alternate;
-                animation-direction: alternate;
+        animation-direction: alternate;
         padding: 50px 0;
-        &::before {
-            content: "";
-            height: 100%;
-            width: 100%;
-            background-image: url(../../../public/Images/Galaxy.svg);
-            position: absolute;
-            z-index: -1;
-            opacity: .8;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
 
         @-webkit-keyframes gradient {
             0% {
@@ -75,6 +64,18 @@
                 flex-direction: row;
                 gap: 20px;
                 padding: 0px 100px;
+
+                &::before {
+                    content: "";
+                    height: 100%;
+                    width: 100%;
+                    background-image: url(../../../public/Images/Galaxy.svg);
+                    position: absolute;
+                    z-index: -1;
+                    opacity: 0.8;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
             }
 
             .left-container {
@@ -236,9 +237,32 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                perspective: 1000px;
+
+                .over-top-image {
+                    position: absolute;
+                    width: 80%;
+                    z-index: 10;
+                    margin-left: 10%;
+                    opacity: 1;
+                }
+
+                .fade-in {
+                    animation: fade-in 1s ease-in;
+                }
+
+                @keyframes fade-in {
+                    from {
+                        opacity: 0;
+                    }
+                    to {
+                        opacity: 1;
+                    }
+                }
 
                 img {
                     width: 700px;
+                    transition: all 0.5s ease;
                 }
             }
         }
@@ -246,7 +270,7 @@
 
     #section-second {
         z-index: 99;
-        margin-top: 77dvh;
+        margin-top: 80dvh;
         height: 200vh;
         display: flex;
         justify-content: center;
@@ -350,6 +374,46 @@
             background-color: var(--secondary-color);
             height: 100%;
             width: 100%;
+            padding: 45px 0;
+
+            .test-example {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                padding: 0 45px;
+                gap: 20px;
+
+                .ht {
+                    width: 100%;
+                    height: 60dvh;
+                    border-radius: 10px;
+                    background: linear-gradient(45deg, #1e1e1e, #ffe622, #1e1e1e);
+                    background-size: 200% 200%;
+                    animation: gradientMove 4s ease-in-out infinite;
+                }
+
+                @keyframes gradientMove {
+                    0% {
+                        background-position: 0% 50%;
+                    }
+                    50% {
+                        background-position: 100% 50%;
+                    }
+                    100% {
+                        background-position: 0% 50%;
+                    }
+                }
+
+                .th {
+                    width: 100%;
+                    color: #fff;
+                    padding: 45px;
+
+                    h1 {
+                        font-size: 60px;
+                    }
+                }
+            }
         }
     }
 }
