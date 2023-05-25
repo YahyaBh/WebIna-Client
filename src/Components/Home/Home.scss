@@ -1,7 +1,7 @@
 #Home {
     #section-main {
         background-color: var(--light-color);
-        height: 80vh;
+        height: 80dvh;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -9,18 +9,32 @@
         position: fixed;
         top: 104px;
         z-index: 5;
-        background: linear-gradient(
-            45deg,
-            var(--primary-color),
-            transparent,
-            var(--secondary-color),
-            var(--primary-color),
-            var(--secondary-color),
-            transparent
-        );
         background-size: 600% 100%;
-        animation: gradient 16s linear infinite;
-        animation-direction: alternate;
+        -webkit-animation: gradient 16s linear infinite;
+                animation: gradient 16s linear infinite;
+        -webkit-animation-direction: alternate;
+                animation-direction: alternate;
+        padding: 50px 0;
+        &::before {
+            content: "";
+            height: 100%;
+            width: 100%;
+            background-image: url(../../../public/Images/Galaxy.svg);
+            position: absolute;
+            z-index: -1;
+            opacity: .8;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        @-webkit-keyframes gradient {
+            0% {
+                background-position: 0%;
+            }
+            100% {
+                background-position: 100%;
+            }
+        }
 
         @keyframes gradient {
             0% {

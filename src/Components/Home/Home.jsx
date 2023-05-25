@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import './Home.scss'
 import Navbar from '../Layout/Navbar/Navbar'
-import Computer from '../../Assets/Home/Section 1 Main/ComputerSectionHome.png'
+import Computer from '../../Assets/Home/Section 1 Main/ComputerSectionHome.svg'
 import { BsArrowRight } from 'react-icons/bs'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 
@@ -34,7 +34,7 @@ const Home = () => {
                             </div>
 
                             <div className='right-container'>
-                                <img src={Computer} alt='computer3d' />
+                                <img src={Computer} alt="computer" />
                             </div>
 
                         </div>
