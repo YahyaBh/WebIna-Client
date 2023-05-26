@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Logo from '../../../Assets/Home/Navbar/WEBINA-Logo.png';
 import './Navbar.scss'
 import { MdLanguage, MdKeyboardArrowDown } from 'react-icons/md'
@@ -8,17 +8,45 @@ import { FiUserPlus } from 'react-icons/fi'
 
 
 const Navbar = ({ props }) => {
+
+
+    const [selectedProduct , SetselectedProduct] = useState('');
+
+
+
+
+    useEffect(() => {
+
+    },[])
+
     return (
         <nav id='navbar'>
-            <div className='navbar'>
 
+
+            <div className={`modal-products ${selectedProduct ? 'active' : ''}`}>
+
+
+            </div>
+
+            <div className='navbar'>
                 <div className='container'>
                     <div className='logo'>
                         <img src={Logo} alt="logo" />
                     </div>
 
                     <ul>
-                        <li>Products <MdKeyboardArrowDown /></li>
+                        <li>
+                            Products <MdKeyboardArrowDown />
+                            <ul class="dropdown-menu">
+                                <li>Website</li>
+                                <li>UI/UX Design</li>
+                                <li>Mobile Application</li>
+                                <li>Desktop Application</li>
+                                <li>Games</li>
+                                <li>Social Media Designing</li>
+                                <li>NFTs Designing</li>
+                            </ul>
+                        </li>
                         <li>Pricing</li>
                         <li>Blogs</li>
                         <li>About Us</li>
@@ -39,7 +67,6 @@ const Navbar = ({ props }) => {
                                 <h3>Sign In</h3>
                             </button>
 
-
                             <button>
                                 <FiUserPlus />
                                 <h3>Sign Up</h3>
@@ -48,8 +75,8 @@ const Navbar = ({ props }) => {
                     </div>
                 </div>
             </div>
-
         </nav>
+
     )
 }
 
