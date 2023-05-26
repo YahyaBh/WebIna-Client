@@ -69,6 +69,8 @@ const Home = () => {
 
     const [currentImage, setCurrentImage] = useState(Computer1);
     const [isFadeIn, setIsFadeIn] = useState(false);
+    const [neonButton, setNeonButton] = useState(false);
+
 
     useEffect(() => {
 
@@ -111,10 +113,10 @@ const Home = () => {
                                     The website you want will be created with high quality ,
                                     our team which is formed with experienced programmers and designers will take of every corner.</p>
 
-                                <button>GET STARTED</button>
+                                <button className={neonButton ? `neon-button` : ''}>GET STARTED</button>
 
 
-                                <div className='undertext'>
+                                <div className='undertext' onMouseEnter={e => setNeonButton(true)} onMouseLeave={e => setNeonButton(false)}>
                                     <BsArrowRight />
                                     <h4>CHANGE YOUR <br /> IDEA TO A BUSINESS</h4>
                                 </div>
