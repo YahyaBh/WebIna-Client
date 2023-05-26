@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef, useState } from 'react'
+import React, { Fragment, Profiler, useEffect, useRef, useState } from 'react'
 import './Home.scss'
 import Navbar from '../Layout/Navbar/Navbar'
 import { BsArrowRight } from 'react-icons/bs'
@@ -10,6 +10,8 @@ import Aos from 'aos';
 import 'aos/dist/aos.css';
 
 const Home = () => {
+
+    const [emailGetStarted, setEmailGetStarted] = useState('');
 
     const tiltRef = useRef(null);
     const imageRef = useRef(null);
@@ -97,7 +99,7 @@ const Home = () => {
     }, []);
 
     return (
-        <Fragment>
+        <Profiler id='Home'>
 
             <Navbar target={'home'} />
 
@@ -113,8 +115,11 @@ const Home = () => {
                                     The website you want will be created with high quality ,
                                     our team which is formed with experienced programmers and designers will take of every corner.</p>
 
-                                <button className={neonButton ? `neon-button` : ''}>GET STARTED</button>
 
+                                <div className='email-get-started'>
+                                    <input onChange={e => setEmailGetStarted(e.target.value)} type="email" name='email' id='name' placeholder='Enter Email Address' minLength={'8'} />
+                                    <button className={emailGetStarted ? 'active' : ''} disabled={emailGetStarted ? false : true}>GET STARTED</button>
+                                </div>
 
                                 <div className='undertext' onMouseEnter={e => setNeonButton(true)} onMouseLeave={e => setNeonButton(false)}>
                                     <BsArrowRight />
@@ -177,7 +182,7 @@ const Home = () => {
                 </section>
 
             </div>
-        </Fragment>
+        </Profiler>
 
     )
 }

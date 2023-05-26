@@ -7,9 +7,9 @@ import { BiUser } from 'react-icons/bi'
 import { FiUserPlus } from 'react-icons/fi'
 import Ecommerce from '../../../Assets/Home/Navbar/Add to Cart-cuate.svg'
 
-const Navbar = ({ props ,  isOpen, onClose }) => {
+const Navbar = ({ props, isOpen, onClose }) => {
 
-
+    const [scrolled, setScrolled] = useState(false);
     const [selectedProduct, SetselectedProduct] = useState('');
     const modalClassName = isOpen ? 'modal-animation active' : 'modal-animation';
 
@@ -31,14 +31,34 @@ const Navbar = ({ props ,  isOpen, onClose }) => {
         };
     }, [selectedProduct]);
 
+    useEffect(() => {
+        // Add event listener when the component mounts
+        window.addEventListener('scroll', handleScroll);
+
+        // Cleanup the event listener when the component unmounts
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    const handleScroll = () => {
+        // Update the state based on scroll position
+        if (window.scrollY > 0) {
+            setScrolled(true);
+        } else {
+            setScrolled(false);
+        }
+    };
+
+
 
     return (
-        <nav id='navbar'>
+        <nav id='navbar' className={scrolled ? 'scrolled' : ''}>
 
 
             <div className={`modal-products ${modalClassName}  ${selectedProduct ? 'active' : ''}`}>
-                <div class="modal-content">
-                    <span class="close" onClick={e => SetselectedProduct('')}>&times;</span>
+                <div className="modal-content">
+                    <span className="close" onClick={e => SetselectedProduct('')}>&times;</span>
                     <h2>Categories</h2>
                     <div className='categories-container'>
                         <div className='category'>
@@ -78,7 +98,7 @@ const Navbar = ({ props ,  isOpen, onClose }) => {
                     <ul>
                         <li>
                             Products <MdKeyboardArrowDown />
-                            <ul class="dropdown-menu">
+                            <ul className="dropdown-menu">
                                 <li onClick={e => SetselectedProduct('website')}>Website</li>
                                 <li onClick={e => SetselectedProduct('ui/ux')}>UI/UX Design</li>
                                 <li onClick={e => SetselectedProduct('mobile-apps')}>Mobile Application</li>
