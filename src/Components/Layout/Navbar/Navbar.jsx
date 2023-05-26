@@ -7,10 +7,11 @@ import { BiUser } from 'react-icons/bi'
 import { FiUserPlus } from 'react-icons/fi'
 import Ecommerce from '../../../Assets/Home/Navbar/Add to Cart-cuate.svg'
 
-const Navbar = ({ props }) => {
+const Navbar = ({ props ,  isOpen, onClose }) => {
 
 
     const [selectedProduct, SetselectedProduct] = useState('');
+    const modalClassName = isOpen ? 'modal-animation active' : 'modal-animation';
 
     useEffect(() => {
         const disableScroll = (event) => {
@@ -35,7 +36,7 @@ const Navbar = ({ props }) => {
         <nav id='navbar'>
 
 
-            <div className={`modal-products ${selectedProduct ? 'active' : ''}`}>
+            <div className={`modal-products ${modalClassName}  ${selectedProduct ? 'active' : ''}`}>
                 <div class="modal-content">
                     <span class="close" onClick={e => SetselectedProduct('')}>&times;</span>
                     <h2>Categories</h2>
