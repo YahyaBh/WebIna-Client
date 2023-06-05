@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import Logo from '../../../Assets/Home/Navbar/WEBINA-Logo.png';
+import Logo from '../../../Assets/Home/Navbar/WEBINA2.png';
 import './Navbar.scss'
 import { MdLanguage, MdKeyboardArrowDown } from 'react-icons/md'
-import { BsMoon } from 'react-icons/bs'
+import { FaMoon, FaSun } from 'react-icons/fa'
 import { BiUser } from 'react-icons/bi'
 import { FiUserPlus } from 'react-icons/fi'
 import Ecommerce from '../../../Assets/Home/Navbar/Add to Cart-cuate.svg'
 
 const Navbar = ({ props, isOpen, onClose }) => {
 
+    const [darkMode, setDarkMode] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [selectedProduct, SetselectedProduct] = useState('');
     const modalClassName = isOpen ? 'modal-animation active' : 'modal-animation';
@@ -50,6 +51,21 @@ const Navbar = ({ props, isOpen, onClose }) => {
         }
     };
 
+
+
+    const handleModeChange = () => {
+        if (darkMode === true) {
+            setDarkMode(false);
+            document.documentElement.style.setProperty('--light-color', '#fff');
+            document.documentElement.style.setProperty('--black-color', '#000');
+            document.documentElement.style.setProperty('--secondary-color', '#FFFFFF');
+        } else {
+            setDarkMode(true);
+            document.documentElement.style.setProperty('--light-color', '#000');
+            document.documentElement.style.setProperty('--black-color', '#FFF');
+            document.documentElement.style.setProperty('--secondary-color', '#000');
+        }
+    }
 
 
     return (
@@ -119,7 +135,7 @@ const Navbar = ({ props, isOpen, onClose }) => {
                     <div className='right-container'>
                         <div className='lang-mode'>
                             <MdLanguage />
-                            <BsMoon />
+                            {darkMode ? <FaMoon onClick={e => handleModeChange()} /> : <FaSun onClick={e => handleModeChange()} />}
                         </div>
 
                         <div className='sign-buttons'>

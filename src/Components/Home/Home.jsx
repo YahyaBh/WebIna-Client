@@ -1,4 +1,4 @@
-import React, { Fragment, Profiler, useEffect, useRef, useState } from 'react'
+import React, { Profiler, useEffect, useRef, useState } from 'react'
 import './Home.scss'
 import Navbar from '../Layout/Navbar/Navbar'
 import { BsArrowRight } from 'react-icons/bs'
@@ -6,6 +6,11 @@ import AnchorLink from 'react-anchor-link-smooth-scroll';
 import BackGroundContainer from '../../Assets/Home/Section 1 Main/ComputerSectionHome.svg'
 import Computer1 from '../../Assets/Home/Section 1 Main/computer.png';
 import Computer2 from '../../Assets/Home/Section 1 Main/panel.png';
+import WebInaPhone from '../../Assets/Home/Section 2/iPhone7.png'
+import floatingRightHat from '../../Assets/Home/Section 2/FloatingRightHat.png';
+import OrnamentUp from '../../Assets/Home/Section 2/OrnamentUp.png'
+import OrnamentHoriz from '../../Assets/Home/Section 2/OrnamentHoriz.png';
+
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
@@ -160,10 +165,18 @@ const Home = () => {
                     <div className='section-container' id='section-secondary'>
 
                         <div className='test-example'>
-                            <div className='ht' data-aos="fade-right"></div>
+                            <div className='ht' data-aos="fade-right">
+                                <img src={WebInaPhone} alt="webina phone" />
+                            
+                                <img className='OrnamentUp' src={OrnamentUp} alt="OrnamentUp" />
+                            </div>
 
                             <div className='th' data-aos="fade-up">
-                                <h1>BIG TEXT HERE</h1>
+
+                                
+                                <img className='floating-right' src={floatingRightHat} alt="webina floating hat" />
+
+                                <h1>MAKE IT <span>DIGITAL</span></h1>
 
                                 <p>
                                     Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -174,6 +187,8 @@ const Home = () => {
                                     sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
                                     like Aldus PageMaker including versions of Lorem Ipsum.
                                 </p>
+
+                                <img className='OrnamentHoriz' src={OrnamentHoriz} alt="OrnamentHoriz" />
                             </div>
                         </div>
 
