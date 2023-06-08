@@ -17,6 +17,13 @@ body {
   --secondary-color: #1E1E1E;
   --light-color: #FFFFFF;
   --black-color: #000000;
+
+
+  --black-to-white : #000;
+  --white-to-black : #ffffff;
+  --secondary-to-white : #ffffff;
+  --secondary-to-primary : #1E1E1E;
+  --primary-to-secondary : #FFE662;
 }
 
 input:-webkit-autofill,

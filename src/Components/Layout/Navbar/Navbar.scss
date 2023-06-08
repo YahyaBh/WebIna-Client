@@ -1,6 +1,7 @@
-.scrolled{
+.scrolled {
     background-color: #ffffff89;
-    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
 }
 
 #navbar {
@@ -36,7 +37,8 @@
         overflow: auto;
         background-color: rgba(0, 0, 0, 0.7);
         overflow: hidden;
-        animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+        -webkit-animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+                animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 
         .categories-container {
             display: flex;
@@ -56,6 +58,18 @@
             }
         }
 
+        @-webkit-keyframes unfoldIn {
+            0% {
+                transform: scaleY(0.005) scaleX(0);
+            }
+            50% {
+                transform: scaleY(0.005) scaleX(1);
+            }
+            100% {
+                transform: scaleY(1) scaleX(1);
+            }
+        }
+
         @keyframes unfoldIn {
             0% {
                 transform: scaleY(0.005) scaleX(0);
@@ -65,6 +79,18 @@
             }
             100% {
                 transform: scaleY(1) scaleX(1);
+            }
+        }
+
+        @-webkit-keyframes unfoldOut {
+            0% {
+                transform: scaleY(1) scaleX(1);
+            }
+            50% {
+                transform: scaleY(0.005) scaleX(1);
+            }
+            100% {
+                transform: scaleY(0.005) scaleX(0);
             }
         }
 
@@ -125,7 +151,7 @@
             gap: 30px;
 
             li {
-                color: var(--secondary-color);
+                color: var(--black-color);
                 font-size: 18px;
                 transition: all 0.3s ease;
                 font-weight: 700;
@@ -133,7 +159,7 @@
 
                 &:hover {
                     transform: translateY(-5px);
-                    border-bottom: 3px solid var(--secondary-color);
+                    border-bottom: 3px solid var(--black-color);
                 }
             }
         }
@@ -211,7 +237,7 @@
                 }
 
                 button:nth-child(1) {
-                    border: 1px solid var(--secondary-color);
+                    border: 1px solid var(--black-color);
                 }
 
                 button:nth-child(2) {

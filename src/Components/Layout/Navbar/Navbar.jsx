@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import Logo from '../../../Assets/Home/Navbar/WEBINA2.png';
+import LogoLight from '../../../Assets/Home/Navbar/WEBINA-Logo.png';
 import './Navbar.scss'
 import { MdLanguage, MdKeyboardArrowDown } from 'react-icons/md'
 import { FaMoon, FaSun } from 'react-icons/fa'
 import { BiUser } from 'react-icons/bi'
 import { FiUserPlus } from 'react-icons/fi'
 import Ecommerce from '../../../Assets/Home/Navbar/Add to Cart-cuate.svg'
+import Cookies from 'js-cookie';
 
 const Navbar = ({ props, isOpen, onClose }) => {
 
-    const [darkMode, setDarkMode] = useState(false);
+    const [darkMode, setDarkMode] = useState(Cookies.get('--DARK-MODE') === true ? true : false);
     const [scrolled, setScrolled] = useState(false);
     const [selectedProduct, SetselectedProduct] = useState('');
     const modalClassName = isOpen ? 'modal-animation active' : 'modal-animation';
@@ -32,6 +34,28 @@ const Navbar = ({ props, isOpen, onClose }) => {
         };
     }, [selectedProduct]);
 
+
+    useLayoutEffect(() => {
+        if (Cookies.get('--DARK-MODE') === true) {
+            setDarkMode(true);
+            document.documentElement.style.setProperty('--white-to-black', '#fff');
+            document.documentElement.style.setProperty('--black-to-white', '#1e1e1e');
+            document.documentElement.style.setProperty('--secondary-to-white', '#fff');
+        } else {
+            setDarkMode(true);
+            document.documentElement.style.setProperty('--white-to-black', '#1e1e1e');
+            document.documentElement.style.setProperty('--black-to-white', '#fff');
+            document.documentElement.style.setProperty('--secondary-to-white', '#1e1e1e');
+        }
+
+
+        if (Cookies.get('glitch')) {
+            Cookies.set('glitch', false);
+        } else {
+            Cookies.set('glitch', true);
+        }
+    }, [])
+
     useEffect(() => {
         // Add event listener when the component mounts
         window.addEventListener('scroll', handleScroll);
@@ -40,7 +64,12 @@ const Navbar = ({ props, isOpen, onClose }) => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
+
+
+
     }, []);
+
+
 
     const handleScroll = () => {
         // Update the state based on scroll position
@@ -54,16 +83,18 @@ const Navbar = ({ props, isOpen, onClose }) => {
 
 
     const handleModeChange = () => {
-        if (darkMode === true) {
+        if (darkMode) {
+            Cookies.set('--DARK-MODE', false);
             setDarkMode(false);
             document.documentElement.style.setProperty('--light-color', '#fff');
-            document.documentElement.style.setProperty('--black-color', '#000');
-            document.documentElement.style.setProperty('--secondary-color', '#FFFFFF');
+            document.documentElement.style.setProperty('--black-color', '#1e1e1e');
+            document.documentElement.style.setProperty('--secondary-color', '#fff');
         } else {
             setDarkMode(true);
-            document.documentElement.style.setProperty('--light-color', '#000');
-            document.documentElement.style.setProperty('--black-color', '#FFF');
-            document.documentElement.style.setProperty('--secondary-color', '#000');
+            Cookies.set('--DARK-MODE', true);
+            document.documentElement.style.setProperty('--light-color', '#1e1e1e');
+            document.documentElement.style.setProperty('--black-color', '#fff');
+            document.documentElement.style.setProperty('--secondary-color', '#1e1e1e');
         }
     }
 
@@ -108,7 +139,7 @@ const Navbar = ({ props, isOpen, onClose }) => {
             <div className='navbar'>
                 <div className='container'>
                     <div className='logo'>
-                        <img src={Logo} alt="logo" />
+                        <img src={!darkMode ? Logo : LogoLight} alt="logo" />
                     </div>
 
                     <ul>
@@ -135,7 +166,7 @@ const Navbar = ({ props, isOpen, onClose }) => {
                     <div className='right-container'>
                         <div className='lang-mode'>
                             <MdLanguage />
-                            {darkMode ? <FaMoon onClick={e => handleModeChange()} /> : <FaSun onClick={e => handleModeChange()} />}
+                            {darkMode ? <FaSun onClick={e => handleModeChange()} /> : <FaMoon onClick={e => handleModeChange()} />}
                         </div>
 
                         <div className='sign-buttons'>
