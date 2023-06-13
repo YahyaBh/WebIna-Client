@@ -71,7 +71,7 @@
                     content: "";
                     height: 100%;
                     width: 100%;
-                    background-image: url(../../../public/Images/Galaxy.svg);
+                    background-image: url(../../../public/Images/GalaxyDark.svg);
                     position: absolute;
                     z-index: -1;
                     opacity: 0.6;
@@ -116,7 +116,7 @@
                         font-weight: 700;
                         transition: all 0.3s ease;
                         z-index: 3;
-                        border: 2px solid var(--primary-to-secondary);
+                        border: 2px solid var(--primary-color);
                         height: 100%;
                         outline: none;
                         font-size: 18px;
@@ -539,6 +539,24 @@
                         width: 150px;
                         bottom: -100px;
                         right: 100px;
+                    }
+
+                    p {
+                        font-size: 24px;
+                    }
+
+
+                    button {
+                        font-size: 20px;
+                        background-color: var(--secondary-color);
+                        border-radius: 15px;
+                        padding: 10px 10px;
+                        color: var(--white-color);
+                        text-transform: uppercase;
+                        width: 250px;
+                        border: none;
+                        outline: none;
+                        margin-top: 30px;
                     }
                 }
             }
