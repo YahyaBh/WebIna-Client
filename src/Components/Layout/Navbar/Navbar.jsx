@@ -12,7 +12,7 @@ import Cookies from 'js-cookie';
 const Navbar = ({ isOpen }) => {
 
 
-    const [mode_dark, setModeDark] = useState(null);
+    const [mode_dark, setModeDark] = useState();
     const [scrolled, setScrolled] = useState(false);
     const [selectedProduct, SetselectedProduct] = useState('');
     const modalClassName = isOpen ? 'modal-animation active' : 'modal-animation';
@@ -42,30 +42,34 @@ const Navbar = ({ isOpen }) => {
     useEffect(() => {
 
         if (Cookies.get('mode')) {
+            Cookies.set('mode', true)
             setModeDark(true);
             document.documentElement.style.setProperty('--light-color', '#1e1e1e');
             document.documentElement.style.setProperty('--black-color', '#fff');
             document.documentElement.style.setProperty('--secondary-color', '#1e1e1e');
 
-
             document.getElementsByClassName('background-grad');
 
-            document.documentElement.style.setProperty('transition', 'all .8s ease');
+            document.documentElement.style.setProperty('transition', 'all 8s ease');
+
             setTimeout(() => {
                 document.documentElement.style.setProperty('transition', '');
-            }, 800);
+            }, 8000);
+
+
         } else {
+            Cookies.set('mode', false)
             setModeDark(false);
             document.documentElement.style.setProperty('--light-color', '#fff');
             document.documentElement.style.setProperty('--black-color', '#1e1e1e');
             document.documentElement.style.setProperty('--secondary-color', '#fff');
 
 
-            document.documentElement.style.setProperty('transition', 'all .8s ease');
+            document.documentElement.style.setProperty('transition', 'all 8s ease');
 
             setTimeout(() => {
                 document.documentElement.style.setProperty('transition', '');
-            }, 800);
+            }, 8000);
         }
 
         // Add event listener when the component mounts
@@ -97,15 +101,15 @@ const Navbar = ({ isOpen }) => {
 
 
     const handleModeChange = () => {
-        if (!mode_dark) {
-            Cookies.set('mode');
-            setModeDark(true)
+        if (mode_dark) {
+            Cookies.set('mode', false);
+            setModeDark(false)
             document.documentElement.style.setProperty('--light-color', '#fff');
             document.documentElement.style.setProperty('--black-color', '#1e1e1e');
             document.documentElement.style.setProperty('--secondary-color', '#fff');
         } else {
-            Cookies.remove('mode');
-            setModeDark(false)
+            Cookies.set('mode', true);
+            setModeDark(true)
             document.documentElement.style.setProperty('--light-color', '#1e1e1e');
             document.documentElement.style.setProperty('--black-color', '#fff');
             document.documentElement.style.setProperty('--secondary-color', '#1e1e1e');
