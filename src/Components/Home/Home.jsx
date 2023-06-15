@@ -207,12 +207,24 @@ const Home = () => {
 
                             <div className='test-example'>
                                 <div className='ht' data-aos="fade-right">
-                                    <img src={WebInaPhone} alt="webina phone" />
 
+                                    <div className='responsive-why-web'>
+                                        <h2>WHY WEBINA</h2>
+                                        <p>WebIna is a comapny that helps you make your dreams easier and build you a full application for your business , you can easily choose any website from our lists and we will finish it as soon as possible to make your work go easier on you.</p>
+                                        <button>GET STARTED</button>
+                                    </div>
+
+                                    <img className='webina-phone' src={WebInaPhone} alt="webina phone" />
+
+                                    <img className='OrnamentHoriz-res' src={OrnamentHoriz} alt="OrnamentHoriz" />
                                     <img className='OrnamentUp' src={OrnamentUp} alt="OrnamentUp" />
+
+
+
                                 </div>
 
                                 <div className='th' data-aos="fade-up">
+
 
 
                                     <img className='floating-right' src={floatingRightHat} alt="webina floating hat" />

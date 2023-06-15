@@ -67,8 +67,8 @@
                         background-size: contain !important;
                     }
 
-                    @media screen and (max-width:1200px) {
-                        top:20px !important;
+                    @media screen and (max-width: 1200px) {
+                        top: 20px !important;
                     }
                 }
 
@@ -587,6 +587,7 @@
         .background-all-divs {
             background: rgb(255, 230, 98);
             background: linear-gradient(180deg, rgba(255, 230, 98, 1) 0%, var(--light-color) 100%);
+            width: 100%;
         }
 
         &:hover {
@@ -694,8 +695,65 @@
                 padding: 0 45px;
                 gap: 20px;
 
+                OrnamentHoriz-res {
+                    display: none;
+                }
+
                 @media screen and (max-width: 1200px) {
                     flex-direction: column;
+
+                    .ht {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+
+                        .webina-phone {
+                            width: 400px !important;
+                            margin-left: 20px !important;
+                        }
+
+                        .OrnamentHoriz-res {
+                            width: 42%;
+                            right: 14rem;
+                            bottom: 0px;
+                            position: absolute;
+                        }
+
+                        .OrnamentUp {
+                            width: 43px !important;
+                            bottom: 10px !important;
+                            left: 19rem !important;
+                            position: absolute !important;
+                        }
+
+                        .responsive-why-web {
+                            display: block !important;
+                            text-align: center;
+                            max-width: 350px;
+
+                            h2 {
+                                color: #131313 !important;
+                                font-size: 35px;
+                            }
+
+                            p {
+                                color: #131313 !important;
+                                font-size: 20px;
+                            }
+
+                            button {
+                                background-color: var(--light-color);
+                                outline: none;
+                                color: var(--black-color);
+                                padding: 8px 25px;
+                                border-radius: 20px;
+                                margin-top: 20px;
+                                border: none;
+                                font-size: 20px;
+                            }
+                        }
+                    }
                 }
 
                 .ht {
@@ -707,8 +765,16 @@
                     -webkit-animation: gradientMove 4s ease-in-out infinite;
                     animation: gradientMove 4s ease-in-out infinite;
 
+                    .responsive-why-web {
+                        display: none;
+                    }
+
                     img {
                         width: 100%;
+
+                        @media screen and (max-width: 1200px) {
+                            width: 50%;
+                        }
                     }
 
                     .OrnamentUp {
@@ -751,6 +817,10 @@
                     justify-content: flex-start;
                     align-items: flex-start;
                     flex-direction: column;
+
+                    @media screen and (max-width: 1200px) {
+                        display: none;
+                    }
 
                     .floating-right {
                         margin-left: auto;
@@ -799,16 +869,39 @@
             gap: 30px;
             padding: 70px;
 
+            @media screen and (max-width: 1200px) {
+                padding: 0px;
+                gap: 5px;
+                padding: 15px;
+            }
+
             .cards-text-container {
                 display: flex;
                 flex-direction: row;
                 justify-content: space-around;
                 align-items: center;
                 gap: 20px;
-                height: 200px;
+                height: auto;
+
+                @media screen and (max-width: 1200px) {
+                    flex-direction: column;
+                    gap: 5px;
+
+                    .text-left {
+                        width: 100% !important;
+
+                        h3 {
+                            font-size: 38px !important;
+                            line-height: 3rem !important;
+                            margin-bottom: 10px;
+                        }
+                    }
+                }
 
                 .text-left {
                     width: 60%;
+
+        
                     h3 {
                         font-size: 46px;
                         color: var(--black-color);
@@ -829,6 +922,10 @@
                     height: 100%;
                     width: 50%;
                     border-radius: 8px;
+
+                    @media screen and (max-width:1200px) {
+                        width: 90%;
+                    }
 
                     div {
                         display: flex;
