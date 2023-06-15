@@ -15,7 +15,6 @@ import SocialIcon from '../../Assets/Home/Section 2/social-icon.svg';
 
 import Aos from 'aos';
 import 'aos/dist/aos.css';
-import Cookies from 'js-cookie';
 
 const Home = () => {
 
