@@ -585,8 +585,8 @@
         }
 
         .background-all-divs {
-            background: rgb(255, 230, 98);
-            background: linear-gradient(180deg, rgba(255, 230, 98, 1) 0%, var(--light-color) 100%);
+            background: var(--primary-color-dark);
+            background: linear-gradient(180deg, var(--primary-color-dark) 0%, var(--primary-color) 100%);
             width: 100%;
         }
 
@@ -901,7 +901,6 @@
                 .text-left {
                     width: 60%;
 
-        
                     h3 {
                         font-size: 46px;
                         color: var(--black-color);
@@ -912,6 +911,7 @@
                         font-size: 20px;
                     }
                 }
+
                 .card-right {
                     display: flex;
                     justify-content: flex-start;
@@ -923,8 +923,13 @@
                     width: 50%;
                     border-radius: 8px;
 
-                    @media screen and (max-width:1200px) {
-                        width: 90%;
+                    @media screen and (max-width: 1200px) {
+                        width: 92%;
+                        align-items: flex-start;
+
+                        img {
+                            width: 120px;
+                        }
                     }
 
                     div {
@@ -940,7 +945,7 @@
                         }
 
                         p {
-                            line-height: 2rem;
+                            line-height: 1.2rem;
                             color: var(--light-color);
                             font-weight: bold;
                         }
@@ -973,10 +978,24 @@
                 align-items: center;
                 flex-direction: row;
                 gap: 30px;
+                flex-wrap: wrap;
+
+                @media screen and (max-width: 1200px) {
+                    gap: 5px !important;
+
+                    .card {
+                        flex-basis: 33% !important;
+                        width: 40%;
+
+                        button {
+                            font-size: 14px !important;
+                        }
+                    }
+                }
 
                 .card {
                     background-color: var(--cards-color);
-                    padding: 20px 20px;
+                    padding: 20px 18px;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -995,6 +1014,10 @@
                         line-height: 2rem;
                         color: var(--light-color);
                         font-weight: bold;
+
+                        @media screen and (max-width: 1200px) {
+                            line-height: 1.2rem !important;
+                        }
                     }
 
                     button {
