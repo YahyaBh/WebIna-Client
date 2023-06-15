@@ -13,10 +13,12 @@ body {
 
 
 :root {
+  --primary-color-dark : #FFE662;
   --primary-color: #FFE662;
   --secondary-color: #1E1E1E;
   --light-color: #FFFFFF;
   --black-color: #000000;
+  --cards-color: #131313;
 }
 
 input:-webkit-autofill,
@@ -27,6 +29,11 @@ input:-webkit-autofill:active {
 }
 
 
-h1 , h2, h3, h4, h5, h6 , p , svg , li , a {
+h1, h2, h3, h4, h5, h6, p, svg, li, a {
   color: var(--black-color);
+}
+
+html,
+body {
+  overflow-x: hidden;
 }

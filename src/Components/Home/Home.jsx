@@ -10,13 +10,17 @@ import WebInaPhone from '../../Assets/Home/Section 2/iPhone7.png'
 import floatingRightHat from '../../Assets/Home/Section 2/FloatingRightHat.png';
 import OrnamentUp from '../../Assets/Home/Section 2/OrnamentUp.png'
 import OrnamentHoriz from '../../Assets/Home/Section 2/OrnamentHoriz.png';
+import DevIcon from '../../Assets/Home/Section 2/dev-icon.svg'
+import SocialIcon from '../../Assets/Home/Section 2/social-icon.svg';
 
 import Aos from 'aos';
 import 'aos/dist/aos.css';
+import Cookies from 'js-cookie';
 
 const Home = () => {
 
     const [emailGetStarted, setEmailGetStarted] = useState('');
+    const [scrolled, setScrolled] = useState(false);
 
     const tiltRef = useRef(null);
     const imageRef = useRef(null);
@@ -78,10 +82,10 @@ const Home = () => {
     const [isFadeIn, setIsFadeIn] = useState(false);
     const [neonButton, setNeonButton] = useState(false);
 
-
     useEffect(() => {
 
         Aos.init();
+
 
         const interval = setInterval(() => {
             setCurrentImage((prevImage) => {
@@ -98,10 +102,41 @@ const Home = () => {
             }, 1000); // Adjust the fade-in duration (in milliseconds) as needed
         }, 7000);
 
+
+
+
+
+
+
+
+
+
+
         return () => {
+
             clearInterval(interval);
+
         };
+
     }, []);
+
+    useEffect(() => {
+
+        // Add event listener when the component mounts
+        window.addEventListener('scroll', handleScroll);
+
+    }, [])
+
+
+    const handleScroll = () => {
+        // Update the state based on scroll position
+        console.log(window.pageYOffset);
+        if (window.pageYOffset > 200) {
+            setScrolled(true);
+        } else {
+            setScrolled(false);
+        }
+    };
 
     return (
         <Profiler id='Home'>
@@ -148,12 +183,18 @@ const Home = () => {
                                 <img ref={tiltRef} src={BackGroundContainer} alt="container" />
                             </div>
 
+
+                            <div className='res-undertext' onMouseEnter={e => setNeonButton(true)} onMouseLeave={e => setNeonButton(false)}>
+                                <BsArrowRight />
+                                <h4>CHANGE YOUR <br /> IDEA TO A BUSINESS</h4>
+                            </div>
+
                         </div>
                     </div>
                 </section>
 
-                <section id='section-second'>
-                    <AnchorLink href='#section-secondary' className="zipper-pull">
+                <section id='section-second' className={scrolled ? 'active' : ''}>
+                    <AnchorLink href='#section-secondary' className={`zipper-pull`}>
                         <div className="scroll-downs">
                             <div className="mousey">
                                 <div className="scroller"></div>
@@ -162,36 +203,103 @@ const Home = () => {
                         <h4>Scroll</h4>
                     </AnchorLink>
 
-                    <div className='section-container' id='section-secondary'>
+                    <div className="background-all-divs">
+                        <div className='section-container' id='section-secondary'>
 
-                        <div className='test-example'>
-                            <div className='ht' data-aos="fade-right">
-                                <img src={WebInaPhone} alt="webina phone" />
-                            
-                                <img className='OrnamentUp' src={OrnamentUp} alt="OrnamentUp" />
+                            <div className='test-example'>
+                                <div className='ht' data-aos="fade-right">
+                                    <img src={WebInaPhone} alt="webina phone" />
+
+                                    <img className='OrnamentUp' src={OrnamentUp} alt="OrnamentUp" />
+                                </div>
+
+                                <div className='th' data-aos="fade-up">
+
+
+                                    <img className='floating-right' src={floatingRightHat} alt="webina floating hat" />
+
+                                    <h1>MAKE IT <span>DIGITAL</span></h1>
+
+                                    <p>
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                        It has survived not only five centuries, but also.
+                                    </p>
+
+                                    <button>Get Started</button>
+
+                                    <img className='OrnamentHoriz' src={OrnamentHoriz} alt="OrnamentHoriz" />
+                                </div>
                             </div>
 
-                            <div className='th' data-aos="fade-up">
 
-                                
-                                <img className='floating-right' src={floatingRightHat} alt="webina floating hat" />
-
-                                <h1>MAKE IT <span>DIGITAL</span></h1>
-
-                                <p>
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                    It has survived not only five centuries, but also.
-                                </p>
-
-                                <button>Get Started</button>
-
-                                <img className='OrnamentHoriz' src={OrnamentHoriz} alt="OrnamentHoriz" />
-                            </div>
                         </div>
 
 
+                        <div className="second-section-container" id='second-section'>
+                            <div className="cards-text-container" >
+                                <div className="text-left">
+                                    <h3>
+                                        Our Digital <br /> Marketing Expertise
+                                    </h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor Lorem ipsum dolor sit
+                                    </p>
+                                </div>
+                                <div className='card-right'>
+                                    <img src={DevIcon} alt="Dev Websites" />
+                                    <div>
+                                        <h4>Website design & Development</h4>
+                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor Lorem ipsum dolor sit</p>
+                                        <button>GET STARTED</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className='cards-container' >
+                                <div className='card'>
+                                    <img src={SocialIcon} alt="social media Icon" />
+                                    <h4>
+                                        Social Media Marketing
+                                    </h4>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor Lorem ipsum dolor sit
+                                    </p>
+                                    <button>GET STARTED</button>
+                                </div>
+                                <div className='card'>
+                                    <img src={SocialIcon} alt="social media Icon" />
+                                    <h4>
+                                        Social Media Marketing
+                                    </h4>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor Lorem ipsum dolor sit
+                                    </p>
+                                    <button>GET STARTED</button>
+                                </div>
+                                <div className='card'>
+                                    <img src={SocialIcon} alt="social media Icon" />
+                                    <h4>
+                                        Social Media Marketing
+                                    </h4>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor Lorem ipsum dolor sit
+                                    </p>
+                                    <button>GET STARTED</button>
+                                </div>
+                                <div className='card'>
+                                    <img src={SocialIcon} alt="social media Icon" />
+                                    <h4>
+                                        Social Media Marketing
+                                    </h4>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor Lorem ipsum dolor sit
+                                    </p>
+                                    <button>GET STARTED</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
