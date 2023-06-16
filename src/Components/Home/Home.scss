@@ -606,7 +606,7 @@
             }
         }
         .zipper-pull {
-            background-color: var(--primary-color);
+            background-color: var(--primary-color-dark);
             width: 140px;
             height: 140px;
             border-top-left-radius: 70px;
@@ -617,13 +617,13 @@
             justify-content: center;
             transition: all 0.3s ease;
             cursor: pointer;
-            color: #1e1e1e;
+            color: var(--black-color);
             text-decoration: none;
 
             h4 {
                 margin-bottom: 10px;
                 transition: all 0.3s ease;
-                color: #1e1e1e !important;
+                color: var(--black-color) !important;
             }
 
             .scroll-downs {
@@ -636,7 +636,7 @@
                 width: 3px;
                 padding: 10px 15px;
                 height: 35px;
-                border: 2px solid #000;
+                border: 2px solid var(--black-color);
                 border-radius: 25px;
                 opacity: 0.75;
                 box-sizing: content-box;
@@ -645,7 +645,7 @@
                 width: 3px;
                 height: 10px;
                 border-radius: 25%;
-                background-color: #000;
+                background-color: var(--black-color);
                 -webkit-animation-name: scroll;
                 animation-name: scroll;
                 -webkit-animation-duration: 2.2s;
@@ -697,8 +697,6 @@
 
                 OrnamentHoriz-res {
                     display: none !important;
-
-                    
                 }
 
                 @media screen and (max-width: 1200px) {
@@ -720,7 +718,6 @@
                             right: 14rem;
                             bottom: 0px;
                             position: absolute;
-                            
                         }
 
                         .OrnamentUp {
@@ -772,7 +769,6 @@
                     background-size: 200% 200%;
                     -webkit-animation: gradientMove 4s ease-in-out infinite;
                     animation: gradientMove 4s ease-in-out infinite;
-                    
 
                     .responsive-why-web {
                         display: none;
@@ -794,11 +790,10 @@
                     }
 
                     .OrnamentHoriz-res {
-                        @media screen and (min-width:450px) {
+                        @media screen and (min-width: 450px) {
                             display: none !important;
                         }
                     }
-
                 }
 
                 @-webkit-keyframes gradientMove {
@@ -827,7 +822,6 @@
 
                 .th {
                     width: 100%;
-                    color: #1e1e1e;
                     padding: 45px;
                     display: flex;
                     justify-content: flex-start;
@@ -846,7 +840,7 @@
 
                     h1 {
                         font-size: 60px;
-                        color: #1e1e1e;
+                        color: var(--black-color);
                     }
 
                     .OrnamentHoriz {
@@ -857,7 +851,8 @@
                     }
 
                     p {
-                        color: #1e1e1e;
+                        color: var(--black-color);
+
                         font-size: 24px;
                     }
 

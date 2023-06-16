@@ -7,7 +7,14 @@ import BackGroundContainer from '../../Assets/Home/Section 1 Main/ComputerSectio
 import Computer1 from '../../Assets/Home/Section 1 Main/computer.png';
 import Computer2 from '../../Assets/Home/Section 1 Main/panel.png';
 import WebInaPhone from '../../Assets/Home/Section 2/iPhone7.png'
+
+import floatingRightHatDark from '../../Assets/Home/Section 2/FloatingRightHatDark.png';
 import floatingRightHat from '../../Assets/Home/Section 2/FloatingRightHat.png';
+
+import OrnamentHoriz from '../../Assets/Home/Section 2/OrnamentHoriz.png';
+import OrnamentHorizDark from '../../Assets/Home/Section 2/OrnamentHorizDark.png';
+import OrnamentUp from '../../Assets/Home/Section 2/OrnamentUp.png';
+import OrnamentUpDark from '../../Assets/Home/Section 2/OrnamentUpDark.png';
 
 
 import DevIcon from '../../Assets/Home/Section 2/dev-icon.svg'
@@ -233,8 +240,8 @@ const Home = () => {
 
                                     <img className='webina-phone' src={WebInaPhone} alt="webina phone" />
 
-                                    <img className='OrnamentHoriz-res' src={darkMode ? 'Images/OrnamentHorizDark.png': 'Images/OrnamentHoriz.png'} alt="OrnamentHoriz" />
-                                    <img className='OrnamentUp' src={darkMode ? 'Images/OrnamentUpDark.png' : 'Images/OrnamentUp.png'} alt="OrnamentUp" />
+                                    <img className='OrnamentHoriz-res' src={darkMode ? OrnamentHorizDark : OrnamentHoriz} alt="OrnamentHoriz" />
+                                    <img className='OrnamentUp' src={darkMode ? OrnamentUpDark : OrnamentUp} alt="OrnamentUp" />
 
 
 
@@ -244,7 +251,7 @@ const Home = () => {
 
 
 
-                                    <img className='floating-right' src={floatingRightHat} alt="webina floating hat" />
+                                    <img className='floating-right' src={darkMode ? floatingRightHatDark : floatingRightHat} alt="webina floating hat" />
 
                                     <h1>MAKE IT <span>DIGITAL</span></h1>
 
@@ -257,7 +264,7 @@ const Home = () => {
 
                                     <button>Get Started</button>
 
-                                    <img className='OrnamentHoriz' src={darkMode ? 'Images/OrnamentHorizDark.png' : 'Images/OrnamentHoriz.png'} alt="OrnamentHoriz" />
+                                    <img className='OrnamentHoriz' src={darkMode ? OrnamentHorizDark : OrnamentHoriz} alt="OrnamentHoriz" />
                                 </div>
                             </div>
 
