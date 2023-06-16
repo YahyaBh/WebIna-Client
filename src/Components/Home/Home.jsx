@@ -23,12 +23,17 @@ import SocialIcon from '../../Assets/Home/Section 2/social-icon.svg';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import Cookies from 'js-cookie';
+import Loading from '../Loading/Loading';
 
 const Home = () => {
 
+    const [loading, setLoading] = useState(false);
     const [darkMode, setDarkMode] = useState(Cookies.get('mode'));
     const [emailGetStarted, setEmailGetStarted] = useState('');
     const [scrolled, setScrolled] = useState(false);
+    const [currentImage, setCurrentImage] = useState(Computer1);
+    const [isFadeIn, setIsFadeIn] = useState(false);
+    const [neonButton, setNeonButton] = useState(false);
 
     const tiltRef = useRef(null);
     const imageRef = useRef(null);
@@ -86,14 +91,28 @@ const Home = () => {
         elSec.style.transform = 'perspective(500px) scale(1.01) rotateX(0) rotateY(0)';
     };
 
-    const [currentImage, setCurrentImage] = useState(Computer1);
-    const [isFadeIn, setIsFadeIn] = useState(false);
-    const [neonButton, setNeonButton] = useState(false);
+    const handleScroll = () => {
+        // Update the state based on scroll position
+        if (window.pageYOffset > 200) {
+            setScrolled(true);
+        } else {
+            setScrolled(false);
+        }
+    };
+
+
 
     useEffect(() => {
 
         Aos.init();
 
+        window.addEventListener('scroll', handleScroll);
+
+        if (Cookies.get('mode') === true) {
+            setDarkMode(true)
+        } else {
+            setDarkMode(false)
+        }
 
         const interval = setInterval(() => {
             setCurrentImage((prevImage) => {
@@ -110,16 +129,6 @@ const Home = () => {
             }, 1000); // Adjust the fade-in duration (in milliseconds) as needed
         }, 7000);
 
-
-
-
-
-
-
-
-
-
-
         return () => {
 
             clearInterval(interval);
@@ -129,42 +138,20 @@ const Home = () => {
     }, []);
 
 
-
-    useEffect(() => {
-
-        // Add event listener when the component mounts
-        window.addEventListener('scroll', handleScroll);
-
-    }, [])
-
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            const updatedCookieValue = Cookies.get('mode');
-            if (darkMode !== updatedCookieValue) {
-                setDarkMode(updatedCookieValue);
-            }
-        }, 1000);
-
-        return () => {
-            clearInterval(interval);
-        };
-    }, [darkMode])
-
-    const handleScroll = () => {
-        // Update the state based on scroll position
-        console.log(window.pageYOffset);
-        if (window.pageYOffset > 200) {
-            setScrolled(true);
-        } else {
-            setScrolled(false);
-        }
+    const handleButtonClicked = (newValue) => {
+        setDarkMode(newValue)
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+        }, 3000);
     };
 
     return (
         <Profiler id='Home'>
 
-            <Navbar target={'home'} />
+            {loading ? <Loading /> : ''}
+
+            <Navbar target={'home'} onButtonClick={handleButtonClicked} />
 
             <div id='Home'>
                 <section id='section-main'>
@@ -282,54 +269,57 @@ const Home = () => {
                                         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor Lorem ipsum dolor sit
                                     </p>
                                 </div>
-                                <div className='card-right'>
+                                <button>{darkMode ? 'On' : 'Off'}</button>
+                                <div className={darkMode ? 'dark card-right' : 'card-right'}>
                                     <img src={DevIcon} alt="Dev Websites" />
                                     <div>
                                         <h4>Website design & Development</h4>
-                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor Lorem ipsum dolor sit</p>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                            eirmod tempor Lorem ipsum dolor sit
+                                        </p>
                                         <button>GET STARTED</button>
                                     </div>
                                 </div>
                             </div>
 
                             <div className='cards-container' >
-                                <div className='card'>
+                                <div className={darkMode === true ? 'dark card' : 'card'}>
                                     <img src={SocialIcon} alt="social media Icon" />
-                                    <h4>
-                                        Social Media Marketing
-                                    </h4>
+                                    <h4>Social Media Marketing</h4>
                                     <p>
-                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor Lorem ipsum dolor sit
+                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                        eirmod tempor Lorem ipsum dolor sit
                                     </p>
                                     <button>GET STARTED</button>
                                 </div>
-                                <div className='card'>
+
+                                <div className={darkMode === true ? 'dark card' : 'card'}>
                                     <img src={SocialIcon} alt="social media Icon" />
-                                    <h4>
-                                        Social Media Marketing
-                                    </h4>
+                                    <h4>Social Media Marketing</h4>
                                     <p>
-                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor Lorem ipsum dolor sit
+                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                        eirmod tempor Lorem ipsum dolor sit
                                     </p>
                                     <button>GET STARTED</button>
                                 </div>
-                                <div className='card'>
+
+                                <div className={darkMode === true ? 'dark card' : 'card'}>
                                     <img src={SocialIcon} alt="social media Icon" />
-                                    <h4>
-                                        Social Media Marketing
-                                    </h4>
+                                    <h4>Social Media Marketing</h4>
                                     <p>
-                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor Lorem ipsum dolor sit
+                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                        eirmod tempor Lorem ipsum dolor sit
                                     </p>
                                     <button>GET STARTED</button>
                                 </div>
-                                <div className='card'>
+
+                                <div className={darkMode === true ? 'dark card' : 'card'}>
                                     <img src={SocialIcon} alt="social media Icon" />
-                                    <h4>
-                                        Social Media Marketing
-                                    </h4>
+                                    <h4>Social Media Marketing</h4>
                                     <p>
-                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor Lorem ipsum dolor sit
+                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                        eirmod tempor Lorem ipsum dolor sit
                                     </p>
                                     <button>GET STARTED</button>
                                 </div>

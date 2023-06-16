@@ -6,6 +6,8 @@ import Cookies from "js-cookie";
 function App() {
 
 
+  
+
   return (
     <div className={`glitch-effect ${Cookies.get('--DARK-MODE') ? 'glitch-active' : ''}`}>
       <Routes>

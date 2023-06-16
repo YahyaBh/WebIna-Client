@@ -886,6 +886,12 @@
                 padding: 15px;
             }
 
+            .dark {
+                img {
+                    filter: brightness(0%);
+                }
+            }
+
             .cards-text-container {
                 display: flex;
                 flex-direction: row;
@@ -975,21 +981,15 @@
                 }
             }
 
-            .dark {
-                .card {
-                    img {
-                        filter: brightness(0%);
-                    }
-                }
-            }
-
             .cards-container {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 flex-direction: row;
-                gap: 30px;
+                gap: 20px;
                 flex-wrap: wrap;
+
+                
 
                 @media screen and (max-width: 1200px) {
                     gap: 5px !important;
@@ -1013,8 +1013,9 @@
                     flex-direction: column;
                     gap: 18px;
                     border-radius: 10px;
-                    max-width: 400px;
+                    max-width: 310px;
                     text-align: center;
+                    flex-basis: 22%;
 
                     h4 {
                         color: var(--primary-color-dark);
@@ -1034,7 +1035,7 @@
                     button {
                         background-color: #fff;
                         border-radius: 10px;
-                        color: var(--light-color);
+                        color: var(--dark-color);
                         padding: 8px 25px;
                         border: none;
                         outline: none;

@@ -10,7 +10,7 @@ import { BsListNested } from 'react-icons/bs';
 import Ecommerce from '../../../Assets/Home/Navbar/Add to Cart-cuate.svg'
 import Cookies from 'js-cookie';
 
-const Navbar = ({ isOpen }) => {
+const Navbar = ({ isOpen, onButtonClick }) => {
 
 
     const [mode_dark, setModeDark] = useState();
@@ -18,7 +18,6 @@ const Navbar = ({ isOpen }) => {
     const [selectedProduct, SetselectedProduct] = useState('');
     const [asideShow, setAsideShow] = useState(false)
     const modalClassName = isOpen ? 'modal-animation active' : 'modal-animation';
-
 
 
     useEffect(() => {
@@ -112,6 +111,7 @@ const Navbar = ({ isOpen }) => {
         if (mode_dark) {
             Cookies.set('mode', false);
             setModeDark(false);
+            onButtonClick(false);
             document.documentElement.style.setProperty('--primary-color-dark', '#FFE662');
             document.documentElement.style.setProperty('--light-color', '#fff');
             document.documentElement.style.setProperty('--black-color', '#1e1e1e');
@@ -120,6 +120,7 @@ const Navbar = ({ isOpen }) => {
         } else {
             Cookies.set('mode', true);
             setModeDark(true);
+            onButtonClick(true);
             document.documentElement.style.setProperty('--primary-color-dark', '#000000');
             document.documentElement.style.setProperty('--light-color', '#1e1e1e');
             document.documentElement.style.setProperty('--black-color', '#fff');
