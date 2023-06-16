@@ -14,7 +14,7 @@
     background-color: var(--light-color);
     display: block;
 
-    @media screen and (max-width: 1260px) {
+    @media screen and (max-width: 1500px) {
         display: none;
     }
 
@@ -273,7 +273,7 @@
     backdrop-filter: blur(20px);
     display: block;
 
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1500px) {
         display: none;
     }
 
@@ -286,9 +286,27 @@
         height: 40px;
         position: relative;
 
-        @media screen and (max-width: 1200px) {
+        .mode-res {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+
+            @media screen and (max-width:500px) {
+                svg {
+                    font-size: 30px !important;
+                }
+            }
+        }
+
+        @media screen and (min-width:700px) {
+            width: 93% !important;
+        }
+
+        @media screen and (max-width: 1500px) {
             padding: 20px 15px;
-            width: 90% !important;
+            width: 95% !important;
 
             svg {
                 font-size: 35px !important;

@@ -8,16 +8,18 @@ import Computer1 from '../../Assets/Home/Section 1 Main/computer.png';
 import Computer2 from '../../Assets/Home/Section 1 Main/panel.png';
 import WebInaPhone from '../../Assets/Home/Section 2/iPhone7.png'
 import floatingRightHat from '../../Assets/Home/Section 2/FloatingRightHat.png';
-import OrnamentUp from '../../Assets/Home/Section 2/OrnamentUp.png'
-import OrnamentHoriz from '../../Assets/Home/Section 2/OrnamentHoriz.png';
+
+
 import DevIcon from '../../Assets/Home/Section 2/dev-icon.svg'
 import SocialIcon from '../../Assets/Home/Section 2/social-icon.svg';
 
 import Aos from 'aos';
 import 'aos/dist/aos.css';
+import Cookies from 'js-cookie';
 
 const Home = () => {
 
+    const [darkMode, setDarkMode] = useState(Cookies.get('mode'));
     const [emailGetStarted, setEmailGetStarted] = useState('');
     const [scrolled, setScrolled] = useState(false);
 
@@ -119,6 +121,8 @@ const Home = () => {
 
     }, []);
 
+
+
     useEffect(() => {
 
         // Add event listener when the component mounts
@@ -126,6 +130,19 @@ const Home = () => {
 
     }, [])
 
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const updatedCookieValue = Cookies.get('mode');
+            if (darkMode !== updatedCookieValue) {
+                setDarkMode(updatedCookieValue);
+            }
+        }, 1000);
+
+        return () => {
+            clearInterval(interval);
+        };
+    }, [darkMode])
 
     const handleScroll = () => {
         // Update the state based on scroll position
@@ -216,8 +233,8 @@ const Home = () => {
 
                                     <img className='webina-phone' src={WebInaPhone} alt="webina phone" />
 
-                                    <img className='OrnamentHoriz-res' src={OrnamentHoriz} alt="OrnamentHoriz" />
-                                    <img className='OrnamentUp' src={OrnamentUp} alt="OrnamentUp" />
+                                    <img className='OrnamentHoriz-res' src={darkMode ? 'Images/OrnamentHorizDark.png': 'Images/OrnamentHoriz.png'} alt="OrnamentHoriz" />
+                                    <img className='OrnamentUp' src={darkMode ? 'Images/OrnamentUpDark.png' : 'Images/OrnamentUp.png'} alt="OrnamentUp" />
 
 
 
@@ -240,7 +257,7 @@ const Home = () => {
 
                                     <button>Get Started</button>
 
-                                    <img className='OrnamentHoriz' src={OrnamentHoriz} alt="OrnamentHoriz" />
+                                    <img className='OrnamentHoriz' src={darkMode ? 'Images/OrnamentHorizDark.png' : 'Images/OrnamentHoriz.png'} alt="OrnamentHoriz" />
                                 </div>
                             </div>
 

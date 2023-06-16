@@ -230,9 +230,10 @@ const Navbar = ({ isOpen }) => {
                         <img src={!mode_dark ? Logo : LogoLight} alt="logo" />
                     </div>
 
-
-                    <BsListNested onMouseEnter={handleAsideShow} />
-
+                    <div className='mode-res'>
+                        <BsListNested onMouseEnter={handleAsideShow} />
+                        {mode_dark ? <FaSun onClick={e => handleModeChange()} /> : <FaMoon onClick={e => handleModeChange()} />}
+                    </div>
                 </div>
 
                 <div className='aside-container'>
