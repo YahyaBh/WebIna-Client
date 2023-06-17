@@ -14,11 +14,19 @@ body {
 
 :root {
   --primary-color-dark : #FFE662;
+  --dark-color-primary : #1E1E1E;
+
+  --primary-color-light : #FFE662;
+  --light-color-primary : #FFFFFF;
+
   --primary-color: #FFE662;
   --secondary-color: #1E1E1E;
   --light-color: #FFFFFF;
   --black-color: #000000;
   --cards-color: #131313;
+
+  --blog-card : #F1E7B1;
+  
 }
 
 input:-webkit-autofill,

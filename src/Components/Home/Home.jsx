@@ -2,6 +2,7 @@ import React, { Profiler, useEffect, useRef, useState } from 'react'
 import './Home.scss'
 import Navbar from '../Layout/Navbar/Navbar'
 import { BsArrowRight } from 'react-icons/bs'
+import { HiOutlineArrowRight } from 'react-icons/hi'
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import BackGroundContainer from '../../Assets/Home/Section 1 Main/ComputerSectionHome.svg'
 import Computer1 from '../../Assets/Home/Section 1 Main/computer.png';
@@ -19,6 +20,10 @@ import OrnamentUpDark from '../../Assets/Home/Section 2/OrnamentUpDark.png';
 
 import DevIcon from '../../Assets/Home/Section 2/dev-icon.svg'
 import SocialIcon from '../../Assets/Home/Section 2/social-icon.svg';
+
+import SEO from '../../Assets/Home/SEO Section/seo.png'
+
+import BlogTest from '../../Assets/Home/Section Blog/maxresdefault-test.png'
 
 import Aos from 'aos';
 import 'aos/dist/aos.css';
@@ -100,6 +105,16 @@ const Home = () => {
         }
     };
 
+
+    useEffect(() => {
+
+        setLoading(true);
+
+        setTimeout(() => {
+            setLoading(false);
+        }, 1200);
+
+    }, [darkMode])
 
 
     useEffect(() => {
@@ -269,7 +284,6 @@ const Home = () => {
                                         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor Lorem ipsum dolor sit
                                     </p>
                                 </div>
-                                <button>{darkMode ? 'On' : 'Off'}</button>
                                 <div className={darkMode ? 'dark card-right' : 'card-right'}>
                                     <img src={DevIcon} alt="Dev Websites" />
                                     <div>
@@ -323,6 +337,53 @@ const Home = () => {
                                     </p>
                                     <button>GET STARTED</button>
                                 </div>
+                            </div>
+                        </div>
+
+
+
+                        <div className='seo-section' id='seo-section'>
+
+                            <div className='text-container'>
+                                <h2>Get The First Position In
+                                    The Google SEO</h2>
+
+                                <p>We Will Help Your Client To Reach Your Website  Easily In The First Link In Google</p>
+
+                                <button>GET YOUR WEBSITE</button>
+                            </div>
+
+
+                            <img src={SEO} alt="seo-pic" />
+
+                        </div>
+
+
+                        <div className='make-yoursite-container' id='make-site'>
+                            <div className='text-container'>
+                                <h3>Create your website as you wish in any field and with any <span>design</span> <HiOutlineArrowRight /></h3>
+                            </div>
+
+                            <button>ORDER NOW</button>
+                        </div>
+
+
+                        <div className='new-skills-section' id='skills-section'>
+                            <div className='left-container'>
+                                <h3>Get inspired,
+                                    gain new skills
+                                    and see what's
+                                    trending
+                                </h3>
+
+                                <button>Explore the Blog</button>
+                            </div>
+
+                            <div className="right-container">
+                                    <div className='blog-card'>
+                                        <img src={BlogTest} alt="blog" />
+                                        <h5>How to design a website in 2023 FIGMA</h5>
+                                    </div>
                             </div>
                         </div>
                     </div>

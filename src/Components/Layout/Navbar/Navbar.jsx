@@ -113,6 +113,7 @@ const Navbar = ({ isOpen, onButtonClick }) => {
             setModeDark(false);
             onButtonClick(false);
             document.documentElement.style.setProperty('--primary-color-dark', '#FFE662');
+            document.documentElement.style.setProperty('--dark-color-primary', '#1E1E1E');
             document.documentElement.style.setProperty('--light-color', '#fff');
             document.documentElement.style.setProperty('--black-color', '#1e1e1e');
             document.documentElement.style.setProperty('--secondary-color', '#fff');
@@ -121,7 +122,8 @@ const Navbar = ({ isOpen, onButtonClick }) => {
             Cookies.set('mode', true);
             setModeDark(true);
             onButtonClick(true);
-            document.documentElement.style.setProperty('--primary-color-dark', '#000000');
+            document.documentElement.style.setProperty('--primary-color-dark', '#1E1E1E');
+            document.documentElement.style.setProperty('--dark-color-primary', '#FFE662');
             document.documentElement.style.setProperty('--light-color', '#1e1e1e');
             document.documentElement.style.setProperty('--black-color', '#fff');
             document.documentElement.style.setProperty('--secondary-color', '#1e1e1e');
