@@ -1243,6 +1243,31 @@
             .container {
                 width: 100%;
                 height: 100%;
+                padding: 20px 40px;
+
+                .top-container {
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    flex-direction: row;
+
+                    .container-corner {
+                        display: flex;
+                        align-items: center;
+                        gap: 25px;
+
+                        h3 {
+                            color: var(--light-color);
+                            border-bottom: 1px solid var(--light-color);
+                            padding: 20px 0px;
+                        }
+
+                        span {
+                            font-size: 34px;
+                        }
+
+                    }
+                }
             }
         }
     }

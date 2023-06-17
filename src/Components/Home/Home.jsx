@@ -415,11 +415,11 @@ const Home = () => {
                                 <div className='top-container'>
                                     <div className='container-corner'>
                                         <h3>High quality designs</h3>
-                                        <h3>01</h3>
+                                        <span>01</span>
                                     </div>
 
                                     <div className='container-corner'>
-                                        <h3>02</h3>
+                                        <span>02</span>
                                         <h3>Full stack development</h3>
                                     </div>
                                 </div>
