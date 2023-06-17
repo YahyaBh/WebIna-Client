@@ -372,18 +372,38 @@ const Home = () => {
                             <div className='left-container'>
                                 <h3>Get inspired,
                                     gain new skills
-                                    and see what's
-                                    trending
+                                    and see what's <br />
+                                    <span> trending</span>
                                 </h3>
 
                                 <button>Explore the Blog</button>
                             </div>
 
                             <div className="right-container">
-                                    <div className='blog-card'>
+                                <div className='blog-card'>
+                                    <div className='blog-body'>
                                         <img src={BlogTest} alt="blog" />
                                         <h5>How to design a website in 2023 FIGMA</h5>
                                     </div>
+                                </div>
+                                <div className='blog-card'>
+                                    <div className='blog-body'>
+                                        <img src={BlogTest} alt="blog" />
+                                        <h5>How to design a website in 2023 FIGMA</h5>
+                                    </div>
+                                </div>
+                                <div className='blog-card'>
+                                    <div className='blog-body'>
+                                        <img src={BlogTest} alt="blog" />
+                                        <h5>How to design a website in 2023 FIGMA</h5>
+                                    </div>
+                                </div>
+                                <div className='blog-card'>
+                                    <div className='blog-body'>
+                                        <img src={BlogTest} alt="blog" />
+                                        <h5>How to design a website in 2023 FIGMA</h5>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
