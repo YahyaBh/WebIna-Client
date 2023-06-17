@@ -17,7 +17,7 @@ const ImageComponent = ({ src, alt }) => {
     return (
         <>
             {!imageLoaded &&
-                (<img className='loading-image' src='local' alt=''/>)
+                (<div className='loading-image' src='local' alt=''/>)
             }
             {imageLoaded && (<img src={src} alt={alt} />)}
         </>

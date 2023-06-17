@@ -371,8 +371,8 @@ const Home = () => {
 
                         <div className='new-skills-section' id='skills-section'>
                             <div className='left-container'>
-                                <h3>Get inspired,
-                                    gain new skills
+                                <h3>Get inspired, <br />
+                                    gain new skills <br />
                                     and see what's <br />
                                     <span> trending</span>
                                 </h3>
@@ -405,6 +405,26 @@ const Home = () => {
                                         <h5>How to design a website in 2023 FIGMA</h5>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+
+
+                        <div className='performance-section' id='perf-section'>
+                            <div className='container'>
+
+                                <div className='top-container'>
+                                    <div className='container-corner'>
+                                        <h3>High quality designs</h3>
+                                        <h3>01</h3>
+                                    </div>
+
+                                    <div className='container-corner'>
+                                        <h3>02</h3>
+                                        <h3>Full stack development</h3>
+                                    </div>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>

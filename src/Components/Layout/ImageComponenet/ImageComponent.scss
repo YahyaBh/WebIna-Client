@@ -6,13 +6,9 @@
     animation-timing-function: linear;
     background: fff;
     background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
-    position: absolute;
+    position: relative;
     padding-top: 50px;
     -webkit-backface-visibility: hidden;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
 }
 @keyframes placeHolderShimmer {
     0% {
