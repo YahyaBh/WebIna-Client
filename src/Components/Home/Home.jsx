@@ -1,6 +1,7 @@
 import React, { Profiler, useEffect, useRef, useState } from 'react'
 import './Home.scss'
 import Navbar from '../Layout/Navbar/Navbar'
+import ImageComponent from '../Layout/ImageComponenet/ImageComponent'
 import { BsArrowRight } from 'react-icons/bs'
 import { HiOutlineArrowRight } from 'react-icons/hi'
 import AnchorLink from 'react-anchor-link-smooth-scroll';
@@ -382,25 +383,25 @@ const Home = () => {
                             <div className="right-container">
                                 <div className='blog-card'>
                                     <div className='blog-body'>
-                                        <img src={BlogTest} alt="blog" />
+                                        <ImageComponent className="image" src={BlogTest} alt="blog" />
                                         <h5>How to design a website in 2023 FIGMA</h5>
                                     </div>
                                 </div>
                                 <div className='blog-card'>
                                     <div className='blog-body'>
-                                        <img src={BlogTest} alt="blog" />
+                                        <ImageComponent className="image" src={BlogTest} alt="blog" />
                                         <h5>How to design a website in 2023 FIGMA</h5>
                                     </div>
                                 </div>
                                 <div className='blog-card'>
                                     <div className='blog-body'>
-                                        <img src={BlogTest} alt="blog" />
+                                        <ImageComponent className="image" src={BlogTest} alt="blog" />
                                         <h5>How to design a website in 2023 FIGMA</h5>
                                     </div>
                                 </div>
                                 <div className='blog-card'>
                                     <div className='blog-body'>
-                                        <img src={BlogTest} alt="blog" />
+                                        <ImageComponent className="image" src={BlogTest} alt="blog" />
                                         <h5>How to design a website in 2023 FIGMA</h5>
                                     </div>
                                 </div>
