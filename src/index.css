@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
+@font-face {
+  font-family: "unisect-black";
+  src: url("../public/Fonts/Unisect_Black.ttf");
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -13,11 +18,11 @@ body {
 
 
 :root {
-  --primary-color-dark : #FFE662;
-  --dark-color-primary : #1E1E1E;
+  --primary-color-dark: #FFE662;
+  --dark-color-primary: #1E1E1E;
 
-  --primary-color-light : #FFE662;
-  --light-color-primary : #FFFFFF;
+  --primary-color-light: #FFE662;
+  --light-color-primary: #FFFFFF;
 
   --primary-color: #FFE662;
   --secondary-color: #1E1E1E;
@@ -25,8 +30,8 @@ body {
   --black-color: #000000;
   --cards-color: #131313;
 
-  --blog-card : #F1E7B1;
-  
+  --blog-card: #F1E7B1;
+
 }
 
 input:-webkit-autofill,
