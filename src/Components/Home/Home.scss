@@ -1551,10 +1551,13 @@
                 align-items: center;
                 justify-content: center;
                 gap: 30px;
+                height: 70dvh;
 
 
                 .left-container {
                     width: 50%;
+                height: 70dvh;
+
                 }
 
 
@@ -1565,6 +1568,7 @@
                     gap: 20px;
                     flex-direction: column;
                     width: 50%;
+                    height: 70dvh;
 
                     .card {
                         background-color: #ffffff23;
@@ -1588,6 +1592,32 @@
                     }
                 }
 
+            }
+
+            .customers-feedback {
+                padding: 40px 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+
+
+                .header-feed {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    flex-direction: row;
+                    width: 60%;
+
+
+                    h2 {
+                        font-size: 40px;
+
+                        span {
+                            color: var(--primary-color);
+                        }
+                    }
+                }
             }
         }
     }

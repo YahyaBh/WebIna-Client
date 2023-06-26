@@ -557,20 +557,32 @@ const Home = () => {
                                         pagination={{
                                             clickable: true,
                                         }}
-                                        navigation={true}
+                                        navigation={{
+                                            prevEl: '.swiper-button-prev',
+                                            nextEl: '.swiper-button-next',
+                                        }}
                                         modules={[Pagination, Navigation]}
-                                        className="mySwiper"
+                                        className="swipper-container"
+
                                     >
-                                        <SwiperSlide>Slide 1</SwiperSlide>
-                                        <SwiperSlide>Slide 2</SwiperSlide>
-                                        <SwiperSlide>Slide 3</SwiperSlide>
-                                        <SwiperSlide>Slide 4</SwiperSlide>
-                                        <SwiperSlide>Slide 5</SwiperSlide>
-                                        <SwiperSlide>Slide 6</SwiperSlide>
-                                        <SwiperSlide>Slide 7</SwiperSlide>
-                                        <SwiperSlide>Slide 8</SwiperSlide>
-                                        <SwiperSlide>Slide 9</SwiperSlide>
+                                        <div>
+                                            <SwiperSlide>Slide 1</SwiperSlide>
+                                            <SwiperSlide>Slide 2</SwiperSlide>
+                                            <SwiperSlide>Slide 3</SwiperSlide>
+                                            <SwiperSlide>Slide 4</SwiperSlide>
+                                            <SwiperSlide>Slide 5</SwiperSlide>
+                                            <SwiperSlide>Slide 6</SwiperSlide>
+                                            <SwiperSlide>Slide 7</SwiperSlide>
+                                            <SwiperSlide>Slide 8</SwiperSlide>
+                                            <SwiperSlide>Slide 9</SwiperSlide>
+                                        </div>
+
+                                        <div className='swiper-button-prev'></div>
+                                        <div className='swiper-button-next'></div>
                                     </Swiper>
+
+
+
                                 </div>
                                 <div className="right-container">
                                     <div className='card'>
@@ -594,6 +606,23 @@ const Home = () => {
                                                 Unique and distinctive user.</span></p>
                                     </div>
                                 </div>
+
+                            </div>
+
+
+                            <div className='customers-feedback'>
+                                <div className='header-feed'>
+                                    <div>
+                                        <h2>Our Customer <span>Feedback</span></h2>
+                                        <p>Don't take our word for it. Trust our customers</p>
+                                    </div>
+
+                                    <div>
+                                        <button>next</button>
+                                        <button>previous</button>
+                                    </div>
+                                </div>
+
 
                             </div>
                         </div>

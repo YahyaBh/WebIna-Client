@@ -3,10 +3,12 @@
     height: 50vh;
 }
 
-.swiper-wrapper {
+.swipper-container {
     background-color: #ffffff2b !important;
     border: 2px solid grey !important;
     border-radius: 20px !important;
+    height: 60vh;
+    overflow: visible !important;
 }
 
 .swiper-slide {
@@ -32,7 +34,7 @@
 }
 
 .swiper-button-prev {
-    color: var(--primary-color);
+    color: #fff;
     background-color: #484848;
     width: 50px;
     height: 50px;
@@ -41,16 +43,40 @@
         linear-gradient(138deg, rgba(255, 255, 255, 1) 0%, rgba(220, 220, 220, 0) 100%) border-box;
     border-radius: 50em;
     border: 2px solid transparent;
+
+    bottom: -80px !important;
 }
 
 .swiper-button-prev::after {
-    font-size: 25px !important;
+    font-size: 20px !important;
 }
 
 .swiper-button-next {
-    color: var(--primary-color);
+    color: #fff;
+    background-color: #484848;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(#484848, #484848) padding-box,
+        linear-gradient(138deg, rgba(255, 255, 255, 1) 0%, rgba(220, 220, 220, 0) 100%) border-box;
+    border-radius: 50em;
+    border: 2px solid transparent;
+
+    bottom: -80px !important;
 }
 
 .swiper-button-next::after {
-    font-size: 30px !important;
+    font-size: 20px !important;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: var(--primary-color) !important;
+}
+
+.swiper-pagination-bullet {
+    background-color: #FFF;
+    opacity: 1;
+    height: 12px;
+    width: 12px;
+    bottom: -40px;
 }
