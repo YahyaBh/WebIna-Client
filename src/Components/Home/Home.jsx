@@ -45,7 +45,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import "./styles.css";
+import "./styles.scss";
 
 // import required modules
 import { Pagination, Navigation } from "swiper";
@@ -550,50 +550,48 @@ const Home = () => {
                             <div className="slider-container">
 
                                 <div className='left-container'>
-                                    <div className=''>
-                                        <Swiper
-                                            slidesPerView={1}
-                                            spaceBetween={30}
-                                            loop={true}
-                                            pagination={{
-                                                clickable: true,
-                                            }}
-                                            navigation={true}
-                                            modules={[Pagination, Navigation]}
-                                            className="mySwiper"
-                                        >
-                                            <SwiperSlide>Slide 1</SwiperSlide>
-                                            <SwiperSlide>Slide 2</SwiperSlide>
-                                            <SwiperSlide>Slide 3</SwiperSlide>
-                                            <SwiperSlide>Slide 4</SwiperSlide>
-                                            <SwiperSlide>Slide 5</SwiperSlide>
-                                            <SwiperSlide>Slide 6</SwiperSlide>
-                                            <SwiperSlide>Slide 7</SwiperSlide>
-                                            <SwiperSlide>Slide 8</SwiperSlide>
-                                            <SwiperSlide>Slide 9</SwiperSlide>
-                                        </Swiper>
-                                    </div>
+                                    <Swiper
+                                        slidesPerView={1}
+                                        spaceBetween={30}
+                                        loop={true}
+                                        pagination={{
+                                            clickable: true,
+                                        }}
+                                        navigation={true}
+                                        modules={[Pagination, Navigation]}
+                                        className="mySwiper"
+                                    >
+                                        <SwiperSlide>Slide 1</SwiperSlide>
+                                        <SwiperSlide>Slide 2</SwiperSlide>
+                                        <SwiperSlide>Slide 3</SwiperSlide>
+                                        <SwiperSlide>Slide 4</SwiperSlide>
+                                        <SwiperSlide>Slide 5</SwiperSlide>
+                                        <SwiperSlide>Slide 6</SwiperSlide>
+                                        <SwiperSlide>Slide 7</SwiperSlide>
+                                        <SwiperSlide>Slide 8</SwiperSlide>
+                                        <SwiperSlide>Slide 9</SwiperSlide>
+                                    </Swiper>
                                 </div>
                                 <div className="right-container">
                                     <div className='card'>
                                         <p>We help you build a website <br />
                                             Expandable and upgradable <br />
                                             To keep pace with<span> the development <br />
-                                            of your business.</span></p>
+                                                of your business.</span></p>
                                     </div>
 
                                     <div className='card'>
                                         <p>We offer complete design solutions <br />
                                             Website development and <br />
                                             <span> Optimized <br />
-                                            for optimal performance.</span></p>
+                                                for optimal performance.</span></p>
                                     </div>
 
                                     <div className='card'>
                                         <p>We care about the fine details <br />
-                                        Attractive <br />
-                                        design to ensure an<span> experience <br />
-                                        Unique and distinctive user.</span></p>
+                                            Attractive <br />
+                                            design to ensure an<span> experience <br />
+                                                Unique and distinctive user.</span></p>
                                     </div>
                                 </div>
 
