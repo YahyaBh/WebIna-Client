@@ -15,6 +15,8 @@ import AnchorLink from 'react-anchor-link-smooth-scroll';
 import BackGroundContainer from '../../Assets/Home/Section 1 Main/ComputerSectionHome.svg'
 import Computer1 from '../../Assets/Home/Section 1 Main/computer.png';
 import Computer2 from '../../Assets/Home/Section 1 Main/panel.png';
+import Computer3 from '../../Assets/Home/Section 1 Main/boy-image.svg';
+import Computer4 from '../../Assets/Home/Section 1 Main/3d-shapes.svg';
 import WebInaPhone from '../../Assets/Home/Section 2/iPhone7.png'
 import floatingRightHatDark from '../../Assets/Home/Section 2/FloatingRightHatDark.png';
 import floatingRightHat from '../../Assets/Home/Section 2/FloatingRightHat.png';
@@ -59,13 +61,30 @@ const Home = () => {
     const [loading, setLoading] = useState(false);
     const [emailGetStarted, setEmailGetStarted] = useState('');
     const [scrolled, setScrolled] = useState(false);
-    const [currentImage, setCurrentImage] = useState(Computer1);
     const [isFadeIn, setIsFadeIn] = useState(false);
     const { isDarkMode } = useContext(ThemeContext);
 
 
     const tiltRef = useRef(null);
     const imageRef = useRef(null);
+
+
+    const [currentImage, setCurrentImage] = useState(Computer1);
+    const images = [Computer1, Computer2, Computer3, Computer4];
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            // Get the index of the next image
+            const currentIndex = images.indexOf(currentImage);
+            const nextIndex = (currentIndex + 1) % images.length;
+
+            // Update the current image
+            setCurrentImage(images[nextIndex]);
+        }, 7000);
+
+        // Clean up the interval on component unmount
+        return () => clearInterval(interval);
+    }, [currentImage, images]);
 
     const handleMouseMove = (e) => {
         const el = tiltRef.current;
@@ -148,28 +167,6 @@ const Home = () => {
 
         window.addEventListener('scroll', handleScroll);
 
-
-        const interval = setInterval(() => {
-            setCurrentImage((prevImage) => {
-                if (prevImage === Computer1) {
-                    return Computer2;
-                } else {
-                    return Computer1;
-                }
-            });
-            setIsFadeIn(true);
-
-            setTimeout(() => {
-                setIsFadeIn(false);
-            }, 1000); // Adjust the fade-in duration (in milliseconds) as needed
-        }, 7000);
-
-        return () => {
-
-            clearInterval(interval);
-
-        };
-
     }, [])
 
 
@@ -219,7 +216,7 @@ const Home = () => {
 
                                 </div>
 
-                                <div className='right-container'
+                                <div className='right-container changing-image-container'
                                     data-aos="fade-left"
                                     onMouseMove={handleMouseMove}
                                     onMouseLeave={handleMouseOut}
@@ -227,7 +224,7 @@ const Home = () => {
                                     onMouseUp={handleMouseUp}>
                                     <img
                                         ref={imageRef}
-                                        className={`over-top-image ${isFadeIn ? 'fade-in' : ''}`}
+                                        className={`over-top-image changing-image ${isFadeIn ? 'fade-in' : ''}`}
                                         onLoad={() => setIsFadeIn(true)}
                                         src={currentImage}
                                         alt="computer-science" />
@@ -452,7 +449,7 @@ const Home = () => {
 
                                     <div className='center-contaienr' data-aos="zoom-in">
                                         <div className='container-left'>
-                                            <img src={LeftTopArrow} alt="left-top-arrow" className={isDarkMode ? '' : 'dark'}/>
+                                            <img src={LeftTopArrow} alt="left-top-arrow" className={isDarkMode ? '' : 'dark'} />
 
                                             <img src={LeftBottomArrow} alt="left-bottom-arrow" />
                                         </div>
