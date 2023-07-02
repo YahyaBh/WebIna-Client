@@ -205,6 +205,7 @@ const Home = () => {
                                         The website you want will be created with high quality ,
                                         our team which is formed with experienced programmers and designers will take of every corner.</p>
 
+                                    <button className='res-button-start'>GET STARTED</button>
 
                                     <div className='email-get-started'>
                                         <input data-aos="fade-down" onChange={e => setEmailGetStarted(e.target.value)} type="email" name='email' id='name' placeholder='Enter Email Address' minLength={'8'} />
@@ -386,7 +387,7 @@ const Home = () => {
 
                             <div className='make-yoursite-container' id='make-site'>
                                 <div data-aos="fade-right" className='text-container'>
-                                    <h3>Create your website as you wish in any field and with any <span>design</span> <HiOutlineArrowRight /></h3>
+                                    <h3><div>Create your website as you wish in any field and with any <span>design</span></div> <HiOutlineArrowRight /></h3>
                                 </div>
 
                                 <button data-aos="fade-right">ORDER NOW</button>
@@ -451,7 +452,7 @@ const Home = () => {
 
                                     <div className='center-contaienr' data-aos="zoom-in">
                                         <div className='container-left'>
-                                            <img src={LeftTopArrow} alt="left-top-arrow" />
+                                            <img src={LeftTopArrow} alt="left-top-arrow" className={isDarkMode ? '' : 'dark'}/>
 
                                             <img src={LeftBottomArrow} alt="left-bottom-arrow" />
                                         </div>
@@ -461,7 +462,7 @@ const Home = () => {
                                         </div>
 
                                         <div className="container-right">
-                                            <img src={RightTopArrow} alt="right-bottom-arrow" />
+                                            <img src={RightTopArrow} alt="right-bottom-arrow" className={isDarkMode ? '' : 'dark'} />
 
                                             <img src={RightBottomArrow} alt="right-bottom-arrow" />
                                         </div>
@@ -679,8 +680,8 @@ const Home = () => {
                                         >
                                             <div>
                                                 <SwiperSlide><img src={TestSlide} alt="" /></SwiperSlide>
-                                                <SwiperSlide><img src={TestSlide} alt="" /></SwiperSlide>
-                                                <SwiperSlide><img src={TestSlide} alt="" /></SwiperSlide>
+                                                <SwiperSlide><img src={ContactImg} alt="" /></SwiperSlide>
+                                                <SwiperSlide><img src={TestImage} alt="" /></SwiperSlide>
                                             </div>
 
                                             <div className='swiper-buttons'>
@@ -785,6 +786,16 @@ const feedback = () => {
             <Swiper
                 slidesPerView={3}
                 spaceBetween={30}
+                breakpoints={{
+                    320: {
+                        slidesPerView: 1,
+                        spaceBetween: 10,
+                    },
+                    480: {
+                        slidesPerView: 3,
+                        spaceBetween: 20,
+                    },
+                }}
                 pagination={{
                     el: '.swiper-pag',
                     clickable: true,

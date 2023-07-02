@@ -160,7 +160,7 @@ const Navbar = ({ isOpen }) => {
 
                 <div className='main-show'>
                     <div className='logo'>
-                        <img src={isDarkMode ? Logo : LogoLight} alt="logo" />
+                        <img src={isDarkMode ? LogoLight : Logo} alt="logo" />
                     </div>
 
                     <div className='mode-res'>

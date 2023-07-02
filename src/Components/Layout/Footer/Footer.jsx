@@ -41,8 +41,8 @@ const Footer = () => {
                 <ul>
                     <img src={Logo} alt="logo" />
 
-                    <p>The Wix website builder offers a complete solution from enterprise-grade infrastructure and business features to 
-                        advanced SEO and marketing tools–enabling anyone to create and grow online.</p>
+                    <p>WEBINA DIGITAL website builder offers a complete solution from enterprise-grade infrastructure and business features to 
+                        advanced SEO and marketing tools-enabling anyone to create and grow online.</p>
                     <a>about us</a>
                     <a>Contact Us</a>
                 </ul>

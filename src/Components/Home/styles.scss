@@ -6,7 +6,7 @@
     }
 
     .swiper-wrapper {
-        overflow: hidden;
+        overflow: visible;
     }
 
     .swipper-container {
@@ -25,6 +25,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        opacity: 0;
+    }
+
+    .swiper-slide-active {
+        opacity: 1 !important;
     }
 
     .swiper-slide img {

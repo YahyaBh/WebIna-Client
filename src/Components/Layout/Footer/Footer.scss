@@ -5,6 +5,25 @@ footer {
     position: relative;
     padding: 40px 0 0 0 ;
 
+    @media screen and (max-width:900px) {
+        .container {
+            flex-direction: column-reverse !important;
+            gap: 20px !important;
+
+            ul {
+                
+                img {
+                    width: 50% !important;
+                    margin: auto;
+                }
+
+                p {
+                    color: #fff !important;
+                }
+            }
+        }
+    }
+
 
     .container {
         display: flex;
@@ -25,6 +44,9 @@ footer {
                 font-size: 20px;
                 font-weight: 600;
                 color: #fff;
+                @media screen and (max-width:900px) {
+                    transform: translate(-30px, 0px);
+                }
             }
 
             img {
@@ -59,6 +81,10 @@ footer {
         h2 {
             color: #1e1e1e;
             font-size: 20px;
+
+            @media screen and (max-width:900px) {
+                font-size: 12px;
+            }
         }
 
         div {
