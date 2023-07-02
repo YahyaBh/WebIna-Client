@@ -1,19 +1,18 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from './Components/Home/Home';
-import Cookies from "js-cookie";
+import { ThemeProvider } from "./Context/ThemeContext";
+
+
 
 function App() {
 
-
-  
-
   return (
-    <div className={`glitch-effect ${Cookies.get('--DARK-MODE') ? 'glitch-active' : ''}`}>
+    <ThemeProvider>
       <Routes>
         <Route exact path='/' element={<Home />} />
       </Routes>
-    </div>
+    </ThemeProvider>
   );
 }
 

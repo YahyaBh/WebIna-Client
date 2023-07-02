@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useLayoutEffect, useState } from 'react'
 import Logo from '../../../Assets/Home/Navbar/WEBINA2.png';
 import LogoLight from '../../../Assets/Home/Navbar/WEBINA-Logo.png';
 import './Navbar.scss'
@@ -8,12 +8,11 @@ import { BiUser } from 'react-icons/bi'
 import { FiUserPlus } from 'react-icons/fi'
 import { BsListNested } from 'react-icons/bs';
 import Ecommerce from '../../../Assets/Home/Navbar/Add to Cart-cuate.svg'
-import Cookies from 'js-cookie';
+import { ThemeContext } from "../../../Context/ThemeContext";
 
-const Navbar = ({ isOpen, onButtonClick }) => {
+const Navbar = ({ isOpen }) => {
 
 
-    const [mode_dark, setModeDark] = useState();
     const [scrolled, setScrolled] = useState(false);
     const [selectedProduct, SetselectedProduct] = useState('');
     const [asideShow, setAsideShow] = useState(false)
@@ -39,50 +38,7 @@ const Navbar = ({ isOpen, onButtonClick }) => {
         };
     }, [selectedProduct]);
 
-
     useEffect(() => {
-
-        if (Cookies.get('mode')) {
-            Cookies.set('mode', true)
-            setModeDark(true);
-            document.documentElement.style.setProperty('--primary-color-dark', '#1E1E1E');
-            document.documentElement.style.setProperty('--dark-color-primary', '#FFE662');
-            document.documentElement.style.setProperty('--blog-card', '#3C3C3C');
-            document.documentElement.style.setProperty('--light-color', '#1e1e1e');
-            document.documentElement.style.setProperty('--black-color', '#fff');
-            document.documentElement.style.setProperty('--secondary-color', '#1e1e1e');
-            document.documentElement.style.setProperty('--cards-color', '#F9EA9B');
-
-
-            document.getElementsByClassName('background-grad');
-
-            document.documentElement.style.setProperty('transition', 'all 8s ease');
-
-            setTimeout(() => {
-                document.documentElement.style.setProperty('transition', '');
-            }, 8000);
-
-
-        } else {
-            Cookies.set('mode', false)
-            setModeDark(false);
-            document.documentElement.style.setProperty('--primary-color-dark', '#FFE662');
-            document.documentElement.style.setProperty('--dark-color-primary', '#1E1E1E');
-            document.documentElement.style.setProperty('--blog-card', '#F1E7B1');
-            document.documentElement.style.setProperty('--light-color', '#fff');
-            document.documentElement.style.setProperty('--black-color', '#1e1e1e');
-            document.documentElement.style.setProperty('--secondary-color', '#fff');
-            document.documentElement.style.setProperty('--cards-color', '#131313');
-
-
-
-            document.documentElement.style.setProperty('transition', 'all 8s ease');
-
-            setTimeout(() => {
-                document.documentElement.style.setProperty('transition', '');
-            }, 8000);
-        }
-
         // Add event listener when the component mounts
         window.addEventListener('scroll', handleScroll);
 
@@ -90,10 +46,7 @@ const Navbar = ({ isOpen, onButtonClick }) => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-
-
-
-    }, []);
+    }, [])
 
 
 
@@ -107,37 +60,6 @@ const Navbar = ({ isOpen, onButtonClick }) => {
     };
 
 
-
-
-
-
-    const handleModeChange = () => {
-        if (mode_dark) {
-            Cookies.set('mode', false);
-            setModeDark(false);
-            onButtonClick(false);
-            document.documentElement.style.setProperty('--primary-color-dark', '#FFE662');
-            document.documentElement.style.setProperty('--dark-color-primary', '#1E1E1E');
-            document.documentElement.style.setProperty('--blog-card', '#F1E7B1');
-            document.documentElement.style.setProperty('--light-color', '#fff');
-            document.documentElement.style.setProperty('--black-color', '#1e1e1e');
-            document.documentElement.style.setProperty('--secondary-color', '#fff');
-            document.documentElement.style.setProperty('--cards-color', '#131313');
-        } else {
-            Cookies.set('mode', true);
-            setModeDark(true);
-            onButtonClick(true);
-            document.documentElement.style.setProperty('--primary-color-dark', '#1E1E1E');
-            document.documentElement.style.setProperty('--dark-color-primary', '#FFE662');
-            document.documentElement.style.setProperty('--blog-card', '#3C3C3C');
-            document.documentElement.style.setProperty('--light-color', '#1e1e1e');
-            document.documentElement.style.setProperty('--black-color', '#fff');
-            document.documentElement.style.setProperty('--secondary-color', '#1e1e1e');
-            document.documentElement.style.setProperty('--cards-color', '#F9EA9B');
-        }
-    };
-
-
     const handleAsideShow = () => {
         if (asideShow) {
             setAsideShow(false)
@@ -145,6 +67,8 @@ const Navbar = ({ isOpen, onButtonClick }) => {
             setAsideShow(true)
         }
     }
+
+    const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
     return (
         <>
@@ -185,7 +109,7 @@ const Navbar = ({ isOpen, onButtonClick }) => {
                 <div className='navbar'>
                     <div className='container'>
                         <div className='logo'>
-                            <img src={!mode_dark ? Logo : LogoLight} alt="logo" />
+                            <img src={isDarkMode ? LogoLight : Logo} alt="logo" />
                         </div>
 
                         <ul>
@@ -212,7 +136,7 @@ const Navbar = ({ isOpen, onButtonClick }) => {
                         <div className='right-container'>
                             <div className='lang-mode'>
                                 <MdLanguage />
-                                {mode_dark ? <FaSun onClick={e => handleModeChange()} /> : <FaMoon onClick={e => handleModeChange()} />}
+                                {isDarkMode ? <FaSun onClick={toggleTheme} /> : <FaMoon onClick={toggleTheme} />}
                             </div>
 
                             <div className='sign-buttons'>
@@ -236,12 +160,12 @@ const Navbar = ({ isOpen, onButtonClick }) => {
 
                 <div className='main-show'>
                     <div className='logo'>
-                        <img src={!mode_dark ? Logo : LogoLight} alt="logo" />
+                        <img src={isDarkMode ? Logo : LogoLight} alt="logo" />
                     </div>
 
                     <div className='mode-res'>
                         <BsListNested onMouseEnter={handleAsideShow} />
-                        {mode_dark ? <FaSun onClick={e => handleModeChange()} /> : <FaMoon onClick={e => handleModeChange()} />}
+                        {isDarkMode ? <FaSun onClick={toggleTheme} /> : <FaMoon onClick={toggleTheme} />}
                     </div>
                 </div>
 

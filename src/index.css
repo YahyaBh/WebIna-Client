@@ -24,6 +24,8 @@ body {
   --primary-color-light: #FFE662;
   --light-color-primary: #FFFFFF;
 
+  --light-color-grey: #FFFFFF;
+
   --primary-color: #FFE662;
   --secondary-color: #1E1E1E;
   --light-color: #FFFFFF;
@@ -49,4 +51,43 @@ h1, h2, h3, h4, h5, h6, p, svg, li, a {
 html,
 body {
   overflow-x: hidden;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--dark-color-primary) var(--primary-color-dark);
+}
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+  width: 10px;
+  transition: all .3s ease;
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: 14px;
+  background-color: var(--primary-color-dark);
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: var(--primary-color-dark);
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: var(--primary-color-dark);
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: var(--dark-color-primary);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--dark-color-primary);
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: var(--dark-color-primary);
 }
