@@ -270,7 +270,8 @@
     top: 0;
     z-index: 20;
     background-color: var(--light-color , '5b');
-    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
     display: block;
 
     @media screen and (min-width: 1500px) {
@@ -341,7 +342,8 @@
             left: 0;
             top: 0;
             background-color: #000000a2;
-            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+                    backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
 
@@ -357,7 +359,8 @@
             right: 0;
             width: 0%;
             background-color: #ffe562a2;
-            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+                    backdrop-filter: blur(20px);
             transition: all 0.3s ease;
         }
     }

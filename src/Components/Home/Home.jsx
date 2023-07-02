@@ -3,13 +3,13 @@ import './Home.scss'
 import Navbar from '../Layout/Navbar/Navbar'
 import ImageComponent from '../Layout/ImageComponenet/ImageComponent'
 
-import { SiRubyonrails, SiAdobepremierepro, SiAdobeaftereffects, SiVisualstudio, SiAndroidstudio, SiMysql, SiCplusplus, SiFlutter, SiBlender } from 'react-icons/si';
-import { DiRuby, DiVisualstudio } from 'react-icons/di';
+import { SiRubyonrails, SiAdobepremierepro, SiAdobeaftereffects, SiVisualstudio, SiAndroidstudio, SiMysql, SiCplusplus, SiFlutter, SiBlender , SiNuxtdotjs } from 'react-icons/si';
+import { DiRuby } from 'react-icons/di';
 import { FaPhp, FaBootstrap, FaSwift, FaFigma, FaDocker, FaPython, FaSketch, FaReact } from 'react-icons/fa'
 import { BsArrowRight, BsWordpress, BsUnity } from 'react-icons/bs'
 import { HiOutlineArrowRight } from 'react-icons/hi'
 import { IoIosArrowForward, IoIosArrowBack, IoIosStar, IoIosStarHalf, IoIosStarOutline, IoLogoJavascript, IoLogoCss3 } from 'react-icons/io'
-import { BiArrowFromLeft } from 'react-icons/bi'
+import { BiArrowFromLeft  } from 'react-icons/bi'
 
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import BackGroundContainer from '../../Assets/Home/Section 1 Main/ComputerSectionHome.svg'
@@ -576,8 +576,8 @@ const Home = () => {
 
 
                                     <div className="technologies-container">
-                                        <Tooltip id="vs-tooltip" />
-                                        <DiVisualstudio data-tooltip-id="vs-tooltip" data-tooltip-content="Visual Studio" />
+                                        <Tooltip id="nuxt-tooltip" />
+                                        <SiNuxtdotjs data-tooltip-id="nuxt-tooltip" data-tooltip-content="Nuxt Js" />
                                         <Tooltip id="ruby-tooltip" />
                                         <DiRuby data-tooltip-id="ruby-tooltip" data-tooltip-content="Ruby" />
                                         <Tooltip id="ruby-on-rails-tooltip" />

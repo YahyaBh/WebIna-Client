@@ -1377,7 +1377,8 @@
                 padding: 20px 40px;
 
                 .dark {
-                    filter: brightness(0.01) !important;
+                    -webkit-filter: brightness(0.01) !important;
+                            filter: brightness(0.01) !important;
                 }
 
                 .top-container {
