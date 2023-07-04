@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './Footer.scss'
 import Logo from '../../../Assets/Home/Navbar/WEBINA-Logo.png'
 import { FaFacebook, FaInstagram, FaTiktok, FaTwitter } from 'react-icons/fa'
+import { ThemeContext } from '../../../Context/ThemeContext'
 
 const Footer = () => {
+
+
+    const { isDarkMode } = useContext(ThemeContext)
+
     return (
         <footer>
 
@@ -41,7 +46,7 @@ const Footer = () => {
                 <ul>
                     <img src={Logo} alt="logo" />
 
-                    <p>WEBINA DIGITAL website builder offers a complete solution from enterprise-grade infrastructure and business features to 
+                    <p>WEBINA DIGITAL website builder offers a complete solution from enterprise-grade infrastructure and business features to
                         advanced SEO and marketing tools-enabling anyone to create and grow online.</p>
                     <a>about us</a>
                     <a>Contact Us</a>
@@ -49,13 +54,16 @@ const Footer = () => {
             </div>
 
             <div className='under-footer'>
-                <h2>WEBINA © 2023 All Rights Reserved</h2>
+                <div className='data'>
+                    <h2>WEBINA DIGITAL LTD © 2023 All Rights Reserved</h2>
+                    <p>Company Registration Number 14915092</p>
+                </div>
 
                 <div>
-                    <span><FaInstagram/></span>
-                    <span><FaFacebook/></span>
-                    <span><FaTwitter/></span>
-                    <span><FaTiktok/></span>
+                    <a href='https://instagram.com/_webina'><FaInstagram /></a>
+                    <a href='https://facebook.com/webinadigital'><FaFacebook /></a>
+                    <a href='https://twitter.com/webina-digital'><FaTwitter /></a>
+                    <a href='https://tiktok.com/webinadigital'><FaTiktok /></a>
                 </div>
             </div>
 

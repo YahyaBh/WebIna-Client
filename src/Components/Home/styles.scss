@@ -121,7 +121,6 @@
 
     .swiper-slide {
         text-align: center;
-
         background: #fff;
         border-radius: 10px;
         display: flex;
@@ -129,15 +128,24 @@
         align-items: center;
         flex-direction: column;
         gap: 20px;
+        min-height: 320px;
 
         .container {
             padding: 20px;
+            gap: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 250px;
+            max-width: 400px;
 
             .header {
                 display: flex;
                 justify-content: space-between;
                 align-items: flex-start;
                 width: 100%;
+                gap: 20px;
 
                 img {
                     width: 80px;
@@ -198,8 +206,8 @@
             height: 40px;
             background-color: transparent;
             border-radius: 10px;
-            border: 2px solid #fff;
-            color: #fff;
+            border: 2px solid var(--black-color);
+            color: var(--black-color);
             display: flex;
             gap: 5px;
             font-size: 16px;
@@ -208,7 +216,7 @@
             align-items: center;
             cursor: pointer;
             svg {
-                color: var(--primary-color);
+                color: var(--dark-color-primary);
                 font-size: 20px;
             }
 

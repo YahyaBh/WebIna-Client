@@ -10,7 +10,7 @@ import { BsListNested } from 'react-icons/bs';
 import Ecommerce from '../../../Assets/Home/Navbar/Add to Cart-cuate.svg'
 import { ThemeContext } from "../../../Context/ThemeContext";
 
-const Navbar = ({ isOpen }) => {
+const Navbar = ({ isOpen, transparent }) => {
 
 
     const [scrolled, setScrolled] = useState(false);
@@ -72,7 +72,7 @@ const Navbar = ({ isOpen }) => {
 
     return (
         <>
-            <nav id='navbar' className={scrolled ? 'scrolled' : ''}>
+            <nav id='navbar' className={scrolled ? 'scrolled' : '' || transparent ? 'transparent' : ''}>
                 <div className={`modal-products ${modalClassName}  ${selectedProduct ? 'active' : ''}`}>
                     <div className="modal-content">
                         <span className="close" onClick={e => SetselectedProduct('')}>&times;</span>
@@ -108,29 +108,29 @@ const Navbar = ({ isOpen }) => {
 
                 <div className='navbar'>
                     <div className='container'>
-                        <div className='logo'>
+                        <a href='/' className='logo'>
                             <img src={isDarkMode ? LogoLight : Logo} alt="logo" />
-                        </div>
+                        </a>
 
                         <ul>
                             <li>
                                 Products <MdKeyboardArrowDown />
                                 <ul className="dropdown-menu">
-                                    <li onClick={e => SetselectedProduct('website')}>Website</li>
+                                    {/* <li onClick={e => SetselectedProduct('website')}>Website</li>
                                     <li onClick={e => SetselectedProduct('ui/ux')}>UI/UX Design</li>
                                     <li onClick={e => SetselectedProduct('mobile-apps')}>Mobile Application</li>
                                     <li onClick={e => SetselectedProduct('desktop-apps')} >Desktop Application</li>
                                     <li onClick={e => SetselectedProduct('games')}>Games</li>
                                     <li onClick={e => SetselectedProduct('social-media-design')}>Social Media Designing</li>
-                                    <li onClick={e => SetselectedProduct('nfts-design')}>NFTs Designing</li>
+                                    <li onClick={e => SetselectedProduct('nfts-design')}>NFTs Designing</li> */}
                                 </ul>
                             </li>
-                            <li>Pricing</li>
-                            <li>Blogs</li>
-                            <li>About Us</li>
-                            <li>FAQs</li>
-                            <li>Hire Me</li>
-                            <li>Contact Us</li>
+                            <li><a href='/maintanence'>Pricing</a></li>
+                            <li><a href='/maintanence'>Blogs</a></li>
+                            <li><a href='/maintanence'>About Us</a></li>
+                            <li><a href='/maintanence'>FAQs</a></li>
+                            <li><a href='/maintanence'>Hire Me</a></li>
+                            <li><a href='/maintanence'>Contact Us</a></li>
                         </ul>
 
                         <div className='right-container'>
@@ -141,13 +141,17 @@ const Navbar = ({ isOpen }) => {
 
                             <div className='sign-buttons'>
                                 <button>
-                                    <BiUser />
-                                    <h3>Sign In</h3>
+                                    <a href='/maintanence'>
+                                        <BiUser />
+                                        <h3>Sign In</h3>
+                                    </a>
                                 </button>
 
                                 <button>
-                                    <FiUserPlus />
-                                    <h3>Sign Up</h3>
+                                    <a href='/maintanence'>
+                                        <FiUserPlus />
+                                        <h3>Sign Up</h3>
+                                    </a>
                                 </button>
                             </div>
                         </div>

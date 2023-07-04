@@ -247,7 +247,7 @@
                         opacity: 1;
                         background-color: var(--primary-color);
                         border: 2px solid var(--primary-color);
-                        display: flex;
+                        display: flex !important;
                         align-items: center;
                         justify-content: flex-end;
                     }
@@ -266,6 +266,9 @@
                         height: 108%;
                         font-size: 0;
                         cursor: pointer;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
 
                         &:hover {
                             width: 30% !important;
@@ -794,7 +797,7 @@
                                 text-align: justify;
                             }
 
-                            button {
+                            a {
                                 background-color: var(--light-color);
                                 outline: none;
                                 color: var(--black-color);
@@ -903,7 +906,7 @@
                         font-size: 24px;
                     }
 
-                    button {
+                    a {
                         font-size: 20px;
                         background-color: var(--black-color);
                         border-radius: 15px;
@@ -915,6 +918,9 @@
                         outline: none;
                         margin-top: 30px;
                         font-weight: bold;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
                     }
                 }
             }
@@ -992,6 +998,7 @@
                     @media screen and (max-width: 1200px) {
                         width: 92%;
                         align-items: flex-start;
+                        padding: 15px !important;
 
                         img {
                             width: 120px;
@@ -1022,7 +1029,7 @@
                                 font-weight: 300 !important;
                             }
 
-                            button {
+                            a {
                                 margin-top: 0px !important;
                                 padding: 6px 20px !important;
                                 font-weight: 600 !important;
@@ -1042,7 +1049,7 @@
                             font-weight: bold;
                         }
 
-                        button {
+                        a {
                             background-color: #fff;
                             border-radius: 10px;
                             color: #131313;
@@ -1052,6 +1059,9 @@
                             font-weight: Bold;
                             font-size: 20px;
                             margin-top: 20px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
                         }
                     }
                 }
@@ -1071,9 +1081,10 @@
                     .card {
                         width: 43%;
                         gap: 5px;
-                        padding: 16px 12px !important;
+                        padding: 0px 12px !important;
+                        min-height: 350px;
 
-                        button {
+                        a {
                             font-size: 14px !important;
                         }
 
@@ -1096,13 +1107,14 @@
                     background-color: var(--cards-color);
                     padding: 20px 18px;
                     display: flex;
-                    justify-content: center;
+                    justify-content: space-between;
                     align-items: center;
                     flex-direction: column;
-                    gap: 18px;
+                    gap: 25px;
                     border-radius: 10px;
                     max-width: 310px;
                     text-align: center;
+                    min-height: 400px;
 
                     h4 {
                         color: var(--primary-color-dark);
@@ -1119,7 +1131,7 @@
                         }
                     }
 
-                    button {
+                    a {
                         background-color: #fff;
                         border-radius: 10px;
                         color: var(--dark-color);
@@ -1128,6 +1140,9 @@
                         outline: none;
                         font-weight: Bold;
                         font-size: 18px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
                     }
                 }
             }
@@ -1139,10 +1154,10 @@
             background: rgb(255, 230, 98);
             background: linear-gradient(
                 144deg,
-                rgba(255, 230, 98, 0.48923319327731096) 0%,
+                rgba(255, 230, 98, 0.4892331933) -50%,
                 var(--light-color) 27%,
                 var(--light-color) 78%,
-                rgba(255, 230, 98, 0.5032387955182073) 100%
+                rgba(255, 230, 98, 0.5032387955) 167%
             );
             display: flex;
             justify-content: space-evenly;
@@ -1179,7 +1194,7 @@
                     color: var(--black-color);
                 }
 
-                button {
+                a {
                     background-color: var(--dark-color-primary);
                     color: var(--light-color);
                     font-weight: bold;
@@ -1189,6 +1204,9 @@
                     outline: none;
                     border-radius: 20px;
                     font-size: 16px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
 
                     @media screen and (max-width: 900px) {
                         font-size: 19px;
@@ -1252,7 +1270,7 @@
                 }
             }
 
-            button {
+            a {
                 background-color: var(--dark-color-primary);
                 color: var(--light-color);
                 padding: 15px 75px;
@@ -1260,6 +1278,9 @@
                 font-weight: bold;
                 border: none;
                 outline: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
                 @media screen and (max-width: 900px) {
                     font-size: 20px;
@@ -1307,7 +1328,7 @@
                     }
                 }
 
-                button {
+                a {
                     background-color: var(--dark-color-primary);
                     color: var(--light-color);
                     font-size: 30px;
@@ -1315,6 +1336,9 @@
                     padding: 10px 15px;
                     outline: none;
                     border: none;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                 }
             }
 
@@ -1378,7 +1402,7 @@
 
                 .dark {
                     -webkit-filter: brightness(0.01) !important;
-                            filter: brightness(0.01) !important;
+                    filter: brightness(0.01) !important;
                 }
 
                 .top-container {
@@ -1523,7 +1547,7 @@
                     }
                 }
 
-                button {
+                a {
                     border-radius: 30px;
                     padding: 8px 30px;
                     background-color: var(--black-color);
@@ -1532,6 +1556,9 @@
                     font-weight: bold;
                     outline: none;
                     border: none;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                 }
 
                 .timer {
@@ -1641,14 +1668,12 @@
                 align-items: center;
                 flex-direction: column;
 
-                
-
                 h2 {
                     padding: 30px 0px;
                     font-size: 48px;
                     color: var(--dark-color-primary);
                     text-align: center;
-                    @media screen and (max-width:900px) {
+                    @media screen and (max-width: 900px) {
                         font-size: 40px;
                     }
                 }
@@ -1659,7 +1684,8 @@
                     align-items: center;
                     justify-content: space-around;
                     gap: 30px;
-                    @media screen and (max-width:900px) {
+
+                    @media screen and (max-width: 900px) {
                         flex-direction: column;
                     }
 
@@ -1667,7 +1693,7 @@
                         border-top: 2px solid #fff;
                         padding: 30px 0px;
                         max-width: 20%;
-                        @media screen and (max-width:900px) {
+                        @media screen and (max-width: 900px) {
                             max-width: 80%;
                         }
 
@@ -1710,7 +1736,7 @@
                 justify-content: center;
                 gap: 30px;
                 height: 70dvh;
-                @media screen and (max-width:900px) {
+                @media screen and (max-width: 900px) {
                     display: none;
                 }
 
@@ -1728,13 +1754,16 @@
                     width: 50%;
                     height: 70dvh;
 
-                    button {
+                    a {
                         background-color: var(--primary-color);
                         border: 2px solid var(--black-color);
                         border-radius: 30px;
                         font-size: 22px;
                         font-weight: bold;
                         padding: 12px 60px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
                     }
 
                     .card {
@@ -1773,7 +1802,7 @@
                     justify-content: center;
                     align-items: center;
                     flex-direction: column;
-                    @media screen and (max-width:900px) {
+                    @media screen and (max-width: 900px) {
                         padding: 20px 0;
                     }
 
@@ -1783,7 +1812,7 @@
                         align-items: center;
                         flex-direction: row;
                         width: 60%;
-                        @media screen and (max-width:900px) {
+                        @media screen and (max-width: 900px) {
                             width: 80%;
                             flex-direction: column;
                             gap: 20px;
@@ -1793,7 +1822,7 @@
                             font-size: 40px;
 
                             span {
-                                color: var(--primary-color);
+                                color: var(--dark-color-primary);
                             }
                         }
                     }
@@ -1803,16 +1832,23 @@
                     display: flex;
                     justify-content: space-around;
                     align-items: center;
-                    flex-direction: row;
+                    flex-direction: column;
+                    gap: 50px;
 
-                    @media screen and (max-width:900px) {
+                    h2 {
+                        font-size: 55px;
+                        color: var(--black-color);
+                    }
+
+                    @media screen and (max-width: 900px) {
                         flex-direction: column-reverse;
 
                         .left-container {
                             width: 100% !important;
 
                             form {
-                                input,textarea {
+                                input,
+                                textarea {
                                     width: 80% !important;
                                 }
                             }
@@ -1825,8 +1861,19 @@
                         }
                     }
 
+                    .container {
+                        display: flex;
+                        justify-content: space-around;
+                        align-items: center;
+                        flex-direction: row;
+                    }
                     .left-container {
                         width: 50%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: row;
+
                         form {
                             width: 100%;
                             display: flex;
@@ -1837,7 +1884,7 @@
 
                             input,
                             textarea {
-                                width: 60%;
+                                width: 80%;
                                 padding: 16px 15px;
                                 border-radius: 15px;
                                 border: 2px solid var(--black-color) !important;
@@ -1886,6 +1933,9 @@
                                 border: none;
                                 outline: none;
                                 font-style: italic;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
                             }
                         }
                     }
@@ -1974,7 +2024,7 @@
                         }
                     }
 
-                    button {
+                    a {
                         background-color: var(--primary-color);
                         height: 40px;
                         width: 70%;
@@ -1986,6 +2036,9 @@
                         margin-top: 50px;
                         cursor: pointer;
                         outline: none;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
                     }
                 }
             }
@@ -2044,7 +2097,6 @@
                     outline: none;
                     @media screen and (max-width: 900px) {
                         font-size: 40px;
-                        
                     }
 
                     &:hover {

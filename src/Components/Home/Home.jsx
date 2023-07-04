@@ -3,13 +3,13 @@ import './Home.scss'
 import Navbar from '../Layout/Navbar/Navbar'
 import ImageComponent from '../Layout/ImageComponenet/ImageComponent'
 
-import { SiRubyonrails, SiAdobepremierepro, SiAdobeaftereffects, SiVisualstudio, SiAndroidstudio, SiMysql, SiCplusplus, SiFlutter, SiBlender , SiNuxtdotjs } from 'react-icons/si';
+import { SiRubyonrails, SiAdobepremierepro, SiAdobeaftereffects, SiVisualstudio, SiAndroidstudio, SiMysql, SiCplusplus, SiFlutter, SiBlender, SiNuxtdotjs } from 'react-icons/si';
 import { DiRuby } from 'react-icons/di';
 import { FaPhp, FaBootstrap, FaSwift, FaFigma, FaDocker, FaPython, FaSketch, FaReact } from 'react-icons/fa'
 import { BsArrowRight, BsWordpress, BsUnity } from 'react-icons/bs'
 import { HiOutlineArrowRight } from 'react-icons/hi'
-import { IoIosArrowForward, IoIosArrowBack, IoIosStar, IoIosStarHalf, IoIosStarOutline, IoLogoJavascript, IoLogoCss3 } from 'react-icons/io'
-import { BiArrowFromLeft  } from 'react-icons/bi'
+import { IoIosArrowForward, IoIosArrowBack, IoIosStar, IoIosStarHalf, IoIosStarOutline, IoLogoJavascript, IoLogoCss3, IoMdStar, IoMdStarOutline } from 'react-icons/io'
+import { BiArrowFromLeft } from 'react-icons/bi'
 
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import BackGroundContainer from '../../Assets/Home/Section 1 Main/ComputerSectionHome.svg'
@@ -26,6 +26,9 @@ import OrnamentUp from '../../Assets/Home/Section 2/OrnamentUp.png';
 import OrnamentUpDark from '../../Assets/Home/Section 2/OrnamentUpDark.png';
 import DevIcon from '../../Assets/Home/Section 2/dev-icon.svg'
 import SocialIcon from '../../Assets/Home/Section 2/social-icon.svg';
+import DesignIcon from '../../Assets/Home/Section 2/design-icon.svg';
+import MobileIcon from '../../Assets/Home/Section 2/mobile-icon.svg';
+import DesktopIcon from '../../Assets/Home/Section 2/desktop-icon.svg';
 import SEO from '../../Assets/Home/SEO Section/seo.png'
 import BlogTest from '../../Assets/Home/Section Blog/maxresdefault-test.png'
 import LeftTopArrow from '../../Assets/Home/Perf-Section/Arrow-Left-Top.png';
@@ -43,7 +46,7 @@ import 'aos/dist/aos.css';
 import luxyMin from 'luxy.js';
 
 
-
+import AuthContext from '../../Context/AuthContext'
 import Loading from '../Loading/Loading';
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -55,6 +58,8 @@ import { Pagination, Navigation } from "swiper";
 import Footer from '../Layout/Footer/Footer';
 import { ThemeContext } from '../../Context/ThemeContext';
 import { Tooltip } from 'react-tooltip';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const Home = () => {
 
@@ -62,15 +67,47 @@ const Home = () => {
     const [emailGetStarted, setEmailGetStarted] = useState('');
     const [scrolled, setScrolled] = useState(false);
     const [isFadeIn, setIsFadeIn] = useState(false);
-    const { isDarkMode } = useContext(ThemeContext);
+    const [testiomonials, setTestiomonials] = useState([]);
 
+    const [currentImage, setCurrentImage] = useState(Computer1);
+    const images = [Computer1, Computer2, Computer3, Computer4];
+
+
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
+
+
+    const { isDarkMode } = useContext(ThemeContext);
+    const { http, csrf } = AuthContext();
 
     const tiltRef = useRef(null);
     const imageRef = useRef(null);
 
 
-    const [currentImage, setCurrentImage] = useState(Computer1);
-    const images = [Computer1, Computer2, Computer3, Computer4];
+    useEffect(() => {
+
+
+        luxyMin.init({
+            wrapper: '#luxy',
+            wrapperSpeed: 0.04
+        });
+        Aos.init();
+
+        setLoading(true);
+
+        setTimeout(() => {
+            setLoading(false);
+        }, 1200);
+
+        getTestimonials_Categories()
+
+
+
+        window.addEventListener('scroll', handleScroll);
+
+    }, [])
+
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -148,39 +185,79 @@ const Home = () => {
         }
     };
 
-    useEffect(() => {
-        luxyMin.init({
-            wrapper: '#luxy',
-            wrapperSpeed: 0.04
-        });
-    }, [])
 
-    useEffect(() => {
+    const getTestimonials_Categories = async () => {
+        await http.get('/api/testimonials')
+            .then((res) => {
+                setTestiomonials(res.data.testimonials);
+                setLoading(false);
 
-        Aos.init();
+            })
+            .catch((err) => {
+                console.log(err.message);
+            })
+    }
 
-        setLoading(true);
+    const handleContactMessage = async (e) => {
+        e.preventDefault();
 
-        setTimeout(() => {
-            setLoading(false);
-        }, 1200);
+        if (name !== '' && email !== '' && message !== '') {
 
-        window.addEventListener('scroll', handleScroll);
+            const contactData = new FormData();
 
-    }, [])
+            contactData.append('name', name)
+            contactData.append('email', email)
+            contactData.append('message', message)
 
+            csrf()
+            await http.post('/api/contact', contactData)
+                .then((res) => {
+                    Swal.fire({
+                        title : 'Thank You !',
+                        text : res.data.message,
+                        icon : 'success',
+                        confirmButtonColor : 'var(--black-color)'
+                    })
+                })
+                .catch((err) => {
+                    Swal.fire(
+                        'Error',
+                        err.response.data.message,
+                        'error'
+                    )
+                })
 
+        }
 
-    // const handleButtonClicked = (newValue) => {
-    //     setDarkMode(newValue)
-    //     setLoading(true)
-    //     setTimeout(() => {
-    //         setLoading(false)
-    //     }, 3000);
-    // };
+    }
 
+    const handleEmail = async () => {
+        if (emailGetStarted !== '') {
+            const email = new FormData();
 
+            email.append('email', emailGetStarted)
+            setEmailGetStarted('');
 
+            csrf()
+            await http.post('/api/register/email', email, { withCredentials: true })
+                .then((res) => {
+                    Swal.fire({
+                        title :'Thank You',
+                        text : 'We Will Let You Know As Soon As The Website Is Ready , Be Safe !',
+                        icon : 'success',
+                        confirmButtonColor : 'var(--black-color)'
+                    })
+                })
+                .catch((err) => {
+                    Swal.fire({
+                        title : 'Error',
+                        text : err.response.data.message,
+                        icon : 'error',
+                        confirmButtonColor : 'red'
+                })
+                })
+        }
+    }
 
     return (
         <Profiler id='Home'>
@@ -191,7 +268,7 @@ const Home = () => {
 
             <div id='Home'>
                 <div id="luxy">
-                    <section id='section-main'>
+                    <section id='section-main' className="luxy-el" data-speed-y="20" data-offset="50">
 
                         <div className='main-container'>
                             <div className="background-grad">
@@ -202,11 +279,11 @@ const Home = () => {
                                         The website you want will be created with high quality ,
                                         our team which is formed with experienced programmers and designers will take of every corner.</p>
 
-                                    <button className='res-button-start'>GET STARTED</button>
+                                    <a href='/maintanence' className='res-button-start'>GET STARTED</a>
 
                                     <div className='email-get-started'>
                                         <input data-aos="fade-down" onChange={e => setEmailGetStarted(e.target.value)} type="email" name='email' id='name' placeholder='Enter Email Address' minLength={'8'} />
-                                        <button data-aos="fade-down" data-aos-duration="500" className={emailGetStarted ? 'active' : ''} disabled={emailGetStarted ? false : true}>GET STARTED</button>
+                                        <button onClick={emailGetStarted ? handleEmail : ''} className={emailGetStarted ? 'active' : ''} disabled={emailGetStarted ? false : true}>GET STARTED</button>
                                     </div>
 
                                     <div data-aos="fade-down" className='undertext'>
@@ -259,8 +336,8 @@ const Home = () => {
 
                                         <div className='responsive-why-web'>
                                             <h2>WHY WEBINA</h2>
-                                            <p>WebIna is a comapny that helps you make your dreams easier and build you a full application for your business , you can easily choose any website from our lists and we will finish it as soon as possible to make your work go easier on you.</p>
-                                            <button>GET STARTED</button>
+                                            <p>We are gonna create a well developed and designed website from your own choice and it will exactly as you desire and want . The website you want will be created with high quality ,our team which is formed with experienced programmers and designers will take of every corner.</p>
+                                            <a href='/maintanence'>GET STARTED</a>
                                         </div>
 
                                         <img className='webina-phone' src={WebInaPhone} alt="webina phone" />
@@ -278,16 +355,13 @@ const Home = () => {
 
                                         <img className='floating-right' src={isDarkMode ? floatingRightHatDark : floatingRightHat} alt="webina floating hat" />
 
-                                        <h1>MAKE IT <span>DIGITAL</span></h1>
+                                        <h1>WHY <span>WEBINA</span></h1>
 
                                         <p>
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                            It has survived not only five centuries, but also.
+                                            WebIna is a comapny that helps you make your dreams easier and build you a full application for your business , you can easily choose any website from our lists and we will finish it as soon as possible to make your work go easier on you.
                                         </p>
 
-                                        <button>Get Started</button>
+                                        <a href='/maintanence'>Get Started</a>
 
                                         <img className='OrnamentHoriz' src={isDarkMode ? OrnamentHorizDark : OrnamentHoriz} alt="OrnamentHoriz" />
                                     </div>
@@ -301,10 +375,11 @@ const Home = () => {
                                 <div className="cards-text-container" >
                                     <div className="text-left">
                                         <h3>
-                                            Our Digital <br /> Marketing Expertise
+                                            Our Special
+                                            <br /> Common Services
                                         </h3>
                                         <p>
-                                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor Lorem ipsum dolor sit
+                                            All the services that Webina presents you along with your website and all the things that you need to grow your business and website
                                         </p>
                                     </div>
                                     <div data-aos="fade-down" className={isDarkMode ? 'dark card-right' : 'card-right'}>
@@ -312,10 +387,9 @@ const Home = () => {
                                         <div>
                                             <h4>Website design & Development</h4>
                                             <p>
-                                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                                                eirmod tempor Lorem ipsum dolor sit
+                                                Our team with professional designers and web developers will present the best 100% costumed website for your business
                                             </p>
-                                            <button>GET STARTED</button>
+                                            <a href='/maintanence'>GET STARTED</a>
                                         </div>
                                     </div>
                                 </div>
@@ -325,40 +399,36 @@ const Home = () => {
                                         <img src={SocialIcon} alt="social media Icon" />
                                         <h4>Social Media Marketing</h4>
                                         <p>
-                                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                                            eirmod tempor Lorem ipsum dolor sit
+                                            Marketing especially on social media to make your website and business grow and you can accomplish that with Webina
                                         </p>
-                                        <button>GET STARTED</button>
+                                        <a href='/maintanence'>GET STARTED</a>
                                     </div>
 
                                     <div data-aos="fade-down" data-aos-duration="200" className={isDarkMode === true ? 'dark card' : 'card'}>
-                                        <img src={SocialIcon} alt="social media Icon" />
-                                        <h4>Social Media Marketing</h4>
+                                        <img src={DesignIcon} alt="social media Icon" />
+                                        <h4>Designing</h4>
                                         <p>
-                                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                                            eirmod tempor Lorem ipsum dolor sit
+                                            The designs that are used in the websites we create and offer to our costumers are made by highly professional designers
                                         </p>
-                                        <button>GET STARTED</button>
+                                        <a href='/maintanence'>GET STARTED</a>
                                     </div>
 
                                     <div data-aos="fade-down" data-aos-duration="400" className={isDarkMode === true ? 'dark card' : 'card'}>
-                                        <img src={SocialIcon} alt="social media Icon" />
-                                        <h4>Social Media Marketing</h4>
+                                        <img src={MobileIcon} alt="social media Icon" />
+                                        <h4>Mobile Apps Development</h4>
                                         <p>
-                                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                                            eirmod tempor Lorem ipsum dolor sit
+                                            Our team can also develop a Mobile App that will be linked directly ro your website.
                                         </p>
-                                        <button>GET STARTED</button>
+                                        <a href='/maintanence'>GET STARTED</a>
                                     </div>
 
                                     <div data-aos="fade-down" data-aos-duration="600" className={isDarkMode === true ? 'dark card' : 'card'}>
-                                        <img src={SocialIcon} alt="social media Icon" />
-                                        <h4>Social Media Marketing</h4>
+                                        <img src={DesktopIcon} alt="social media Icon" />
+                                        <h4>Desktop App Developement </h4>
                                         <p>
-                                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                                            eirmod tempor Lorem ipsum dolor sit
+                                            We can create you a desktop app that will be fully linked to your website an  will 100% of your choice
                                         </p>
-                                        <button>GET STARTED</button>
+                                        <a href='/maintanence'>GET STARTED</a>
                                     </div>
                                 </div>
                             </div>
@@ -371,9 +441,9 @@ const Home = () => {
                                     <h2>Get The First Position In
                                         The Google SEO</h2>
 
-                                    <p>We Will Help Your Client To Reach Your Website  Easily In The First Link In Google</p>
+                                    <p>We Will Help Your Client To Reach Your Website , Easily In The First Link In Google</p>
 
-                                    <button>GET YOUR WEBSITE</button>
+                                    <a href='/maintanence'>GET YOUR WEBSITE</a>
                                 </div>
 
 
@@ -387,7 +457,7 @@ const Home = () => {
                                     <h3><div>Create your website as you wish in any field and with any <span>design</span></div> <HiOutlineArrowRight /></h3>
                                 </div>
 
-                                <button data-aos="fade-right">ORDER NOW</button>
+                                <a href='/maintanence' data-aos="fade-right">ORDER NOW</a>
                             </div>
 
 
@@ -399,7 +469,7 @@ const Home = () => {
                                         <span> trending</span>
                                     </h3>
 
-                                    <button>Explore the Blog</button>
+                                    <a href='/maintanence'>Explore the Blog</a>
                                 </div>
 
                                 <div className="right-container">
@@ -506,7 +576,7 @@ const Home = () => {
                                         </div>
                                     </div>
 
-                                    <button data-aos="fade-right">GET STARTED</button>
+                                    <a href='/maintanence' data-aos="fade-right">GET STARTED</a>
 
                                 </div>
 
@@ -538,7 +608,7 @@ const Home = () => {
                                                 <span>JavaScript</span>
                                             </div>
 
-                                            <button className='details-button'>Show Details</button>
+                                            <a href='/maintanence' className='details-button'>Show Details</a>
                                         </div>
 
                                         <div className="card">
@@ -552,7 +622,7 @@ const Home = () => {
                                                 <span>JavaScript</span>
                                             </div>
 
-                                            <button className='details-button'>Show Details</button>
+                                            <a href='/maintanence' className='details-button'>Show Details</a>
                                         </div>
 
                                         <div className="card">
@@ -566,7 +636,7 @@ const Home = () => {
                                                 <span>JavaScript</span>
                                             </div>
 
-                                            <button className='details-button'>Show Details</button>
+                                            <a href='/maintanence' className='details-button'>Show Details</a>
                                         </div>
                                     </div>
                                 </div>
@@ -638,21 +708,21 @@ const Home = () => {
                                             <h3>Get answers</h3>
                                             <p>Watch tutorials and read detailed articles in the Webina Help Center.</p>
 
-                                            <a href="/help-center">Go to Help Center <BiArrowFromLeft /></a>
+                                            <a href="/maintanence">Go to Help Center <BiArrowFromLeft /></a>
                                         </div>
 
                                         <div>
                                             <h3>Contact us</h3>
                                             <p>Get support by chat or schedule a call with a Customer Care Expert</p>
 
-                                            <a href="/help-center">Chat with Us <BiArrowFromLeft /></a>
+                                            <a href="/maintanence">Chat with Us <BiArrowFromLeft /></a>
                                         </div>
 
                                         <div>
                                             <h3>Hire a pro</h3>
                                             <p>Get help at any stage from site creation to online growth.</p>
 
-                                            <a href="/help-center">Browse All Services <BiArrowFromLeft /></a>
+                                            <a href="/maintanence">Browse All Services <BiArrowFromLeft /></a>
                                         </div>
 
                                     </div>
@@ -711,7 +781,7 @@ const Home = () => {
                                                 design to ensure an<span> experience <br />
                                                     Unique and distinctive user.</span></p>
                                         </div>
-                                        <button>GET STARTED</button>
+                                        <a href='/maintanence'>GET STARTED</a>
 
                                     </div>
 
@@ -721,7 +791,7 @@ const Home = () => {
 
                                 <div className="background-div-fed-cont">
                                     <div className='customers-feedback'>
-                                        {feedback()}
+                                        {feedback(testiomonials)}
 
                                         <div className="swiper-pag"></div>
 
@@ -729,21 +799,28 @@ const Home = () => {
 
 
                                     <div className='contact-us'>
-                                        <div className='left-container'>
-                                            <form action="">
-                                                <input type="text" placeholder='NAME' name='name' id='name' />
 
-                                                <input type="email" placeholder='EMAIL' name='email' id='email' />
+                                        <h2>CONATCT US</h2>
+                                        <div className='container'>
+                                            <div className='left-container'>
+                                                <form onSubmit={e => handleContactMessage(e)}>
+                                                    <input type="text" placeholder='NAME' name='name' id='name' onChange={e => setName(e.target.value)} value={name} />
 
-                                                <textarea name="message" id="message" placeholder='MESSAGE' cols="30" rows="10"></textarea>
+                                                    <input type="email" placeholder='EMAIL' name='email' id='email' onChange={e => setEmail(e.target.value)} value={email} />
 
-                                                <button>SEND MESSAGE</button>
-                                            </form>
+                                                    <textarea name="message" id="message" placeholder='MESSAGE' cols="30" rows="10" onChange={e => setMessage(e.target.value)} value={message} />
+
+                                                    <button type='submit' >SEND MESSAGE</button>
+                                                </form>
+                                            </div>
+
+
+                                            <div className="right-container">
+                                                <img src={ContactImg} alt="contact-img" />
+                                            </div>
+
                                         </div>
 
-                                        <div className="right-container">
-                                            <img src={ContactImg} alt="contact-img" />
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -764,7 +841,24 @@ export default Home
 
 
 
-const feedback = () => {
+const feedback = (testiomonials) => {
+
+    const RatingStars = ({ rating, maxRating }) => {
+        const filledStars = Array.from({ length: rating }, (_, index) => (
+            <IoMdStar key={index} />
+        ));
+
+        const emptyStars = Array.from({ length: maxRating - rating }, (_, index) => (
+            <IoMdStarOutline key={index} />
+        ));
+
+        return (
+            <div>
+                {filledStars}
+                {emptyStars}
+            </div>
+        );
+    };
     return (
         <>
             <div className='header-feed'>
@@ -804,156 +898,25 @@ const feedback = () => {
                 modules={[Pagination, Navigation]}
                 className="mySwiper"
             >
-
-                <div>
-                    <SwiperSlide>
+                {testiomonials?.map((testiomonial, index) =>
+                    <SwiperSlide key={index}>
                         <div className="container">
                             <div className='header'>
-                                <img src={TestFeed} alt="FeedBack Pic" />
+                                <img src={testiomonial.image ? testiomonial.image : TestFeed} alt={"FeedBack Pic" + index} />
 
 
                                 <div className='stars-feed'>
-                                    <IoIosStar />
-                                    <IoIosStar />
-                                    <IoIosStar />
-                                    <IoIosStarHalf />
-                                    <IoIosStarOutline />
+                                    <RatingStars rating={testiomonial.rating} maxRating={5} />
                                 </div>
                             </div>
 
                             <div className='body'>
-                                <h3>Floyd Miles</h3>
-                                <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.
-                                    Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
-                                    Velit officia consequat duis enim velit mollit.
-                                    Exercitation veniam consequat sunt nostrud amet.</p>
+                                <h3>{testiomonial.name}</h3>
+                                <p>{testiomonial.description}</p>
                             </div>
                         </div>
                     </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="container">
-                            <div className='header'>
-                                <img src={TestFeed} alt="FeedBack Pic" />
-
-
-                                <div className='stars-feed'>
-                                    <IoIosStar />
-                                    <IoIosStar />
-                                    <IoIosStar />
-                                    <IoIosStarHalf />
-                                    <IoIosStarOutline />
-                                </div>
-                            </div>
-
-                            <div className='body'>
-                                <h3>Floyd Miles</h3>
-                                <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.
-                                    Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
-                                    Velit officia consequat duis enim velit mollit.
-                                    Exercitation veniam consequat sunt nostrud amet.</p>
-                            </div>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="container">
-                            <div className='header'>
-                                <img src={TestFeed} alt="FeedBack Pic" />
-
-
-                                <div className='stars-feed'>
-                                    <IoIosStar />
-                                    <IoIosStar />
-                                    <IoIosStar />
-                                    <IoIosStarHalf />
-                                    <IoIosStarOutline />
-                                </div>
-                            </div>
-
-                            <div className='body'>
-                                <h3>Floyd Miles</h3>
-                                <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.
-                                    Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
-                                    Velit officia consequat duis enim velit mollit.
-                                    Exercitation veniam consequat sunt nostrud amet.</p>
-                            </div>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="container">
-                            <div className='header'>
-                                <img src={TestFeed} alt="FeedBack Pic" />
-
-
-                                <div className='stars-feed'>
-                                    <IoIosStar />
-                                    <IoIosStar />
-                                    <IoIosStar />
-                                    <IoIosStarHalf />
-                                    <IoIosStarOutline />
-                                </div>
-                            </div>
-
-                            <div className='body'>
-                                <h3>Floyd Miles</h3>
-                                <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.
-                                    Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
-                                    Velit officia consequat duis enim velit mollit.
-                                    Exercitation veniam consequat sunt nostrud amet.</p>
-                            </div>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="container">
-                            <div className='header'>
-                                <img src={TestFeed} alt="FeedBack Pic" />
-
-
-                                <div className='stars-feed'>
-                                    <IoIosStar />
-                                    <IoIosStar />
-                                    <IoIosStar />
-                                    <IoIosStarHalf />
-                                    <IoIosStarOutline />
-                                </div>
-                            </div>
-
-                            <div className='body'>
-                                <h3>Floyd Miles</h3>
-                                <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.
-                                    Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
-                                    Velit officia consequat duis enim velit mollit.
-                                    Exercitation veniam consequat sunt nostrud amet.</p>
-                            </div>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="container">
-                            <div className='header'>
-                                <img src={TestFeed} alt="FeedBack Pic" />
-
-
-                                <div className='stars-feed'>
-                                    <IoIosStar />
-                                    <IoIosStar />
-                                    <IoIosStar />
-                                    <IoIosStarHalf />
-                                    <IoIosStarOutline />
-                                </div>
-                            </div>
-
-                            <div className='body'>
-                                <h3>Floyd Miles</h3>
-                                <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.
-                                    Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
-                                    Velit officia consequat duis enim velit mollit.
-                                    Exercitation veniam consequat sunt nostrud amet.</p>
-                            </div>
-                        </div>
-                    </SwiperSlide>
-                </div>
-
-
-
+                )}
             </Swiper>
 
 

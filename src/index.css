@@ -90,3 +90,8 @@ body {
 *::-webkit-scrollbar-thumb:active {
   background-color: var(--dark-color-primary);
 }
+
+
+a {
+  text-decoration: none;
+}
