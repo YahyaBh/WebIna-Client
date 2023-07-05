@@ -63,7 +63,7 @@ import Swal from 'sweetalert2';
 
 const Home = () => {
 
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [emailGetStarted, setEmailGetStarted] = useState('');
     const [scrolled, setScrolled] = useState(false);
     const [isFadeIn, setIsFadeIn] = useState(false);
@@ -87,9 +87,6 @@ const Home = () => {
 
     useEffect(() => {
 
-
-
-
         if (window.screen.width > 780) {
             luxyMin.init({
                 wrapper: '#luxy',
@@ -99,15 +96,7 @@ const Home = () => {
 
         Aos.init();
 
-        setLoading(true);
-
-        setTimeout(() => {
-            setLoading(false);
-        }, 1200);
-
         getTestimonials_Categories()
-
-
 
         window.addEventListener('scroll', handleScroll);
 
@@ -201,6 +190,9 @@ const Home = () => {
             .catch((err) => {
                 console.log(err.message);
             })
+
+        setLoading(false);
+
     }
 
     const handleContactMessage = async (e) => {
@@ -305,6 +297,7 @@ const Home = () => {
                                     onMouseDown={handleMouseDown}
                                     onMouseUp={handleMouseUp}>
                                     <img
+                                        rel="preload"
                                         ref={imageRef}
                                         className={`over-top-image changing-image ${isFadeIn ? 'fade-in' : ''}`}
                                         onLoad={() => setIsFadeIn(true)}
