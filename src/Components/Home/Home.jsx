@@ -88,10 +88,15 @@ const Home = () => {
     useEffect(() => {
 
 
-        luxyMin.init({
-            wrapper: '#luxy',
-            wrapperSpeed: 0.04
-        });
+
+
+        if (window.screen.width > 780) {
+            luxyMin.init({
+                wrapper: '#luxy',
+                wrapperSpeed: 0.04
+            });
+        }
+
         Aos.init();
 
         setLoading(true);
@@ -213,10 +218,10 @@ const Home = () => {
             await http.post('/api/contact', contactData)
                 .then((res) => {
                     Swal.fire({
-                        title : 'Thank You !',
-                        text : res.data.message,
-                        icon : 'success',
-                        confirmButtonColor : 'var(--black-color)'
+                        title: 'Thank You !',
+                        text: res.data.message,
+                        icon: 'success',
+                        confirmButtonColor: 'var(--black-color)'
                     })
                 })
                 .catch((err) => {
@@ -242,19 +247,19 @@ const Home = () => {
             await http.post('/api/register/email', email, { withCredentials: true })
                 .then((res) => {
                     Swal.fire({
-                        title :'Thank You',
-                        text : 'We Will Let You Know As Soon As The Website Is Ready , Be Safe !',
-                        icon : 'success',
-                        confirmButtonColor : 'var(--black-color)'
+                        title: 'Thank You',
+                        text: 'We Will Let You Know As Soon As The Website Is Ready , Be Safe !',
+                        icon: 'success',
+                        confirmButtonColor: 'var(--black-color)'
                     })
                 })
                 .catch((err) => {
                     Swal.fire({
-                        title : 'Error',
-                        text : err.response.data.message,
-                        icon : 'error',
-                        confirmButtonColor : 'red'
-                })
+                        title: 'Error',
+                        text: err.response.data.message,
+                        icon: 'error',
+                        confirmButtonColor: 'red'
+                    })
                 })
         }
     }
