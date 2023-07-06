@@ -163,9 +163,9 @@ const Navbar = ({ isOpen, transparent }) => {
             <nav id='responsive-navbar'>
 
                 <div className='main-show'>
-                    <div className='logo'>
+                    <a href='/' className='logo'>
                         <img src={isDarkMode ? LogoLight : Logo} alt="logo" />
-                    </div>
+                    </a>
 
                     <div className='mode-res'>
                         <BsListNested onClick={handleAsideShow} />
