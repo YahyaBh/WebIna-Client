@@ -23,6 +23,10 @@
             flex-direction: row;
             width: 100%;
 
+            @media screen and (max-width: 900px) {
+                flex-direction: column;
+            }
+
             .left-cont {
                 display: flex;
                 justify-content: center;
@@ -30,6 +34,15 @@
                 flex-direction: column;
                 gap: 20px;
                 padding: 0 50px;
+
+                @media screen and (max-width: 900px) {
+                    margin-top: 120px;
+                    padding: 0 20px;
+
+                    h2 {
+                        font-size: 30px !important;
+                    }
+                }
 
                 h2 {
                     font-size: 40px;
@@ -65,11 +78,18 @@
                         color: var(--dark-color);
                         transition: all 0.3s ease;
                     }
+
+                    @media screen and (max-width: 900px) {
+                        width: 100%;
+                    }
                 }
             }
 
             img {
                 width: 50%;
+                @media screen and (max-width: 900px) {
+                    width: 100%;
+                }
             }
         }
 
@@ -80,10 +100,18 @@
             flex-direction: row;
             width: 100%;
 
+            @media screen and (max-width: 900px) {
+                flex-direction: column-reverse;
+            }
+
             .leftLayer {
                 position: absolute;
                 width: 248px;
                 margin-top: 1000px;
+
+                @media screen and (max-width: 900px) {
+                    display: none;
+                }
             }
 
             .right-cont {
@@ -94,12 +122,20 @@
                 gap: 165px;
                 width: 50%;
 
+                @media screen and (max-width: 900px) {
+                    flex-direction: column;
+                }
+
                 .social-container {
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     flex-direction: column;
                     gap: 20px;
+
+                    @media screen and (max-width: 900px) {
+                        margin-top: 20px;
+                    }
 
                     h2 {
                         font-size: 35px;
@@ -119,6 +155,11 @@
 
                         span {
                             color: var(--primary-color);
+                        }
+
+                        @media screen and (max-width: 900px) {
+                            font-size: 25px;
+                            padding: 10px 20px;
                         }
                     }
 
@@ -148,10 +189,18 @@
                 width: 17%;
                 bottom: 0;
                 margin-top: -400px;
+
+                @media screen and (max-width: 900px) {
+                    display: none;
+                }
             }
 
             img {
                 width: 50%;
+
+                @media screen and (max-width: 900px) {
+                    width: 100%;
+                }
             }
         }
     }
@@ -166,6 +215,10 @@
         margin: auto;
         margin-top: -20px;
         margin-bottom: 50px;
+
+        @media screen and (max-width: 900px) {
+            font-size: 35px;
+        }
 
         span {
             color: var(--dark-color-primary);
@@ -206,7 +259,7 @@
             height: 100%;
 
             .close-button {
-                color: #1e1e1e;
+                color: var(--light-color);
                 font-size: 30px;
                 margin-left: auto;
                 cursor: pointer;
@@ -225,24 +278,39 @@
                 gap: 20px;
                 text-align: center;
 
+                @media screen and (max-width: 900px) {
+                    max-width: 80%;
+                }
+
                 h3 {
                     font-size: 35px;
                     font-weight: 600;
                     color: var(--light-color);
+
+                    @media screen and (max-width: 900px) {
+                        font-size: 25px;
+                    }
                 }
 
                 p {
                     font-size: 20px;
                     color: var(--light-color);
                     font-weight: 500;
+                    @media screen and (max-width: 900px) {
+                        font-size: 16px;
+                    }
                 }
 
                 input {
                     width: 70%;
-                    padding: 15px 8px;
+                    padding: 10px 8px;
                     border-radius: 8px;
                     border: 2px solid var(--light-color);
                     font-size: 20px;
+
+                    @media screen and (max-width: 900px) {
+                        width: 90%;
+                    }
                 }
 
                 button {

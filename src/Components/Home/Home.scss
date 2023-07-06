@@ -1079,10 +1079,11 @@
                     gap: 5px !important;
 
                     .card {
-                        width: 43%;
+                        width: 40%;
                         gap: 5px;
-                        padding: 0px 12px !important;
+                        padding: 10px 12px !important;
                         min-height: 350px;
+                        
 
                         a {
                             font-size: 14px !important;
@@ -1115,6 +1116,7 @@
                     max-width: 310px;
                     text-align: center;
                     min-height: 400px;
+                    
 
                     h4 {
                         color: var(--primary-color-dark);
@@ -1668,6 +1670,10 @@
                 align-items: center;
                 flex-direction: column;
 
+                @media screen and (max-width:900px) {
+                    padding: 0px ;
+                }
+
                 h2 {
                     padding: 30px 0px;
                     font-size: 48px;
@@ -1838,10 +1844,15 @@
                     h2 {
                         font-size: 55px;
                         color: var(--black-color);
+                        text-align: center;
+
+                        @media screen and (max-width: 900px) {
+                            font-size: 45px;
+                        }
                     }
 
                     @media screen and (max-width: 900px) {
-                        flex-direction: column-reverse;
+                        flex-direction: column;
 
                         .left-container {
                             width: 100% !important;
@@ -1866,6 +1877,10 @@
                         justify-content: space-around;
                         align-items: center;
                         flex-direction: row;
+
+                        @media screen and (max-width: 900px) {
+                            flex-direction: column-reverse;
+                        }
                     }
                     .left-container {
                         width: 50%;
@@ -2002,7 +2017,7 @@
                     gap: 10px;
 
                     @media screen and (max-width: 900px) {
-                        padding: 20px;
+                        padding: 10px;
                         width: 80%;
                     }
 

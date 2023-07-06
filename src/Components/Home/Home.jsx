@@ -1,4 +1,4 @@
-import React, { Profiler, useContext, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import React, { Profiler, useContext, useEffect, useRef, useState } from 'react'
 import './Home.scss'
 import Navbar from '../Layout/Navbar/Navbar'
 import ImageComponent from '../Layout/ImageComponenet/ImageComponent'
@@ -8,7 +8,7 @@ import { DiRuby } from 'react-icons/di';
 import { FaPhp, FaBootstrap, FaSwift, FaFigma, FaDocker, FaPython, FaSketch, FaReact } from 'react-icons/fa'
 import { BsArrowRight, BsWordpress, BsUnity } from 'react-icons/bs'
 import { HiOutlineArrowRight } from 'react-icons/hi'
-import { IoIosArrowForward, IoIosArrowBack, IoIosStar, IoIosStarHalf, IoIosStarOutline, IoLogoJavascript, IoLogoCss3, IoMdStar, IoMdStarOutline } from 'react-icons/io'
+import { IoIosArrowForward, IoIosArrowBack, IoLogoJavascript, IoLogoCss3, IoMdStar, IoMdStarOutline } from 'react-icons/io'
 import { BiArrowFromLeft } from 'react-icons/bi'
 
 import AnchorLink from 'react-anchor-link-smooth-scroll';
@@ -58,7 +58,6 @@ import { Pagination, Navigation } from "swiper";
 import Footer from '../Layout/Footer/Footer';
 import { ThemeContext } from '../../Context/ThemeContext';
 import { Tooltip } from 'react-tooltip';
-import axios from 'axios';
 import Swal from 'sweetalert2';
 
 const Home = () => {
@@ -70,7 +69,6 @@ const Home = () => {
     const [testiomonials, setTestiomonials] = useState([]);
 
     const [currentImage, setCurrentImage] = useState(Computer1);
-    const images = [Computer1, Computer2, Computer3, Computer4];
 
 
     const [name, setName] = useState('');
@@ -87,6 +85,7 @@ const Home = () => {
 
     useEffect(() => {
 
+
         if (window.screen.width > 780) {
             luxyMin.init({
                 wrapper: '#luxy',
@@ -96,6 +95,22 @@ const Home = () => {
 
         Aos.init();
 
+
+        const getTestimonials_Categories = async () => {
+            await http.get('/api/testimonials')
+                .then((res) => {
+                    setTestiomonials(res.data.testimonials);
+                    setLoading(false);
+    
+                })
+                .catch((err) => {
+                    console.log(err.message);
+                })
+    
+            setLoading(false);
+    
+        }
+
         getTestimonials_Categories()
 
         window.addEventListener('scroll', handleScroll);
@@ -104,6 +119,9 @@ const Home = () => {
 
 
     useEffect(() => {
+
+        const images = [Computer1, Computer2, Computer3, Computer4];
+
         const interval = setInterval(() => {
             // Get the index of the next image
             const currentIndex = images.indexOf(currentImage);
@@ -115,7 +133,7 @@ const Home = () => {
 
         // Clean up the interval on component unmount
         return () => clearInterval(interval);
-    }, [currentImage, images]);
+    }, [currentImage]);
 
     const handleMouseMove = (e) => {
         const el = tiltRef.current;
@@ -180,20 +198,7 @@ const Home = () => {
     };
 
 
-    const getTestimonials_Categories = async () => {
-        await http.get('/api/testimonials')
-            .then((res) => {
-                setTestiomonials(res.data.testimonials);
-                setLoading(false);
-
-            })
-            .catch((err) => {
-                console.log(err.message);
-            })
-
-        setLoading(false);
-
-    }
+    
 
     const handleContactMessage = async (e) => {
         e.preventDefault();

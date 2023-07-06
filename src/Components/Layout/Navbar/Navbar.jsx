@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useLayoutEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Logo from '../../../Assets/Home/Navbar/WEBINA2.png';
 import LogoLight from '../../../Assets/Home/Navbar/WEBINA-Logo.png';
 import './Navbar.scss'
@@ -168,15 +168,34 @@ const Navbar = ({ isOpen, transparent }) => {
                     </div>
 
                     <div className='mode-res'>
-                        <BsListNested onMouseEnter={handleAsideShow} />
+                        <BsListNested onClick={handleAsideShow} />
                         {isDarkMode ? <FaSun onClick={toggleTheme} /> : <FaMoon onClick={toggleTheme} />}
                     </div>
                 </div>
 
-                <div className='aside-container'>
-                    <div className={asideShow ? 'div-active' : ''}></div>
-                    <aside className={asideShow ? 'active' : ''} onMouseLeave={handleAsideShow}>
+                <div className={asideShow ? 'aside-container div-active' : 'aside-container'}>
+                    <aside className={asideShow ? 'aside-active' : ''}>
 
+                        <ul className='list'>
+                            <li>
+                                Products <MdKeyboardArrowDown />
+                                <ul className="dropdown-menu">
+                                    {/* <li onClick={e => SetselectedProduct('website')}>Website</li>
+                                    <li onClick={e => SetselectedProduct('ui/ux')}>UI/UX Design</li>
+                                    <li onClick={e => SetselectedProduct('mobile-apps')}>Mobile Application</li>
+                                    <li onClick={e => SetselectedProduct('desktop-apps')} >Desktop Application</li>
+                                    <li onClick={e => SetselectedProduct('games')}>Games</li>
+                                    <li onClick={e => SetselectedProduct('social-media-design')}>Social Media Designing</li>
+                                    <li onClick={e => SetselectedProduct('nfts-design')}>NFTs Designing</li> */}
+                                </ul>
+                            </li>
+                            <li><a href='/maintanence'>Pricing</a></li>
+                            <li><a href='/maintanence'>Blogs</a></li>
+                            <li><a href='/maintanence'>About Us</a></li>
+                            <li><a href='/maintanence'>FAQs</a></li>
+                            <li><a href='/maintanence'>Hire Me</a></li>
+                            <li><a href='/maintanence'>Contact Us</a></li>
+                        </ul>
                     </aside>
                 </div>
 

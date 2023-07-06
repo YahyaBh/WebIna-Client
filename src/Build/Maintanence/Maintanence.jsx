@@ -53,10 +53,12 @@ const Maintanence = () => {
     }
 
     useEffect(() => {
-        luxyMin.init({
-            wrapper: '#luxy',
-            wrapperSpeed: 0.04
-        });
+        if (window.screen.width > 780) {
+            luxyMin.init({
+                wrapper: '#luxy',
+                wrapperSpeed: 0.04
+            });
+        }
 
         setTimeout(() => {
             setLoading(false)
