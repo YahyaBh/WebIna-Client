@@ -7,14 +7,12 @@
         justify-content: center;
         align-items: center;
         position: fixed;
-        top: 50px;
         z-index: 5;
         background-size: 600% 100%;
         -webkit-animation: gradient 16s linear infinite;
         animation: gradient 16s linear infinite;
         -webkit-animation-direction: alternate;
         animation-direction: alternate;
-        padding: 50px 0;
         width: 100%;
 
         @media screen and (max-width: 1200px) {
