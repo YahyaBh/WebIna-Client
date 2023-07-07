@@ -39,7 +39,7 @@ const PageUnavailable = () => {
 
             {isDarkMode ?
 
-                <svg width="975" height="415" viewBox="0 0 975 415" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg className='error-eyes' viewBox="0 0 975 415" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_312_28879)">
                         <path
                             d="M312.973 331.077H268.503V409.125H160.682V331.077H0V251.35L167.814 5.87451H268.503V249.671H312.973V331.077ZM160.682 249.671V202.674C160.682 193.862 161.102 182.113 161.521 167.007C162.36 151.901 162.78 144.348 163.199 143.508H160.262C153.969 157.775 146.837 170.783 138.866 183.372L94.3954 249.671H160.682Z"

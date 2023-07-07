@@ -13,11 +13,25 @@
         rgba(255, 230, 98, 0.5648634454) 150%
     );
 
+    .error-eyes {
+        width: 70%;
+
+
+        @media screen and (max-width:900px) {
+            width: 90%;
+        }
+    }
+
     h2 {
         font-size: 45px;
         text-transform: uppercase;
         font-weight: 700;
         color: var(--dark-color-primary);
+        text-align: center;
+
+        @media screen and (max-width:900px) {
+            font-size: 30px;
+        }
     }
 
     a {

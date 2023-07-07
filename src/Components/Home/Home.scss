@@ -108,11 +108,10 @@
                     opacity: 0.6;
                     background-repeat: no-repeat;
                     background-size: cover;
-                    top: -50px;
+                    top: 0;
 
                     @media screen and (max-width: 900px) {
-                        top: 0px;
-                        bottom: -310px;
+                        top: 400px !important;
                     }
                 }
             }
@@ -935,7 +934,7 @@
 
             @media screen and (max-width: 1200px) {
                 padding: 0px;
-                gap: 5px;
+                gap: 20px;
                 padding: 15px;
             }
 
@@ -1075,13 +1074,12 @@
                 flex-wrap: wrap;
 
                 @media screen and (max-width: 1200px) {
-                    gap: 5px !important;
+                    gap: 20px !important;
 
                     .card {
                         width: 40%;
                         gap: 5px;
                         padding: 10px 12px !important;
-                        min-height: 350px;
 
                         a {
                             font-size: 14px !important;
@@ -1114,6 +1112,10 @@
                     max-width: 310px;
                     text-align: center;
                     min-height: 400px;
+
+                    @media screen and (max-width: 900px) {
+                        min-height: 350px;
+                    }
 
                     h4 {
                         color: var(--primary-color-dark);
@@ -1537,12 +1539,61 @@
                 }
 
                 h2 {
-                    font-size: 36px;
+                    font-size: 55px;
                     color: var(--black-color);
 
                     span {
-                        color: var(--dark-color-primary);
-                        font-size: 38px;
+                        font-size: 58px;
+                        text-shadow: 0 0 5px var(--primary-color), 0 0 15px var(--primary-color), 0 0 20px var(--primary-color), 0 0 40px var(--primary-color),
+                            0 0 60px var(--black-color), 0 0 10px var(--light-color), 0 0 98px var(--black-color);
+                        color: #fff6a9;
+                        text-align: center;
+                        animation: blink 12s infinite;
+                        -webkit-animation: blink 12s infinite;
+                    }
+
+                    @-webkit-keyframes blink {
+                        20%,
+                        24%,
+                        55% {
+                            color: #111;
+                            text-shadow: none;
+                        }
+
+                        0%,
+                        19%,
+                        21%,
+                        23%,
+                        25%,
+                        54%,
+                        56%,
+                        100% {
+                            text-shadow: 0 0 5px var(--primary-color), 0 0 15px var(--primary-color), 0 0 20px var(--primary-color), 0 0 40px var(--primary-color),
+                                0 0 60px var(--black-color), 0 0 10px var(--light-color), 0 0 98px var(--black-color);
+                            color: #fff6a9;
+                        }
+                    }
+
+                    @keyframes blink {
+                        20%,
+                        24%,
+                        55% {
+                            color: #111;
+                            text-shadow: none;
+                        }
+
+                        0%,
+                        19%,
+                        21%,
+                        23%,
+                        25%,
+                        54%,
+                        56%,
+                        100% {
+                            text-shadow: 0 0 5px var(--primary-color), 0 0 15px var(--primary-color), 0 0 20px var(--primary-color), 0 0 40px var(--primary-color),
+                                0 0 60px var(--black-color), 0 0 10px var(--light-color), 0 0 98px var(--black-color);
+                            color: #fff6a9;
+                        }
                     }
                 }
 
