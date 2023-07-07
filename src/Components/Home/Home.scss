@@ -1082,7 +1082,6 @@
                         gap: 5px;
                         padding: 10px 12px !important;
                         min-height: 350px;
-                        
 
                         a {
                             font-size: 14px !important;
@@ -1115,7 +1114,6 @@
                     max-width: 310px;
                     text-align: center;
                     min-height: 400px;
-                    
 
                     h4 {
                         color: var(--primary-color-dark);
@@ -1669,8 +1667,8 @@
                 align-items: center;
                 flex-direction: column;
 
-                @media screen and (max-width:900px) {
-                    padding: 0px ;
+                @media screen and (max-width: 900px) {
+                    padding: 0px;
                 }
 
                 h2 {
