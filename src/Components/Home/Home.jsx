@@ -2,6 +2,7 @@ import React, { Profiler, useContext, useEffect, useRef, useState } from 'react'
 import './Home.scss'
 import Navbar from '../Layout/Navbar/Navbar'
 import ImageComponent from '../Layout/ImageComponenet/ImageComponent'
+import { useCountdown } from '../Layout/Timer/Timer'
 
 import { SiRubyonrails, SiAdobepremierepro, SiAdobeaftereffects, SiVisualstudio, SiAndroidstudio, SiMysql, SiCplusplus, SiFlutter, SiBlender, SiNuxtdotjs } from 'react-icons/si';
 import { DiRuby } from 'react-icons/di';
@@ -36,6 +37,7 @@ import LeftBottomArrow from '../../Assets/Home/Perf-Section/Arrow-Left-Bottom.pn
 import RightTopArrow from '../../Assets/Home/Perf-Section/Arrow-Right-Top.png';
 import RightBottomArrow from '../../Assets/Home/Perf-Section/Arrow-Right-Bottom.png';
 import TestImage from '../../Assets/Home/Perf-Section/TestImage.png';
+import VideoIntro from '../../Assets/Home/Perf-Section/INTRO WEBINA COMMUNITY 2 .mp4'
 import TestProject from '../../Assets/Home/Projects Section/TestProjects.png';
 import TestFeed from '../../Assets/Home/FeedBack Section/TestFeed.png'
 import TestSlide from '../../Assets/Home/Slide Section/21742777_6517498-ai.png'
@@ -67,6 +69,8 @@ const Home = () => {
     const [scrolled, setScrolled] = useState(false);
     const [isFadeIn, setIsFadeIn] = useState(false);
     const [testiomonials, setTestiomonials] = useState([]);
+    const [targetDate, setTargetDate] = useState('2023-07-13');
+
 
     const [currentImage, setCurrentImage] = useState(Computer1);
 
@@ -77,6 +81,7 @@ const Home = () => {
 
 
     const { isDarkMode } = useContext(ThemeContext);
+    const [days, hours, minutes, seconds] = useCountdown(targetDate)
     const { http, csrf } = AuthContext();
 
     const tiltRef = useRef(null);
@@ -101,14 +106,14 @@ const Home = () => {
                 .then((res) => {
                     setTestiomonials(res.data.testimonials);
                     setLoading(false);
-    
+
                 })
                 .catch((err) => {
                     console.log(err.message);
                 })
-    
+
             setLoading(false);
-    
+
         }
 
         getTestimonials_Categories()
@@ -198,7 +203,7 @@ const Home = () => {
     };
 
 
-    
+
 
     const handleContactMessage = async (e) => {
         e.preventDefault();
@@ -528,7 +533,12 @@ const Home = () => {
                                         </div>
 
                                         <div className="container-center">
-                                            <img src={TestImage} alt="center" />
+
+                                            <video autoplay muted loop>
+                                                <source src={VideoIntro} type="video/mp4" />
+                                                <source src={VideoIntro} type="video/ogg" />
+                                            </video>
+
                                         </div>
 
                                         <div className="container-right">
@@ -561,21 +571,21 @@ const Home = () => {
 
                                     <div className="timer">
                                         <div className='time-sec' data-aos="fade-down">
-                                            11
+                                            {days}
                                         </div>
                                         <span> : </span>
                                         <div className='time-sec' data-aos="fade-down">
-                                            22
-                                        </div>
-                                        <span> : </span>
-
-                                        <div className='time-sec' data-aos="fade-down">
-                                            02
+                                            {hours}
                                         </div>
                                         <span> : </span>
 
                                         <div className='time-sec' data-aos="fade-down">
-                                            59
+                                            {minutes}
+                                        </div>
+                                        <span> : </span>
+
+                                        <div className='time-sec' data-aos="fade-down">
+                                            {seconds}
                                         </div>
                                     </div>
 
