@@ -61,6 +61,7 @@ import Footer from '../Layout/Footer/Footer';
 import { ThemeContext } from '../../Context/ThemeContext';
 import { Tooltip } from 'react-tooltip';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
 
@@ -82,43 +83,48 @@ const Home = () => {
 
     const { isDarkMode } = useContext(ThemeContext);
     const [days, hours, minutes, seconds] = useCountdown(targetDate)
-    const { http, csrf } = AuthContext();
+    const { http, csrf, isAuthenticated } = AuthContext();
 
     const tiltRef = useRef(null);
     const imageRef = useRef(null);
 
+    const navigate = useNavigate()
 
     useEffect(() => {
 
+        if (isAuthenticated) {
+            navigate('/store')
+        } else {
+            if (window.screen.width > 780) {
+                luxyMin.init({
+                    wrapper: '#luxy',
+                    wrapperSpeed: 0.04
+                });
+            }
 
-        if (window.screen.width > 780) {
-            luxyMin.init({
-                wrapper: '#luxy',
-                wrapperSpeed: 0.04
-            });
+            Aos.init();
+
+
+            const getTestimonials_Categories = async () => {
+                await http.get('/api/testimonials')
+                    .then((res) => {
+                        setTestiomonials(res.data.testimonials);
+                        setLoading(false);
+
+                    })
+                    .catch((err) => {
+                        console.log(err.message);
+                    })
+
+                setLoading(false);
+
+            }
+
+            getTestimonials_Categories()
+
+            window.addEventListener('scroll', handleScroll);
+
         }
-
-        Aos.init();
-
-
-        const getTestimonials_Categories = async () => {
-            await http.get('/api/testimonials')
-                .then((res) => {
-                    setTestiomonials(res.data.testimonials);
-                    setLoading(false);
-
-                })
-                .catch((err) => {
-                    console.log(err.message);
-                })
-
-            setLoading(false);
-
-        }
-
-        getTestimonials_Categories()
-
-        window.addEventListener('scroll', handleScroll);
 
     }, [])
 
@@ -290,7 +296,7 @@ const Home = () => {
 
                                     <div className='email-get-started'>
                                         <input data-aos="fade-down" onChange={e => setEmailGetStarted(e.target.value)} type="email" name='email' id='name' placeholder='Enter Email Address' minLength={'8'} />
-                                        <button onClick={emailGetStarted ? handleEmail : ''} className={emailGetStarted ? 'active' : ''} disabled={emailGetStarted ? false : true}>GET STARTED</button>
+                                        <button onClick={emailGetStarted ? e => handleEmail() : ''} className={emailGetStarted ? 'active' : ''} disabled={emailGetStarted ? false : true}>GET STARTED</button>
                                     </div>
 
                                     <div data-aos="fade-down" className='undertext'>
@@ -534,7 +540,7 @@ const Home = () => {
 
                                         <div className="container-center">
 
-                                            <video autoplay muted loop>
+                                            <video autoPlay muted loop>
                                                 <source src={VideoIntro} type="video/mp4" />
                                                 <source src={VideoIntro} type="video/ogg" />
                                             </video>

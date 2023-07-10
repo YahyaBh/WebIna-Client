@@ -1,18 +1,20 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Logo from '../../../Assets/Home/Navbar/WEBINA2.png';
 import LogoLight from '../../../Assets/Home/Navbar/WEBINA-Logo.png';
-import './Navbar.scss'
-import { MdLanguage, MdKeyboardArrowDown } from 'react-icons/md'
+import './NavbarStore.scss'
 import { FaMoon, FaSun } from 'react-icons/fa'
 import { BiUser } from 'react-icons/bi'
 import { FiUserPlus } from 'react-icons/fi'
-import { BsListNested } from 'react-icons/bs';
+import { BsList } from 'react-icons/bs';
+import { AiOutlineSearch, AiOutlineShoppingCart } from 'react-icons/ai'
 import Ecommerce from '../../../Assets/Home/Navbar/Add to Cart-cuate.svg'
 import { ThemeContext } from "../../../Context/ThemeContext";
 import AuthContext from '../../../Context/AuthContext';
 import Profile from '../../../Assets/profiles/default.svg'
+import { MdKeyboardArrowDown } from 'react-icons/md';
 
-const Navbar = ({ isOpen, transparent }) => {
+
+const NavbarStore = ({ isOpen, transparent }) => {
 
 
     const [scrolled, setScrolled] = useState(false);
@@ -76,7 +78,7 @@ const Navbar = ({ isOpen, transparent }) => {
 
     return (
         <>
-            <nav id='navbar' className={scrolled ? 'scrolled' : '' || transparent ? 'transparent' : ''}>
+            <nav id='store-navbar' className={scrolled ? 'scrolled' : '' || transparent ? 'transparent' : ''}>
                 <div className={`modal-products ${modalClassName}  ${selectedProduct ? 'active' : ''}`}>
                     <div className="modal-content">
                         <span className="close" onClick={e => SetselectedProduct('')}>&times;</span>
@@ -112,35 +114,24 @@ const Navbar = ({ isOpen, transparent }) => {
 
                 <div className='navbar'>
                     <div className='container'>
-                        <a href='/' className='logo'>
-                            <img src={isDarkMode ? LogoLight : Logo} alt="logo" />
-                        </a>
 
-                        <ul>
-                            <li>
-                                Products <MdKeyboardArrowDown />
-                                <ul className="dropdown-menu">
-                                    {/* <li onClick={e => SetselectedProduct('website')}>Website</li>
-                                    <li onClick={e => SetselectedProduct('ui/ux')}>UI/UX Design</li>
-                                    <li onClick={e => SetselectedProduct('mobile-apps')}>Mobile Application</li>
-                                    <li onClick={e => SetselectedProduct('desktop-apps')} >Desktop Application</li>
-                                    <li onClick={e => SetselectedProduct('games')}>Games</li>
-                                    <li onClick={e => SetselectedProduct('social-media-design')}>Social Media Designing</li>
-                                    <li onClick={e => SetselectedProduct('nfts-design')}>NFTs Designing</li> */}
-                                </ul>
-                            </li>
-                            <li><a href='/maintanence'>Pricing</a></li>
-                            <li><a href='/maintanence'>Blogs</a></li>
-                            <li><a href='/maintanence'>About Us</a></li>
-                            <li><a href='/maintanence'>FAQs</a></li>
-                            <li><a href='/maintanence'>Hire Me</a></li>
-                            <li><a href='/maintanence'>Contact Us</a></li>
-                        </ul>
+                        <div className='left-container'>
+                            <BsList onClick={handleAsideShow} />
+                            <a href='/' className='logo'>
+                                <img src={isDarkMode ? LogoLight : Logo} alt="logo" />
+                            </a>
+
+                        </div>
+
+
 
                         <div className='right-container'>
+
+
                             <div className='lang-mode'>
-                                <MdLanguage />
+                                <AiOutlineSearch />
                                 {isDarkMode ? <FaSun onClick={toggleTheme} /> : <FaMoon onClick={toggleTheme} />}
+                                <AiOutlineShoppingCart />
                             </div>
 
                             {isAuthenticated ?
@@ -178,49 +169,8 @@ const Navbar = ({ isOpen, transparent }) => {
             </nav>
 
 
-            <nav id='responsive-navbar'>
-
-                <div className='main-show'>
-                    <a href='/' className='logo'>
-                        <img src={isDarkMode ? LogoLight : Logo} alt="logo" />
-                    </a>
-
-                    <div className='mode-res'>
-                        <BsListNested onClick={handleAsideShow} />
-                        {isDarkMode ? <FaSun onClick={toggleTheme} /> : <FaMoon onClick={toggleTheme} />}
-                    </div>
-                </div>
-
-                <div className={asideShow ? 'aside-container div-active' : 'aside-container'}>
-                    <aside className={asideShow ? 'aside-active' : ''}>
-
-                        <ul className='list'>
-                            <li>
-                                Products <MdKeyboardArrowDown />
-                                <ul className="dropdown-menu">
-                                    {/* <li onClick={e => SetselectedProduct('website')}>Website</li>
-                                    <li onClick={e => SetselectedProduct('ui/ux')}>UI/UX Design</li>
-                                    <li onClick={e => SetselectedProduct('mobile-apps')}>Mobile Application</li>
-                                    <li onClick={e => SetselectedProduct('desktop-apps')} >Desktop Application</li>
-                                    <li onClick={e => SetselectedProduct('games')}>Games</li>
-                                    <li onClick={e => SetselectedProduct('social-media-design')}>Social Media Designing</li>
-                                    <li onClick={e => SetselectedProduct('nfts-design')}>NFTs Designing</li> */}
-                                </ul>
-                            </li>
-                            <li><a href='/maintanence'>Pricing</a></li>
-                            <li><a href='/maintanence'>Blogs</a></li>
-                            <li><a href='/maintanence'>About Us</a></li>
-                            <li><a href='/maintanence'>FAQs</a></li>
-                            <li><a href='/maintanence'>Hire Me</a></li>
-                            <li><a href='/maintanence'>Contact Us</a></li>
-                        </ul>
-                    </aside>
-                </div>
-
-            </nav>
-
         </>
     )
 }
 
-export default Navbar
+export default NavbarStore
