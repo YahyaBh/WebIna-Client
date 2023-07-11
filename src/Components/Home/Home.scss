@@ -1544,8 +1544,9 @@
 
                     span {
                         font-size: 58px;
-                        text-shadow: 0 0 5px var(--primary-color), 0 0 15px var(--primary-color), 0 0 20px var(--primary-color), 0 0 40px var(--primary-color),
-                            0 0 60px var(--black-color), 0 0 10px var(--light-color), 0 0 98px var(--black-color);
+                        text-shadow: 0 0 5px var(--primary-color), 0 0 15px var(--primary-color),
+                            0 0 20px var(--primary-color), 0 0 40px var(--primary-color), 0 0 60px var(--black-color),
+                            0 0 10px var(--light-color), 0 0 98px var(--black-color);
                         color: #fff6a9;
                         text-align: center;
                         animation: blink 12s infinite;
@@ -1568,7 +1569,8 @@
                         54%,
                         56%,
                         100% {
-                            text-shadow: 0 0 5px var(--primary-color), 0 0 15px var(--primary-color), 0 0 20px var(--primary-color), 0 0 40px var(--primary-color),
+                            text-shadow: 0 0 5px var(--primary-color), 0 0 15px var(--primary-color),
+                                0 0 20px var(--primary-color), 0 0 40px var(--primary-color),
                                 0 0 60px var(--black-color), 0 0 10px var(--light-color), 0 0 98px var(--black-color);
                             color: #fff6a9;
                         }
@@ -1590,7 +1592,8 @@
                         54%,
                         56%,
                         100% {
-                            text-shadow: 0 0 5px var(--primary-color), 0 0 15px var(--primary-color), 0 0 20px var(--primary-color), 0 0 40px var(--primary-color),
+                            text-shadow: 0 0 5px var(--primary-color), 0 0 15px var(--primary-color),
+                                0 0 20px var(--primary-color), 0 0 40px var(--primary-color),
                                 0 0 60px var(--black-color), 0 0 10px var(--light-color), 0 0 98px var(--black-color);
                             color: #fff6a9;
                         }
@@ -1667,6 +1670,10 @@
 
         .dark-section {
             background: url(../../../public/Images/Background-Gradient-Contact-dark.svg) !important;
+            background-position: center !important;
+            background-size: cover !important;
+            background-repeat: no-repeat !important;
+            background-attachment: scroll !important;
 
             .swiper-pagination-bullet {
                 border: none !important;

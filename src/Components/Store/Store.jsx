@@ -2,10 +2,24 @@ import React, { Profiler, useEffect, useState } from 'react'
 import NavbarStore from '../Layout/Navbar/NavbarStore'
 import Loading from '../Loading/Loading'
 import AsideStore from '../Layout/Aside/AsideStore';
-import { MdKeyboardArrowRight } from 'react-icons/md';
+import { MdKeyboardArrowRight , MdKeyboardArrowLeft} from 'react-icons/md';
 import './Store.scss'
 import { BsFillStarFill, BsStar, BsStarHalf, BsCart2 } from 'react-icons/bs';
 import TestImage from '../../Assets/Home/Projects Section/TestProjects.png'
+
+
+
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
+import "swiper/css/navigation";
+
+// import required modules
+import { Navigation } from "swiper";
 
 const Store = () => {
 
@@ -15,7 +29,11 @@ const Store = () => {
     const [products, setProducts] = useState([
         { id: 1, title: 'Product 1', category: 'Category 1', price: 23.00, purchase: 23, rating: 5 },
         { id: 2, title: 'Product 2', category: 'Category 4', price: 70.00, purchase: 321, rating: 4.5 },
-        { id: 3, title: 'Product 3', category: 'Category 43', price: 35.00, purchase: 2324, rating: 2.3 }
+        { id: 3, title: 'Product 3', category: 'Category 43', price: 35.00, purchase: 2324, rating: 2.3 },
+        { id: 4, title: 'Product 4', category: 'Category 654', price: 50.00, purchase: 765, rating: 5 },
+        { id: 5, title: 'Product 5', category: 'Category 34', price: 50.00, purchase: 765, rating: 5 },
+        { id: 6, title: 'Product 6', category: 'Category 4', price: 50.00, purchase: 765, rating: 5 },
+        { id: 7, title: 'Product 7', category: 'Category 65434', price: 50.00, purchase: 765, rating: 5 }
     ]);
     const [filter, setFilter] = useState('All');
     const [filteredProducts, setFilteredProducts] = useState([]);
@@ -114,13 +132,29 @@ const Store = () => {
 
                 <div className="left-container">
                     <nav className='top-chart'>
-                        <ul>
-                            <li onClick={e => handleFiltering('All')}>All</li>
+                        <Swiper
+                            navigation={{
+                                prevEl: '#prev-button',
+                                nextEl: '#next-button',
+                            }}
+                            draggable={true}
+                            slidesPerView={6}
+                            spaceBetween={0}
+                            modules={[Navigation]}
+                            className="mySwiper"
+                        >
+                            <SwiperSlide><li onClick={e => handleFiltering('All')}>All</li></SwiperSlide>
+
                             {categories.map((category, index) => (
-                                <li key={index} onClick={e => handleFiltering(category)}>{category}</li>
+                                <SwiperSlide><li key={index} onClick={e => handleFiltering(category)}>{category}</li></SwiperSlide>
                             ))}
-                        </ul>
-                        <MdKeyboardArrowRight />
+
+                            <MdKeyboardArrowLeft id='#prev-button' />
+                            <MdKeyboardArrowRight id='#next-button' />
+
+                        </Swiper>
+
+
                     </nav>
 
 
@@ -296,7 +330,7 @@ const Store = () => {
 
             </div>
 
-        </Profiler>
+        </Profiler >
     )
 }
 
