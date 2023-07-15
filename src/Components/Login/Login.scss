@@ -8,7 +8,6 @@
 #sign-in {
     background: url(../../../public/Images/Background-Sign.svg);
 
-
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -106,6 +105,21 @@
                 width: 100%;
                 display: flex;
                 gap: 20px;
+
+                .spin-load {
+                    color: var(--light-color);
+                    animation: spin 2s ease-in infinite;
+
+                    @keyframes spin {
+                        0% {
+                            rotate: 0;
+                        }
+
+                        100% {
+                            rotate: 360deg;
+                        }
+                    }
+                }
 
                 .input-container {
                     width: 100%;

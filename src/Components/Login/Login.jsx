@@ -8,10 +8,12 @@ import Logo from '../../Assets/Home/Navbar/WEBINA2.png'
 import SignIn from '../../Assets/SignIn/SignInGraph.svg'
 import { MdLanguage } from 'react-icons/md'
 import { FaSun, FaMoon, FaGoogle, FaFacebook } from 'react-icons/fa'
+import { AiOutlineLoading3Quarters } from 'react-icons/ai'
+import Swal from 'sweetalert2'
 
 const Login = () => {
 
-
+    const [loginLoading, setLoginLoading] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -42,7 +44,7 @@ const Login = () => {
         e.preventDefault()
         csrf();
         if (email !== '' || password !== '') {
-
+            setLoginLoading(true)
 
             const userData = new FormData();
 
@@ -55,9 +57,35 @@ const Login = () => {
                     res.data.remember_token ? setRememberToken(res.data.token) : setRememberToken()
                     setUser(res.data.user);
                     navigate('/');
+                    setLoginLoading(false)
                 })
                 .catch((err) => {
-                    console.log(err);
+                    setLoginLoading(false)
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops! Something went wrong',
+                        text: err.message,
+                        customClass: {
+                            container: 'popup-container',
+                            popup: 'popup-popup',
+                            header: 'popup-header',
+                            title: 'popup-title',
+                            closeButton: 'popup-close-button',
+                            icon: 'popup-icon',
+                            image: 'popup-image',
+                            htmlContainer: 'popup-html',
+                            input: 'popup-input',
+                            inputLabel: 'popup-input-label',
+                            validationMessage: 'popup-validation-message',
+                            actions: 'popup-actions',
+                            confirmButton: 'popup-confirm-button',
+                            denyButton: 'popup-deny-button',
+                            cancelButton: 'popup-cancel-button',
+                            loader: 'popup-loader',
+                            footer: 'popup-footer',
+                            timerProgressBar: 'popup-timer-progress-bar',
+                        }
+                    })
                 })
         }
 
@@ -105,7 +133,7 @@ const Login = () => {
                         </div>
 
 
-                        <button type='submit'>Sign In</button>
+                        <button type='submit'>{loginLoading ? <AiOutlineLoading3Quarters className="spin-load" /> : 'Sign In'}</button>
 
 
                         <div className="under-sign">
