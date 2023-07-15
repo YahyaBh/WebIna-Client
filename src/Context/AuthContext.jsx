@@ -85,6 +85,17 @@ export default function AuthContext() {
         }
     }
 
+    const clearUserData = () => {
+
+        if (!isAuthenticated) {
+            cookie.remove('__ACCESS_TOKEN');
+            cookie.remove('__USER_DATA');
+        } else {
+            return;
+        }
+
+    }
+
     return {
         http,
         csrf,
@@ -105,6 +116,7 @@ export default function AuthContext() {
         rememberToken,
         setRememberToken,
         isAuthenticated,
-        logout
+        logout,
+        clearUserData,
     }
 }

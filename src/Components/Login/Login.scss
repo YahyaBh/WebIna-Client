@@ -1,5 +1,15 @@
 .dark-in {
     background: url(../../../public/Images/Background-SignDark.svg) !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-clip: border-box;
+    background-attachment: scroll;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
 }
 
 #sign-in {
@@ -23,7 +33,7 @@
         width: 100%;
         padding: 20px 50px;
 
-        @media screen and (max-width:900px) {
+        @media screen and (max-width: 900px) {
             padding: 20px 0px;
         }
 
@@ -90,7 +100,7 @@
                 font-weight: 400;
                 width: 120%;
 
-                @media screen and (max-width:900px) {
+                @media screen and (max-width: 900px) {
                     width: 100%;
                 }
             }
@@ -191,7 +201,7 @@
                 width: 100%;
                 display: flex;
 
-                @media screen and (max-width:900px) {
+                @media screen and (max-width: 900px) {
                     font-size: 14px;
                 }
 
@@ -283,7 +293,7 @@
         h4 {
             float: right;
 
-            @media screen and (max-width:900px) {
+            @media screen and (max-width: 900px) {
                 float: none;
                 text-align: center;
             }
@@ -292,7 +302,5 @@
         span {
             color: var(--dark-color-primary);
         }
-
-        
     }
 }

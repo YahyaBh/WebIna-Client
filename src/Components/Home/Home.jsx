@@ -70,7 +70,7 @@ const Home = () => {
     const [scrolled, setScrolled] = useState(false);
     const [isFadeIn, setIsFadeIn] = useState(false);
     const [testiomonials, setTestiomonials] = useState([]);
-    const [targetDate, setTargetDate] = useState('2023-07-13');
+    const [targetDate, setTargetDate] = useState('2023-08-13');
 
 
     const [currentImage, setCurrentImage] = useState(Computer1);
