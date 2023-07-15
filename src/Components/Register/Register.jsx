@@ -5,10 +5,12 @@ import AuthContext from '../../Context/AuthContext'
 import Cookies from 'js-cookie';
 import { MdLanguage } from 'react-icons/md';
 import { FaFacebook, FaGoogle, FaMoon, FaSun } from 'react-icons/fa';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import { ThemeContext } from '../../Context/ThemeContext';
 import LogoDark from '../../Assets/Home/Navbar/WEBINA-Logo.png'
 import Logo from '../../Assets/Home/Navbar/WEBINA2.png'
 import SignUp from '../../Assets/SignUp/SignUpGraph.svg'
+import Swal from 'sweetalert2';
 
 const Register = () => {
 
@@ -16,6 +18,8 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('')
+
+    const [registerLoad, setRegisterLoad] = useState(false);
 
     const { http, csrf, setAccessToken, setUser } = AuthContext()
     const navigate = useNavigate();
@@ -26,6 +30,7 @@ const Register = () => {
 
         e.preventDefault();
 
+        setRegisterLoad(true);
         if (name !== '' || email !== '' || password !== '' || confirmPassword !== '') {
             if (password === confirmPassword) {
 
@@ -45,19 +50,23 @@ const Register = () => {
                         setAccessToken(res.data.token);
                         setUser(res.data.user);
                         Cookies.set('__F_ACCESS', true);
+                        setRegisterLoad(false);
                     })
                     .catch((err) => {
-                        alert(err.message)
+                        Swal.fire('error', err.message)
+                        setRegisterLoad(false);
                     })
 
             } else {
-                alert('Password does not match confirmation')
+                setRegisterLoad(false);
+                Swal.fire('error', 'Password does not match passowrd confirmation , please try again')
             }
 
         } else {
-            alert('No section can be empty')
-        }
+            setRegisterLoad(false);
+            Swal.fire('error', 'No section can be empty')
 
+        }
     }
 
     return (
@@ -65,12 +74,14 @@ const Register = () => {
 
 
             <div className='header'>
-                <img src={isDarkMode ? LogoDark : Logo} alt="logo" />
+                <div className="container">
+                    <img src={isDarkMode ? LogoDark : Logo} alt="logo" />
 
 
-                <div className='lang-mode'>
-                    {isDarkMode ? <FaSun onClick={toggleTheme} /> : <FaMoon onClick={toggleTheme} />}
-                    <MdLanguage />
+                    <div className='lang-mode'>
+                        {isDarkMode ? <FaSun onClick={toggleTheme} /> : <FaMoon onClick={toggleTheme} />}
+                        <MdLanguage />
+                    </div>
                 </div>
             </div>
 
@@ -109,7 +120,7 @@ const Register = () => {
                             <input type="text" name='conf_password' onChange={e => setConfirmPassword(e.target.value)} autoComplete="off" />
                         </div>
 
-                        <button type='submit'>Sign Up</button>
+                        <button type='submit'>{registerLoad ? <AiOutlineLoading3Quarters className="spin-load" /> : 'Sign Up'}</button>
 
 
                         <div className="under-sign">

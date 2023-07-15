@@ -1,24 +1,14 @@
 .dark-in {
     background: url(../../../public/Images/Background-SignDark.svg) !important;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-clip: border-box;
-    background-attachment: scroll;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: cover !important;
 }
 
 #sign-in {
     background: url(../../../public/Images/Background-Sign.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-clip: border-box;
-    background-attachment: scroll;
+
+
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -26,33 +16,36 @@
     overflow: hidden;
 
     .header {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row;
-        align-items: center;
         width: 100%;
-        padding: 20px 50px;
 
-        @media screen and (max-width: 900px) {
-            padding: 20px 0px;
-        }
-
-        img {
-            width: 60px;
-            padding: 0px 10px;
-        }
-
-        .lang-mode {
-            padding: 0px 10px;
+        .container {
+            padding: 20px 50px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            flex-direction: row;
             align-items: center;
-            gap: 10px;
-            cursor: pointer;
 
-            svg {
-                font-size: 24px;
-                color: var(--dark-color-primary);
+            @media screen and (max-width: 900px) {
+                padding: 20px 0px;
+            }
+
+            img {
+                width: 60px;
+                padding: 0px 10px;
+            }
+
+            .lang-mode {
+                padding: 0px 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                cursor: pointer;
+
+                svg {
+                    font-size: 24px;
+                    color: var(--dark-color-primary);
+                }
             }
         }
     }

@@ -34,7 +34,7 @@ const Login = () => {
                 })
 
         } else {
-            return ;
+            return;
         }
     }, [])
 
@@ -69,13 +69,17 @@ const Login = () => {
 
 
             <div className='header'>
-                <img src={isDarkMode ? LogoDark : Logo} alt="logo" />
+                <div className="container">
+
+                    <img src={isDarkMode ? LogoDark : Logo} alt="logo" />
 
 
-                <div className='lang-mode'>
-                    {isDarkMode ? <FaSun onClick={toggleTheme} /> : <FaMoon onClick={toggleTheme} />}
-                    <MdLanguage />
+                    <div className='lang-mode'>
+                        {isDarkMode ? <FaSun onClick={toggleTheme} /> : <FaMoon onClick={toggleTheme} />}
+                        <MdLanguage />
+                    </div>
                 </div>
+
             </div>
 
             <div className='container'>
