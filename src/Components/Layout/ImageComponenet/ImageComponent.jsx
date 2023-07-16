@@ -3,7 +3,7 @@ import './ImageComponent.scss'
 
 const ImageComponent = ({ src, alt }) => {
 
-    const [imageLoaded, setImageLoaded] = useState(false);
+    const [imageLoaded, setImageLoaded] = useState(true);
 
     useEffect(() => {
         const img = new Image();

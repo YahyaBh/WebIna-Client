@@ -12,6 +12,8 @@ export const ThemeProvider = ({ children }) => {
         setIsDarkMode((prevMode) => !prevMode);
     };
 
+    
+
     useEffect(() => {
         const savedThemeMode = Cookies.get("__THEME_MODE");
 

@@ -10,31 +10,36 @@ import Login from "./Components/Login/Login";
 import Logout from "./Components/Logout/Logout";
 import Store from "./Components/Store/Store";
 import Privacy from './Build/Privacy/Privacy'
+import { I18nextProvider } from 'react-i18next';
+import i18n from './i18n';
 
 
 function App() {
 
   return (
-    <ThemeProvider>
-      <Routes>
-        <Route exact path='/' element={<Home />} />
+    <I18nextProvider i18n={i18n}>
+      <ThemeProvider>
+        <Routes>
+          <Route exact path='/' element={<Home />} />
 
-        <Route exact path='/register' element={<Register />} />
-        <Route exact path='/login' element={<Login />} />
-        <Route exact path='/privacy-policy' element={<Privacy />} />
-
-
-        {/* Authenticated user */}
-        <Route exact path='/logout' element={<Logout />} />
-        <Route exact path='/welcome' element={<Welcome />} />
-        <Route exact path='/store' element={<Store />} />
+          <Route exact path='/register' element={<Register />} />
+          <Route exact path='/login' element={<Login />} />
+          <Route exact path='/privacy-policy' element={<Privacy />} />
 
 
+          {/* Authenticated user */}
+          <Route exact path='/logout' element={<Logout />} />
+          <Route exact path='/welcome' element={<Welcome />} />
+          <Route exact path='/store' element={<Store />} />
 
-        <Route exact path='/maintanence' element={<Maintanence />} />
-        <Route exact path="*" element={<PageUnavailable />} />
-      </Routes>
-    </ThemeProvider>
+
+
+          <Route exact path='/maintanence' element={<Maintanence />} />
+          <Route exact path="*" element={<PageUnavailable />} />
+        </Routes>
+      </ThemeProvider>
+    </I18nextProvider>
+
   );
 }
 

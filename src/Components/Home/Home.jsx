@@ -62,6 +62,7 @@ import { ThemeContext } from '../../Context/ThemeContext';
 import { Tooltip } from 'react-tooltip';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next';
 
 const Home = () => {
 
@@ -94,6 +95,8 @@ const Home = () => {
     const imageRef = useRef(null);
 
     const navigate = useNavigate()
+
+    const { t } = useTranslation();
 
     useEffect(() => {
 
@@ -293,7 +296,7 @@ const Home = () => {
                         <div className='main-container'>
                             <div className="background-grad">
                                 <div className='left-container'>
-                                    <h1 data-aos="fade-down">GET <span>YOUR</span> WEBSITE</h1>
+                                    <h1 data-aos="fade-down">{t('gs')[0]} <span>{t('gs')[1]}</span> {t('gs')[2]}</h1>
 
                                     <p data-aos="fade-down">We are gonna create a well developed and designed website from your own choice and it will exactly as you desire and want .
                                         The website you want will be created with high quality ,
@@ -304,15 +307,15 @@ const Home = () => {
 
                                     <div className='email-get-started'>
                                         <input data-aos="fade-down" onChange={e => setEmailGetStarted(e.target.value)} type="email" name='email' id='name' placeholder='Enter Email Address' minLength={'8'} />
-                                        <button onClick={emailGetStarted ? e => handleEmail() : ''} className={emailGetStarted ? 'active' : ''} disabled={emailGetStarted ? false : true}>GET STARTED</button>
+                                        <button onClick={emailGetStarted ? e => handleEmail() : null} className={emailGetStarted ? 'active' : ''} disabled={emailGetStarted ? false : true}>GET STARTED</button>
                                     </div>
 
 
-                                    <div class="card flip-vertical">
-                                        <div class="front">
+                                    <div className="card flip-vertical">
+                                        <div className="front">
                                             <a href='/custom-order' className='res-button-custom'>CUSTOM ORDER</a>
                                         </div>
-                                        <div class="back">
+                                        <div className="back">
                                             <a href='/custom-order'>GET A CUSTOM APPLICATION</a>
                                         </div>
                                     </div>
@@ -509,7 +512,7 @@ const Home = () => {
                                     {blogs.map((blog, index) => (
                                         <div key={index} className='blog-card' data-aos="fade-down" data-aos-duration="500">
                                             <div className='blog-body'>
-                                                <ImageComponent className="image" src={BlogTest} alt={blog.name} />
+                                                <ImageComponent className="image" src={blog.image} alt={blog.name} />
                                                 <h5>{blog.name}</h5>
                                             </div>
                                         </div>
@@ -624,14 +627,12 @@ const Home = () => {
 
                                         {projects.map((project, index) => (
                                             <div key={index} className="card">
-                                                <img src={TestProject} alt={project.name + '' + index} />
+                                                <img src={project.image} alt={project.name + '' + index} />
 
                                                 <h3>{project.name}</h3>
 
                                                 <div className='categories'>
-                                                    {project.categories.map((category, index) => (
-                                                        <span key={index}>{category}</span>
-                                                    ))}
+                                                    <span>{project.categories}</span>
                                                 </div>
 
                                                 <a href={`/project/${project.name}`} className='details-button'>Show Details</a>

@@ -11,6 +11,7 @@ import Ecommerce from '../../../Assets/Home/Navbar/Add to Cart-cuate.svg'
 import { ThemeContext } from "../../../Context/ThemeContext";
 import AuthContext from '../../../Context/AuthContext';
 import Profile from '../../../Assets/profiles/default.svg'
+// import i18n from '../../../i18n';
 
 const Navbar = ({ isOpen, transparent }) => {
 
@@ -18,7 +19,9 @@ const Navbar = ({ isOpen, transparent }) => {
     const [scrolled, setScrolled] = useState(false);
     const [selectedProduct, SetselectedProduct] = useState('');
     const [asideShow, setAsideShow] = useState(false)
+    const [language, setLanguage] = useState(false)
     const modalClassName = isOpen ? 'modal-animation active' : 'modal-animation';
+
 
     const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
@@ -73,11 +76,38 @@ const Navbar = ({ isOpen, transparent }) => {
         }
     }
 
+    // const changeLanguage = (language) => {
+    //     i18n.changeLanguage(language);
+    // };
+
 
     return (
         <>
             <nav id='navbar' className={scrolled ? 'scrolled' : '' || transparent ? 'transparent' : ''}>
-                <div className={`modal-products ${modalClassName}  ${selectedProduct ? 'active' : ''}`}>
+                {/* <div className={`modal-products ${modalClassName}  ${language ? 'active' : ''}`}>
+                    <div className="modal-content">
+                        <span className="close" onClick={e => setLanguage('')}>&times;</span>
+                        <h2>Choose A Language</h2>
+                        <div className='languages-container'>
+                            <div className='lang' onClick={e => changeLanguage('ar')}>
+                                <img src={Ecommerce} alt="Arabic" />
+                                <h3>العربية</h3>
+                            </div>
+
+                            <div className='lang' onClick={e => changeLanguage('fr')}>
+                                <img src={Ecommerce} alt="French" />
+                                <h3>Francaise</h3>
+                            </div>
+
+                            <div className='lang' onClick={e => changeLanguage('en')}>
+                                <img src={Ecommerce} alt="English" />
+                                <h3>English</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div> */}
+
+                <div className={`modal-languages ${modalClassName}  ${selectedProduct ? 'active' : ''}`}>
                     <div className="modal-content">
                         <span className="close" onClick={e => SetselectedProduct('')}>&times;</span>
                         <h2>Categories</h2>
@@ -110,6 +140,7 @@ const Navbar = ({ isOpen, transparent }) => {
                 </div>
 
 
+
                 <div className='navbar'>
                     <div className='container'>
                         <a href='/' className='logo'>
@@ -139,7 +170,7 @@ const Navbar = ({ isOpen, transparent }) => {
 
                         <div className='right-container'>
                             <div className='lang-mode'>
-                                <MdLanguage />
+                                <MdLanguage onClick={e => setLanguage(true)} />
                                 {isDarkMode ? <FaSun onClick={toggleTheme} /> : <FaMoon onClick={toggleTheme} />}
                             </div>
 
