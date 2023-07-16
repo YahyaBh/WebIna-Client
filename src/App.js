@@ -9,6 +9,7 @@ import Welcome from "./Components/Welcome/Welcome";
 import Login from "./Components/Login/Login";
 import Logout from "./Components/Logout/Logout";
 import Store from "./Components/Store/Store";
+import Privacy from './Build/Privacy/Privacy'
 
 
 function App() {
@@ -20,6 +21,8 @@ function App() {
 
         <Route exact path='/register' element={<Register />} />
         <Route exact path='/login' element={<Login />} />
+        <Route exact path='/privacy-policy' element={<Privacy />} />
+
 
         {/* Authenticated user */}
         <Route exact path='/logout' element={<Logout />} />

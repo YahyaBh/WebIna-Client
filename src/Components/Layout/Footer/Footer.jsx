@@ -48,8 +48,8 @@ const Footer = () => {
 
                     <p>WEBINA DIGITAL website builder offers a complete solution from enterprise-grade infrastructure and business features to
                         advanced SEO and marketing tools-enabling anyone to create and grow online.</p>
-                    <a>about us</a>
-                    <a>Contact Us</a>
+                    <a href='/privacy-policy'>Privacy Policy</a>
+                    <a href='/contact'>Contact Us</a>
                 </ul>
             </div>
 

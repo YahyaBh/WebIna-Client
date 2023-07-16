@@ -142,7 +142,7 @@
         align-items: center;
         gap: 150px;
         flex-direction: row;
-        padding: 20px;
+        padding: 20px 0;
 
         @media screen and (max-width: 1500px) {
             gap: 100px !important;
