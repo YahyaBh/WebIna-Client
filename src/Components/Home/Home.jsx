@@ -307,7 +307,15 @@ const Home = () => {
                                         <button onClick={emailGetStarted ? e => handleEmail() : ''} className={emailGetStarted ? 'active' : ''} disabled={emailGetStarted ? false : true}>GET STARTED</button>
                                     </div>
 
-                                    <a href='/custom-order' className='res-button-custom'>CUSTOM ORDER</a>
+
+                                    <div class="card flip-vertical">
+                                        <div class="front">
+                                            <a href='/custom-order' className='res-button-custom'>CUSTOM ORDER</a>
+                                        </div>
+                                        <div class="back">
+                                            <a href='/custom-order'>GET A CUSTOM APPLICATION</a>
+                                        </div>
+                                    </div>
 
                                     <div data-aos="fade-down" className='undertext'>
                                         <BsArrowRight />
