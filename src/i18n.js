@@ -12,18 +12,18 @@ const resources = {
     fr: {
         translation: Fr,
     },
-    ar: {
+    ar : {
         translation: Ar,
     }
 };
 
-// i18n.use(initReactI18next).init({
-//     resources,
-//     lng: 'en', // Default language
-//     fallbackLng: 'en', // Fallback language
-//     interpolation: {
-//         escapeValue: false,
-//     },
-// });
+i18n.use(initReactI18next).init({
+    resources,
+    lng: 'en', // Default language
+    fallbackLng: 'en', // Fallback language
+    interpolation: {
+        escapeValue: false,
+    },
+});
 
 export default i18n;

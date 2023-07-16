@@ -75,7 +75,10 @@ const Register = () => {
 
             <div className='header'>
                 <div className="container">
-                    <img src={isDarkMode ? LogoDark : Logo} alt="logo" />
+
+                    <a href="/">
+                        <img src={isDarkMode ? LogoDark : Logo} alt="logo" />
+                    </a>
 
 
                     <div className='lang-mode'>

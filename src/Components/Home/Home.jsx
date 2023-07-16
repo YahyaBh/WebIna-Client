@@ -62,7 +62,6 @@ import { ThemeContext } from '../../Context/ThemeContext';
 import { Tooltip } from 'react-tooltip';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom'
-import { useTranslation } from 'react-i18next';
 
 const Home = () => {
 
@@ -96,7 +95,6 @@ const Home = () => {
 
     const navigate = useNavigate()
 
-    const { t } = useTranslation();
 
     useEffect(() => {
 
@@ -296,7 +294,7 @@ const Home = () => {
                         <div className='main-container'>
                             <div className="background-grad">
                                 <div className='left-container'>
-                                    <h1 data-aos="fade-down">{t('gs')[0]} <span>{t('gs')[1]}</span> {t('gs')[2]}</h1>
+                                    <h1 data-aos="fade-down">GET <span>YOUR</span> WEBSITE</h1>
 
                                     <p data-aos="fade-down">We are gonna create a well developed and designed website from your own choice and it will exactly as you desire and want .
                                         The website you want will be created with high quality ,

@@ -98,9 +98,9 @@ const Login = () => {
 
             <div className='header'>
                 <div className="container">
-
-                    <img src={isDarkMode ? LogoDark : Logo} alt="logo" />
-
+                    <a href="/">
+                        <img src={isDarkMode ? LogoDark : Logo} alt="logo" />
+                    </a>
 
                     <div className='lang-mode'>
                         {isDarkMode ? <FaSun onClick={toggleTheme} /> : <FaMoon onClick={toggleTheme} />}
