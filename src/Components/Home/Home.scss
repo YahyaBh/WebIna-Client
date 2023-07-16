@@ -119,7 +119,7 @@
             .left-container {
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
+                justify-content: flex-start;
                 gap: 30px;
                 max-width: 800px;
 
@@ -129,6 +129,26 @@
                     text-align: center;
                     max-width: 100%;
                     width: 100%;
+                }
+
+                .res-button-custom {
+                    width: 45%;
+                    height: 35px;
+                    font-size: 20px;
+                    font-weight: 700;
+                    background-color: var(--primary-color);
+                    color: var(--black-color);
+                    padding: 8px 20px;
+                    border-radius: 20px;
+                    border: none;
+                    outline: none;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    @media screen and (max-width: 900px) {
+                        display: block;
+                    }
                 }
 
                 .res-button-start {
@@ -1544,9 +1564,14 @@
 
                     span {
                         font-size: 58px;
-                        text-shadow: 0 0 5px var(--primary-color), 0 0 15px var(--primary-color),
-                            0 0 20px var(--primary-color), 0 0 40px var(--primary-color), 0 0 60px var(--black-color),
-                            0 0 10px var(--light-color), 0 0 98px var(--black-color);
+                        text-shadow:
+                            0 0 5px var(--primary-color),
+                            0 0 15px var(--primary-color),
+                            0 0 20px var(--primary-color),
+                            0 0 40px var(--primary-color),
+                            0 0 60px var(--black-color),
+                            0 0 10px var(--light-color),
+                            0 0 98px var(--black-color);
                         color: #fff6a9;
                         text-align: center;
                         animation: blink 12s infinite;
@@ -1569,9 +1594,14 @@
                         54%,
                         56%,
                         100% {
-                            text-shadow: 0 0 5px var(--primary-color), 0 0 15px var(--primary-color),
-                                0 0 20px var(--primary-color), 0 0 40px var(--primary-color),
-                                0 0 60px var(--black-color), 0 0 10px var(--light-color), 0 0 98px var(--black-color);
+                            text-shadow:
+                                0 0 5px var(--primary-color),
+                                0 0 15px var(--primary-color),
+                                0 0 20px var(--primary-color),
+                                0 0 40px var(--primary-color),
+                                0 0 60px var(--black-color),
+                                0 0 10px var(--light-color),
+                                0 0 98px var(--black-color);
                             color: #fff6a9;
                         }
                     }
@@ -1592,9 +1622,14 @@
                         54%,
                         56%,
                         100% {
-                            text-shadow: 0 0 5px var(--primary-color), 0 0 15px var(--primary-color),
-                                0 0 20px var(--primary-color), 0 0 40px var(--primary-color),
-                                0 0 60px var(--black-color), 0 0 10px var(--light-color), 0 0 98px var(--black-color);
+                            text-shadow:
+                                0 0 5px var(--primary-color),
+                                0 0 15px var(--primary-color),
+                                0 0 20px var(--primary-color),
+                                0 0 40px var(--primary-color),
+                                0 0 60px var(--black-color),
+                                0 0 10px var(--light-color),
+                                0 0 98px var(--black-color);
                             color: #fff6a9;
                         }
                     }

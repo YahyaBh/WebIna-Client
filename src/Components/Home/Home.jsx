@@ -69,8 +69,13 @@ const Home = () => {
     const [emailGetStarted, setEmailGetStarted] = useState('');
     const [scrolled, setScrolled] = useState(false);
     const [isFadeIn, setIsFadeIn] = useState(false);
-    const [testiomonials, setTestiomonials] = useState([]);
     const [targetDate, setTargetDate] = useState('2023-08-13');
+
+
+
+    const [testiomonials, setTestiomonials] = useState([]);
+    const [projects, setProjects] = useState([]);
+    const [blogs, setBlogs] = useState([]);
 
 
     const [currentImage, setCurrentImage] = useState(Computer1);
@@ -106,9 +111,11 @@ const Home = () => {
 
 
             const getTestimonials_Categories = async () => {
-                await http.get('/api/testimonials')
+                await http.get('/api/home')
                     .then((res) => {
                         setTestiomonials(res.data.testimonials);
+                        setProjects(res.data.projects);
+                        setBlogs(res.data.blogs);
                         setLoading(false);
 
                     })
@@ -294,10 +301,13 @@ const Home = () => {
 
                                     <a href='/maintanence' className='res-button-start'>GET STARTED</a>
 
+
                                     <div className='email-get-started'>
                                         <input data-aos="fade-down" onChange={e => setEmailGetStarted(e.target.value)} type="email" name='email' id='name' placeholder='Enter Email Address' minLength={'8'} />
                                         <button onClick={emailGetStarted ? e => handleEmail() : ''} className={emailGetStarted ? 'active' : ''} disabled={emailGetStarted ? false : true}>GET STARTED</button>
                                     </div>
+
+                                    <a href='/custom-order' className='res-button-custom'>CUSTOM ORDER</a>
 
                                     <div data-aos="fade-down" className='undertext'>
                                         <BsArrowRight />
@@ -321,6 +331,7 @@ const Home = () => {
                                         alt="computer-science" />
                                     <img ref={tiltRef} src={BackGroundContainer} alt="container" />
                                 </div>
+
 
 
                                 <div data-aos="fade-down" className='res-undertext'>
@@ -403,7 +414,7 @@ const Home = () => {
                                             <p>
                                                 Our team with professional designers and web developers will present the best 100% costumed website for your business
                                             </p>
-                                            <a href='/maintanence'>GET STARTED</a>
+                                            <a href='/website-development'>GET STARTED</a>
                                         </div>
                                     </div>
                                 </div>
@@ -415,34 +426,34 @@ const Home = () => {
                                         <p>
                                             Marketing especially on social media to make your website and business grow and you can accomplish that with Webina
                                         </p>
-                                        <a href='/maintanence'>GET STARTED</a>
+                                        <a href='/social-media'>GET STARTED</a>
                                     </div>
 
                                     <div data-aos="fade-down" data-aos-duration="200" className={isDarkMode === true ? 'dark card' : 'card'}>
-                                        <img src={DesignIcon} alt="social media Icon" />
+                                        <img src={DesignIcon} alt="Design" />
                                         <h4>Designing</h4>
                                         <p>
                                             The designs that are used in the websites we create and offer to our costumers are made by highly professional designers
                                         </p>
-                                        <a href='/maintanence'>GET STARTED</a>
+                                        <a href='/design'>GET STARTED</a>
                                     </div>
 
                                     <div data-aos="fade-down" data-aos-duration="400" className={isDarkMode === true ? 'dark card' : 'card'}>
-                                        <img src={MobileIcon} alt="social media Icon" />
+                                        <img src={MobileIcon} alt="Mobile Apps Development" />
                                         <h4>Mobile Apps Development</h4>
                                         <p>
                                             Our team can also develop a Mobile App that will be linked directly ro your website.
                                         </p>
-                                        <a href='/maintanence'>GET STARTED</a>
+                                        <a href='/mobile-development'>GET STARTED</a>
                                     </div>
 
                                     <div data-aos="fade-down" data-aos-duration="600" className={isDarkMode === true ? 'dark card' : 'card'}>
-                                        <img src={DesktopIcon} alt="social media Icon" />
+                                        <img src={DesktopIcon} alt="Desktop App Dev" />
                                         <h4>Desktop App Developement </h4>
                                         <p>
                                             We can create you a desktop app that will be fully linked to your website an  will 100% of your choice
                                         </p>
-                                        <a href='/maintanence'>GET STARTED</a>
+                                        <a href='/desktop-development'>GET STARTED</a>
                                     </div>
                                 </div>
                             </div>
@@ -457,7 +468,7 @@ const Home = () => {
 
                                     <p>We Will Help Your Client To Reach Your Website , Easily In The First Link In Google</p>
 
-                                    <a href='/maintanence'>GET YOUR WEBSITE</a>
+                                    <a href='/store'>GET YOUR WEBSITE</a>
                                 </div>
 
 
@@ -471,7 +482,7 @@ const Home = () => {
                                     <h3><div>Create your website as you wish in any field and with any <span>design</span></div> <HiOutlineArrowRight /></h3>
                                 </div>
 
-                                <a href='/maintanence' data-aos="fade-right">ORDER NOW</a>
+                                <a href='/store' data-aos="fade-right">ORDER NOW</a>
                             </div>
 
 
@@ -483,34 +494,19 @@ const Home = () => {
                                         <span> trending</span>
                                     </h3>
 
-                                    <a href='/maintanence'>Explore the Blog</a>
+                                    <a href='/blogs'>Explore the Blog</a>
                                 </div>
 
                                 <div className="right-container">
-                                    <div className='blog-card' data-aos="fade-down">
-                                        <div className='blog-body'>
-                                            <ImageComponent className="image" src={BlogTest} alt="blog" />
-                                            <h5>How to design a website in 2023 FIGMA</h5>
+                                    {blogs.map((blog, index) => (
+                                        <div key={index} className='blog-card' data-aos="fade-down" data-aos-duration="500">
+                                            <div className='blog-body'>
+                                                <ImageComponent className="image" src={BlogTest} alt={blog.name} />
+                                                <h5>{blog.name}</h5>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className='blog-card' data-aos="fade-down" data-aos-duration="200">
-                                        <div className='blog-body'>
-                                            <ImageComponent className="image" src={BlogTest} alt="blog" />
-                                            <h5>How to design a website in 2023 FIGMA</h5>
-                                        </div>
-                                    </div>
-                                    <div className='blog-card' data-aos="fade-down" data-aos-duration="300">
-                                        <div className='blog-body'>
-                                            <ImageComponent className="image" src={BlogTest} alt="blog" />
-                                            <h5>How to design a website in 2023 FIGMA</h5>
-                                        </div>
-                                    </div>
-                                    <div className='blog-card' data-aos="fade-down" data-aos-duration="500">
-                                        <div className='blog-body'>
-                                            <ImageComponent className="image" src={BlogTest} alt="blog" />
-                                            <h5>How to design a website in 2023 FIGMA</h5>
-                                        </div>
-                                    </div>
+                                    ))}
+
                                 </div>
                             </div>
 
@@ -616,47 +612,23 @@ const Home = () => {
 
 
                                     <div className="projects-container">
-                                        <div className="card">
-                                            <img src={TestProject} alt="Project name" />
 
-                                            <h3>Mi portal U</h3>
 
-                                            <div className='categories'>
-                                                <span>UX Design</span>
-                                                <span>University</span>
-                                                <span>JavaScript</span>
+                                        {projects.map((project, index) => (
+                                            <div key={index} className="card">
+                                                <img src={TestProject} alt={project.name + '' + index} />
+
+                                                <h3>{project.name}</h3>
+
+                                                <div className='categories'>
+                                                    {project.categories.map((category, index) => (
+                                                        <span key={index}>{category}</span>
+                                                    ))}
+                                                </div>
+
+                                                <a href={`/project/${project.name}`} className='details-button'>Show Details</a>
                                             </div>
-
-                                            <a href='/maintanence' className='details-button'>Show Details</a>
-                                        </div>
-
-                                        <div className="card">
-                                            <img src={TestProject} alt="Project name" />
-
-                                            <h3>Mi portal U</h3>
-
-                                            <div className='categories'>
-                                                <span>UX Design</span>
-                                                <span>University</span>
-                                                <span>JavaScript</span>
-                                            </div>
-
-                                            <a href='/maintanence' className='details-button'>Show Details</a>
-                                        </div>
-
-                                        <div className="card">
-                                            <img src={TestProject} alt="Project name" />
-
-                                            <h3>Mi portal U</h3>
-
-                                            <div className='categories'>
-                                                <span>UX Design</span>
-                                                <span>University</span>
-                                                <span>JavaScript</span>
-                                            </div>
-
-                                            <a href='/maintanence' className='details-button'>Show Details</a>
-                                        </div>
+                                        ))}
                                     </div>
                                 </div>
 
