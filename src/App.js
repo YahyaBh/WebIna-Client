@@ -1,7 +1,10 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from './Components/Home/Home';
 import { ThemeProvider } from "./Context/ThemeContext";
+
+
+//English Directions
+import Home from './Components/Home/Home';
 import Maintanence from "./Build/Maintanence/Maintanence";
 import PageUnavailable from "./Build/Error/PageUnavailable";
 import Register from "./Components/Register/Register";
@@ -12,11 +15,37 @@ import Store from "./Components/Store/Store";
 import Privacy from './Build/Privacy/Privacy'
 
 
+//Arabic Directions
+import ArHome from './Website/Ar/Components/Home/Home';
+import ArMaintanence from "./Website/Ar/Build/Maintanence/Maintanence";
+import ArPageUnavailable from "./Website/Ar/Build/Error/PageUnavailable";
+import ArRegister from "./Website/Ar/Components/Register/Register";
+import ArWelcome from "./Website/Ar/Components/Welcome/Welcome";
+import ArLogin from "./Website/Ar/Components/Login/Login";
+import ArLogout from "./Website/Ar/Components/Logout/Logout";
+import ArStore from "./Website/Ar/Components/Store/Store";
+import ArPrivacy from './Website/Ar/Build/Privacy/Privacy'
+
+
+//French Routes
+import FrHome from './Website/Fr/Components/Home/Home';
+import FrMaintanence from "./Website/Fr/Build/Maintanence/Maintanence";
+import FrPageUnavailable from "./Website/Fr/Build/Error/PageUnavailable";
+import FrRegister from "./Website/Fr/Components/Register/Register";
+import FrWelcome from "./Website/Fr/Components/Welcome/Welcome";
+import FrLogin from "./Website/Fr/Components/Login/Login";
+import FrLogout from "./Website/Fr/Components/Logout/Logout";
+import FrStore from "./Website/Fr/Components/Store/Store";
+import FrPrivacy from './Website/Fr/Build/Privacy/Privacy'
+
 function App() {
 
   return (
     <ThemeProvider>
       <Routes>
+
+
+        {/* English routes */}
         <Route exact path='/' element={<Home />} />
 
         <Route exact path='/register' element={<Register />} />
@@ -33,6 +62,45 @@ function App() {
 
         <Route exact path='/maintanence' element={<Maintanence />} />
         <Route exact path="*" element={<PageUnavailable />} />
+
+
+
+        {/* Arabic routes */}
+        <Route exact path='/ar' element={<ArHome />} />
+
+        <Route exact path='/ar/register' element={<ArRegister />} />
+        <Route exact path='/ar/login' element={<ArLogin />} />
+        <Route exact path='/ar/privacy-policy' element={<ArPrivacy />} />
+
+
+        {/* Authenticated user */}
+        <Route exact path='/ar/logout' element={<ArLogout />} />
+        <Route exact path='/ar/welcome' element={<ArWelcome />} />
+        <Route exact path='/ar/store' element={<ArStore />} />
+
+
+
+        <Route exact path='/ar/maintanence' element={<ArMaintanence />} />
+        <Route exact path="ar/*" element={<ArPageUnavailable />} />
+
+
+        {/* French routes */}
+        <Route exact path='/fr' element={<FrHome />} />
+
+        <Route exact path='/fr/register' element={<FrRegister />} />
+        <Route exact path='/fr/login' element={<FrLogin />} />
+        <Route exact path='/fr/privacy-policy' element={<FrPrivacy />} />
+
+
+        {/* Authenticated user */}
+        <Route exact path='/fr/logout' element={<FrLogout />} />
+        <Route exact path='/fr/welcome' element={<FrWelcome />} />
+        <Route exact path='/fr/store' element={<FrStore />} />
+
+
+
+        <Route exact path='/fr/maintanence' element={<FrMaintanence />} />
+        <Route exact path="fr/*" element={<FrPageUnavailable />} />
       </Routes>
     </ThemeProvider>
 
