@@ -4,15 +4,15 @@ import { ThemeProvider } from "./Context/ThemeContext";
 
 
 //English Directions
-import Home from './Components/Home/Home';
-import Maintanence from "./Build/Maintanence/Maintanence";
-import PageUnavailable from "./Build/Error/PageUnavailable";
-import Register from "./Components/Register/Register";
-import Welcome from "./Components/Welcome/Welcome";
-import Login from "./Components/Login/Login";
-import Logout from "./Components/Logout/Logout";
-import Store from "./Components/Store/Store";
-import Privacy from './Build/Privacy/Privacy'
+import Home from './Website/En/Components/Home/Home';
+import Maintanence from "./Website/En/Build/Maintanence/Maintanence";
+import PageUnavailable from "./Website/En/Build/Error/PageUnavailable";
+import Register from "./Website/En/Components/Register/Register";
+import Welcome from "./Website/En/Components/Welcome/Welcome";
+import Login from "./Website/En/Components/Login/Login";
+import Logout from "./Website/En/Components/Logout/Logout";
+import Store from "./Website/En/Components/Store/Store";
+import Privacy from './Website/En/Build/Privacy/Privacy'
 
 
 //Arabic Directions

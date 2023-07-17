@@ -1,5 +1,5 @@
 import React from 'react'
-import Logo from '../../Assets/Home/Navbar/WEBINA-Logo.png'
+import Logo from '../../../../Assets/Home/Navbar/WEBINA-Logo.png'
 
 import './Loading.scss'
 

@@ -13,42 +13,40 @@ import { IoIosArrowForward, IoIosArrowBack, IoLogoJavascript, IoLogoCss3, IoMdSt
 import { BiArrowFromLeft } from 'react-icons/bi'
 
 import AnchorLink from 'react-anchor-link-smooth-scroll';
-import BackGroundContainer from '../../Assets/Home/Section 1 Main/ComputerSectionHome.svg'
-import Computer1 from '../../Assets/Home/Section 1 Main/computer.png';
-import Computer2 from '../../Assets/Home/Section 1 Main/panel.png';
-import Computer3 from '../../Assets/Home/Section 1 Main/boy-image.svg';
-import Computer4 from '../../Assets/Home/Section 1 Main/3d-shapes.svg';
-import WebInaPhone from '../../Assets/Home/Section 2/iPhone7.png'
-import floatingRightHatDark from '../../Assets/Home/Section 2/FloatingRightHatDark.png';
-import floatingRightHat from '../../Assets/Home/Section 2/FloatingRightHat.png';
-import OrnamentHoriz from '../../Assets/Home/Section 2/OrnamentHoriz.png';
-import OrnamentHorizDark from '../../Assets/Home/Section 2/OrnamentHorizDark.png';
-import OrnamentUp from '../../Assets/Home/Section 2/OrnamentUp.png';
-import OrnamentUpDark from '../../Assets/Home/Section 2/OrnamentUpDark.png';
-import DevIcon from '../../Assets/Home/Section 2/dev-icon.svg'
-import SocialIcon from '../../Assets/Home/Section 2/social-icon.svg';
-import DesignIcon from '../../Assets/Home/Section 2/design-icon.svg';
-import MobileIcon from '../../Assets/Home/Section 2/mobile-icon.svg';
-import DesktopIcon from '../../Assets/Home/Section 2/desktop-icon.svg';
-import SEO from '../../Assets/Home/SEO Section/seo.png'
-import BlogTest from '../../Assets/Home/Section Blog/maxresdefault-test.png'
-import LeftTopArrow from '../../Assets/Home/Perf-Section/Arrow-Left-Top.png';
-import LeftBottomArrow from '../../Assets/Home/Perf-Section/Arrow-Left-Bottom.png';
-import RightTopArrow from '../../Assets/Home/Perf-Section/Arrow-Right-Top.png';
-import RightBottomArrow from '../../Assets/Home/Perf-Section/Arrow-Right-Bottom.png';
-import TestImage from '../../Assets/Home/Perf-Section/TestImage.png';
-import VideoIntro from '../../Assets/Home/Perf-Section/INTRO WEBINA COMMUNITY 2 .mp4'
-import TestProject from '../../Assets/Home/Projects Section/TestProjects.png';
-import TestFeed from '../../Assets/Home/FeedBack Section/TestFeed.png'
-import TestSlide from '../../Assets/Home/Slide Section/21742777_6517498-ai.png'
-import ContactImg from '../../Assets/Home/Contact Section/at-dynamic-color.svg'
+import BackGroundContainer from '../../../../Assets/Home/Section 1 Main/ComputerSectionHome.svg'
+import Computer1 from '../../../../Assets/Home/Section 1 Main/computer.png';
+import Computer2 from '../../../../Assets/Home/Section 1 Main/panel.png';
+import Computer3 from '../../../../Assets/Home/Section 1 Main/boy-image.svg';
+import Computer4 from '../../../../Assets/Home/Section 1 Main/3d-shapes.svg';
+import WebInaPhone from '../../../../Assets/Home/Section 2/iPhone7.png'
+import floatingRightHatDark from '../../../../Assets/Home/Section 2/FloatingRightHatDark.png';
+import floatingRightHat from '../../../../Assets/Home/Section 2/FloatingRightHat.png';
+import OrnamentHoriz from '../../../../Assets/Home/Section 2/OrnamentHoriz.png';
+import OrnamentHorizDark from '../../../../Assets/Home/Section 2/OrnamentHorizDark.png';
+import OrnamentUp from '../../../../Assets/Home/Section 2/OrnamentUp.png';
+import OrnamentUpDark from '../../../../Assets/Home/Section 2/OrnamentUpDark.png';
+import DevIcon from '../../../../Assets/Home/Section 2/dev-icon.svg'
+import SocialIcon from '../../../../Assets/Home/Section 2/social-icon.svg';
+import DesignIcon from '../../../../Assets/Home/Section 2/design-icon.svg';
+import MobileIcon from '../../../../Assets/Home/Section 2/mobile-icon.svg';
+import DesktopIcon from '../../../../Assets/Home/Section 2/desktop-icon.svg';
+import SEO from '../../../../Assets/Home/SEO Section/seo.png'
+import LeftTopArrow from '../../../../Assets/Home/Perf-Section/Arrow-Left-Top.png';
+import LeftBottomArrow from '../../../../Assets/Home/Perf-Section/Arrow-Left-Bottom.png';
+import RightTopArrow from '../../../../Assets/Home/Perf-Section/Arrow-Right-Top.png';
+import RightBottomArrow from '../../../../Assets/Home/Perf-Section/Arrow-Right-Bottom.png';
+import TestImage from '../../../../Assets/Home/Perf-Section/TestImage.png';
+import VideoIntro from '../../../../Assets/Home/Perf-Section/INTRO WEBINA COMMUNITY 2 .mp4'
+import TestFeed from '../../../../Assets/Home/FeedBack Section/TestFeed.png'
+import TestSlide from '../../../../Assets/Home/Slide Section/21742777_6517498-ai.png'
+import ContactImg from '../../../../Assets/Home/Contact Section/at-dynamic-color.svg'
 
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import luxyMin from 'luxy.js';
 
 
-import AuthContext from '../../Context/AuthContext'
+import AuthContext from '../../../../Context/AuthContext'
 import Loading from '../Loading/Loading';
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -58,7 +56,7 @@ import "swiper/css/navigation";
 import "./styles.scss";
 import { Pagination, Navigation } from "swiper";
 import Footer from '../Layout/Footer/Footer';
-import { ThemeContext } from '../../Context/ThemeContext';
+import { ThemeContext } from '../../../../Context/ThemeContext';
 import { Tooltip } from 'react-tooltip';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom'

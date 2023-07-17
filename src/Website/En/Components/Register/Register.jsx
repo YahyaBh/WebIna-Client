@@ -1,15 +1,15 @@
 import React, { useContext, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import './Register.scss'
-import AuthContext from '../../Context/AuthContext'
+import AuthContext from '../../../../Context/AuthContext'
 import Cookies from 'js-cookie';
 import { MdLanguage } from 'react-icons/md';
 import { FaFacebook, FaGoogle, FaMoon, FaSun } from 'react-icons/fa';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
-import { ThemeContext } from '../../Context/ThemeContext';
-import LogoDark from '../../Assets/Home/Navbar/WEBINA-Logo.png'
-import Logo from '../../Assets/Home/Navbar/WEBINA2.png'
-import SignUp from '../../Assets/SignUp/SignUpGraph.svg'
+import { ThemeContext } from '../../../../Context/ThemeContext';
+import LogoDark from '../../../../Assets/Home/Navbar/WEBINA-Logo.png'
+import Logo from '../../../../Assets/Home/Navbar/WEBINA2.png'
+import SignUp from '../../../../Assets/SignUp/SignUpGraph.svg'
 import Swal from 'sweetalert2';
 
 const Register = () => {

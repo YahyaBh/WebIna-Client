@@ -1,19 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react'
-import Logo from '../../../Assets/Home/Navbar/WEBINA2.png';
-import LogoLight from '../../../Assets/Home/Navbar/WEBINA-Logo.png';
+import Logo from '../../../../../Assets/Home/Navbar/WEBINA2.png';
+import LogoLight from '../../../../../Assets/Home/Navbar/WEBINA-Logo.png';
 import './Navbar.scss'
 import { MdLanguage, MdKeyboardArrowDown } from 'react-icons/md'
 import { FaMoon, FaSun } from 'react-icons/fa'
 import { BiUser } from 'react-icons/bi'
 import { FiUserPlus } from 'react-icons/fi'
 import { BsListNested } from 'react-icons/bs';
-import Ecommerce from '../../../Assets/Home/Navbar/Add to Cart-cuate.svg'
-import Morocco from '../../../Assets/Home/Navbar/Languages/Flag_of_Morocco.svg.png'
-import English from '../../../Assets/Home/Navbar/Languages/Flag_of_the_United_Kingdom.svg.png'
-import French from '../../../Assets/Home/Navbar/Languages/Flag_of_France.svg.png'
-import { ThemeContext } from "../../../Context/ThemeContext";
-import AuthContext from '../../../Context/AuthContext';
-import Profile from '../../../Assets/profiles/default.svg'
+import Ecommerce from '../../../../../Assets/Home/Navbar/Add to Cart-cuate.svg'
+import Morocco from '../../../../../Assets/Home/Navbar/Languages/Flag_of_Morocco.svg.png'
+import English from '../../../../../Assets/Home/Navbar/Languages/Flag_of_the_United_Kingdom.svg.png'
+import French from '../../../../../Assets/Home/Navbar/Languages/Flag_of_France.svg.png'
+import { ThemeContext } from "../../../../../Context/ThemeContext";
+import AuthContext from '../../../../../Context/AuthContext';
+import Profile from '../../../../../Assets/profiles/default.svg'
 
 const Navbar = ({ isOpen, transparent }) => {
 

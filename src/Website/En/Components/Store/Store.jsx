@@ -5,7 +5,7 @@ import AsideStore from '../Layout/Aside/AsideStore';
 import { MdKeyboardArrowRight , MdKeyboardArrowLeft} from 'react-icons/md';
 import './Store.scss'
 import { BsFillStarFill, BsStar, BsStarHalf, BsCart2 } from 'react-icons/bs';
-import TestImage from '../../Assets/Home/Projects Section/TestProjects.png'
+import TestImage from '../../../../Assets/Home/Projects Section/TestProjects.png'
 
 
 

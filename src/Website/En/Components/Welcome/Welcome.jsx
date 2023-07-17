@@ -1,5 +1,5 @@
-import React, { useEffect, useLayoutEffect } from 'react'
-import AuthContext from '../../Context/AuthContext'
+import React, { useLayoutEffect } from 'react'
+import AuthContext from '../../../../Context/AuthContext'
 import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router-dom'
 

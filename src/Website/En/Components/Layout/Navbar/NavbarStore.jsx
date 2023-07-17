@@ -1,16 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react'
-import Logo from '../../../Assets/Home/Navbar/WEBINA2.png';
-import LogoLight from '../../../Assets/Home/Navbar/WEBINA-Logo.png';
+import Logo from '../../../../../Assets/Home/Navbar/WEBINA2.png';
+import LogoLight from '../../../../../Assets/Home/Navbar/WEBINA-Logo.png';
 import './NavbarStore.scss'
 import { FaMoon, FaSun } from 'react-icons/fa'
 import { BiUser } from 'react-icons/bi'
 import { FiUserPlus } from 'react-icons/fi'
 import { BsList } from 'react-icons/bs';
 import { AiOutlineSearch, AiOutlineShoppingCart } from 'react-icons/ai'
-import Ecommerce from '../../../Assets/Home/Navbar/Add to Cart-cuate.svg'
-import { ThemeContext } from "../../../Context/ThemeContext";
-import AuthContext from '../../../Context/AuthContext';
-import Profile from '../../../Assets/profiles/default.svg'
+import Ecommerce from '../../../../../Assets/Home/Navbar/Add to Cart-cuate.svg'
+import { ThemeContext } from "../../../../../Context/ThemeContext";
+import AuthContext from '../../../../../Context/AuthContext';
+import Profile from '../../../../../Assets/profiles/default.svg'
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
 

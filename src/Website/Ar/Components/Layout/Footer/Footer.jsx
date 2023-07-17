@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import './Footer.scss'
-import Logo from '../../../Assets/Home/Navbar/WEBINA-Logo.png'
+import Logo from '../../../../../Assets/Home/Navbar/WEBINA-Logo.png'
 import { FaFacebook, FaInstagram, FaTiktok, FaTwitter } from 'react-icons/fa'
-import { ThemeContext } from '../../../Context/ThemeContext'
+import { ThemeContext } from '../../../../../Context/ThemeContext'
 
 const Footer = () => {
 
