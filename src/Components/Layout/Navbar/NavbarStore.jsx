@@ -78,7 +78,7 @@ const NavbarStore = ({ isOpen, transparent }) => {
 
     return (
         <>
-            <nav id='store-navbar' className={scrolled ? 'scrolled' : '' || transparent ? 'transparent' : ''}>
+            <nav id='store-navbar' className={scrolled ? 'scrolled-store' : '' || transparent ? 'transparent-store' : ''}>
                 <div className={`modal-products ${modalClassName}  ${selectedProduct ? 'active' : ''}`}>
                     <div className="modal-content">
                         <span className="close" onClick={e => SetselectedProduct('')}>&times;</span>
