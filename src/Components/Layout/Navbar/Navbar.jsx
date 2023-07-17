@@ -11,7 +11,6 @@ import Ecommerce from '../../../Assets/Home/Navbar/Add to Cart-cuate.svg'
 import { ThemeContext } from "../../../Context/ThemeContext";
 import AuthContext from '../../../Context/AuthContext';
 import Profile from '../../../Assets/profiles/default.svg'
-// import i18n from '../../../i18n';
 
 const Navbar = ({ isOpen, transparent }) => {
 
@@ -76,9 +75,6 @@ const Navbar = ({ isOpen, transparent }) => {
         }
     }
 
-    // const changeLanguage = (language) => {
-    //     i18n.changeLanguage(language);
-    // };
 
 
     return (
@@ -89,17 +85,17 @@ const Navbar = ({ isOpen, transparent }) => {
                         <span className="close" onClick={e => setLanguage('')}>&times;</span>
                         <h2>Choose A Language</h2>
                         <div className='languages-container'>
-                            <div className='lang' onClick={e => changeLanguage('ar')}>
+                            <div className='lang' >
                                 <img src={Ecommerce} alt="Arabic" />
                                 <h3>العربية</h3>
                             </div>
 
-                            <div className='lang' onClick={e => changeLanguage('fr')}>
+                            <div className='lang' >
                                 <img src={Ecommerce} alt="French" />
                                 <h3>Francaise</h3>
                             </div>
 
-                            <div className='lang' onClick={e => changeLanguage('en')}>
+                            <div className='lang' >
                                 <img src={Ecommerce} alt="English" />
                                 <h3>English</h3>
                             </div>
@@ -107,7 +103,7 @@ const Navbar = ({ isOpen, transparent }) => {
                     </div>
                 </div> */}
 
-                <div className={`modal-languages ${modalClassName}  ${selectedProduct ? 'active' : ''}`}>
+                {/* <div className={`modal-languages ${modalClassName}  ${selectedProduct ? 'active' : ''}`}>
                     <div className="modal-content">
                         <span className="close" onClick={e => SetselectedProduct('')}>&times;</span>
                         <h2>Categories</h2>
@@ -137,7 +133,7 @@ const Navbar = ({ isOpen, transparent }) => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
 
 
