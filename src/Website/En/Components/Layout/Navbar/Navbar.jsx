@@ -159,6 +159,7 @@ const Navbar = ({ isOpen, transparent }) => {
                                     <li onClick={e => SetselectedProduct('nfts-design')}>NFTs Designing</li> */}
                                 </ul>
                             </li>
+                            <li><a href='/maintanence'>Custom</a></li>
                             <li><a href='/maintanence'>Pricing</a></li>
                             <li><a href='/maintanence'>Blogs</a></li>
                             <li><a href='/maintanence'>About Us</a></li>

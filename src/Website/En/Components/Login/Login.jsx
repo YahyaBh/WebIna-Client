@@ -61,31 +61,43 @@ const Login = () => {
                 })
                 .catch((err) => {
                     setLoginLoading(false)
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops! Something went wrong',
-                        text: err.message,
-                        customClass: {
-                            container: 'popup-container',
-                            popup: 'popup-popup',
-                            header: 'popup-header',
-                            title: 'popup-title',
-                            closeButton: 'popup-close-button',
-                            icon: 'popup-icon',
-                            image: 'popup-image',
-                            htmlContainer: 'popup-html',
-                            input: 'popup-input',
-                            inputLabel: 'popup-input-label',
-                            validationMessage: 'popup-validation-message',
-                            actions: 'popup-actions',
-                            confirmButton: 'popup-confirm-button',
-                            denyButton: 'popup-deny-button',
-                            cancelButton: 'popup-cancel-button',
-                            loader: 'popup-loader',
-                            footer: 'popup-footer',
-                            timerProgressBar: 'popup-timer-progress-bar',
-                        }
-                    })
+
+                    if (err.response.status === 401) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops! Something went wrong',
+                            text: 'Email or password is incorrect',
+                            customClass: {
+                                container: 'popup-container',
+                                popup: 'popup-popup',
+                                header: 'popup-header',
+                                title: 'popup-title',
+                                closeButton: 'popup-close-button',
+                                icon: 'popup-icon',
+                                image: 'popup-image',
+                                htmlContainer: 'popup-html',
+                                input: 'popup-input',
+                                inputLabel: 'popup-input-label',
+                                validationMessage: 'popup-validation-message',
+                                actions: 'popup-actions',
+                                confirmButton: 'popup-confirm-button',
+                                denyButton: 'popup-deny-button',
+                                cancelButton: 'popup-cancel-button',
+                                loader: 'popup-loader',
+                                footer: 'popup-footer',
+                                timerProgressBar: 'popup-timer-progress-bar',
+                            },
+                            confirmButtonAriaLabel: 'Sign Up Instead ?',
+                            cancelButtonAriaLabel: 'Try Again',
+                        })
+                            .then((res) => {
+                                if (res.isConfirmed) {
+                                    navigate('/register')
+                                }
+                            })
+                    } else {
+
+                    }
                 })
         }
 
