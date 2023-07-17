@@ -8,6 +8,9 @@ import { BiUser } from 'react-icons/bi'
 import { FiUserPlus } from 'react-icons/fi'
 import { BsListNested } from 'react-icons/bs';
 import Ecommerce from '../../../Assets/Home/Navbar/Add to Cart-cuate.svg'
+import Morocco from '../../../Assets/Home/Navbar/Languages/Flag_of_Morocco.svg.png'
+import English from '../../../Assets/Home/Navbar/Languages/Flag_of_the_United_Kingdom.svg.png'
+import French from '../../../Assets/Home/Navbar/Languages/Flag_of_France.svg.png'
 import { ThemeContext } from "../../../Context/ThemeContext";
 import AuthContext from '../../../Context/AuthContext';
 import Profile from '../../../Assets/profiles/default.svg'
@@ -80,30 +83,30 @@ const Navbar = ({ isOpen, transparent }) => {
     return (
         <>
             <nav id='navbar' className={scrolled ? 'scrolled' : '' || transparent ? 'transparent' : ''}>
-                {/* <div className={`modal-products ${modalClassName}  ${language ? 'active' : ''}`}>
+                <div className={`modal-languages ${modalClassName}  ${language ? 'active' : ''}`}>
                     <div className="modal-content">
                         <span className="close" onClick={e => setLanguage('')}>&times;</span>
                         <h2>Choose A Language</h2>
                         <div className='languages-container'>
                             <div className='lang' >
-                                <img src={Ecommerce} alt="Arabic" />
+                                <img src={Morocco} alt="Arabic" />
                                 <h3>العربية</h3>
                             </div>
 
                             <div className='lang' >
-                                <img src={Ecommerce} alt="French" />
+                                <img src={French} alt="French" />
                                 <h3>Francaise</h3>
                             </div>
 
                             <div className='lang' >
-                                <img src={Ecommerce} alt="English" />
+                                <img src={English} alt="English" />
                                 <h3>English</h3>
                             </div>
                         </div>
                     </div>
-                </div> */}
+                </div>
 
-                {/* <div className={`modal-languages ${modalClassName}  ${selectedProduct ? 'active' : ''}`}>
+                <div className={`modal-products ${modalClassName}  ${selectedProduct ? 'active' : ''}`}>
                     <div className="modal-content">
                         <span className="close" onClick={e => SetselectedProduct('')}>&times;</span>
                         <h2>Categories</h2>
@@ -133,7 +136,7 @@ const Navbar = ({ isOpen, transparent }) => {
                             </div>
                         </div>
                     </div>
-                </div> */}
+                </div>
 
 
 

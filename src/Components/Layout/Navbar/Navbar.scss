@@ -32,7 +32,8 @@
         opacity: 1;
     }
 
-    .modal-products.active {
+    .modal-products.active,
+    .modal-languages.active {
         display: block;
     }
 
@@ -61,6 +62,105 @@
             .category {
                 cursor: pointer;
                 transition: all 0.3s ease;
+
+                &:hover {
+                    transform: translateY(-10px);
+                }
+            }
+        }
+
+        @-webkit-keyframes unfoldIn {
+            0% {
+                transform: scaleY(0.005) scaleX(0);
+            }
+            50% {
+                transform: scaleY(0.005) scaleX(1);
+            }
+            100% {
+                transform: scaleY(1) scaleX(1);
+            }
+        }
+
+        @keyframes unfoldIn {
+            0% {
+                transform: scaleY(0.005) scaleX(0);
+            }
+            50% {
+                transform: scaleY(0.005) scaleX(1);
+            }
+            100% {
+                transform: scaleY(1) scaleX(1);
+            }
+        }
+
+        @-webkit-keyframes unfoldOut {
+            0% {
+                transform: scaleY(1) scaleX(1);
+            }
+            50% {
+                transform: scaleY(0.005) scaleX(1);
+            }
+            100% {
+                transform: scaleY(0.005) scaleX(0);
+            }
+        }
+
+        @keyframes unfoldOut {
+            0% {
+                transform: scaleY(1) scaleX(1);
+            }
+            50% {
+                transform: scaleY(0.005) scaleX(1);
+            }
+            100% {
+                transform: scaleY(0.005) scaleX(0);
+            }
+        }
+    }
+    .modal-languages {
+        display: none;
+        position: fixed;
+        z-index: 20;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.7);
+        overflow: hidden;
+        -webkit-animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+        animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+
+        h2 {
+            color: var(--dark-color);
+            font-family: Elegant-Ar !important;
+            text-transform: uppercase;
+        }
+
+        .languages-container {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 20px;
+            padding: 70px;
+            flex-direction: row;
+
+            .lang {
+                cursor: pointer;
+                transition: all 0.3s ease;
+                img {
+                    width: 300px;
+                    height: 200px;
+                    object-fit: cover;
+                    border-radius: 10px;
+                }
+
+                h3 {
+                    color: var(--dark-color);
+                    text-align: center;
+                    font-family: Elegant-Ar !important;
+                    margin-top: 10px;
+                }
 
                 &:hover {
                     transform: translateY(-10px);
@@ -210,7 +310,7 @@
             box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             z-index: 1;
             top: 25px;
-            transition: all .5s ease-in;
+            transition: all 0.5s ease-in;
         }
 
         .dropdown-menu li {
@@ -219,7 +319,7 @@
             display: block;
             color: #333;
             cursor: pointer;
-            transition: all .5s ease-in;
+            transition: all 0.5s ease-in;
         }
 
         .dropdown-menu li:hover {
@@ -228,7 +328,7 @@
 
         li:hover .dropdown-menu {
             height: 230px !important;
-            transition: all .5s ease-in;
+            transition: all 0.5s ease-in;
         }
 
         .right-container {

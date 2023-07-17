@@ -5,6 +5,11 @@
   src: url("../public/Fonts/Unisect_Black.ttf");
 }
 
+@font-face {
+  font-family: "Elegant-Ar";
+  src: url("../public/Fonts/Elegant-ar-bold.ttf");
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
