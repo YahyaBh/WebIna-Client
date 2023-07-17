@@ -9,12 +9,12 @@ const Welcome = () => {
     const { user } = AuthContext()
 
     useLayoutEffect(() => {
-        if(Cookies.get('__F_ACCESS') === true) {
-            Cookies.set('__F_ACCESS' , false);
+        if (Cookies.get('__F_ACCESS') === true) {
+            Cookies.set('__F_ACCESS', false);
         } else {
             navigate('/');
         }
-    },[]);
+    }, []);
 
     return (
         <div>Welcome {user.name}</div>
