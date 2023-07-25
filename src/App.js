@@ -43,12 +43,11 @@ function App() {
 
 
   useEffect(() => {
-    console.log('Setting page stuff')
     document.body.dir = currentLanguage.dir || 'ltr'
-
     if (currentLanguage.code === 'ar') {
       document.body.style.fontFamily = 'Cairo'
     }
+
   }, [currentLanguage])
 
 
