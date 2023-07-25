@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
 import React, { createContext, useEffect, useState } from "react";
-import Loading from "../Website/En/Components/Loading/Loading";
+import Loading from "../Components/Loading/Loading";
 
 export const ThemeContext = createContext();
 
