@@ -307,15 +307,6 @@ const Home = () => {
                                     </div>
 
 
-                                    {/* <div className="card flip-vertical">
-                                        <div className="front">
-                                            <a href='/custom-order' className='res-button-custom'>CUSTOM ORDER</a>
-                                        </div>
-                                        <div className="back">
-                                            <a href='/custom-order'>GET A CUSTOM APPLICATION</a>
-                                        </div>
-                                    </div> */}
-
                                     <div data-aos="fade-down" className='undertext'>
                                         <BsArrowRight />
                                         <h4>CHANGE YOUR <br /> IDEA TO A BUSINESS</h4>
