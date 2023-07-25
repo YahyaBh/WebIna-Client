@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { ThemeProvider } from "./Context/ThemeContext";
 
 
@@ -45,6 +45,10 @@ function App() {
   useEffect(() => {
     console.log('Setting page stuff')
     document.body.dir = currentLanguage.dir || 'ltr'
+
+    if (currentLanguage.code === 'ar') {
+      document.body.style.fontFamily = 'Cairo'
+    }
   }, [currentLanguage])
 
 

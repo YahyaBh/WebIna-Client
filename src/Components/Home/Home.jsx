@@ -295,24 +295,22 @@ const Home = () => {
                         <div className='main-container'>
                             <div className="background-grad">
                                 <div className='left-container'>
-                                    <h1 data-aos="fade-down">GET <span>YOUR</span> {i18next.t('WELCOME')}</h1>
+                                    <h1 data-aos="fade-down">{i18next.t('GET')}<span> {i18next.t('YOUR')} </span>{i18next.t('WEBSITE')}</h1>
 
-                                    <p data-aos="fade-down">We are gonna create a well developed and designed website from your own choice and it will exactly as you desire and want .
-                                        The website you want will be created with high quality ,
-                                        our team which is formed with experienced programmers and designers will take of every corner.</p>
+                                    <p data-aos="fade-down">{i18next.t('HOME_DESCRIPTION')}</p>
 
-                                    <a href='/maintanence' className='res-button-start'>GET STARTED</a>
+                                    <a href='/maintanence' className='res-button-start'>{i18next.t('GET_STARTED')}</a>
 
 
                                     <div className='email-get-started'>
                                         <input data-aos="fade-down" onChange={e => setEmailGetStarted(e.target.value)} type="email" name='email' id='name' placeholder='Enter Email Address' minLength={'8'} />
-                                        <button onClick={emailGetStarted ? e => handleEmail() : null} className={emailGetStarted ? 'active' : ''} disabled={emailGetStarted ? false : true}>GET STARTED</button>
+                                        <button onClick={emailGetStarted ? e => handleEmail() : null} className={emailGetStarted ? 'active' : ''} disabled={emailGetStarted ? false : true}>{i18next.t('GET_STARTED')}</button>
                                     </div>
 
 
                                     <div data-aos="fade-down" className='undertext'>
                                         <BsArrowRight />
-                                        <h4>CHANGE YOUR <br /> IDEA TO A BUSINESS</h4>
+                                        <h4>{i18next.t('CHANGE_YOUR')} <br /> {i18next.t('IDEA_TO_A_BUSINESS')}</h4>
                                     </div>
 
                                 </div>
@@ -337,7 +335,7 @@ const Home = () => {
 
                                 <div data-aos="fade-down" className='res-undertext'>
                                     <BsArrowRight />
-                                    <h4>CHANGE YOUR <br /> IDEA TO A BUSINESS</h4>
+                                    <h4>{i18next.t('CHANGE_YOUR')} <br /> {i18next.t('IDEA_TO_A_BUSINESS')}</h4>
                                 </div>
 
                             </div>
@@ -351,7 +349,7 @@ const Home = () => {
                                     <div className="scroller"></div>
                                 </div>
                             </div>
-                            <h4>Scroll</h4>
+                            <h4>{i18next.t('SCROLL')}</h4>
                         </AnchorLink>
 
                         <div className="background-all-divs">
@@ -361,9 +359,9 @@ const Home = () => {
                                     <div className='ht' data-aos="fade-right">
 
                                         <div className='responsive-why-web'>
-                                            <h2>WHY WEBINA</h2>
-                                            <p>We are gonna create a well developed and designed website from your own choice and it will exactly as you desire and want . The website you want will be created with high quality ,our team which is formed with experienced programmers and designers will take of every corner.</p>
-                                            <a href='/maintanence'>GET STARTED</a>
+                                            <h2>{i18next.t('WHY_WEBINA')}</h2>
+                                            <p>{i18next.t('WHY_WEBINA_PAG')}</p>
+                                            <a href='/maintanence'>{i18next.t('GET_STARTED')}</a>
                                         </div>
 
                                         <img className='webina-phone' src={WebInaPhone} alt="webina phone" />
@@ -381,13 +379,13 @@ const Home = () => {
 
                                         <img className='floating-right' src={isDarkMode ? floatingRightHatDark : floatingRightHat} alt="webina floating hat" />
 
-                                        <h1>WHY <span>WEBINA</span></h1>
+                                        <h1>{i18next.t('WHY')} <span>{i18next.t('WEBINA')}</span></h1>
 
                                         <p>
-                                            WebIna is a comapny that helps you make your dreams easier and build you a full application for your business , you can easily choose any website from our lists and we will finish it as soon as possible to make your work go easier on you.
+                                            {i18next.t('WHY_WEBINA_PAG_SEC')}
                                         </p>
 
-                                        <a href='/maintanence'>Get Started</a>
+                                        <a href='/maintanence'>{i18next.t('GET_STARTED')}</a>
 
                                         <img className='OrnamentHoriz' src={isDarkMode ? OrnamentHorizDark : OrnamentHoriz} alt="OrnamentHoriz" />
                                     </div>
@@ -401,21 +399,21 @@ const Home = () => {
                                 <div className="cards-text-container" >
                                     <div className="text-left">
                                         <h3>
-                                            Our Special
-                                            <br /> Common Services
+                                            {i18next.t('OUR_SPECIAL')}
+                                            <br /> {i18next.t('COMMON_SERVICES')}
                                         </h3>
                                         <p>
-                                            All the services that Webina presents you along with your website and all the things that you need to grow your business and website
+                                            {i18next.t('COMMON_SERVICES_PAG')}
                                         </p>
                                     </div>
                                     <div data-aos="fade-down" className={isDarkMode ? 'dark card-right' : 'card-right'}>
                                         <img src={DevIcon} alt="Dev Websites" />
                                         <div>
-                                            <h4>Website design & Development</h4>
+                                            <h4>{i18next.t('WEBSITE_DESIGN_AND_DEV')}</h4>
                                             <p>
-                                                Our team with professional designers and web developers will present the best 100% costumed website for your business
+                                                {i18next.t('WEBSITE_DESIGN_AND_DEV_PAG')}
                                             </p>
-                                            <a href='/website-development'>GET STARTED</a>
+                                            <a href='/website-development'>{i18next.t('GET_STARTED')}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -423,38 +421,38 @@ const Home = () => {
                                 <div className='cards-container' >
                                     <div data-aos="fade-down" className={isDarkMode === true ? 'dark card' : 'card'}>
                                         <img src={SocialIcon} alt="social media Icon" />
-                                        <h4>Social Media Marketing</h4>
+                                        <h4>{i18next.t('SOCIAL_MEDIA_MARKETING')}</h4>
                                         <p>
-                                            Marketing especially on social media to make your website and business grow and you can accomplish that with Webina
+                                            {i18next.t('SOCIAL_MEDIA_MARKETING_PAG')}
                                         </p>
-                                        <a href='/social-media'>GET STARTED</a>
+                                        <a href='/social-media'>{i18next.t('GET_STARTED')}</a>
                                     </div>
 
                                     <div data-aos="fade-down" data-aos-duration="200" className={isDarkMode === true ? 'dark card' : 'card'}>
                                         <img src={DesignIcon} alt="Design" />
-                                        <h4>Designing</h4>
+                                        <h4>{i18next.t('DESIGN')}</h4>
                                         <p>
-                                            The designs that are used in the websites we create and offer to our costumers are made by highly professional designers
+                                            {i18next.t('DESIGN_PAG')}
                                         </p>
-                                        <a href='/design'>GET STARTED</a>
+                                        <a href='/design'>{i18next.t('GET_STARTED')}</a>
                                     </div>
 
                                     <div data-aos="fade-down" data-aos-duration="400" className={isDarkMode === true ? 'dark card' : 'card'}>
                                         <img src={MobileIcon} alt="Mobile Apps Development" />
-                                        <h4>Mobile Apps Development</h4>
+                                        <h4>{i18next.t('MOBILE_APPS')}</h4>
                                         <p>
-                                            Our team can also develop a Mobile App that will be linked directly ro your website.
+                                            {i18next.t('MOBILE_APPS_PAG')}
                                         </p>
-                                        <a href='/mobile-development'>GET STARTED</a>
+                                        <a href='/mobile-development'>{i18next.t('GET_STARTED')}</a>
                                     </div>
 
                                     <div data-aos="fade-down" data-aos-duration="600" className={isDarkMode === true ? 'dark card' : 'card'}>
                                         <img src={DesktopIcon} alt="Desktop App Dev" />
-                                        <h4>Desktop App Developement </h4>
+                                        <h4>{i18next.t('DESKTOP_APPS')}</h4>
                                         <p>
-                                            We can create you a desktop app that will be fully linked to your website an  will 100% of your choice
+                                            {i18next.t('DESKTOP_APPS_PAG')}
                                         </p>
-                                        <a href='/desktop-development'>GET STARTED</a>
+                                        <a href='/desktop-development'>{i18next.t('GET_STARTED')}</a>
                                     </div>
                                 </div>
                             </div>
@@ -464,12 +462,11 @@ const Home = () => {
                             <div className='seo-section' id='seo-section'>
 
                                 <div data-aos="fade-down" className='text-container'>
-                                    <h2>Get The First Position In
-                                        The Google SEO</h2>
+                                    <h2>{i18next.t('FIRST_SEO')}</h2>
 
-                                    <p>We Will Help Your Client To Reach Your Website , Easily In The First Link In Google</p>
+                                    <p>{i18next.t('FIRST_SEO_PAG')}</p>
 
-                                    <a href='/store'>GET YOUR WEBSITE</a>
+                                    <a href='/store'>{i18next.t('GET_YOUR_WEBSITE')}</a>
                                 </div>
 
 
@@ -480,22 +477,22 @@ const Home = () => {
 
                             <div className='make-yoursite-container' id='make-site'>
                                 <div data-aos="fade-right" className='text-container'>
-                                    <h3><div>Create your website as you wish in any field and with any <span>design</span></div> <HiOutlineArrowRight /></h3>
+                                    <h3><div>{i18next.t('CREATE_YOUR')} <span>{i18next.t('DESIGN_W')}</span></div> <HiOutlineArrowRight /></h3>
                                 </div>
 
-                                <a href='/store' data-aos="fade-right">ORDER NOW</a>
+                                <a href='/store' data-aos="fade-right">{i18next.t('ORDER_NOW')}</a>
                             </div>
 
 
                             <div className='new-skills-section' id='skills-section'>
                                 <div className='left-container' data-aos="fade-right">
-                                    <h3>Get inspired, <br />
-                                        gain new skills <br />
-                                        and see what's <br />
-                                        <span> trending</span>
+                                    <h3>{i18next.t('INSPIRED')} <br />
+                                        {i18next.t('SKILLS')}<br />
+                                        {i18next.t('SEE_WHATS')}<br />
+                                        {i18next.t('TRENDING')}<span> </span>
                                     </h3>
 
-                                    <a href='/blogs'>Explore the Blog</a>
+                                    <a href='/blogs'>{i18next.t('EXPLORE_BLOGS')}</a>
                                 </div>
 
                                 <div className="right-container">
@@ -517,13 +514,13 @@ const Home = () => {
 
                                     <div className='top-container'>
                                         <div className='container-corner' data-aos="fade-down">
-                                            <h3>High quality designs</h3>
+                                            <h3>{i18next.t('HIGH_QUALITY_DESIGN')}</h3>
                                             <span>01</span>
                                         </div>
 
                                         <div className='container-corner' data-aos="fade-down">
                                             <span>02</span>
-                                            <h3>Full stack development</h3>
+                                            <h3>{i18next.t('FULL_STACK_DEVELOPMENT')}</h3>
                                         </div>
                                     </div>
 
@@ -553,13 +550,13 @@ const Home = () => {
 
                                     <div className="bottom-container">
                                         <div className='container-corner' data-aos="fade-up">
-                                            <h3>0 Function issues</h3>
+                                            <h3>{i18next.t('FUNCTION_ISSUES')}</h3>
                                             <span>03</span>
                                         </div>
 
                                         <div className='container-corner' data-aos="fade-up">
                                             <span>04</span>
-                                            <h3>0 Language mistakes</h3>
+                                            <h3>{i18next.t('LANGUAGE_MISTAKES')}</h3>
                                         </div>
                                     </div>
 
@@ -570,7 +567,7 @@ const Home = () => {
 
                             <div className="countdown-section" id='countdown-section'>
                                 <div className='left-section'>
-                                    <h2 data-aos="fade-right">UP TO <span>75%</span></h2>
+                                    <h2 data-aos="fade-right">{i18next.t('UP_TO')}<span>75%</span></h2>
 
                                     <div className="timer">
                                         <div className='time-sec' data-aos="fade-down">
@@ -592,15 +589,15 @@ const Home = () => {
                                         </div>
                                     </div>
 
-                                    <a href='/maintanence' data-aos="fade-right">GET STARTED</a>
+                                    <a href='/maintanence' data-aos="fade-right">{i18next.t('GET_STARTED')}</a>
 
                                 </div>
 
 
                                 <div className="right-section">
-                                    <h2 data-aos="fade-down">Everything <br />
-                                        You Need to <br />
-                                        <span>Create a Website</span>
+                                    <h2 data-aos="fade-down">{i18next.t('EVERYTHING')} <br />
+                                        {i18next.t('YOU_NEED_TO')} <br />
+                                        <span>{i18next.t('CREATE_A_WEBSITE')}</span>
                                     </h2>
                                 </div>
                             </div>
@@ -609,7 +606,7 @@ const Home = () => {
                             <div className="background-sections-techs-pros">
 
                                 <div className="projects-section">
-                                    <h2>RECENT <span>PROJECTS</span></h2>
+                                    <h2>{i18next.t('RECENT')} <span>{i18next.t('PROJECTS')}</span></h2>
 
 
                                     <div className="projects-container">
@@ -632,7 +629,7 @@ const Home = () => {
                                 </div>
 
                                 <div className="technologies-section">
-                                    <h2>TECHNOLOGIES</h2>
+                                    <h2>{i18next.t('TECHS')}</h2>
 
 
                                     <div className="technologies-container">
@@ -690,29 +687,29 @@ const Home = () => {
 
                             <div className={`background-sections-double ${isDarkMode ? 'dark-section' : ''}`} >
                                 <div className="contact-section">
-                                    <h2>We're here for you</h2>
+                                    <h2>{i18next.t('WE_ARE_HERE_FOR_YOU')}</h2>
 
 
                                     <div className='container'>
                                         <div>
-                                            <h3>Get answers</h3>
-                                            <p>Watch tutorials and read detailed articles in the Webina Help Center.</p>
+                                            <h3>{i18next.t('GET_ANSWERS')}</h3>
+                                            <p>{i18next.t('GET_ANSWERS_PAG')}</p>
 
-                                            <a href="/maintanence">Go to Help Center <BiArrowFromLeft /></a>
+                                            <a href="/maintanence">{i18next.t('GO_TO_HELP_CENTER')} <BiArrowFromLeft /></a>
                                         </div>
 
                                         <div>
-                                            <h3>Contact us</h3>
-                                            <p>Get support by chat or schedule a call with a Customer Care Expert</p>
+                                            <h3>{i18next.t('CONTACT_US')}</h3>
+                                            <p>{i18next.t('CONTACT_US_PAG')}</p>
 
-                                            <a href="/maintanence">Chat with Us <BiArrowFromLeft /></a>
+                                            <a href="/maintanence">{i18next.t('CHAT_WITH_US')} <BiArrowFromLeft /></a>
                                         </div>
 
                                         <div>
-                                            <h3>Hire a pro</h3>
-                                            <p>Get help at any stage from site creation to online growth.</p>
+                                            <h3>{i18next.t('HIRE_A_PRO')}</h3>
+                                            <p>{i18next.t('HIRE_A_PRO_PAG')}</p>
 
-                                            <a href="/maintanence">Browse All Services <BiArrowFromLeft /></a>
+                                            <a href="/maintanence">{i18next.t('BROWSE_ALL_SERVICES')} <BiArrowFromLeft /></a>
                                         </div>
 
                                     </div>
@@ -752,26 +749,26 @@ const Home = () => {
                                     </div>
                                     <div className="right-container">
                                         <div className='card'>
-                                            <p>We help you build a website <br />
-                                                Expandable and upgradable <br />
-                                                To keep pace with<span> the development <br />
-                                                    of your business.</span></p>
+                                            <p>{i18next.t('WE_HELP_YOU_BUILD')} <br />
+                                                {i18next.t('EXPANDABLE_AND_UPGRADABLE')} <br />
+                                                {i18next.t('TO_KEEP_PACE')}<span> {i18next.t('THE_DEVELOPMENT')} <br />
+                                                    {i18next.t('OF_YOUR_BUSINESS')}</span></p>
                                         </div>
 
                                         <div className='card'>
-                                            <p>We offer complete design solutions <br />
-                                                Website development and <br />
-                                                <span> Optimized <br />
-                                                    for optimal performance.</span></p>
+                                            <p>{i18next.t('WE_OFFER_COMPLETE')} <br />
+                                                {i18next.t('WEBSITE_DEV')}<br />
+                                                <span> {i18next.t('OPTIMIZED')} <br />
+                                                    {i18next.t('FOR_OPTIMAL_PERF')}</span></p>
                                         </div>
 
                                         <div className='card'>
-                                            <p>We care about the fine details <br />
-                                                Attractive <br />
-                                                design to ensure an<span> experience <br />
-                                                    Unique and distinctive user.</span></p>
+                                            <p>{i18next.t('WE_CARE_ABOUT')} <br />
+                                                {i18next.t('ATTRACTIVE')} <br />
+                                                {i18next.t('DESIGN_TO')}<span> {i18next.t('EXPERIENCE')} <br />
+                                                {i18next.t('UNIQUE_AND')}</span></p>
                                         </div>
-                                        <a href='/maintanence'>GET STARTED</a>
+                                        <a href='/maintanence'>{i18next.t('GET_STARTED')}</a>
 
                                     </div>
 
@@ -790,7 +787,7 @@ const Home = () => {
 
                                     <div className='contact-us'>
 
-                                        <h2>CONATCT US</h2>
+                                        <h2>{i18next.t('CONTACT_US')}</h2>
                                         <div className='container'>
                                             <div className='left-container'>
                                                 <form onSubmit={e => handleContactMessage(e)}>
@@ -800,7 +797,7 @@ const Home = () => {
 
                                                     <textarea name="message" id="message" placeholder='MESSAGE' cols="30" rows="10" onChange={e => setMessage(e.target.value)} value={message} />
 
-                                                    <button type='submit' >SEND MESSAGE</button>
+                                                    <button type='submit' >{i18next.t('SEND_MESSAGE')}</button>
                                                 </form>
                                             </div>
 
