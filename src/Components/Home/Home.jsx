@@ -303,7 +303,7 @@ const Home = () => {
 
 
                                     <div className='email-get-started'>
-                                        <input data-aos="fade-down" onChange={e => setEmailGetStarted(e.target.value)} type="email" name='email' id='name' placeholder='Enter Email Address' minLength={'8'} />
+                                        <input data-aos="fade-down" onChange={e => setEmailGetStarted(e.target.value)} type="email" name='email' id='name' placeholder={i18next.t("ENTER_EMAIL_ADDRESS")} minLength={'8'} />
                                         <button onClick={emailGetStarted ? e => handleEmail() : null} className={emailGetStarted ? 'active' : ''} disabled={emailGetStarted ? false : true}>{i18next.t('GET_STARTED')}</button>
                                     </div>
 
@@ -622,7 +622,7 @@ const Home = () => {
                                                     <span>{project.categories}</span>
                                                 </div>
 
-                                                <a href={`/project/${project.name}`} className='details-button'>Show Details</a>
+                                                <a href={`/project/${project.name}`} className='details-button'>{i18next.t("SHOW_DETAILS")}</a>
                                             </div>
                                         ))}
                                     </div>
@@ -791,11 +791,11 @@ const Home = () => {
                                         <div className='container'>
                                             <div className='left-container'>
                                                 <form onSubmit={e => handleContactMessage(e)}>
-                                                    <input type="text" placeholder='NAME' name='name' id='name' onChange={e => setName(e.target.value)} value={name} />
+                                                    <input type="text" placeholder={i18next.t("NAME")} name='name' id='name' onChange={e => setName(e.target.value)} value={name} />
 
-                                                    <input type="email" placeholder='EMAIL' name='email' id='email' onChange={e => setEmail(e.target.value)} value={email} />
+                                                    <input type="email" placeholder={i18next.t("EMAIL")} name='email' id='email' onChange={e => setEmail(e.target.value)} value={email} />
 
-                                                    <textarea name="message" id="message" placeholder='MESSAGE' cols="30" rows="10" onChange={e => setMessage(e.target.value)} value={message} />
+                                                    <textarea name="message" id="message" placeholder={i18next.t("MESSAGE")} cols="30" rows="10" onChange={e => setMessage(e.target.value)} value={message} />
 
                                                     <button type='submit' >{i18next.t('SEND_MESSAGE')}</button>
                                                 </form>
@@ -850,13 +850,13 @@ const feedback = (testiomonials) => {
         <>
             <div className='header-feed'>
                 <div>
-                    <h2>Our Customer <span>Feedback</span></h2>
-                    <p>Don't take our word for it. Trust our customers</p>
+                    <h2>{i18next.t("OUR_CUSTOMER")} <span>{i18next.t("FEEDBACK")}</span></h2>
+                    <p>{i18next.t("FEEDBACK_PAG")}</p>
                 </div>
 
                 <div className='swiper-buttons'>
-                    <div className='swiper-button-pre'><IoIosArrowBack /> Previous</div>
-                    <div className='swiper-button-nex'>Next <IoIosArrowForward /></div>
+                    <div className='swiper-button-pre'><IoIosArrowBack /> {i18next.t("PREVIOUS")}</div>
+                    <div className='swiper-button-nex'>{i18next.t("NEXT")} <IoIosArrowForward /></div>
                 </div>
             </div>
 

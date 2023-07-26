@@ -15,6 +15,7 @@ import { ThemeContext } from "../../../Context/ThemeContext";
 import AuthContext from '../../../Context/AuthContext';
 import Profile from '../../../Assets/profiles/default.svg'
 import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 const Navbar = ({ isOpen, transparent }) => {
 
@@ -149,7 +150,7 @@ const Navbar = ({ isOpen, transparent }) => {
 
                         <ul>
                             <li>
-                                Products <MdKeyboardArrowDown />
+                                {i18next.t("PRODUCTS")} <MdKeyboardArrowDown />
                                 <ul className="dropdown-menu">
                                     {/* <li onClick={e => SetselectedProduct('website')}>Website</li>
                                     <li onClick={e => SetselectedProduct('ui/ux')}>UI/UX Design</li>
@@ -160,13 +161,13 @@ const Navbar = ({ isOpen, transparent }) => {
                                     <li onClick={e => SetselectedProduct('nfts-design')}>NFTs Designing</li> */}
                                 </ul>
                             </li>
-                            <li><a href='/maintanence'>Custom</a></li>
-                            <li><a href='/maintanence'>Pricing</a></li>
-                            <li><a href='/maintanence'>Blogs</a></li>
-                            <li><a href='/maintanence'>About Us</a></li>
-                            <li><a href='/maintanence'>FAQs</a></li>
-                            <li><a href='/maintanence'>Hire Me</a></li>
-                            <li><a href='/maintanence'>Contact Us</a></li>
+                            <li><a href='/maintanence'>{i18next.t("CUSTOM")}</a></li>
+                            <li><a href='/maintanence'>{i18next.t("PRICING")}</a></li>
+                            <li><a href='/maintanence'>{i18next.t("BLOGS")}</a></li>
+                            <li><a href='/maintanence'>{i18next.t("ABOUT_US")}</a></li>
+                            <li><a href='/maintanence'>{i18next.t("FAQs")}</a></li>
+                            <li><a href='/maintanence'>{i18next.t("HIRE_ME")}</a></li>
+                            <li><a href='/maintanence'>{i18next.t("CONTACT_US")}</a></li>
                         </ul>
 
                         <div className='right-container'>
@@ -179,12 +180,12 @@ const Navbar = ({ isOpen, transparent }) => {
                                 <li className='drop-down-user' >
                                     <img src={Profile} alt={user.name + 'profile'} />{user.name} <MdKeyboardArrowDown />
                                     <ul className="dropdown-menu">
-                                        <li>Profile</li>
-                                        <li>My Recent</li>
-                                        <li>My Favourite</li>
-                                        <li>My Orders</li>
+                                        <li>{i18next.t("PROFILE")}</li>
+                                        <li>{i18next.t("MY_RECENT")}</li>
+                                        <li>{i18next.t("MY_FAVORITE")}</li>
+                                        <li>{i18next.t("MY_ORDERS")}</li>
                                         <hr />
-                                        <li><a href="/logout">Logout</a></li>
+                                        <li><a href="/logout">{i18next.t("LOGOUT")}</a></li>
                                     </ul>
                                 </li>
                                 :
@@ -192,14 +193,14 @@ const Navbar = ({ isOpen, transparent }) => {
                                     <button>
                                         <a href='/login'>
                                             <BiUser />
-                                            <h3>Sign In</h3>
+                                            <h3>{i18next.t("SIGNIN")}</h3>
                                         </a>
                                     </button>
 
                                     <button>
                                         <a href='/register'>
                                             <FiUserPlus />
-                                            <h3>Sign Up</h3>
+                                            <h3>{i18next.t("SIGNUP")}</h3>
                                         </a>
                                     </button>
                                 </div>
@@ -228,7 +229,7 @@ const Navbar = ({ isOpen, transparent }) => {
 
                         <ul className='list'>
                             <li>
-                                Products <MdKeyboardArrowDown />
+                            {i18next.t("PRODUCTS")} <MdKeyboardArrowDown />
                                 <ul className="dropdown-menu">
                                     {/* <li onClick={e => SetselectedProduct('website')}>Website</li>
                                     <li onClick={e => SetselectedProduct('ui/ux')}>UI/UX Design</li>
@@ -239,12 +240,12 @@ const Navbar = ({ isOpen, transparent }) => {
                                     <li onClick={e => SetselectedProduct('nfts-design')}>NFTs Designing</li> */}
                                 </ul>
                             </li>
-                            <li><a href='/maintanence'>Pricing</a></li>
-                            <li><a href='/maintanence'>Blogs</a></li>
-                            <li><a href='/maintanence'>About Us</a></li>
-                            <li><a href='/maintanence'>FAQs</a></li>
-                            <li><a href='/maintanence'>Hire Me</a></li>
-                            <li><a href='/maintanence'>Contact Us</a></li>
+                            <li><a href='/maintanence'>{i18next.t("PRICING")}</a></li>
+                            <li><a href='/maintanence'>{i18next.t("BLOGS")}</a></li>
+                            <li><a href='/maintanence'>{i18next.t("ABOUT_US")}</a></li>
+                            <li><a href='/maintanence'>{i18next.t("FAQs")}</a></li>
+                            <li><a href='/maintanence'>{i18next.t("HIRE_ME")}</a></li>
+                            <li><a href='/maintanence'>{i18next.t("CONTACT_US")}</a></li>
                         </ul>
                     </aside>
                 </div>

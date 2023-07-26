@@ -3,6 +3,7 @@ import './Footer.scss'
 import Logo from '../../../Assets/Home/Navbar/WEBINA-Logo.png'
 import { FaFacebook, FaInstagram, FaTiktok, FaTwitter } from 'react-icons/fa'
 import { ThemeContext } from '../../../Context/ThemeContext'
+import i18next from 'i18next'
 
 const Footer = () => {
 
@@ -14,7 +15,7 @@ const Footer = () => {
 
             <div className='container'>
                 <ul>
-                    <h3>Product</h3>
+                    <h3>{i18next.t("PRODUCTS")}</h3>
 
                     <li>Costumed websites</li>
                     <li>Website Templates</li>
@@ -24,7 +25,7 @@ const Footer = () => {
                 </ul>
 
                 <ul>
-                    <h3>Product</h3>
+                    <h3>{i18next.t("PRODUCTS")}</h3>
 
                     <li>Costumed websites</li>
                     <li>Website Templates</li>
@@ -34,7 +35,7 @@ const Footer = () => {
                 </ul>
 
                 <ul>
-                    <h3>Product</h3>
+                    <h3>{i18next.t("PRODUCTS")}</h3>
 
                     <li>Costumed websites</li>
                     <li>Website Templates</li>
@@ -46,10 +47,9 @@ const Footer = () => {
                 <ul>
                     <img src={Logo} alt="logo" />
 
-                    <p>WEBINA DIGITAL website builder offers a complete solution from enterprise-grade infrastructure and business features to
-                        advanced SEO and marketing tools-enabling anyone to create and grow online.</p>
-                    <a href='/privacy-policy'>Privacy Policy</a>
-                    <a href='/contact'>Contact Us</a>
+                    <p>{i18next.t("FOOTER_DESCRIPTION")}</p>
+                    <a href='/privacy-policy'>{i18next.t("PRIVACY_POLICY")}</a>
+                    <a href='/contact'>{i18next.t("CONTACT_US")}</a>
                 </ul>
             </div>
 

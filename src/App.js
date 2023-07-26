@@ -15,13 +15,11 @@ import Store from "./Components/Store/Store";
 import Privacy from './Build/Privacy/Privacy'
 import Cookies from "js-cookie";
 import { useTranslation } from "react-i18next";
-import Loading from "./Components/Loading/Loading";
 
 
 
 function App() {
 
-  const [Loading, setLoading] = useState(false)
 
   const languages = [
     {
@@ -54,7 +52,15 @@ function App() {
     document.title = t('app_title')
 
     if (currentLanguage.code === 'ar') {
+      const buttons = document.querySelectorAll('button');
+
+      // Apply the desired font style to each button
+      buttons.forEach((button) => {
+        button.style.fontFamily = 'Cairo';
+      });
+
       document.body.style.fontFamily = 'Cairo'
+      
     }
   }, [currentLanguage, t])
 

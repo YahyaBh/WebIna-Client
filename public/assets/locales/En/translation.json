@@ -7,9 +7,10 @@
     "CONTACT_US": "Contact Us",
     "HOME": "Home",
     "ABOUT_US": "About Us",
+    "BLOGS" : "Blogs",
     "FAQs": "FAQs",
     "HIRE_ME": "Hire Me",
-    "LOGIN": "Sign In",
+    "SIGNIN": "Sign In",
     "SIGNUP": "Sign Up",
     "GET_STARTED": "Get Started",
     "GET": "GET",
@@ -82,5 +83,22 @@
     "DESIGN_TO": "design to ensure an",
     "EXPERIENCE": "experience",
     "UNIQUE_AND": "Unique and distinctive user.",
-    "SEND_MESSAGE": "SEND MESSAGE"
+    "SEND_MESSAGE": "SEND MESSAGE",
+
+
+    "PROFILE" : "Profile",
+    "MY_RECENT" : "My Recent",
+    "MY_FAVORITE": "My Favorite",
+    "MY_ORDERS" : "My Orders",
+    "LOGOUT": "Logout",
+    "ENTER_EMAIL_ADDRESS" : "Enter Email Address",
+    "SHOW_DETAILS" : "Show Details",
+    "OUR_CUSTOMER" : "Our Customer",
+    "FEEDBACK" : "Feedback",
+    "FEEDBACK_PAG" : "Don't take our word for it. Trust our customers",
+    "PREVIOUS" : "Previous",
+    "NEXT" : "Next",
+    "FOOTER_DESCRIPTION" : "WEBINA DIGITAL website builder offers a complete solution from enterprise-grade infrastructure and business features to advanced SEO and marketing tools-enabling anyone to create and grow online.",
+    "PRIVACY_POLICY" : "Privacy Policy"
+
 }
