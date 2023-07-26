@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { ThemeProvider } from "./Context/ThemeContext";
 
@@ -14,10 +14,14 @@ import Logout from "./Components/Logout/Logout";
 import Store from "./Components/Store/Store";
 import Privacy from './Build/Privacy/Privacy'
 import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
+import Loading from "./Components/Loading/Loading";
 
 
 
 function App() {
+
+  const [Loading, setLoading] = useState(false)
 
   const languages = [
     {
@@ -42,20 +46,24 @@ function App() {
   const currentLanguage = languages.find((l) => l.code === currentLanguageCode)
 
 
+
+  const { t } = useTranslation()
+
   useEffect(() => {
     document.body.dir = currentLanguage.dir || 'ltr'
+    document.title = t('app_title')
+
     if (currentLanguage.code === 'ar') {
       document.body.style.fontFamily = 'Cairo'
     }
-
-  }, [currentLanguage])
+  }, [currentLanguage, t])
 
 
   return (
     <ThemeProvider>
+
+
       <Routes>
-
-
 
         {/* English routes */}
         <Route exact path='/' element={<Home />} />
