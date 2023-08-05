@@ -15,7 +15,6 @@ import { ThemeContext } from "../../../Context/ThemeContext";
 import AuthContext from '../../../Context/AuthContext';
 import Profile from '../../../Assets/profiles/default.svg'
 import i18next from 'i18next';
-import { useTranslation } from 'react-i18next';
 
 const Navbar = ({ isOpen, transparent }) => {
 
@@ -81,6 +80,11 @@ const Navbar = ({ isOpen, transparent }) => {
     }
 
 
+    const changeLang = (e) => {
+        i18next.changeLanguage(e)
+        setLanguage('')
+    }
+
 
     return (
         <>
@@ -90,17 +94,17 @@ const Navbar = ({ isOpen, transparent }) => {
                         <span className="close" onClick={e => setLanguage('')}>&times;</span>
                         <h2>Choose A Language</h2>
                         <div className='languages-container'>
-                            <div className='lang' onClick={() => i18next.changeLanguage('ar')}>
+                            <div className='lang' onClick={e => changeLang('ar')}>
                                 <img src={Morocco} alt="Arabic" />
                                 <h3>العربية</h3>
                             </div>
 
-                            <div className='lang' onClick={() => i18next.changeLanguage('fr')}>
+                            <div className='lang' onClick={e => changeLang('fr')}>
                                 <img src={French} alt="French" />
                                 <h3>Francais</h3>
                             </div>
 
-                            <div className='lang' onClick={() => i18next.changeLanguage('en')}>
+                            <div className='lang' onClick={e => changeLang('en')}>
                                 <img src={English} alt="English" />
                                 <h3>English</h3>
                             </div>
@@ -229,7 +233,7 @@ const Navbar = ({ isOpen, transparent }) => {
 
                         <ul className='list'>
                             <li>
-                            {i18next.t("PRODUCTS")} <MdKeyboardArrowDown />
+                                {i18next.t("PRODUCTS")} <MdKeyboardArrowDown />
                                 <ul className="dropdown-menu">
                                     {/* <li onClick={e => SetselectedProduct('website')}>Website</li>
                                     <li onClick={e => SetselectedProduct('ui/ux')}>UI/UX Design</li>

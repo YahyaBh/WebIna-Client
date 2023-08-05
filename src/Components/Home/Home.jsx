@@ -60,7 +60,6 @@ import { ThemeContext } from '../../Context/ThemeContext';
 import { Tooltip } from 'react-tooltip';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
 import i18next from 'i18next'
 
 const Home = () => {
@@ -302,13 +301,13 @@ const Home = () => {
                                     <a href='/maintanence' className='res-button-start'>{i18next.t('GET_STARTED')}</a>
 
 
-                                    <div className='email-get-started'>
-                                        <input data-aos="fade-down" onChange={e => setEmailGetStarted(e.target.value)} type="email" name='email' id='name' placeholder={i18next.t("ENTER_EMAIL_ADDRESS")} minLength={'8'} />
+                                    <div id='email-get-started' className='email-get-started'>
+                                        <input data-aos="fade-down" onChange={e => setEmailGetStarted(e.target.value)} type="email" name='email' id='email-get-started-input' placeholder={i18next.t("ENTER_EMAIL_ADDRESS")} minLength={'8'} />
                                         <button onClick={emailGetStarted ? e => handleEmail() : null} className={emailGetStarted ? 'active' : ''} disabled={emailGetStarted ? false : true}>{i18next.t('GET_STARTED')}</button>
                                     </div>
 
 
-                                    <div data-aos="fade-down" className='undertext'>
+                                    <div data-aos="fade-down" className='undertext' id='res-undertext'>
                                         <BsArrowRight />
                                         <h4>{i18next.t('CHANGE_YOUR')} <br /> {i18next.t('IDEA_TO_A_BUSINESS')}</h4>
                                     </div>
@@ -333,7 +332,7 @@ const Home = () => {
 
 
 
-                                <div data-aos="fade-down" className='res-undertext'>
+                                <div data-aos="fade-down" className='res-undertext' >
                                     <BsArrowRight />
                                     <h4>{i18next.t('CHANGE_YOUR')} <br /> {i18next.t('IDEA_TO_A_BUSINESS')}</h4>
                                 </div>

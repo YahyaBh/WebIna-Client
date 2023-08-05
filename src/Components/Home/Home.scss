@@ -91,7 +91,7 @@
                 flex-direction: row;
                 gap: 20px;
                 padding: 0px 100px;
-                top: 50px;
+                top: 20px;
 
                 @media screen and (max-width: 1200px) {
                     padding: 0 10px !important;
@@ -355,6 +355,28 @@
                             background-color: rgb(187, 187, 187);
                             border: rgb(187, 187, 187);
                             opacity: 0.4;
+                        }
+                    }
+                }
+
+                .rtl {
+                    input {
+                        border-top-right-radius: 15px;
+                        border-bottom-right-radius: 15px;
+                        border-top-left-radius: 0 !important;
+                        border-bottom-left-radius: 0 !important;
+                    }
+
+                    button {
+                        border-top-left-radius: 15px;
+                        border-bottom-left-radius: 15px;
+                        border-top-right-radius: 0 !important;
+                        border-bottom-right-radius: 0 !important;
+                        margin-right: -40px;
+                        margin-left: 0px !important;
+
+                        &:hover {
+                            justify-content: center !important;
                         }
                     }
                 }
@@ -1184,9 +1206,9 @@
                     flex-direction: column;
                     gap: 25px;
                     border-radius: 10px;
-                    max-width: 310px;
+                    max-width: 265px;
                     text-align: center;
-                    min-height: 400px;
+                    min-height: 500px;
 
                     @media screen and (max-width: 900px) {
                         min-height: 350px;

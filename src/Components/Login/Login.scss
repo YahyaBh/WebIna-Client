@@ -8,11 +8,10 @@
 #sign-in {
     background: url(../../../public/Images/Background-Sign.svg);
 
-    height: 100vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow: hidden;
 
     .header {
         width: 100%;
@@ -207,13 +206,14 @@
             .with-sign {
                 width: 100%;
                 display: flex;
+                font-size: 12px;
 
                 @media screen and (max-width: 900px) {
-                    font-size: 14px;
+                    font-size: 10px;
                 }
 
                 hr {
-                    width: 30%;
+                    width: 24%;
                     border: 1px solid var(--black-color);
                 }
             }
@@ -289,8 +289,8 @@
     }
 
     .footer {
-        height: 20px;
-        top: -20px;
+        height: 40px;
+        top: 0px;
         padding: 5px;
         position: relative;
         color: var(--black-color);

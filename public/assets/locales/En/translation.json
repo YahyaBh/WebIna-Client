@@ -84,14 +84,16 @@
     "EXPERIENCE": "experience",
     "UNIQUE_AND": "Unique and distinctive user.",
     "SEND_MESSAGE": "SEND MESSAGE",
-
+    "ENTER_EMAIL_ADDRESS" : "Enter Email Address",
+    "NAME" : "NAME",
+    "EMAIL" : "EMAIL",
+    "MESSAGE" : "MESSAGE",
 
     "PROFILE" : "Profile",
     "MY_RECENT" : "My Recent",
     "MY_FAVORITE": "My Favorite",
     "MY_ORDERS" : "My Orders",
     "LOGOUT": "Logout",
-    "ENTER_EMAIL_ADDRESS" : "Enter Email Address",
     "SHOW_DETAILS" : "Show Details",
     "OUR_CUSTOMER" : "Our Customer",
     "FEEDBACK" : "Feedback",
@@ -99,6 +101,25 @@
     "PREVIOUS" : "Previous",
     "NEXT" : "Next",
     "FOOTER_DESCRIPTION" : "WEBINA DIGITAL website builder offers a complete solution from enterprise-grade infrastructure and business features to advanced SEO and marketing tools-enabling anyone to create and grow online.",
-    "PRIVACY_POLICY" : "Privacy Policy"
+    "PRIVACY_POLICY" : "Privacy Policy",
+
+
+    "DONT_HAVE_ACCOUNT" : "Don't Have an account ?",
+    "WELCOME_BACK" : "Welcome Back !",
+    "WE_GLAD" : "We are glad to have you back , you can sign in right bellow",
+    "REMEMBER_ME" : "Remember Me",
+    "FORGOT_PASSWORD" : "Forgot Password",
+    "OR_SIGN_IN_WITH" : "Or Sign In With",
+    "Password" : "Password",
+    "Email" : "Email",
+
+    "HAVE_AN_ACCOUNT": "Have an account ?",
+    "WELCOME" : "Welcome !",
+    "FIRST_THINGS" : "First things first you can Create an account",
+    "Name" : "Name",
+    "Confirm_Password" : "Confirm Password",
+    "TERMS_PRIVACY" : "Agree on terms & privacy",
+    "OR_SIGN_UP_WITH" : "Or Sign Up With"
+    
 
 }

@@ -10,6 +10,7 @@ import { MdLanguage } from 'react-icons/md'
 import { FaSun, FaMoon, FaGoogle, FaFacebook } from 'react-icons/fa'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import Swal from 'sweetalert2'
+import i18next from 'i18next'
 
 const Login = () => {
 
@@ -125,40 +126,40 @@ const Login = () => {
             <div className='container'>
                 <div className="left-container">
 
-                    <h4>Don't Have an account ?  <a href='/register'>Sign Up</a></h4>
+                    <h4> {i18next.t("DONT_HAVE_ACCOUNT")} <a href='/register'>{i18next.t("SIGNUP")}</a></h4>
 
-                    <h2>Welcome  Back!</h2>
+                    <h2>{i18next.t("WELCOME_BACK")}</h2>
 
-                    <p>We are glad to have you back , you can sign in right bellow</p>
+                    <p>{i18next.t("WE_GLAD")}</p>
 
                     <form onSubmit={handleLogin} autoComplete="off">
 
                         <div className="input-container">
-                            <label htmlFor="email">Email</label>
+                            <label htmlFor="email">{i18next.t("Email")}</label>
                             <input type="email" name='email' autoComplete='off' placeholder='email@example.com' onChange={e => setEmail(e.target.value)} />
                         </div>
 
 
                         <div className="input-container">
-                            <label htmlFor="password">Password</label>
+                            <label htmlFor="password">{i18next.t("Password")}</label>
                             <input type="password" name='password' autoComplete='off' onChange={e => setPassword(e.target.value)} />
                         </div>
 
 
-                        <button type='submit'>{loginLoading ? <AiOutlineLoading3Quarters className="spin-load" /> : 'Sign In'}</button>
+                        <button type='submit'>{loginLoading ? <AiOutlineLoading3Quarters className="spin-load" /> : i18next.t("SIGNIN")}</button>
 
 
                         <div className="under-sign">
                             <div className='agree'>
                                 <input type="checkbox" name="remember" id="remember" />
-                                <label htmlFor="remember">Remember me</label>
+                                <label htmlFor="remember">{i18next.t("REMEMBER_ME")}</label>
                             </div>
-                            <a href="/forget-password">Forgot Password ?</a>
+                            <a href="/forget-password">{i18next.t("FORGOT_PASSWORD")}</a>
                         </div>
                     </form>
 
                     <div className='with-sign'>
-                        <hr /> <h3>Or Sign In With</h3> <hr />
+                        <hr /> <h3>{i18next.t("OR_SIGN_IN_WITH")}</h3> <hr />
                     </div>
 
 

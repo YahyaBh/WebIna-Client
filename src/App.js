@@ -60,7 +60,10 @@ function App() {
       });
 
       document.body.style.fontFamily = 'Cairo'
-      
+      document.getElementById('email-get-started')?.classList.add('rtl');
+      if (document.getElementById('res-undertext')) {
+        document.getElementById('res-undertext').style.display = 'none';
+      }
     }
   }, [currentLanguage, t])
 
