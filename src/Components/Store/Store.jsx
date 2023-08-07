@@ -2,11 +2,11 @@ import React, { Profiler, useEffect, useState } from 'react'
 import NavbarStore from '../Layout/Navbar/NavbarStore'
 import Loading from '../Loading/Loading'
 import AsideStore from '../Layout/Aside/AsideStore';
-import { MdKeyboardArrowRight , MdKeyboardArrowLeft} from 'react-icons/md';
+import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from 'react-icons/md';
 import './Store.scss'
 import { BsFillStarFill, BsStar, BsStarHalf, BsCart2 } from 'react-icons/bs';
 import TestImage from '../../Assets/Home/Projects Section/TestProjects.png'
-
+import { useNavigate } from 'react-router-dom'
 
 
 // Import Swiper React components
@@ -20,37 +20,48 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Navigation } from "swiper";
+import AuthContext from '../../Context/AuthContext';
 
 const Store = () => {
 
     const [animationLoading, setAnimationLoading] = useState(false);
     const [loading, setLoading] = useState(true);
     const [categories, setCategories] = useState([]);
-    const [products, setProducts] = useState([
-        { id: 1, title: 'Product 1', category: 'Category 1', price: 23.00, purchase: 23, rating: 5 },
-        { id: 2, title: 'Product 2', category: 'Category 4', price: 70.00, purchase: 321, rating: 4.5 },
-        { id: 3, title: 'Product 3', category: 'Category 43', price: 35.00, purchase: 2324, rating: 2.3 },
-        { id: 4, title: 'Product 4', category: 'Category 654', price: 50.00, purchase: 765, rating: 5 },
-        { id: 5, title: 'Product 5', category: 'Category 34', price: 50.00, purchase: 765, rating: 5 },
-        { id: 6, title: 'Product 6', category: 'Category 4', price: 50.00, purchase: 765, rating: 5 },
-        { id: 7, title: 'Product 7', category: 'Category 65434', price: 50.00, purchase: 765, rating: 5 }
-    ]);
+    const [products, setProducts] = useState([]);
     const [filter, setFilter] = useState('All');
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [loadingItems, setLoadingItems] = useState(true);
 
+
+    const { sec_http, isAuthenticated } = AuthContext();
+    const navigate = useNavigate();
+
     useEffect(() => {
-        setFilter('All');
 
-        setTimeout(() => {
-            setLoading(false);
-            setAnimationLoading('fade-in')
+        if (isAuthenticated) {
+            setFilter('All');
 
-            setTimeout(() => {
-                setAnimationLoading('')
-            }, 2000);
-        }, 2000);
+            getProducts();
+        } else {
+            navigate('/', { replace: true });
+        }
     }, []);
+
+    const getProducts = async () => {
+
+        sec_http.post('/api/store')
+            .then(res => {
+                setProducts(res.data.products)
+
+                setLoading(false);
+                setAnimationLoading('fade-in')
+
+                setTimeout(() => {
+                    setAnimationLoading('')
+                }, 2000);
+            })
+
+    }
 
     useEffect(() => {
         setAnimationLoading('fade-out');
@@ -304,13 +315,13 @@ const Store = () => {
 
 
                                 {filteredProducts.map(product => (
-                                    <div key={product.id} className='card'>
+                                    <div key={product.id} className='card' title={product.description}>
                                         <img src={TestImage} alt="product" />
 
                                         <div className='under-container'>
                                             <div className="left-cont">
-                                                <h3>{product.title}</h3>
-                                                <p><BsCart2 /> {product.purchase} purchase</p>
+                                                <h3>{product.name}</h3>
+                                                <p><BsCart2 /> {product.purchases} purchase</p>
                                                 <div className='stars'>
 
                                                     {renderStars(product.rating)}
