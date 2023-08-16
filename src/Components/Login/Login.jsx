@@ -18,27 +18,13 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const { http, csrf, setUser, setAccessToken, setRememberToken, rememberToken } = AuthContext()
+    const { http, csrf, setUser, setAccessToken, setRememberToken } = AuthContext()
     const navigate = useNavigate();
 
     const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
     useEffect(() => {
-        if (!rememberToken) {
-            http.post('/api/remember')
-                .then((res) => {
-                    setAccessToken(res.data.token);
-                    res.data.remember_token ? setRememberToken(res.data.token) : setRememberToken()
-                    setUser(res.data.user);
-                    navigate('/');
-                })
-                .catch((err) => {
-                    console.log(err);
-                })
 
-        } else {
-            return;
-        }
     }, [])
 
     const handleLogin = async (e) => {

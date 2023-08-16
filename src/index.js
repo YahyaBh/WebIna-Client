@@ -35,9 +35,9 @@ i18next
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
-    <Suspense fallback={Loading}>
+  <Suspense fallback={Loading}>
+    <BrowserRouter>
       <App />
-    </Suspense>
-  </BrowserRouter>
+    </BrowserRouter>
+  </Suspense>
 );
