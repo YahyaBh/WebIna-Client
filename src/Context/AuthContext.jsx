@@ -12,7 +12,7 @@ axios.defaults.headers.common["Access-Control-Max-Age"] = "1800";
 axios.defaults.headers.common["Access-Control-Allow-Headers"] = "content-type";
 axios.defaults.headers.common["Access-Control-Allow-Methods"] = "PUT, POST, GET, DELETE, PATCH, OPTIONS";
 
-const baseUrl = 'http://localhost:8000';
+const baseUrl = 'https://webina-digital-server.000webhostapp.com';
 
 export default function AuthContext() {
 
