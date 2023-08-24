@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "./Context/ThemeContext";
 
 
@@ -13,6 +13,12 @@ import Login from "./Components/Login/Login";
 import Logout from "./Components/Logout/Logout";
 import Store from "./Components/Store/Store";
 import Privacy from './Build/Privacy/Privacy'
+import Contact from "./Components/Contact/Contact";
+import About from "./Components/About/About";
+
+
+
+
 import Cookies from "js-cookie";
 import { useTranslation } from "react-i18next";
 
@@ -79,6 +85,8 @@ function App() {
 
         <Route exact path='/register' element={<Register />} />
         <Route exact path='/login' element={<Login />} />
+        <Route exact path='/about' element={<About />} />
+        <Route exact path='/contact' element={<Contact />} />
         <Route exact path='/privacy-policy' element={<Privacy />} />
 
 

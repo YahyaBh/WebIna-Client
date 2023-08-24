@@ -7,6 +7,7 @@ import './Store.scss'
 import { BsFillStarFill, BsStar, BsStarHalf, BsCart2 } from 'react-icons/bs';
 import TestImage from '../../Assets/Home/Projects Section/TestProjects.png'
 import { useNavigate } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async';
 
 
 // Import Swiper React components
@@ -130,218 +131,227 @@ const Store = () => {
 
 
     return (
-        <Profiler id='store-prof'>
 
-            {loading ? <Loading /> : ''}
+        <>
+            <Helmet>
+                <title>WEBINA DIGITAL | Store</title>
+                <meta name="description" content="Choose your ideal Website , Mobile app , UI/UX design , Desktop Application , with the best price" />
+                <link rel='canonical' content="/login" />
+            </Helmet>
 
-            <NavbarStore />
+            <Profiler id='store-prof'>
 
+                {loading ? <Loading /> : ''}
 
-            <div id='store'>
-
-                <AsideStore />
-
-                <div className="left-container">
-                    <nav className='top-chart'>
-                        <Swiper
-                            navigation={{
-                                prevEl: '#prev-button',
-                                nextEl: '#next-button',
-                            }}
-                            draggable={true}
-                            slidesPerView={6}
-                            spaceBetween={0}
-                            modules={[Navigation]}
-                            className="mySwiper"
-                        >
-                            <SwiperSlide><li onClick={e => handleFiltering('All')}>All</li></SwiperSlide>
-
-                            {categories.map((category, index) => (
-                                <SwiperSlide><li key={index} onClick={e => handleFiltering(category)}>{category}</li></SwiperSlide>
-                            ))}
-
-                            <MdKeyboardArrowLeft id='#prev-button' />
-                            <MdKeyboardArrowRight id='#next-button' />
-
-                        </Swiper>
+                <NavbarStore />
 
 
-                    </nav>
+                <div id='store'>
+
+                    <AsideStore />
+
+                    <div className="left-container">
+                        <nav className='top-chart'>
+                            <Swiper
+                                navigation={{
+                                    prevEl: '#prev-button',
+                                    nextEl: '#next-button',
+                                }}
+                                draggable={true}
+                                slidesPerView={6}
+                                spaceBetween={0}
+                                modules={[Navigation]}
+                                className="mySwiper"
+                            >
+                                <SwiperSlide><li onClick={e => handleFiltering('All')}>All</li></SwiperSlide>
+
+                                {categories.map((category, index) => (
+                                    <SwiperSlide><li key={index} onClick={e => handleFiltering(category)}>{category}</li></SwiperSlide>
+                                ))}
+
+                                <MdKeyboardArrowLeft id='#prev-button' />
+                                <MdKeyboardArrowRight id='#next-button' />
+
+                            </Swiper>
 
 
-                    <div className="container">
-                        {loadingItems ?
-
-                            <>
-                                <div className="card-loading">
-                                    <div className='loading-img'></div>
-
-                                    <div className='under-container'>
-                                        <div className="left-cont">
-                                            <div className='title'></div>
-                                            <div className='paragraph'></div>
-                                            <div className='stars'></div>
-                                        </div>
-
-                                        <div className="right-cont">
-                                            <div className='price'></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="card-loading">
-                                    <div className='loading-img'></div>
-
-                                    <div className='under-container'>
-                                        <div className="left-cont">
-                                            <div className='title'></div>
-                                            <div className='paragraph'></div>
-                                            <div className='stars'></div>
-                                        </div>
-
-                                        <div className="right-cont">
-                                            <div className='price'></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="card-loading">
-                                    <div className='loading-img'></div>
-
-                                    <div className='under-container'>
-                                        <div className="left-cont">
-                                            <div className='title'></div>
-                                            <div className='paragraph'></div>
-                                            <div className='stars'></div>
-                                        </div>
-
-                                        <div className="right-cont">
-                                            <div className='price'></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="card-loading">
-                                    <div className='loading-img'></div>
-
-                                    <div className='under-container'>
-                                        <div className="left-cont">
-                                            <div className='title'></div>
-                                            <div className='paragraph'></div>
-                                            <div className='stars'></div>
-                                        </div>
-
-                                        <div className="right-cont">
-                                            <div className='price'></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="card-loading">
-                                    <div className='loading-img'></div>
-
-                                    <div className='under-container'>
-                                        <div className="left-cont">
-                                            <div className='title'></div>
-                                            <div className='paragraph'></div>
-                                            <div className='stars'></div>
-                                        </div>
-
-                                        <div className="right-cont">
-                                            <div className='price'></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="card-loading">
-                                    <div className='loading-img'></div>
-
-                                    <div className='under-container'>
-                                        <div className="left-cont">
-                                            <div className='title'></div>
-                                            <div className='paragraph'></div>
-                                            <div className='stars'></div>
-                                        </div>
-
-                                        <div className="right-cont">
-                                            <div className='price'></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="card-loading">
-                                    <div className='loading-img'></div>
-
-                                    <div className='under-container'>
-                                        <div className="left-cont">
-                                            <div className='title'></div>
-                                            <div className='paragraph'></div>
-                                            <div className='stars'></div>
-                                        </div>
-
-                                        <div className="right-cont">
-                                            <div className='price'></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="card-loading">
-                                    <div className='loading-img'></div>
-
-                                    <div className='under-container'>
-                                        <div className="left-cont">
-                                            <div className='title'></div>
-                                            <div className='paragraph'></div>
-                                            <div className='stars'></div>
-                                        </div>
-
-                                        <div className="right-cont">
-                                            <div className='price'></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="card-loading">
-                                    <div className='loading-img'></div>
-
-                                    <div className='under-container'>
-                                        <div className="left-cont">
-                                            <div className='title'></div>
-                                            <div className='paragraph'></div>
-                                            <div className='stars'></div>
-                                        </div>
-
-                                        <div className="right-cont">
-                                            <div className='price'></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </>
-                            :
-                            <>
+                        </nav>
 
 
-                                {filteredProducts.map(product => (
-                                    <div key={product.id} className='card' title={product.description}>
-                                        <img src={TestImage} alt="product" />
+                        <div className="container">
+                            {loadingItems ?
+
+                                <>
+                                    <div className="card-loading">
+                                        <div className='loading-img'></div>
 
                                         <div className='under-container'>
                                             <div className="left-cont">
-                                                <h3>{product.name}</h3>
-                                                <p><BsCart2 /> {product.purchases} purchase</p>
-                                                <div className='stars'>
-
-                                                    {renderStars(product.rating)}
-                                                </div>
+                                                <div className='title'></div>
+                                                <div className='paragraph'></div>
+                                                <div className='stars'></div>
                                             </div>
 
                                             <div className="right-cont">
-                                                <h2>{product.price}$</h2>
+                                                <div className='price'></div>
                                             </div>
                                         </div>
                                     </div>
-                                ))}
-                            </>}
+
+                                    <div className="card-loading">
+                                        <div className='loading-img'></div>
+
+                                        <div className='under-container'>
+                                            <div className="left-cont">
+                                                <div className='title'></div>
+                                                <div className='paragraph'></div>
+                                                <div className='stars'></div>
+                                            </div>
+
+                                            <div className="right-cont">
+                                                <div className='price'></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="card-loading">
+                                        <div className='loading-img'></div>
+
+                                        <div className='under-container'>
+                                            <div className="left-cont">
+                                                <div className='title'></div>
+                                                <div className='paragraph'></div>
+                                                <div className='stars'></div>
+                                            </div>
+
+                                            <div className="right-cont">
+                                                <div className='price'></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="card-loading">
+                                        <div className='loading-img'></div>
+
+                                        <div className='under-container'>
+                                            <div className="left-cont">
+                                                <div className='title'></div>
+                                                <div className='paragraph'></div>
+                                                <div className='stars'></div>
+                                            </div>
+
+                                            <div className="right-cont">
+                                                <div className='price'></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="card-loading">
+                                        <div className='loading-img'></div>
+
+                                        <div className='under-container'>
+                                            <div className="left-cont">
+                                                <div className='title'></div>
+                                                <div className='paragraph'></div>
+                                                <div className='stars'></div>
+                                            </div>
+
+                                            <div className="right-cont">
+                                                <div className='price'></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="card-loading">
+                                        <div className='loading-img'></div>
+
+                                        <div className='under-container'>
+                                            <div className="left-cont">
+                                                <div className='title'></div>
+                                                <div className='paragraph'></div>
+                                                <div className='stars'></div>
+                                            </div>
+
+                                            <div className="right-cont">
+                                                <div className='price'></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="card-loading">
+                                        <div className='loading-img'></div>
+
+                                        <div className='under-container'>
+                                            <div className="left-cont">
+                                                <div className='title'></div>
+                                                <div className='paragraph'></div>
+                                                <div className='stars'></div>
+                                            </div>
+
+                                            <div className="right-cont">
+                                                <div className='price'></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="card-loading">
+                                        <div className='loading-img'></div>
+
+                                        <div className='under-container'>
+                                            <div className="left-cont">
+                                                <div className='title'></div>
+                                                <div className='paragraph'></div>
+                                                <div className='stars'></div>
+                                            </div>
+
+                                            <div className="right-cont">
+                                                <div className='price'></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="card-loading">
+                                        <div className='loading-img'></div>
+
+                                        <div className='under-container'>
+                                            <div className="left-cont">
+                                                <div className='title'></div>
+                                                <div className='paragraph'></div>
+                                                <div className='stars'></div>
+                                            </div>
+
+                                            <div className="right-cont">
+                                                <div className='price'></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </>
+                                :
+                                <>
+
+
+                                    {filteredProducts.map(product => (
+                                        <div key={product.id} className='card' title={product.description}>
+                                            <img src={TestImage} alt="product" />
+
+                                            <div className='under-container'>
+                                                <div className="left-cont">
+                                                    <h3>{product.name}</h3>
+                                                    <p><BsCart2 /> {product.purchases} purchase</p>
+                                                    <div className='stars'>
+
+                                                        {renderStars(product.rating)}
+                                                    </div>
+                                                </div>
+
+                                                <div className="right-cont">
+                                                    <h2>{product.price}$</h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </>}
+                        </div>
                     </div>
+
+
                 </div>
 
-
-            </div>
-
-        </Profiler >
+            </Profiler >
+        </>
     )
 }
 
