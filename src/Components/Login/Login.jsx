@@ -11,6 +11,7 @@ import { FaSun, FaMoon, FaGoogle, FaFacebook } from 'react-icons/fa'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import Swal from 'sweetalert2'
 import i18next from 'i18next'
+import { Helmet } from 'react-helmet-async'
 
 const Login = () => {
 
@@ -92,83 +93,91 @@ const Login = () => {
 
 
     return (
-        <div id='sign-in' className={isDarkMode ? 'dark-in' : ''}>
+        <>
+            <Helmet>
+                <title>WEBINA DIGITAL | Login</title>
+                <meta name="description" content="Let's Get you Signed in to your Webina Digital Account" />
+                <link rel='canonical' content="/login" />
+            </Helmet>
+
+            <div id='sign-in' className={isDarkMode ? 'dark-in' : ''}>
 
 
-            <div className='header'>
-                <div className="container">
-                    <a href="/">
-                        <img src={isDarkMode ? LogoDark : Logo} alt="logo" />
-                    </a>
+                <div className='header'>
+                    <div className="container">
+                        <a href="/">
+                            <img src={isDarkMode ? LogoDark : Logo} alt="logo" />
+                        </a>
 
-                    <div className='lang-mode'>
-                        {isDarkMode ? <FaSun onClick={toggleTheme} /> : <FaMoon onClick={toggleTheme} />}
-                        <MdLanguage />
+                        <div className='lang-mode'>
+                            {isDarkMode ? <FaSun onClick={toggleTheme} /> : <FaMoon onClick={toggleTheme} />}
+                            <MdLanguage />
+                        </div>
                     </div>
+
                 </div>
 
-            </div>
+                <div className='container'>
+                    <div className="left-container">
 
-            <div className='container'>
-                <div className="left-container">
+                        <h4> {i18next.t("DONT_HAVE_ACCOUNT")} <a href='/register'>{i18next.t("SIGNUP")}</a></h4>
 
-                    <h4> {i18next.t("DONT_HAVE_ACCOUNT")} <a href='/register'>{i18next.t("SIGNUP")}</a></h4>
+                        <h2>{i18next.t("WELCOME_BACK")}</h2>
 
-                    <h2>{i18next.t("WELCOME_BACK")}</h2>
+                        <p>{i18next.t("WE_GLAD")}</p>
 
-                    <p>{i18next.t("WE_GLAD")}</p>
+                        <form onSubmit={handleLogin} autoComplete="off">
 
-                    <form onSubmit={handleLogin} autoComplete="off">
-
-                        <div className="input-container">
-                            <label htmlFor="email">{i18next.t("Email")}</label>
-                            <input type="email" name='email' autoComplete='off' placeholder='email@example.com' onChange={e => setEmail(e.target.value)} />
-                        </div>
-
-
-                        <div className="input-container">
-                            <label htmlFor="password">{i18next.t("Password")}</label>
-                            <input type="password" name='password' autoComplete='off' onChange={e => setPassword(e.target.value)} />
-                        </div>
-
-
-                        <button type='submit'>{loginLoading ? <AiOutlineLoading3Quarters className="spin-load" /> : i18next.t("SIGNIN")}</button>
-
-
-                        <div className="under-sign">
-                            <div className='agree'>
-                                <input type="checkbox" name="remember" id="remember" />
-                                <label htmlFor="remember">{i18next.t("REMEMBER_ME")}</label>
+                            <div className="input-container">
+                                <label htmlFor="email">{i18next.t("Email")}</label>
+                                <input type="email" name='email' autoComplete='off' placeholder='email@example.com' onChange={e => setEmail(e.target.value)} />
                             </div>
-                            <a href="/forget-password">{i18next.t("FORGOT_PASSWORD")}</a>
+
+
+                            <div className="input-container">
+                                <label htmlFor="password">{i18next.t("Password")}</label>
+                                <input type="password" name='password' autoComplete='off' onChange={e => setPassword(e.target.value)} />
+                            </div>
+
+
+                            <button type='submit'>{loginLoading ? <AiOutlineLoading3Quarters className="spin-load" /> : i18next.t("SIGNIN")}</button>
+
+
+                            <div className="under-sign">
+                                <div className='agree'>
+                                    <input type="checkbox" name="remember" id="remember" />
+                                    <label htmlFor="remember">{i18next.t("REMEMBER_ME")}</label>
+                                </div>
+                                <a href="/forget-password">{i18next.t("FORGOT_PASSWORD")}</a>
+                            </div>
+                        </form>
+
+                        <div className='with-sign'>
+                            <hr /> <h3>{i18next.t("OR_SIGN_IN_WITH")}</h3> <hr />
                         </div>
-                    </form>
 
-                    <div className='with-sign'>
-                        <hr /> <h3>{i18next.t("OR_SIGN_IN_WITH")}</h3> <hr />
+
+                        <div className="google-facebook">
+                            <button><FaGoogle />Google</button>
+                            <button><FaFacebook />Facebook</button>
+                        </div>
                     </div>
 
-
-                    <div className="google-facebook">
-                        <button><FaGoogle />Google</button>
-                        <button><FaFacebook />Facebook</button>
+                    <div className="right-container">
+                        <img src={SignIn} alt="Sign In Graphique" />
                     </div>
+
                 </div>
 
-                <div className="right-container">
-                    <img src={SignIn} alt="Sign In Graphique" />
+                <div className='footer'>
+                    <h4><span>WEBINA DIGITAL LTD</span> © 2023 All Rights Reserved</h4>
                 </div>
 
+
+
+
             </div>
-
-            <div className='footer'>
-                <h4><span>WEBINA DIGITAL LTD</span> © 2023 All Rights Reserved</h4>
-            </div>
-
-
-
-
-        </div>
+        </>
     )
 }
 

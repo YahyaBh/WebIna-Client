@@ -378,7 +378,7 @@ const Home = () => {
 
                                         <img className='floating-right' src={isDarkMode ? floatingRightHatDark : floatingRightHat} alt="webina floating hat" />
 
-                                        <h1>{i18next.t('WHY')} <span>{i18next.t('WEBINA')}</span></h1>
+                                        <h2>{i18next.t('WHY')} <span>{i18next.t('WEBINA')}</span></h2>
 
                                         <p>
                                             {i18next.t('WHY_WEBINA_PAG_SEC')}

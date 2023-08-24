@@ -8,7 +8,7 @@ import { initReactI18next } from 'react-i18next'
 import HttpApi from 'i18next-http-backend'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import Loading from './Components/Loading/Loading';
-
+import { HelmetProvider } from 'react-helmet-async';
 
 i18next
   .use(HttpApi)
@@ -36,8 +36,10 @@ i18next
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Suspense fallback={Loading}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </HelmetProvider>
   </Suspense>
 );
