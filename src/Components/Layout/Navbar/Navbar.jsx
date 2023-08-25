@@ -88,29 +88,10 @@ const Navbar = ({ isOpen, transparent }) => {
 
     return (
         <>
+
+
             <nav id='navbar' className={scrolled ? 'scrolled' : '' || transparent ? 'transparent' : ''}>
-                <div className={`modal-languages ${modalClassName}  ${language ? 'active' : ''}`}>
-                    <div className="modal-content">
-                        <span className="close" onClick={e => setLanguage('')}>&times;</span>
-                        <h2>Choose A Language</h2>
-                        <div className='languages-container'>
-                            <div className='lang' onClick={e => changeLang('ar')}>
-                                <img src={Morocco} alt="Arabic" />
-                                <h3>العربية</h3>
-                            </div>
 
-                            <div className='lang' onClick={e => changeLang('fr')}>
-                                <img src={French} alt="French" />
-                                <h3>Francais</h3>
-                            </div>
-
-                            <div className='lang' onClick={e => changeLang('en')}>
-                                <img src={English} alt="English" />
-                                <h3>English</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div className={`modal-products ${modalClassName}  ${selectedProduct ? 'active' : ''}`}>
                     <div className="modal-content">
@@ -176,7 +157,25 @@ const Navbar = ({ isOpen, transparent }) => {
 
                         <div className='right-container'>
                             <div className='lang-mode'>
-                                <MdLanguage onClick={e => setLanguage(true)} />
+                                <div class="dropdown-container">
+                                    <MdLanguage className='svg-dropdown' onClick={e => setLanguage(true)} />
+
+                                    <div class="options">
+                                        <div class="option" onClick={e => changeLang('en')}>
+                                            <img src={English} alt="English" />
+                                            <h3>English</h3>
+                                        </div>
+                                        <div class="option" onClick={e => changeLang('fr')}>
+                                            <img src={French} alt="French" />
+                                            <h3>Francais</h3>
+                                        </div>
+                                        <div class="option" onClick={e => changeLang('ar')}>
+                                            <img src={Morocco} alt="Arabic" />
+                                            <h3>العربية</h3>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 {isDarkMode ? <FaSun onClick={toggleTheme} /> : <FaMoon onClick={toggleTheme} />}
                             </div>
 
