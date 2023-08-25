@@ -12,9 +12,9 @@ axios.defaults.headers.common["Access-Control-Max-Age"] = "1800";
 axios.defaults.headers.common["Access-Control-Allow-Headers"] = "content-type";
 axios.defaults.headers.common["Access-Control-Allow-Methods"] = "PUT, POST, GET, DELETE, PATCH, OPTIONS";
 
-const baseUrl = 'https://webina-digital-server.000webhostapp.com';
+const baseUrl = 'http://localhost:8000';
 
-export default function AuthContext() {
+export default function AuthUser() {
 
     const getAdmin = cookie.get('__ADMINISTRAOT_DATA') ? cookie.get('__ADMINISTRAOT_DATA') : null;
     const setAdmin = (data) => { cookie.set('__ADMINISTRAOT_DATA', JSON.stringify(data), { sameSite: 'Lax', secure: true, expires: 3 }) }
@@ -26,7 +26,6 @@ export default function AuthContext() {
     const [user] = useState(getUser ? JSON.parse(getUser) : null);
     const [admin] = useState(getAdmin ? JSON.parse(getAdmin) : null);
 
-    const isAuthenticated = getUser ? true : getAdmin ? true : false;
 
 
     const getToken = cookie.get('TOKEN_') ? cookie.get('TOKEN_') : null;
@@ -35,13 +34,16 @@ export default function AuthContext() {
     const accessToken = cookie.get('__ACCESS_TOKEN') ? cookie.get('__ACCESS_TOKEN') : null;
     const setAccessToken = (data) => { cookie.set('__ACCESS_TOKEN', data, { sameSite: 'Lax', secure: true, expires: 3 }) };
 
+    const isAuthenticated = getUser ? true : getAdmin ? true : false;
 
-    const rememberToken = cookie.get('__remember_token') ? cookie.get('__remember_token') : null;
-    const setRememberToken = (data) => { cookie.set('__remember_token', data, { sameSite: 'Lax', secure: true }) };
 
     const http = axios.create({
         baseURL: baseUrl,
     })
+
+    const rememberToken = cookie.get('__remember_token') ? cookie.get('__remember_token') : null;
+    const setRememberToken = (data) => { cookie.set('__remember_token', data, { sameSite: 'Lax', secure: true }) };
+
 
     const csrf = async () => await http.get('/sanctum/csrf-cookie');
 
@@ -95,6 +97,7 @@ export default function AuthContext() {
         }
 
     }
+
 
     return {
         http,

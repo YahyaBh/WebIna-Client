@@ -30,7 +30,7 @@ const Login = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault()
-        csrf();
+
         if (email !== '' || password !== '') {
             setLoginLoading(true)
 
@@ -39,6 +39,7 @@ const Login = () => {
             userData.append('email', email)
             userData.append('password', password)
 
+            csrf();
             await http.post('/api/login', userData)
                 .then((res) => {
                     setAccessToken(res.data.token);
@@ -84,7 +85,33 @@ const Login = () => {
                                 }
                             })
                     } else {
-
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops! Something went wrong',
+                            text: err.message,
+                            customClass: {
+                                container: 'popup-container',
+                                popup: 'popup-popup',
+                                header: 'popup-header',
+                                title: 'popup-title',
+                                closeButton: 'popup-close-button',
+                                icon: 'popup-icon',
+                                image: 'popup-image',
+                                htmlContainer: 'popup-html',
+                                input: 'popup-input',
+                                inputLabel: 'popup-input-label',
+                                validationMessage: 'popup-validation-message',
+                                actions: 'popup-actions',
+                                confirmButton: 'popup-confirm-button',
+                                denyButton: 'popup-deny-button',
+                                cancelButton: 'popup-cancel-button',
+                                loader: 'popup-loader',
+                                footer: 'popup-footer',
+                                timerProgressBar: 'popup-timer-progress-bar',
+                            },
+                            confirmButtonAriaLabel: 'Sign Up Instead ?',
+                            cancelButtonAriaLabel: 'Try Again',
+                        })
                     }
                 })
         }
