@@ -51,7 +51,7 @@ const Login = () => {
                 .catch((err) => {
                     setLoginLoading(false)
 
-                    if (err.response.status === 401) {
+                    if (err?.response?.status === 401) {
                         Swal.fire({
                             icon: 'error',
                             title: 'Oops! Something went wrong',
