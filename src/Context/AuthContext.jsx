@@ -2,16 +2,6 @@ import axios from 'axios';
 import cookie from 'js-cookie';
 import { useState } from 'react';
 
-axios.defaults.withCredentials = true;
-axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-axios.defaults.headers.common['Content-Type'] = 'application/json';
-axios.defaults.headers.common['Accept'] = 'application/json';
-axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-axios.defaults.headers.common["Access-Control-Allow-Credentials"] = "true";
-axios.defaults.headers.common["Access-Control-Max-Age"] = "1800";
-axios.defaults.headers.common["Access-Control-Allow-Headers"] = "content-type";
-axios.defaults.headers.common["Access-Control-Allow-Methods"] = "PUT, POST, GET, DELETE, PATCH, OPTIONS";
-
 const baseUrl = 'https://webina-digital-server.000webhostapp.com';
 
 export default function AuthUser() {
