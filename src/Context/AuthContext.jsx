@@ -2,7 +2,8 @@ import axios from 'axios';
 import cookie from 'js-cookie';
 import { useState } from 'react';
 
-const baseUrl = 'https://7d8b-196-74-41-235.ngrok-free.app';
+const baseUrl = 'https://3e10-196-74-41-235.ngrok-free.app';
+axios.defaults.withCredentials = true;
 
 export default function AuthUser() {
 
@@ -36,9 +37,9 @@ export default function AuthUser() {
         baseURL: baseUrl,
         headers: {
             'X-Requested-With': 'XMLHttpRequest',
-            'Access-Control-Allow-Origin': '*'
+            'Access-Control-Allow-Origin': '*',
+            "ngrok-skip-browser-warning": "69420"
         },
-        withCredentials: true
     })
 
     const sec_http = getUser ? axios.create({
