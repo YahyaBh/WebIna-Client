@@ -2,7 +2,7 @@ import axios from 'axios';
 import cookie from 'js-cookie';
 import { useState } from 'react';
 
-const baseUrl = 'https://webina-digital-server.000webhostapp.com';
+const baseUrl = 'https://7d8b-196-74-41-235.ngrok-free.app';
 
 export default function AuthUser() {
 
