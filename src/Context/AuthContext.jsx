@@ -40,6 +40,7 @@ export default function AuthUser() {
             'Access-Control-Allow-Origin': '*',
             "ngrok-skip-browser-warning": "69420"
         },
+        withCredentials : true,
     })
 
     const sec_http = getUser ? axios.create({
