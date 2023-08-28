@@ -24,9 +24,6 @@ const Login = () => {
 
     const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
-    useEffect(() => {
-
-    }, [])
 
     const handleLogin = async (e) => {
         e.preventDefault()
