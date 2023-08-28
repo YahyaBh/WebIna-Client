@@ -34,6 +34,9 @@ export default function AuthUser() {
 
     const http = axios.create({
         baseURL: baseUrl,
+        headers : {
+            'X-Requested-With': 'XMLHttpRequest'
+        },
         withCredentials : true
     })
 
