@@ -34,16 +34,18 @@ export default function AuthUser() {
 
     const http = axios.create({
         baseURL: baseUrl,
-        headers : {
-            'X-Requested-With': 'XMLHttpRequest'
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'Access-Control-Allow-Origin': '*'
         },
-        withCredentials : true
+        withCredentials: true
     })
 
     const sec_http = getUser ? axios.create({
         baseURL: baseUrl,
         headers: {
-            'Authorization': `Bearer ${accessToken}`
+            'Authorization': `Bearer ${accessToken}`,
+            'Access-Control-Allow-Origin': '*'
         }
     }) : null;
 
@@ -51,7 +53,8 @@ export default function AuthUser() {
         baseURL: `${baseUrl}/api`,
         headers: {
             'content-type': 'multipart/form-data',
-            'Authorization': `Bearer ${accessToken}`
+            'Authorization': `Bearer ${accessToken}`,
+            'Access-Control-Allow-Origin': '*'
         }
     }) : null;
 
@@ -59,14 +62,16 @@ export default function AuthUser() {
         baseURL: `${baseUrl}/api`,
         headers: {
             'content-type': 'multipart/form-data',
-            'Authorization': `Bearer ${accessToken}`
+            'Authorization': `Bearer ${accessToken}`,
+            'Access-Control-Allow-Origin': '*'
         }
     }) : null;
 
     const admin_http = getAdmin ? axios.create({
         baseURL: baseUrl,
         headers: {
-            'Authorization': `Bearer ${accessToken}`
+            'Authorization': `Bearer ${accessToken}`,
+            'Access-Control-Allow-Origin' : '*'
         }
     }) : null;
 
