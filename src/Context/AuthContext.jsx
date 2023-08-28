@@ -12,7 +12,7 @@ axios.defaults.headers.common["Access-Control-Max-Age"] = "1800";
 axios.defaults.headers.common["Access-Control-Allow-Headers"] = "content-type";
 axios.defaults.headers.common["Access-Control-Allow-Methods"] = "PUT, POST, GET, DELETE, PATCH, OPTIONS";
 
-const baseUrl = 'https://webina-digital-server.000webhostapp.com';
+const baseUrl = 'http://localhost:8000';
 
 export default function AuthUser() {
 
@@ -26,8 +26,6 @@ export default function AuthUser() {
     const [user] = useState(getUser ? JSON.parse(getUser) : null);
     const [admin] = useState(getAdmin ? JSON.parse(getAdmin) : null);
 
-
-
     const getToken = cookie.get('TOKEN_') ? cookie.get('TOKEN_') : null;
     const setToken = (data) => { cookie.set('TOKEN_', data, { sameSite: 'Lax', secure: true, expires: 3 }) }
 
@@ -37,16 +35,16 @@ export default function AuthUser() {
     const isAuthenticated = getUser ? true : getAdmin ? true : false;
 
 
-    const http = axios.create({
-        baseURL: baseUrl,
-    })
-
     const rememberToken = cookie.get('__remember_token') ? cookie.get('__remember_token') : null;
     const setRememberToken = (data) => { cookie.set('__remember_token', data, { sameSite: 'Lax', secure: true }) };
 
 
     const csrf = async () => await http.get('/sanctum/csrf-cookie');
 
+
+    const http = axios.create({
+        baseURL: baseUrl,
+    })
 
     const sec_http = getUser ? axios.create({
         baseURL: baseUrl,

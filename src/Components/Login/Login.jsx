@@ -33,13 +33,12 @@ const Login = () => {
 
         if (email !== '' || password !== '') {
             setLoginLoading(true)
-
+            csrf();
             const userData = new FormData();
 
             userData.append('email', email)
             userData.append('password', password)
 
-            csrf();
             await http.post('/api/login', userData)
                 .then((res) => {
                     setAccessToken(res.data.token);
