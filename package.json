@@ -1,7 +1,7 @@
 {
   "name": "webina_digital",
   "version": "0.1.1",
-  "proxy" : "https://7d8b-196-74-41-235.ngrok-free.app",
+  "proxy" : "https://webina-digital-server.000webhostapp.com",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",

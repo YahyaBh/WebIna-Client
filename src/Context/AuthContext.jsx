@@ -38,7 +38,6 @@ export default function AuthUser() {
         headers: {
             'X-Requested-With': 'XMLHttpRequest',
             'Access-Control-Allow-Origin': '*',
-            "ngrok-skip-browser-warning": "69420"
         },
         withCredentials : true,
     })
