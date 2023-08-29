@@ -3,7 +3,9 @@ import cookie from 'js-cookie';
 import { useState } from 'react';
 
 const baseUrl = 'https://webina-digital-server.000webhostapp.com';
+
 axios.defaults.withCredentials = true;
+axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
 export default function AuthUser() {
 
@@ -39,7 +41,7 @@ export default function AuthUser() {
             'X-Requested-With': 'XMLHttpRequest',
             'Access-Control-Allow-Origin': '*',
         },
-        withCredentials : true,
+        withCredentials: true,
     })
 
     const sec_http = getUser ? axios.create({
@@ -72,7 +74,7 @@ export default function AuthUser() {
         baseURL: baseUrl,
         headers: {
             'Authorization': `Bearer ${accessToken}`,
-            'Access-Control-Allow-Origin' : '*'
+            'Access-Control-Allow-Origin': '*'
         }
     }) : null;
 
