@@ -2,7 +2,7 @@ import axios from 'axios';
 import cookie from 'js-cookie';
 import { useState } from 'react';
 
-const baseUrl = 'https://3e10-196-74-41-235.ngrok-free.app';
+const baseUrl = 'https://webina-digital-server.000webhostapp.com';
 axios.defaults.withCredentials = true;
 
 export default function AuthUser() {
