@@ -149,9 +149,9 @@ const Navbar = ({ isOpen, transparent }) => {
                             <li><a href='/maintanence'>{i18next.t("CUSTOM")}</a></li>
                             <li><a href='/maintanence'>{i18next.t("PRICING")}</a></li>
                             <li><a href='/maintanence'>{i18next.t("BLOGS")}</a></li>
-                            <li><a href='/maintanence'>{i18next.t("ABOUT_US")}</a></li>
+                            <li><a href='/about'>{i18next.t("ABOUT_US")}</a></li>
                             <li><a href='/maintanence'>{i18next.t("FAQs")}</a></li>
-                            <li><a href='/maintanence'>{i18next.t("HIRE_ME")}</a></li>
+                            <li><a href='/jobs'>{i18next.t("HIRE_ME")}</a></li>
                             <li><a href='/maintanence'>{i18next.t("CONTACT_US")}</a></li>
                         </ul>
 
@@ -245,7 +245,7 @@ const Navbar = ({ isOpen, transparent }) => {
                             </li>
                             <li><a href='/maintanence'>{i18next.t("PRICING")}</a></li>
                             <li><a href='/maintanence'>{i18next.t("BLOGS")}</a></li>
-                            <li><a href='/maintanence'>{i18next.t("ABOUT_US")}</a></li>
+                            <li><a href='/about'>{i18next.t("ABOUT_US")}</a></li>
                             <li><a href='/maintanence'>{i18next.t("FAQs")}</a></li>
                             <li><a href='/maintanence'>{i18next.t("HIRE_ME")}</a></li>
                             <li><a href='/maintanence'>{i18next.t("CONTACT_US")}</a></li>

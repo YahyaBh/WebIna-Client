@@ -1,0 +1,132 @@
+.hiring-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 50px;
+    background: url(../../../public/Images/Background-SignDark.svg);
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+
+    .left-container {
+        width: 50%;
+        padding: 20px 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+
+        img {
+            width: 60px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        h1 {
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 45px;
+
+            span {
+                color: #ffe662;
+            }
+        }
+
+        p {
+            color: #fff;
+        }
+
+        form {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-direction: column;
+            gap: 10px;
+            color: #fff;
+            background-color: #ffffff1a;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            max-width: 300px;
+
+            p {
+                font-size: 12px;
+
+                a {
+                    color: grey;
+                    text-decoration: underline;
+                }
+            }
+
+            input {
+                margin: auto;
+                width: 270px;
+                height: 30px;
+                padding: 5px;
+                border-radius: 5px;
+                border: none;
+                outline: none;
+                font-size: 14px;
+                background-color: #fff;
+                backdrop-filter: blur(10px);
+                color: #1e1e1e;
+            }
+
+            input::placeholder {
+                color: #000;
+            }
+
+            select {
+                margin: auto;
+                width: 270px;
+                height: 40px;
+                padding: 5px;
+                border-radius: 5px;
+                border: none;
+                outline: none;
+                font-size: 14px;
+                background-color: #fff;
+                backdrop-filter: blur(10px);
+                color: #1e1e1e;
+            }
+
+            label {
+                font-size: 14px;
+            }
+
+            button {
+                width: 270px;
+                height: 40px;
+                background-color: #ffe662;
+                color: #1e1e1e;
+                margin: auto;
+                border: none;
+                outline: none;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: all .3s ease;
+
+                &:hover {
+                    background-color: #1e1e1e;
+                    color: #ffe662;
+                    transform: scale(.98);
+                }
+            }
+        }
+    }
+
+    .right-container {
+        width: 60%;
+        height: 100vh;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}

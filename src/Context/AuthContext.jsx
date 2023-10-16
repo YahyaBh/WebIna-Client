@@ -2,10 +2,13 @@ import axios from 'axios';
 import cookie from 'js-cookie';
 import { useState } from 'react';
 
-const baseUrl = 'https://webina-digital-server.000webhostapp.com';
+const baseUrl = 'http://localhost:8000';
 
 axios.defaults.withCredentials = true;
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+axios.defaults.headers.common['Cache-Control'] = 'no-cache, private';
+axios.defaults.headers.common['X-Xss-Protection'] = '1; mode=block';
+axios.defaults.headers.common['X-Content-Type-Options'] = 'nosniff';
 
 export default function AuthUser() {
 

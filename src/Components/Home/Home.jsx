@@ -99,7 +99,7 @@ const Home = () => {
     useEffect(() => {
 
         if (isAuthenticated) {
-            navigate('/store')
+            navigate('/store/home')
         } else {
             if (window.screen.width > 780) {
                 luxyMin.init({

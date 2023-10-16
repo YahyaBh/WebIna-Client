@@ -21,6 +21,8 @@ import About from "./Components/About/About";
 
 import Cookies from "js-cookie";
 import { useTranslation } from "react-i18next";
+import Hiring from "./Components/Hiring/Hiring";
+import HomeStore from "./Components/Store/HomeStore";
 
 
 
@@ -88,12 +90,15 @@ function App() {
         <Route exact path='/about' element={<About />} />
         <Route exact path='/contact' element={<Contact />} />
         <Route exact path='/privacy-policy' element={<Privacy />} />
+        <Route exact path='/jobs' element={<Hiring />} />
 
 
         {/* Authenticated user */}
         <Route exact path='/logout' element={<Logout />} />
         <Route exact path='/welcome' element={<Welcome />} />
         <Route exact path='/store' element={<Store />} />
+        <Route exact path='/store/home' element={<HomeStore />} />
+
 
 
 
