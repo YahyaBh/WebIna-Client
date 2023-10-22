@@ -53,7 +53,6 @@ const Store = () => {
         sec_http.post('/api/store')
             .then(res => {
                 setProducts(res.data.products)
-
                 setLoading(false);
                 setAnimationLoading('fade-in')
 

@@ -6,7 +6,7 @@
     background-color: var(--light-color);
     height: auto;
     min-height: 100dvh;
-    top: 120px;
+    top: 95px;
     position: relative;
 
     .left-container {
@@ -18,6 +18,7 @@
         gap: 20px;
         margin-left: 260px;
         overflow: hidden;
+        background-color: #272727;
 
         @media screen and (max-width: 900px) {
             margin-left: 0px;
@@ -26,8 +27,8 @@
         .top-chart {
             width: 100%;
             gap: 10px;
-            background-color: #1e1e1e0b;
-            padding: 20px 0;
+            background-color: #323232;
+            padding: 18px 0;
 
             .mySwiper {
                 display: flex;
@@ -39,8 +40,8 @@
 
             li {
                 height: 20px;
-                width: 140px;
-                padding: 5px;
+                width: max-content;
+                padding: 5px 20px;
                 background-color: var(--black-color);
                 color: var(--light-color);
                 display: flex;
