@@ -41,7 +41,6 @@ const Store = () => {
 
         if (isAuthenticated) {
             setFilter('All');
-
             getProducts();
         } else {
             navigate('/', { replace: true });

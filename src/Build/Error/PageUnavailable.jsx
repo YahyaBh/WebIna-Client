@@ -1,13 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { RiArrowGoBackFill } from 'react-icons/ri'
+import { AiOutlineHome } from 'react-icons/ai'
 import './PageUnavailable.scss'
 import { ThemeContext } from '../../Context/ThemeContext'
+import { useNavigate } from 'react-router-dom'
+
 
 const PageUnavailable = () => {
 
     const { isDarkMode } = useContext(ThemeContext);
 
     const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handleMouseMove = (event) => {
@@ -31,6 +36,10 @@ const PageUnavailable = () => {
             window.removeEventListener('mousemove', handleMouseMove);
         };
     }, []);
+
+    const goBack = () => {
+        navigate(-1);
+    }
 
     return (
         <div id='error-container'>
@@ -182,8 +191,9 @@ const PageUnavailable = () => {
 
 
 
+            <a href='/'><AiOutlineHome /> GO HOME</a>
 
-            <a href='/'><RiArrowGoBackFill /> GO HOME</a>
+            <button onClick={goBack}><RiArrowGoBackFill /> GO BACK</button>
 
 
         </div>

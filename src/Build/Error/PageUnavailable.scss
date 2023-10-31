@@ -16,8 +16,7 @@
     .error-eyes {
         width: 70%;
 
-
-        @media screen and (max-width:900px) {
+        @media screen and (max-width: 900px) {
             width: 90%;
         }
     }
@@ -29,7 +28,7 @@
         color: var(--dark-color-primary);
         text-align: center;
 
-        @media screen and (max-width:900px) {
+        @media screen and (max-width: 900px) {
             font-size: 30px;
         }
     }
@@ -55,6 +54,35 @@
             outline: 2px solid #fff;
             background-color: #1e1e1e;
             color: #fff;
+        }
+
+        svg {
+            color: var(--dark-color);
+            transition: all 0.3s ease;
+        }
+    }
+
+    button {
+        width: 200px;
+        padding: 10px 15px;
+        background-color: #1e1e1e;
+        border-radius: 30px;
+        border: 2px solid #fff;
+        outline: 2px solid var(--primary-color);
+        font-size: 20px;
+        font-weight: 600;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        color: #fff;
+        &:hover {
+            opacity: 0.8;
+            border: 2px solid #fffF;
+            outline: 2px solid #1e1e1e ;
+            background-color:  var(--primary-color);
+            color: #1e1e1e;
         }
 
         svg {

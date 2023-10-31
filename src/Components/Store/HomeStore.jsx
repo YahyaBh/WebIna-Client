@@ -154,8 +154,8 @@ const HomeStore = () => {
 
                         <p>Lorem Ips incorrectly dedentifies that the application is free <br /> to copy, modify, and distribute copies of the Software</p>
 
-                        <button>GET STARTED</button>
-                        <button>CUSTOM PRODUCT</button>
+                        <a href='/store' className='get_started'>GET STARTED</a>
+                        <a href='/custom/product' className='custom_product'>CUSTOM PRODUCT</a>
 
 
                     </div>
@@ -417,7 +417,7 @@ const HomeStore = () => {
                         </div>
                     </section>
 
-                    <Footer/>
+                    <Footer />
 
                 </div>
             </Profiler>

@@ -1,5 +1,5 @@
 #home_store {
-    background-color: #e0dcdc;
+    background-color: var(--light-color);
 
     .store_header {
         height: 80dvh;
@@ -7,7 +7,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        gap: 10px;
+        gap: 20px;
         color: #1e1e1e;
         text-align: center;
 
@@ -20,12 +20,39 @@
             font-size: 24px;
         }
 
-        button {
-            background-color: #1e1e1e;
+        .get_started {
+            background-color: var(--black-color);
             border: none;
-            color: #fff;
+            color: var(--light-color);
             padding: 8px 15px;
             font-size: 25px;
+            width: 300px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .custom_product {
+            background-color: var(--primary-color);
+            border: none;
+            color: var(--dark-color);
+            padding: 8px 15px;
+            font-size: 25px;
+            width: 300px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        a {
+            transition: all 0.3s ease;
+
+            &:hover {
+                transform: scale(0.95);
+                opacity: 0.7;
+            }
         }
     }
 
@@ -48,10 +75,12 @@
             .main_text {
                 text-transform: uppercase;
                 font-size: 50px;
+                color: var(--light-color);
             }
 
             p {
                 font-size: 20px;
+                color: var(--light-color);
             }
         }
 
@@ -237,9 +266,11 @@
             .main_text {
                 text-transform: uppercase;
                 font-size: 50px;
+                color: #1e1e1e;
             }
 
             p {
+                color: #1e1e1e;
                 font-size: 20px;
             }
         }
@@ -261,7 +292,7 @@
                 flex-direction: column;
                 gap: 20px;
                 flex-basis: 20%;
-                border: 2px solid var(--dark-color-primary);
+                border: 2px solid #1e1e1e;
                 padding: 5px;
                 border-radius: 20px;
                 transition: all 0.3s ease;
@@ -306,6 +337,7 @@
                         }
 
                         h3 {
+                            color: var(--light-color);
                             @media screen and (max-width: 900px) {
                                 font-size: 18px;
                             }
@@ -313,6 +345,11 @@
 
                         p {
                             opacity: 0.5;
+                            color: var(--light-color);
+
+                            svg {
+                                color: var(--light-color);
+                            }
 
                             @media screen and (max-width: 900px) {
                                 font-size: 14px;
@@ -327,7 +364,7 @@
                             flex-direction: row;
 
                             svg {
-                                color: var(--dark-color-primary);
+                                color: var(--pimary-color-dark);
 
                                 @media screen and (max-width: 900px) {
                                     font-size: 14px;
@@ -357,12 +394,12 @@
 
     .contact-section {
         width: 100%;
-        padding: 20px;
+        padding: 20px 0;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        background-color: #b8b4b4;
+        background-color: var(--light-color);
 
         @media screen and (max-width: 900px) {
             padding: 0px;
