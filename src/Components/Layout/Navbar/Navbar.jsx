@@ -157,19 +157,19 @@ const Navbar = ({ isOpen, transparent }) => {
 
                         <div className='right-container'>
                             <div className='lang-mode'>
-                                <div class="dropdown-container">
+                                <div className="dropdown-container">
                                     <MdLanguage className='svg-dropdown' onClick={e => setLanguage(true)} />
 
-                                    <div class="options">
-                                        <div class="option" onClick={e => changeLang('en')}>
+                                    <div className="options">
+                                        <div className="option" onClick={e => changeLang('en')}>
                                             <img src={English} alt="English" />
                                             <h3>English</h3>
                                         </div>
-                                        <div class="option" onClick={e => changeLang('fr')}>
+                                        <div className="option" onClick={e => changeLang('fr')}>
                                             <img src={French} alt="French" />
                                             <h3>Francais</h3>
                                         </div>
-                                        <div class="option" onClick={e => changeLang('ar')}>
+                                        <div className="option" onClick={e => changeLang('ar')}>
                                             <img src={Morocco} alt="Arabic" />
                                             <h3>العربية</h3>
                                         </div>

@@ -118,7 +118,6 @@
     "Name" : "Name",
     "Confirm_Password" : "Confirm Password",
     "TERMS_PRIVACY" : "Agree on terms & privacy",
-    "OR_SIGN_UP_WITH" : "Or Sign Up With"
-    
-
+    "OR_SIGN_UP_WITH" : "Or Sign Up With",
+    "EMAIL_VERIFICATION_BUTTON" : "Email Is Verified"
 }

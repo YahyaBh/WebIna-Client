@@ -1,3 +1,55 @@
+.email_verification_container {
+    background-color: #1e1e1e76;
+    backdrop-filter: blur(10px);
+    height: 100dvh;
+    width: 100%;
+    z-index: 20;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .card {
+        background-color: #fff;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+        width: 400px;
+        border-radius: 50px;
+
+        .top {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            img {
+                width: 250px;
+            }
+        }
+
+        button {
+            width: 80%;
+            border-radius: 50px;
+            height: 50px;
+            background-color: var(--dark-color-primary);
+            color: var(--light-color);
+            outline: none;
+            border: none;
+            cursor: pointer;
+            transition: all .3s ease;
+
+            &:hover {
+                opacity: .7;
+                transform: scale(.95);
+            }
+        }
+    }
+}
+
 .dark-up {
     background: url(../../../public/Images/Background-SignDark.svg) !important;
     background-position: center !important;
@@ -20,7 +72,6 @@
     justify-content: space-between;
 
     .header {
-        
         width: 100%;
 
         .container {

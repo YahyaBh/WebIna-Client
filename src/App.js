@@ -23,6 +23,7 @@ import Cookies from "js-cookie";
 import { useTranslation } from "react-i18next";
 import Hiring from "./Components/Hiring/Hiring";
 import HomeStore from "./Components/Store/HomeStore";
+import VerifyEmail from "./Components/VerifyEmail/VerifyEmail";
 
 
 
@@ -87,6 +88,7 @@ function App() {
 
         <Route exact path='/register' element={<Register />} />
         <Route exact path='/login' element={<Login />} />
+        <Route exact path='/verify-email/:token/:id/:email' element={<VerifyEmail />} />
         <Route exact path='/about' element={<About />} />
         <Route exact path='/contact' element={<Contact />} />
         <Route exact path='/privacy-policy' element={<Privacy />} />

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './Login.scss'
 import AuthContext from '../../Context/AuthContext'
 import { ThemeContext } from '../../Context/ThemeContext'
@@ -12,6 +12,7 @@ import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import Swal from 'sweetalert2'
 import i18next from 'i18next'
 import { Helmet } from 'react-helmet-async'
+import Cookies from 'js-cookie'
 
 const Login = () => {
 
@@ -29,8 +30,12 @@ const Login = () => {
         e.preventDefault()
 
         if (email !== '' || password !== '') {
+
             setLoginLoading(true)
             csrf();
+            
+            
+            
             const userData = new FormData();
 
             userData.append('email', email)
@@ -42,7 +47,10 @@ const Login = () => {
                     res.data.remember_token ? setRememberToken(res.data.token) : setRememberToken()
                     setUser(res.data.user);
                     navigate('/');
-                    setLoginLoading(false)
+                    setLoginLoading(false);
+                    if(Cookies.get('__F_ACCESS')) {
+                        Cookies.remove('__F_ACCESS');
+                    }
                 })
                 .catch((err) => {
                     setLoginLoading(false)

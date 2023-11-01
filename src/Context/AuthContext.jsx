@@ -15,9 +15,9 @@ export default function AuthUser() {
     const getAdmin = cookie.get('__ADMINISTRAOT_DATA') ? cookie.get('__ADMINISTRAOT_DATA') : null;
     const setAdmin = (data) => { cookie.set('__ADMINISTRAOT_DATA', JSON.stringify(data), { sameSite: 'Lax', secure: true, expires: 3 }) }
 
-
     const getUser = cookie.get('__USER_DATA') ? cookie.get('__USER_DATA') : null;
     const setUser = (data) => { cookie.set('__USER_DATA', JSON.stringify(data), { sameSite: 'Lax', secure: true, expires: 3 }) }
+
 
     const [user] = useState(getUser ? JSON.parse(getUser) : null);
     const [admin] = useState(getAdmin ? JSON.parse(getAdmin) : null);

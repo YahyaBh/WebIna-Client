@@ -30,7 +30,7 @@ const HomeStore = () => {
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [loadingItems, setLoadingItems] = useState(true);
 
-    const { sec_http, isAuthenticated } = AuthContext();
+    const { sec_http, isAuthenticated, http } = AuthContext();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -148,7 +148,6 @@ const HomeStore = () => {
                 <div id='home_store'>
 
                     <div className="store_header">
-
 
                         <h2 className='main_text'>BUY AND DIGITALIZE</h2>
 

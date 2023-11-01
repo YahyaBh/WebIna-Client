@@ -10,6 +10,7 @@ import { ThemeContext } from '../../Context/ThemeContext';
 import LogoDark from '../../Assets/Home/Navbar/WEBINA-Logo.png'
 import Logo from '../../Assets/Home/Navbar/WEBINA2.png'
 import SignUp from '../../Assets/SignUp/SignUpGraph.svg'
+import EmailVerf from '../../Assets/SignUp/Confirmed-cuate.svg'
 import Swal from 'sweetalert2';
 import i18next from 'i18next';
 import { Helmet } from 'react-helmet-async';
@@ -22,6 +23,8 @@ const Register = () => {
     const [confirmPassword, setConfirmPassword] = useState('')
 
     const [registerLoad, setRegisterLoad] = useState(false);
+
+    const [emailVerification, setEmailVerification] = useState(false);
 
     const { http, csrf, setAccessToken, setUser } = AuthContext()
     const navigate = useNavigate();
@@ -48,14 +51,11 @@ const Register = () => {
 
                 await http.post('/api/register', userData, { withCredentials: true })
                     .then((res) => {
-                        navigate('/welcome');
-                        setAccessToken(res.data.token);
-                        setUser(res.data.user);
-                        Cookies.set('__F_ACCESS', true);
+                        setEmailVerification(true);
                         setRegisterLoad(false);
                     })
                     .catch((err) => {
-                        Swal.fire('error', err.message)
+                        Swal.fire('error', err.response.data.message)
                         setRegisterLoad(false);
                     })
 
@@ -71,6 +71,35 @@ const Register = () => {
         }
     }
 
+
+    const handleCheckVerification = async () => {
+
+        csrf();
+        const userData = new FormData();
+
+        userData.append('name', name)
+        userData.append('email', email)
+        userData.append('password', password)
+        userData.append('password_confirmation', confirmPassword)
+
+
+
+        await http.post('/api/register/check-verification', userData, { withCredentials: true })
+            .then((res) => {
+                navigate('/store/home');
+                setAccessToken(res.data.token);
+                setUser(res.data.user);
+                Cookies.set('__F_ACCESS', true);
+                setRegisterLoad(false);
+                setEmailVerification(false);
+            })
+            .catch((err) => {
+                Swal.fire('error', err.response.data.message)
+                setRegisterLoad(false);
+            })
+
+    }
+
     return (
         <>
             <Helmet>
@@ -79,6 +108,23 @@ const Register = () => {
                 <link rel='canonical' content="/register" />
             </Helmet>
             <div id='sign-up' className={isDarkMode ? 'dark-up' : ''}>
+
+
+                {emailVerification ?
+                    <div className="email_verification_container">
+                        <div className="card">
+                            <div className="top">
+                                <img src={EmailVerf} alt="sign-up-email" />
+                                <h2>{i18next.t("EMAIL_VERIFICATION")}</h2>
+                                <p>{i18next.t("EMAIL_VERIFICATION_PAG")}</p>
+                            </div>
+
+                            <button onClick={handleCheckVerification}>{i18next.t("EMAIL_VERIFICATION_BUTTON")}</button>
+                            <button onClick={e => setEmailVerification(false)}>{i18next.t("EMAIL_VERIFICATION_CANCEL_BUTTON")}</button>
+                        </div>
+                    </div>
+                    : ''}
+
 
 
                 <div className='header'>
@@ -123,12 +169,12 @@ const Register = () => {
 
                             <div className="input-container">
                                 <label htmlFor="password">{i18next.t("Password")}</label>
-                                <input type="text" name='password' onChange={e => setPassword(e.target.value)} autoComplete="off" />
+                                <input type="password" name='password' onChange={e => setPassword(e.target.value)} autoComplete="off" />
                             </div>
 
                             <div className="input-container">
                                 <label htmlFor="conf_password">{i18next.t("Confirm_Password")}</label>
-                                <input type="text" name='conf_password' onChange={e => setConfirmPassword(e.target.value)} autoComplete="off" />
+                                <input type="password" name='conf_password' onChange={e => setConfirmPassword(e.target.value)} autoComplete="off" />
                             </div>
 
                             <button type='submit'>{registerLoad ? <AiOutlineLoading3Quarters className="spin-load" /> : i18next.t("SIGNUP")}</button>
@@ -164,9 +210,8 @@ const Register = () => {
                 </div>
 
 
-
-
             </div>
+
         </>
     )
 }

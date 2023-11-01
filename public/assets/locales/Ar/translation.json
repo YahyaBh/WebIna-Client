@@ -114,5 +114,6 @@
     "Name": "الاسم",
     "Confirm_Password": "تأكيد كلمة المرور",
     "TERMS_PRIVACY": "الموافقة على الشروط والخصوصية",
-    "OR_SIGN_UP_WITH": "أو سجّل الدخول باستخدام"
+    "OR_SIGN_UP_WITH": "أو سجّل الدخول باستخدام",
+    "EMAIL_VERIFICATION_BUTTON" : "تم التحقق من البريد الالكتروني"
 }
