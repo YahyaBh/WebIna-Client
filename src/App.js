@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "./Context/ThemeContext";
 
+import './App.css';
 
 //English Directions
 import Home from './Components/Home/Home';
@@ -24,6 +25,7 @@ import { useTranslation } from "react-i18next";
 import Hiring from "./Components/Hiring/Hiring";
 import HomeStore from "./Components/Store/HomeStore";
 import VerifyEmail from "./Components/VerifyEmail/VerifyEmail";
+import { StoreProvider } from "./Context/StoreConetxt";
 
 
 
@@ -79,37 +81,40 @@ function App() {
 
   return (
     <ThemeProvider>
+      <StoreProvider>
 
 
-      <Routes>
+        <Routes>
 
-        {/* English routes */}
-        <Route exact path='/' element={<Home />} />
+          {/* English routes */}
+          <Route exact path='/' element={<Home />} />
 
-        <Route exact path='/register' element={<Register />} />
-        <Route exact path='/login' element={<Login />} />
-        <Route exact path='/verify-email/:token/:id/:email' element={<VerifyEmail />} />
-        <Route exact path='/about' element={<About />} />
-        <Route exact path='/contact' element={<Contact />} />
-        <Route exact path='/privacy-policy' element={<Privacy />} />
-        <Route exact path='/jobs' element={<Hiring />} />
-
-
-        {/* Authenticated user */}
-        <Route exact path='/logout' element={<Logout />} />
-        <Route exact path='/welcome' element={<Welcome />} />
-        <Route exact path='/store' element={<Store />} />
-        <Route exact path='/store/home' element={<HomeStore />} />
+          <Route exact path='/register' element={<Register />} />
+          <Route exact path='/login' element={<Login />} />
+          <Route exact path='/verify-email/:token/:id/:email' element={<VerifyEmail />} />
+          <Route exact path='/about' element={<About />} />
+          <Route exact path='/contact' element={<Contact />} />
+          <Route exact path='/privacy-policy' element={<Privacy />} />
+          <Route exact path='/jobs' element={<Hiring />} />
 
 
+          {/* Authenticated user */}
+          <Route exact path='/logout' element={<Logout />} />
+          <Route exact path='/welcome' element={<Welcome />} />
+          <Route exact path='/store' element={<Store />} />
 
-
-        <Route exact path='/maintanence' element={<Maintanence />} />
-        <Route exact path="*" element={<PageUnavailable />} />
+          <Route exact path='/store/home' element={<HomeStore />} />
 
 
 
-      </Routes>
+
+          <Route exact path='/maintanence' element={<Maintanence />} />
+          <Route exact path="*" element={<PageUnavailable />} />
+
+
+
+        </Routes>
+      </StoreProvider>
     </ThemeProvider>
 
   );

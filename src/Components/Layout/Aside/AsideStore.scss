@@ -1,12 +1,23 @@
-aside {
+
+.aside-active {
     width: 260px;
+
+    .under-container {
+        opacity: 1 !important;
+    }
+}
+
+aside {
+    width: 60px;
     height: 89dvh;
+    overflow: hidden;
     background-color: var(--light-color);
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     position: fixed;
+    transition: all .3s ease;
 
     .main-container {
         display: flex;
@@ -60,6 +71,7 @@ aside {
         flex-direction: column;
         padding: 20px;
         gap: 20px;
+        opacity: 0;
 
         ul {
             display: flex;

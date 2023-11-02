@@ -30,14 +30,14 @@ const HomeStore = () => {
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [loadingItems, setLoadingItems] = useState(true);
 
-    const { sec_http, isAuthenticated, http } = AuthContext();
+    const { sec_http, isAuthenticated, csrf } = AuthContext();
     const navigate = useNavigate();
 
     useEffect(() => {
 
         if (isAuthenticated) {
+            csrf();
             setFilter('All');
-
             getProducts();
         } else {
             navigate('/', { replace: true });

@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './AsideStore.scss'
 import { AiOutlineHome } from 'react-icons/ai'
 import { MdOutlineExplore } from 'react-icons/md'
 import { FiPackage } from 'react-icons/fi'
+import { useStoreContext } from '../../../Context/StoreConetxt'
 
-const AsideStore = () => {
+const AsideStore = ({ props }) => {
+
+  const { toggleAside, isAsideOpen } = useStoreContext();
+
   return (
-    <aside>
+    <aside className={isAsideOpen ? 'aside-active' : ''}>
 
       <div className="main-container">
 

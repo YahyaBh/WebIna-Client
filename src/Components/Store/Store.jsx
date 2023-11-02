@@ -22,6 +22,7 @@ import "swiper/css/navigation";
 // import required modules
 import { Navigation } from "swiper";
 import AuthContext from '../../Context/AuthContext';
+import { useStoreContext } from '../../Context/StoreConetxt';
 
 const Store = () => {
 
@@ -32,14 +33,20 @@ const Store = () => {
     const [filter, setFilter] = useState('All');
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [loadingItems, setLoadingItems] = useState(true);
+    const [open, setOpen] = useState(false);
 
 
-    const { sec_http, isAuthenticated } = AuthContext();
+    const { sec_http, isAuthenticated, csrf } = AuthContext();
+    const { isAsideOpen } = useStoreContext();
+
+
+
     const navigate = useNavigate();
 
     useEffect(() => {
 
         if (isAuthenticated) {
+            csrf();
             setFilter('All');
             getProducts();
         } else {
@@ -144,7 +151,7 @@ const Store = () => {
                 <NavbarStore />
 
 
-                <div id='store'>
+                <div id='store' className={isAsideOpen ? 'aside-open' : ''}>
 
                     <AsideStore />
 

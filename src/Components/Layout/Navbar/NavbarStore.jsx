@@ -6,12 +6,13 @@ import { FaMoon, FaSun } from 'react-icons/fa'
 import { BiUser } from 'react-icons/bi'
 import { FiUserPlus } from 'react-icons/fi'
 import { BsList } from 'react-icons/bs';
-import { AiOutlineSearch, AiOutlineShoppingCart } from 'react-icons/ai'
+import { AiOutlineClose, AiOutlineSearch, AiOutlineShoppingCart } from 'react-icons/ai'
 import Ecommerce from '../../../Assets/Home/Navbar/Add to Cart-cuate.svg'
 import { ThemeContext } from "../../../Context/ThemeContext";
 import AuthContext from '../../../Context/AuthContext';
 import Profile from '../../../Assets/profiles/default.svg'
 import { MdKeyboardArrowDown } from 'react-icons/md';
+import { useStoreContext } from '../../../Context/StoreConetxt';
 
 
 const NavbarStore = ({ isOpen, transparent }) => {
@@ -19,12 +20,11 @@ const NavbarStore = ({ isOpen, transparent }) => {
 
     const [scrolled, setScrolled] = useState(false);
     const [selectedProduct, SetselectedProduct] = useState('');
-    const [asideShow, setAsideShow] = useState(false)
     const modalClassName = isOpen ? 'modal-animation active' : 'modal-animation';
 
     const { isDarkMode, toggleTheme } = useContext(ThemeContext);
-
     const { isAuthenticated, user } = AuthContext();
+    const { toggleAside, isAsideOpen } = useStoreContext();
 
     useEffect(() => {
         const disableScroll = (event) => {
@@ -67,13 +67,6 @@ const NavbarStore = ({ isOpen, transparent }) => {
     };
 
 
-    const handleAsideShow = () => {
-        if (asideShow) {
-            setAsideShow(false)
-        } else {
-            setAsideShow(true)
-        }
-    }
 
 
     return (
@@ -116,7 +109,7 @@ const NavbarStore = ({ isOpen, transparent }) => {
                     <div className='container'>
 
                         <div className='left-container'>
-                            <BsList onClick={handleAsideShow} />
+                            {isAsideOpen ? <AiOutlineClose className='openAside' onClick={toggleAside} /> : <BsList className='openAside' onClick={toggleAside} />}
                             <a href='/' className='logo'>
                                 <img src={isDarkMode ? LogoLight : Logo} alt="logo" />
                             </a>
