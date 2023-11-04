@@ -33,8 +33,6 @@ const Store = () => {
     const [filter, setFilter] = useState('All');
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [loadingItems, setLoadingItems] = useState(true);
-    const [open, setOpen] = useState(false);
-
 
     const { sec_http, isAuthenticated, csrf } = AuthContext();
     const { isAsideOpen } = useStoreContext();
