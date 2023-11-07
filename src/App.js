@@ -89,7 +89,8 @@ function App() {
           {/* English routes */}
           <Route exact path='/' element={<Home />} />
 
-          <Route exact path='/register' element={<Register />} />
+          <Route exact path='/register' element={<Register/>} />
+          <Route exact path='/register/:email_home' element={<Register />} />
           <Route exact path='/login' element={<Login />} />
           <Route exact path='/verify-email/:token/:id/:email' element={<VerifyEmail />} />
           <Route exact path='/about' element={<About />} />

@@ -42,12 +42,12 @@ body {
   --blog-card: #F1E7B1;
 }
 
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px transparent inset !important;
-  -webkit-text-fill-color: var(--black-color);
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
 
@@ -107,4 +107,11 @@ a {
 img {
   pointer-events: none;
   user-select: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
 }

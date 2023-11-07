@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react'
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useEffect, useState } from 'react'
+import { useNavigate, useParams } from "react-router-dom";
 import './Register.scss'
 import AuthContext from '../../Context/AuthContext'
 import Cookies from 'js-cookie';
@@ -46,6 +46,15 @@ const Register = () => {
     const navigate = useNavigate();
 
     const { isDarkMode, toggleTheme } = useContext(ThemeContext)
+
+    const { email_home } = useParams();
+
+
+    useEffect(() => {
+        if(email_home) {
+            setEmail(email_home);
+        }
+    },[])
 
     const handleRegisteration = async (e) => {
 
@@ -297,13 +306,13 @@ const Register = () => {
                                     <input type="password" name='conf_password' value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} autoComplete="off" />
                                 </div>
 
-                                <label htmlFor="terms&privacy" class="control control-checkbox">
+                                <label htmlFor="terms&privacy" className="control control-checkbox">
                                     <a href="/terms&conditions">{i18next.t("TERMS_PRIVACY")}</a>
-                                    <input checked={terms} onChange={termsHandler} type="checkbox" name="terms&privacy" id="terms&privacy" />
-                                    <div class="control_indicator"></div>
+                                    <input checked={terms} onChange={e => termsHandler()} type="checkbox" name="terms&privacy" id="terms&privacy" />
+                                    <div className="control_indicator"></div>
                                 </label>
 
-                                <button onClick={handleAvatar}>{registerLoad ? <AiOutlineLoading3Quarters className="spin-load" /> : i18next.t("SIGNUP")}</button>
+                                <button onClick={e => handleAvatar()}>{registerLoad ? <AiOutlineLoading3Quarters className="spin-load" /> : i18next.t("SIGNUP")}</button>
 
                             </form>
 

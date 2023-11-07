@@ -1,10 +1,11 @@
 .email_verification_container {
-    background-color: #1e1e1e76;
+    background-color: rgba(30, 30, 30, 0.462745098);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    height: 100dvh;
+    height: 100%;
     width: 100%;
     z-index: 20;
-    position: absolute;
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -302,7 +303,6 @@
                         transform: scale(0.98);
                     }
                 }
-
 
                 .control {
                     display: block;

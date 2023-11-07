@@ -1454,10 +1454,6 @@
 
                 .blog-card {
                     width: 300px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    flex-direction: column;
                     gap: 10px;
                     flex-basis: 35%;
 
@@ -1465,11 +1461,16 @@
                         background-color: var(--primary-color-light);
                         padding: 10px;
                         border-radius: 15px;
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        flex-direction: row;
+                        gap: 10px;
 
                         img,
                         div {
-                            width: 300px;
-                            height: auto;
+                            width: 100px;
+                            height: 100px;
                             border-radius: 10px;
                         }
 
@@ -1477,6 +1478,23 @@
                             text-align: center;
                             color: var(--dark-color);
                             margin-top: 12px;
+                        }
+
+                        .right-cont {
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: flex-start;
+                            flex-direction: column;
+                            width: 100%;
+
+                            h5 {
+                                text-align: left;
+                            }
+
+                            p {
+                                color: #4b4b4b;
+                                font-size: 12px;
+                            }
                         }
                     }
                 }

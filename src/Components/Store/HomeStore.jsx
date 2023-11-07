@@ -39,6 +39,7 @@ const HomeStore = () => {
             csrf();
             setFilter('All');
             getProducts();
+
         } else {
             navigate('/', { replace: true });
         }
@@ -62,6 +63,15 @@ const HomeStore = () => {
                     setAnimationLoading('')
                 }, 2000);
             })
+
+    }
+
+    const createProduct = async () => {
+
+        await sec_http.get('/api/order/create')
+        .then((res) => {
+            alert('Created !!')
+        })
 
     }
 
@@ -154,7 +164,7 @@ const HomeStore = () => {
                         <p>Lorem Ips incorrectly dedentifies that the application is free <br /> to copy, modify, and distribute copies of the Software</p>
 
                         <a href='/store' className='get_started'>GET STARTED</a>
-                        <a href='/custom/product' className='custom_product'>CUSTOM PRODUCT</a>
+                        <a href='/custom/product' className='custom_product' onClick={e => createProduct()}>CUSTOM PRODUCT</a>
 
 
                     </div>

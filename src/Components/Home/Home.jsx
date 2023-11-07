@@ -61,6 +61,7 @@ import { Tooltip } from 'react-tooltip';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom'
 import i18next from 'i18next'
+import axios from 'axios'
 
 const Home = () => {
 
@@ -74,7 +75,7 @@ const Home = () => {
 
     const [testiomonials, setTestiomonials] = useState([]);
     const [projects, setProjects] = useState([]);
-    const [blogs, setBlogs] = useState([]);
+    const [blogs, setBlogs] = useState();
 
 
     const [currentImage, setCurrentImage] = useState(Computer1);
@@ -111,24 +112,12 @@ const Home = () => {
             Aos.init();
 
 
-            const getTestimonials_Categories = async () => {
-                await http.get('/api/home')
-                    .then((res) => {
-                        setTestiomonials(res.data.testimonials);
-                        setProjects(res.data.projects);
-                        setBlogs(res.data.blogs);
-                        setLoading(false);
 
-                    })
-                    .catch((err) => {
-                        console.log(err.message);
-                    })
+            getBlogs();
 
-                setLoading(false);
+            getHomeData()
 
-            }
 
-            getTestimonials_Categories()
 
             window.addEventListener('scroll', handleScroll);
 
@@ -153,6 +142,37 @@ const Home = () => {
         // Clean up the interval on component unmount
         return () => clearInterval(interval);
     }, [currentImage]);
+
+
+
+
+    const getBlogs = async () => {
+        await http.post('/api/news')
+            .then((response) => {
+                setBlogs(response.data.news);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+
+
+
+    const getHomeData = async () => {
+        await http.get('/api/home')
+            .then((res) => {
+                setTestiomonials(res.data.testimonials);
+                setProjects(res.data.projects);
+                setBlogs(res.data.blogs);
+                setLoading(false);
+
+            })
+            .catch((err) => {
+                console.error(err.message);
+            })
+
+        setLoading(false);
+    }
 
     const handleMouseMove = (e) => {
         const el = tiltRef.current;
@@ -495,11 +515,14 @@ const Home = () => {
                                 </div>
 
                                 <div className="right-container">
-                                    {blogs.map((blog, index) => (
+                                    {blogs?.slice(0, 4).map((blog, index) => (
                                         <div key={index} className='blog-card' data-aos="fade-down" data-aos-duration="500">
                                             <div className='blog-body'>
-                                                <ImageComponent className="image" src={blog.image} alt={blog.name} />
-                                                <h5>{blog.name}</h5>
+                                                <ImageComponent className="image" src={blog.image} alt={blog.title} />
+                                                <div className="right-cont">
+                                                    <h5>{blog.title}</h5>
+                                                    <p>{blog.body.lenght > 20 ? blog.body.substring(0, 20) + '...' : blog.body}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     ))}
@@ -765,7 +788,7 @@ const Home = () => {
                                             <p>{i18next.t('WE_CARE_ABOUT')} <br />
                                                 {i18next.t('ATTRACTIVE')} <br />
                                                 {i18next.t('DESIGN_TO')}<span> {i18next.t('EXPERIENCE')} <br />
-                                                {i18next.t('UNIQUE_AND')}</span></p>
+                                                    {i18next.t('UNIQUE_AND')}</span></p>
                                         </div>
                                         <a href='/maintanence'>{i18next.t('GET_STARTED')}</a>
 
