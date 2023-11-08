@@ -61,7 +61,6 @@ import { Tooltip } from 'react-tooltip';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom'
 import i18next from 'i18next'
-import axios from 'axios'
 
 const Home = () => {
 
@@ -69,8 +68,8 @@ const Home = () => {
     const [emailGetStarted, setEmailGetStarted] = useState('');
     const [scrolled, setScrolled] = useState(false);
     const [isFadeIn, setIsFadeIn] = useState(false);
-    const [targetDate, setTargetDate] = useState('2023-08-13');
-
+    const [targetDate, setTargetDate] = useState();
+    const [videoShort, setvideoShort] = useState();
 
 
     const [testiomonials, setTestiomonials] = useState([]);
@@ -99,6 +98,8 @@ const Home = () => {
 
     useEffect(() => {
 
+        Aos.init();
+
         if (isAuthenticated) {
             navigate('/store/home')
         } else {
@@ -109,17 +110,9 @@ const Home = () => {
                 });
             }
 
-            Aos.init();
-
-
-
-            getBlogs();
-
-            getHomeData()
-
-
-
             window.addEventListener('scroll', handleScroll);
+
+            getHomeData();
 
         }
 
@@ -146,17 +139,6 @@ const Home = () => {
 
 
 
-    const getBlogs = async () => {
-        await http.post('/api/news')
-            .then((response) => {
-                setBlogs(response.data.news);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    }
-
-
 
     const getHomeData = async () => {
         await http.get('/api/home')
@@ -164,6 +146,9 @@ const Home = () => {
                 setTestiomonials(res.data.testimonials);
                 setProjects(res.data.projects);
                 setBlogs(res.data.blogs);
+                setBlogs(res.data.news);
+                setTargetDate(res.data.targetDate);
+                setvideoShort(res.data.videoShort);
                 setLoading(false);
 
             })
@@ -557,8 +542,8 @@ const Home = () => {
                                         <div className="container-center">
 
                                             <video autoPlay muted loop>
-                                                <source src={VideoIntro} type="video/mp4" />
-                                                <source src={VideoIntro} type="video/ogg" />
+                                                <source src={videoShort} type="video/mp4" />
+                                                <source src={videoShort} type="video/ogg" />
                                             </video>
 
                                         </div>
@@ -641,7 +626,7 @@ const Home = () => {
                                                 <h3>{project.name}</h3>
 
                                                 <div className='categories'>
-                                                    <span>{project.categories}</span>
+                                                    <span>{project.category}</span>
                                                 </div>
 
                                                 <a href={`/project/${project.name}`} className='details-button'>{i18next.t("SHOW_DETAILS")}</a>

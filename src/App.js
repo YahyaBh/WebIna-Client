@@ -26,10 +26,16 @@ import Hiring from "./Components/Hiring/Hiring";
 import HomeStore from "./Components/Store/HomeStore";
 import VerifyEmail from "./Components/VerifyEmail/VerifyEmail";
 import { StoreProvider } from "./Context/StoreConetxt";
+import axios from "axios";
+import Swal from "sweetalert2";
+import AuthUser from "./Context/AuthContext";
 
 
 
 function App() {
+
+
+  const { csrf } = AuthUser();
 
 
   const languages = [
@@ -55,7 +61,6 @@ function App() {
   const currentLanguage = languages.find((l) => l.code === currentLanguageCode)
 
 
-
   const { t } = useTranslation()
 
   useEffect(() => {
@@ -79,6 +84,42 @@ function App() {
   }, [currentLanguage, t])
 
 
+  useEffect(() => {
+    const responseInterceptor = axios.interceptors.response.use(
+      (response) => {
+        return response;
+      },
+      (error) => {
+        if (error.statusCode === 419) {
+          csrf();
+          window.location.reload();
+        }
+        handleError(error);
+        return Promise.reject(error);
+      }
+    );
+
+    return () => {
+      axios.interceptors.response.eject(responseInterceptor);
+    };
+  }, []);
+
+  const handleError = (error) => {
+    showErrorToast(error.message)
+  };
+
+  const showErrorToast = async (data) => {
+    Swal.fire({
+      text: data,
+      icon: 'error',
+      customClass: {
+        container: 'position-absolute'
+      },
+      toast: true,
+      position: 'bottom-right'
+    })
+  }
+
   return (
     <ThemeProvider>
       <StoreProvider>
@@ -89,7 +130,7 @@ function App() {
           {/* English routes */}
           <Route exact path='/' element={<Home />} />
 
-          <Route exact path='/register' element={<Register/>} />
+          <Route exact path='/register' element={<Register />} />
           <Route exact path='/register/:email_home' element={<Register />} />
           <Route exact path='/login' element={<Login />} />
           <Route exact path='/verify-email/:token/:id/:email' element={<VerifyEmail />} />
