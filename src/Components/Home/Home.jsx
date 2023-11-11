@@ -68,8 +68,8 @@ const Home = () => {
     const [emailGetStarted, setEmailGetStarted] = useState('');
     const [scrolled, setScrolled] = useState(false);
     const [isFadeIn, setIsFadeIn] = useState(false);
-    const [targetDate, setTargetDate] = useState();
-    const [videoShort, setvideoShort] = useState();
+    const [targetDate, setTargetDate] = useState('');
+    const [videoShort, setvideoShort] = useState('http://localhost:8000/images/admins/home/edit/video/1699703919.mp4');
 
 
     const [testiomonials, setTestiomonials] = useState([]);
@@ -147,10 +147,9 @@ const Home = () => {
                 setProjects(res.data.projects);
                 setBlogs(res.data.blogs);
                 setBlogs(res.data.news);
-                setTargetDate(res.data.targetDate);
-                setvideoShort(res.data.videoShort);
+                setTargetDate(res.data.homeData[0].targetDate);
+                setvideoShort(res.data.homeData[0].imageGif);
                 setLoading(false);
-
             })
             .catch((err) => {
                 console.error(err.message);
@@ -500,7 +499,7 @@ const Home = () => {
                                 </div>
 
                                 <div className="right-container">
-                                    {blogs?.slice(0, 4).map((blog, index) => (
+                                    {blogs?.lenght > 0 && blogs?.slice(0, 4).map((blog, index) => (
                                         <div key={index} className='blog-card' data-aos="fade-down" data-aos-duration="500">
                                             <div className='blog-body'>
                                                 <ImageComponent className="image" src={blog.image} alt={blog.title} />
