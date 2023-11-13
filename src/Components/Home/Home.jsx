@@ -36,7 +36,6 @@ import LeftBottomArrow from '../../Assets/Home/Perf-Section/Arrow-Left-Bottom.pn
 import RightTopArrow from '../../Assets/Home/Perf-Section/Arrow-Right-Top.png';
 import RightBottomArrow from '../../Assets/Home/Perf-Section/Arrow-Right-Bottom.png';
 import TestImage from '../../Assets/Home/Perf-Section/TestImage.png';
-import VideoIntro from '../../Assets/Home/Perf-Section/INTRO WEBINA COMMUNITY 2 .mp4'
 import TestFeed from '../../Assets/Home/FeedBack Section/TestFeed.png'
 import TestSlide from '../../Assets/Home/Slide Section/21742777_6517498-ai.png'
 import ContactImg from '../../Assets/Home/Contact Section/at-dynamic-color.svg'
@@ -50,7 +49,6 @@ import AuthContext from '../../Context/AuthContext'
 import Loading from '../Loading/Loading';
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./styles.scss";
@@ -69,7 +67,7 @@ const Home = () => {
     const [scrolled, setScrolled] = useState(false);
     const [isFadeIn, setIsFadeIn] = useState(false);
     const [targetDate, setTargetDate] = useState('');
-    const [videoShort, setvideoShort] = useState('http://localhost:8000/images/admins/home/edit/video/1699703919.mp4');
+    const [videoShort, setvideoShort] = useState('');
 
 
     const [testiomonials, setTestiomonials] = useState([]);
@@ -500,13 +498,13 @@ const Home = () => {
                                 </div>
 
                                 <div className="right-container">
-                                    {blogs?.lenght > 0 && blogs?.slice(0, 4).map((blog, index) => (
+                                    {blogs?.map((blog, index) => (
                                         <div key={index} className='blog-card' data-aos="fade-down" data-aos-duration="500">
                                             <div className='blog-body'>
                                                 <ImageComponent className="image" src={blog.image} alt={blog.title} />
                                                 <div className="right-cont">
-                                                    <h5>{blog.title}</h5>
-                                                    <p>{blog.body.lenght > 20 ? blog.body.substring(0, 20) + '...' : blog.body}</p>
+                                                    <h5>{blog.name.substring(0, 25) + '...'}</h5>
+                                                    <p>{blog.description.substring(0, 150) + '...'}</p>
                                                 </div>
                                             </div>
                                         </div>
