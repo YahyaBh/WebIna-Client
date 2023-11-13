@@ -17,8 +17,7 @@ import Footer from '../Layout/Footer/Footer'
 const HomeStore = () => {
 
 
-    const [animationLoading, setAnimationLoading] = useState(false);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const [categories, setCategories] = useState([]);
     const [products, setProducts] = useState([]);
@@ -26,91 +25,7 @@ const HomeStore = () => {
     const [top_products, setTopProducts] = useState([]);
     const [ads, setAds] = useState([]);
 
-    const [filter, setFilter] = useState('All');
-    const [filteredProducts, setFilteredProducts] = useState([]);
-    const [loadingItems, setLoadingItems] = useState(true);
 
-    const { sec_http, isAuthenticated, csrf } = AuthContext();
-    const navigate = useNavigate();
-
-    useEffect(() => {
-
-        if (isAuthenticated) {
-            csrf();
-            setFilter('All');
-            getProducts();
-
-        } else {
-            navigate('/', { replace: true });
-        }
-    }, []);
-
-    const getProducts = async () => {
-
-        sec_http.post('/api/store')
-            .then(res => {
-                setProducts(res.data.products);
-                setCategories(res.data.categories);
-                setNewProducts(res.data.new_products);
-                setAds(res.data.ads);
-                setTopProducts(res.data.top_products);
-
-
-                setLoading(false);
-                setAnimationLoading('fade-in')
-
-                setTimeout(() => {
-                    setAnimationLoading('')
-                }, 2000);
-            })
-
-    }
-
-    const createProduct = async () => {
-
-        await sec_http.get('/api/order/create')
-        .then((res) => {
-            alert('Created !!')
-        })
-
-    }
-
-    useEffect(() => {
-        setAnimationLoading('fade-out');
-        const uniqueCategories = Array.from(new Set(products.map(product => product.category)));
-        setCategories(uniqueCategories);
-    }, [products]);
-
-    useEffect(() => {
-        setAnimationLoading('fade-out');
-
-        if (filter === 'All') {
-            setFilteredProducts(products);
-            setLoadingItems(false)
-        } else {
-            const filtered = products.filter(product => product.category === filter);
-            setFilteredProducts(filtered);
-            setLoadingItems(false)
-        }
-    }, [filter, products]);
-
-    const handleFiltering = (e) => {
-        console.log(e);
-
-        if (e === 'All' && filter !== e) {
-            setFilter('All')
-        }
-        else if (filter !== e || e !== 'All') {
-
-            setLoadingItems(true)
-
-            setTimeout(() => {
-                setFilter(e);
-                setLoadingItems(false)
-            }, 1500);
-
-        }
-    };
 
     const renderStars = (e) => {
         const maxRating = 5;
@@ -164,7 +79,7 @@ const HomeStore = () => {
                         <p>Lorem Ips incorrectly dedentifies that the application is free <br /> to copy, modify, and distribute copies of the Software</p>
 
                         <a href='/store' className='get_started'>GET STARTED</a>
-                        <a href='/custom/product' className='custom_product' onClick={e => createProduct()}>CUSTOM PRODUCT</a>
+                        <a href='/custom/product' className='custom_product'>CUSTOM PRODUCT</a>
 
 
                     </div>
