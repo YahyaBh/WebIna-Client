@@ -144,11 +144,10 @@ const Home = () => {
                 setTestiomonials(res.data.testimonials);
                 setProjects(res.data.projects);
                 setBlogs(res.data.blogs);
+                setBlogs(res.data.news);
                 setTargetDate(res.data.homeData[0].targetDate);
                 setvideoShort(res.data.homeData[0].imageGif);
                 setLoading(false);
-
-                console.log(res);
             })
             .catch((err) => {
                 console.error(err.message);
