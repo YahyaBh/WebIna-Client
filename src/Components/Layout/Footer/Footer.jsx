@@ -1,14 +1,11 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import './Footer.scss'
 import Logo from '../../../Assets/Home/Navbar/WEBINA-Logo.png'
 import { FaFacebook, FaInstagram, FaTiktok, FaTwitter } from 'react-icons/fa'
-import { ThemeContext } from '../../../Context/ThemeContext'
 import i18next from 'i18next'
 
 const Footer = () => {
 
-
-    const { isDarkMode } = useContext(ThemeContext)
 
     return (
         <footer>
@@ -56,14 +53,14 @@ const Footer = () => {
             <div className='under-footer'>
                 <div className='data'>
                     <h2>WEBINA DIGITAL LTD © 2023 All Rights Reserved</h2>
-                    <p>Company Registration Number 14915092</p>
+                    <p>Company Registration N. 14915092</p>
                 </div>
 
                 <div>
-                    <a href='https://instagram.com/_webina'><FaInstagram /></a>
-                    <a href='https://facebook.com/webinadigital'><FaFacebook /></a>
-                    <a href='https://twitter.com/webina-digital'><FaTwitter /></a>
-                    <a href='https://tiktok.com/webinadigital'><FaTiktok /></a>
+                    <a href='https://instagram.com/_webina' target='_blank' rel="noreferrer"><FaInstagram /></a>
+                    <a href='https://facebook.com/webinadigital' target='_blank' rel="noreferrer"><FaFacebook /></a>
+                    <a href='https://twitter.com/webina-digital' target='_blank' rel="noreferrer"><FaTwitter /></a>
+                    <a href='https://tiktok.com/@webina.digital' target='_blank' rel="noreferrer"><FaTiktok /></a>
                 </div>
             </div>
 

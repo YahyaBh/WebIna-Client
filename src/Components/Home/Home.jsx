@@ -91,8 +91,9 @@ const Home = () => {
 
 
     const { isDarkMode } = useContext(ThemeContext);
-    const [days, hours, minutes, seconds] = useCountdown(targetDate)
     const { http, csrf, isAuthenticated } = AuthContext();
+
+    const [days, hours, minutes, seconds] = useCountdown(targetDate)
 
 
     const tiltRef = useRef(null);
@@ -371,7 +372,7 @@ const Home = () => {
                                         <div className='responsive-why-web'>
                                             <h2>{i18next.t('WHY_WEBINA')}</h2>
                                             <p>{i18next.t('WHY_WEBINA_PAG')}</p>
-                                            <a href='/maintanence'>{i18next.t('GET_STARTED')}</a>
+                                            <a href='/store/home'>{i18next.t('GET_STARTED')}</a>
                                         </div>
 
                                         <img className='webina-phone' src={WebInaPhone} alt="webina phone" />
@@ -395,7 +396,7 @@ const Home = () => {
                                             {i18next.t('WHY_WEBINA_PAG_SEC')}
                                         </p>
 
-                                        <a href='/maintanence'>{i18next.t('GET_STARTED')}</a>
+                                        <a href='/store/home'>{i18next.t('GET_STARTED')}</a>
 
                                         <img className='OrnamentHoriz' src={isDarkMode ? OrnamentHorizDark : OrnamentHoriz} alt="OrnamentHoriz" />
                                     </div>
@@ -423,7 +424,7 @@ const Home = () => {
                                             <p>
                                                 {i18next.t('WEBSITE_DESIGN_AND_DEV_PAG')}
                                             </p>
-                                            <a href='/website-development'>{i18next.t('GET_STARTED')}</a>
+                                            <a href='/store/home'>{i18next.t('GET_STARTED')}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -435,7 +436,7 @@ const Home = () => {
                                         <p>
                                             {i18next.t('SOCIAL_MEDIA_MARKETING_PAG')}
                                         </p>
-                                        <a href='/social-media'>{i18next.t('GET_STARTED')}</a>
+                                        <a href='/store/home'>{i18next.t('GET_STARTED')}</a>
                                     </div>
 
                                     <div data-aos="fade-down" data-aos-duration="200" className={isDarkMode === true ? 'dark card' : 'card'}>
@@ -444,7 +445,7 @@ const Home = () => {
                                         <p>
                                             {i18next.t('DESIGN_PAG')}
                                         </p>
-                                        <a href='/design'>{i18next.t('GET_STARTED')}</a>
+                                        <a href='/store/home'>{i18next.t('GET_STARTED')}</a>
                                     </div>
 
                                     <div data-aos="fade-down" data-aos-duration="400" className={isDarkMode === true ? 'dark card' : 'card'}>
@@ -453,7 +454,7 @@ const Home = () => {
                                         <p>
                                             {i18next.t('MOBILE_APPS_PAG')}
                                         </p>
-                                        <a href='/mobile-development'>{i18next.t('GET_STARTED')}</a>
+                                        <a href='/store/home'>{i18next.t('GET_STARTED')}</a>
                                     </div>
 
                                     <div data-aos="fade-down" data-aos-duration="600" className={isDarkMode === true ? 'dark card' : 'card'}>
@@ -462,7 +463,7 @@ const Home = () => {
                                         <p>
                                             {i18next.t('DESKTOP_APPS_PAG')}
                                         </p>
-                                        <a href='/desktop-development'>{i18next.t('GET_STARTED')}</a>
+                                        <a href='/store/home'>{i18next.t('GET_STARTED')}</a>
                                     </div>
                                 </div>
                             </div>
@@ -476,7 +477,7 @@ const Home = () => {
 
                                     <p>{i18next.t('FIRST_SEO_PAG')}</p>
 
-                                    <a href='/store'>{i18next.t('GET_YOUR_WEBSITE')}</a>
+                                    <a href='/store/home'>{i18next.t('GET_YOUR_WEBSITE')}</a>
                                 </div>
 
 
@@ -490,7 +491,7 @@ const Home = () => {
                                     <h3><div>{i18next.t('CREATE_YOUR')} <span>{i18next.t('DESIGN_W')}</span></div> <HiOutlineArrowRight /></h3>
                                 </div>
 
-                                <a href='/store' data-aos="fade-right">{i18next.t('ORDER_NOW')}</a>
+                                <a href='/store/home' data-aos="fade-right">{i18next.t('ORDER_NOW')}</a>
                             </div>
 
 
@@ -580,7 +581,7 @@ const Home = () => {
 
                             <div className="countdown-section" id='countdown-section'>
                                 <div className='left-section'>
-                                    <h2 data-aos="fade-right">{i18next.t('UP_TO')}<span>75%</span></h2>
+                                    <h2 data-aos="fade-right">{i18next.t('UP_TO')}<span>40%</span></h2>
 
                                     <div className="timer">
                                         <div className='time-sec' data-aos="fade-down">
@@ -602,7 +603,7 @@ const Home = () => {
                                         </div>
                                     </div>
 
-                                    <a href='/maintanence' data-aos="fade-right">{i18next.t('GET_STARTED')}</a>
+                                    <a href='/store/home' data-aos="fade-right">{i18next.t('GET_STARTED')}</a>
 
                                 </div>
 
@@ -708,21 +709,21 @@ const Home = () => {
                                             <h3>{i18next.t('GET_ANSWERS')}</h3>
                                             <p>{i18next.t('GET_ANSWERS_PAG')}</p>
 
-                                            <a href="/maintanence">{i18next.t('GO_TO_HELP_CENTER')} <BiArrowFromLeft /></a>
+                                            <a href="/contact/help">{i18next.t('GO_TO_HELP_CENTER')} <BiArrowFromLeft /></a>
                                         </div>
 
                                         <div>
                                             <h3>{i18next.t('CONTACT_US')}</h3>
                                             <p>{i18next.t('CONTACT_US_PAG')}</p>
 
-                                            <a href="/maintanence">{i18next.t('CHAT_WITH_US')} <BiArrowFromLeft /></a>
+                                            <a href="/contact/chat">{i18next.t('CHAT_WITH_US')} <BiArrowFromLeft /></a>
                                         </div>
 
                                         <div>
                                             <h3>{i18next.t('HIRE_A_PRO')}</h3>
                                             <p>{i18next.t('HIRE_A_PRO_PAG')}</p>
 
-                                            <a href="/maintanence">{i18next.t('BROWSE_ALL_SERVICES')} <BiArrowFromLeft /></a>
+                                            <a href="/contact">{i18next.t('BROWSE_ALL_SERVICES')} <BiArrowFromLeft /></a>
                                         </div>
 
                                     </div>
@@ -761,9 +762,9 @@ const Home = () => {
                                             <p>{i18next.t('WE_CARE_ABOUT')} <br />
                                                 {i18next.t('ATTRACTIVE')} <br />
                                                 {i18next.t('DESIGN_TO')}<span> {i18next.t('EXPERIENCE')} <br />
-                                                {i18next.t('UNIQUE_AND')}</span></p>
+                                                    {i18next.t('UNIQUE_AND')}</span></p>
                                         </div>
-                                        <a href='/maintanence'>{i18next.t('GET_STARTED')}</a>
+                                        <a href='/store/home'>{i18next.t('GET_STARTED')}</a>
 
                                     </div>
 
@@ -806,8 +807,10 @@ const Home = () => {
                                     </div>
                                 </div>
                             </div>
+                            <div style={{ height: '470px !important' }}>
+                                <Footer />
+                            </div>
                         </div>
-                        <Footer />
 
                     </section>
                 </div>

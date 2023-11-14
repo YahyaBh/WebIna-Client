@@ -10,16 +10,43 @@ import DesignIcon from '../../Assets/Home/Section 2/design-icon.svg';
 import MobileIcon from '../../Assets/Home/Section 2/mobile-icon.svg';
 import DesktopIcon from '../../Assets/Home/Section 2/desktop-icon.svg';
 
-import { BsCart2, BsFillStarFill, BsStar, BsStarHalf } from 'react-icons/bs'
+import { BsCart2, BsFillStarFill, BsStar, BsStarHalf , BsVectorPen } from 'react-icons/bs'
+import { FaHotjar } from "react-icons/fa";
+import { IoRestaurantOutline ,IoTicketOutline  } from "react-icons/io5";
+import { RiHotelLine ,RiGalleryLine } from "react-icons/ri"
+import { MdOutlineStorefront } from "react-icons/md"
+import { BiArrowFromLeft } from 'react-icons/bi'
+import { PiDotsThreeOutline  } from 'react-icons/pi';
+
 
 import ADS from '../../Assets/Home/Projects Section/TestProjects.png'
 import i18next from 'i18next'
-import { BiArrowFromLeft } from 'react-icons/bi'
 import Footer from '../Layout/Footer/Footer'
 
 import VideoHomeStore from '../../Assets/Store/Home/Blurred Video of Scripts Being Typed.mp4';
+import VideoCoding from '../../Assets/Home/Slide Section/pexels-mikhail-nilov-7989667 (720p).mp4'
+
+
 import { ThemeContext } from '../../Context/ThemeContext'
 import Aos from 'aos'
+
+
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
+
+import './styles.scss'
+
+
+// import required modules
+import { Pagination, Navigation } from 'swiper/modules';
+import { useCountdown } from '../Layout/Timer/Timer'
+
 
 const HomeStore = () => {
 
@@ -31,7 +58,10 @@ const HomeStore = () => {
     const [new_products, setNewProducts] = useState([]);
     const [top_products, setTopProducts] = useState([]);
     const [ads, setAds] = useState([]);
+    const [targetDate, setTargetDate] = useState('2024-10-11');
 
+
+    const [days, hours, minutes, seconds] = useCountdown(targetDate)
 
 
     const { isDarkMode } = useContext(ThemeContext);
@@ -174,58 +204,109 @@ const HomeStore = () => {
                     <div className="store_new">
 
                         <div className="upper_container">
-                            <h2 className='main_text'>HOT PRODUCTS</h2>
+                            <h2 className='main_text'><FaHotjar /><span>HOT</span> PRODUCTS</h2>
                             <p>Check out , our new hot deals added to our shop</p>
                         </div>
 
+                        <Swiper
+                            slidesPerView={3}
+                            spaceBetween={10}
+                            navigation={true}
+                            pagination={{
+                                clickable: true,
+                            }}
+                            modules={[Pagination, Navigation]}
+                            className="mySwiper"
+                        >
 
-                        <div className="bottom_container">
+                            <SwiperSlide>
+                                <div className='card'>
+                                    <img src={ADS} alt="product" />
 
+                                    <div className='under-container'>
+                                        <div className="left-cont">
+                                            <h3>Test new</h3>
+                                            <p><BsCart2 /> 2000 purchase</p>
+                                            <div className='stars'>
 
-                            <div className='card'>
-                                <img src={ADS} alt="product" />
+                                                {renderStars(4.5)}
+                                            </div>
+                                        </div>
 
-                                <div className='under-container'>
-                                    <div className="left-cont">
-                                        <h3>Test new</h3>
-                                        <p><BsCart2 /> 2000 purchase</p>
-                                        <div className='stars'>
-
-                                            {renderStars(4.5)}
+                                        <div className="right-cont">
+                                            <h2>150$</h2>
                                         </div>
                                     </div>
-
-                                    <div className="right-cont">
-                                        <h2>150$</h2>
-                                    </div>
                                 </div>
-                            </div>
+                            </SwiperSlide>
 
-                            <div className='card'>
-                                <img src={ADS} alt="product" />
+                            <SwiperSlide>
+                                <div className='card'>
+                                    <img src={ADS} alt="product" />
 
-                                <div className='under-container'>
-                                    <div className="left-cont">
-                                        <h3>Test new</h3>
-                                        <p><BsCart2 /> 2000 purchase</p>
-                                        <div className='stars'>
+                                    <div className='under-container'>
+                                        <div className="left-cont">
+                                            <h3>Test new</h3>
+                                            <p><BsCart2 /> 2000 purchase</p>
+                                            <div className='stars'>
 
-                                            {renderStars(4.5)}
+                                                {renderStars(4.5)}
+                                            </div>
+                                        </div>
+
+                                        <div className="right-cont">
+                                            <h2>150$</h2>
                                         </div>
                                     </div>
+                                </div>
+                            </SwiperSlide>
 
-                                    <div className="right-cont">
-                                        <h2>150$</h2>
+                            <SwiperSlide>
+                                <div className='card'>
+                                    <img src={ADS} alt="product" />
+
+                                    <div className='under-container'>
+                                        <div className="left-cont">
+                                            <h3>Test new</h3>
+                                            <p><BsCart2 /> 2000 purchase</p>
+                                            <div className='stars'>
+
+                                                {renderStars(4.5)}
+                                            </div>
+                                        </div>
+
+                                        <div className="right-cont">
+                                            <h2>150$</h2>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </SwiperSlide>
 
+                            <SwiperSlide>
+                                <div className='card'>
+                                    <img src={ADS} alt="product" />
 
+                                    <div className='under-container'>
+                                        <div className="left-cont">
+                                            <h3>Test new</h3>
+                                            <p><BsCart2 /> 2000 purchase</p>
+                                            <div className='stars'>
 
-                        </div>
+                                                {renderStars(4.5)}
+                                            </div>
+                                        </div>
 
+                                        <div className="right-cont">
+                                            <h2>150$</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                        </Swiper>
 
+                        <a className='view_all' href='/store'>View All</a>
                     </div>
+
 
 
                     <div className="store_ad">
@@ -235,8 +316,8 @@ const HomeStore = () => {
                     <div className="store_top_selled">
 
                         <div className="upper_container">
-                            <h2 className='main_text'>TOP SELLED PRODUCTS</h2>
-                            <p>Find the most popular & selled products</p>
+                            <h2 className='main_text'><span>RECENT</span> PROJECTS</h2>
+                            <p>Find the most recent developed products</p>
                         </div>
 
 
@@ -319,12 +400,170 @@ const HomeStore = () => {
                             </div>
 
 
+                            <div className='card'>
+                                <img src={ADS} alt="product" />
+
+                                <div className='under-container'>
+                                    <div className="left-cont">
+                                        <h3>Test new</h3>
+                                        <p><BsCart2 /> 2000 purchase</p>
+                                        <div className='stars'>
+
+                                            {renderStars(4.5)}
+                                        </div>
+                                    </div>
+
+                                    <div className="right-cont">
+                                        <h2>150$</h2>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className='card'>
+                                <img src={ADS} alt="product" />
+
+                                <div className='under-container'>
+                                    <div className="left-cont">
+                                        <h3>Test new</h3>
+                                        <p><BsCart2 /> 2000 purchase</p>
+                                        <div className='stars'>
+
+                                            {renderStars(4.5)}
+                                        </div>
+                                    </div>
+
+                                    <div className="right-cont">
+                                        <h2>150$</h2>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <a className='view_all' href='/store'>View All</a>
+
                         </div>
+
+
 
 
                     </div>
 
 
+                    <div className="container-text">
+                        <h2>Create Your Dream Website</h2>
+                        <h2>With Your Own Touch</h2>
+
+                        <p>What kind of website would you like to have?</p>
+
+                        <div className="container-select">
+                            <a className="card" href='/store' >
+                                <h2><IoRestaurantOutline /> Restaurant</h2>
+                            </a>
+
+                            <a className="card" href='/store'>
+                                <h2><RiHotelLine /> Hotel</h2>
+                            </a>
+
+                            <a className="card" href='/store'>
+                                <h2><MdOutlineStorefront /> Online Store</h2>
+                            </a>
+
+                            <a className="card" href='/store'>
+                                <h2><BsVectorPen /> Blog</h2>
+                            </a>
+
+                            <a className="card" href='/store'>
+                                <h2><RiGalleryLine /> Portfolio</h2>
+                            </a>
+
+                            <a className="card" href='/store'>
+                                <h2><IoTicketOutline /> Event</h2>
+                            </a>
+
+                            <a className="card" href='/store'>
+                                <h2><PiDotsThreeOutline  /> Other</h2>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div className="slider-container">
+
+
+
+
+                        <div className="right-container">
+                            <div className='card'>
+                                <p>{i18next.t('WE_HELP_YOU_BUILD')} <br />
+                                    {i18next.t('EXPANDABLE_AND_UPGRADABLE')} <br />
+                                    {i18next.t('TO_KEEP_PACE')}<span> {i18next.t('THE_DEVELOPMENT')} <br />
+                                        {i18next.t('OF_YOUR_BUSINESS')}</span></p>
+                            </div>
+
+                            <div className='card'>
+                                <p>{i18next.t('WE_OFFER_COMPLETE')} <br />
+                                    {i18next.t('WEBSITE_DEV')}<br />
+                                    <span> {i18next.t('OPTIMIZED')} <br />
+                                        {i18next.t('FOR_OPTIMAL_PERF')}</span></p>
+                            </div>
+
+                            <div className='card'>
+                                <p>{i18next.t('WE_CARE_ABOUT')} <br />
+                                    {i18next.t('ATTRACTIVE')} <br />
+                                    {i18next.t('DESIGN_TO')}<span> {i18next.t('EXPERIENCE')} <br />
+                                        {i18next.t('UNIQUE_AND')}</span></p>
+                            </div>
+                            <a href='/store'>{i18next.t('GET_STARTED')}</a>
+
+                        </div>
+
+                        <div className='left-container' id='container-pics'>
+
+                            <div className="video-container">
+                                <video autoPlay loop muted>
+                                    <source src={VideoCoding} alt="video" type='video/mp4' />
+                                </video>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div className="countdown-section" id='countdown-section'>
+                        <div className='left-section'>
+                            <h2 data-aos="fade-right">{i18next.t('UP_TO')}<span>40%</span></h2>
+
+                            <div className="timer">
+                                <div className='time-sec' data-aos="fade-down">
+                                    {days}
+                                </div>
+                                <span> : </span>
+                                <div className='time-sec' data-aos="fade-down">
+                                    {hours}
+                                </div>
+                                <span> : </span>
+
+                                <div className='time-sec' data-aos="fade-down">
+                                    {minutes}
+                                </div>
+                                <span> : </span>
+
+                                <div className='time-sec' data-aos="fade-down">
+                                    {seconds}
+                                </div>
+                            </div>
+
+                            <a href='/store' data-aos="fade-right">{i18next.t('GET_STARTED')}</a>
+
+                        </div>
+
+
+                        <div className="right-section">
+                            <h2 data-aos="fade-down">{i18next.t('EVERYTHING')} <br />
+                                {i18next.t('YOU_NEED_TO')} <br />
+                                <span>{i18next.t('CREATE_A_WEBSITE')}</span>
+                            </h2>
+                        </div>
+                    </div>
 
                     <section className="contact-section">
                         <h2>{i18next.t('WE_ARE_HERE_FOR_YOU')}</h2>
