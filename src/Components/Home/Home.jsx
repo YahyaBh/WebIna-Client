@@ -1,8 +1,8 @@
 import React, { Profiler, useContext, useEffect, useRef, useState } from 'react'
-import './Home.scss'
 import Navbar from '../Layout/Navbar/Navbar'
 import ImageComponent from '../Layout/ImageComponenet/ImageComponent'
 import { useCountdown } from '../Layout/Timer/Timer'
+import './Home.scss'
 
 import { SiRubyonrails, SiAdobepremierepro, SiAdobeaftereffects, SiVisualstudio, SiAndroidstudio, SiMysql, SiCplusplus, SiFlutter, SiBlender, SiNuxtdotjs } from 'react-icons/si';
 import { DiRuby } from 'react-icons/di';
@@ -35,10 +35,9 @@ import LeftTopArrow from '../../Assets/Home/Perf-Section/Arrow-Left-Top.png';
 import LeftBottomArrow from '../../Assets/Home/Perf-Section/Arrow-Left-Bottom.png';
 import RightTopArrow from '../../Assets/Home/Perf-Section/Arrow-Right-Top.png';
 import RightBottomArrow from '../../Assets/Home/Perf-Section/Arrow-Right-Bottom.png';
-import TestImage from '../../Assets/Home/Perf-Section/TestImage.png';
 import TestFeed from '../../Assets/Home/FeedBack Section/TestFeed.png'
-import TestSlide from '../../Assets/Home/Slide Section/21742777_6517498-ai.png'
 import ContactImg from '../../Assets/Home/Contact Section/at-dynamic-color.svg'
+import VideoCoding from '../../Assets/Home/Slide Section/pexels-mikhail-nilov-7989667 (720p).mp4'
 
 import Aos from 'aos';
 import 'aos/dist/aos.css';
@@ -48,11 +47,19 @@ import luxyMin from 'luxy.js';
 import AuthContext from '../../Context/AuthContext'
 import Loading from '../Loading/Loading';
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import "./styles.scss";
-import { Pagination, Navigation } from "swiper";
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+
+import './styles.scss';
+
+// import required modules
+import { Navigation, Pagination } from 'swiper/modules';
+
+
+
 import Footer from '../Layout/Footer/Footer';
 import { ThemeContext } from '../../Context/ThemeContext';
 import { Tooltip } from 'react-tooltip';
@@ -97,6 +104,8 @@ const Home = () => {
     useEffect(() => {
 
         Aos.init();
+
+
 
         if (isAuthenticated) {
             navigate('/store/home')
@@ -723,34 +732,16 @@ const Home = () => {
                                 <div className="slider-container">
 
                                     <div className='left-container' id='container-pics'>
-                                        <Swiper
-                                            slidesPerView={1}
-                                            spaceBetween={30}
-                                            pagination={{
-                                                clickable: true,
-                                            }}
-                                            navigation={{
-                                                prevEl: '.swiper-button-prev',
-                                                nextEl: '.swiper-button-next',
-                                            }}
-                                            modules={[Pagination, Navigation]}
-                                            className="swipper-container"
-                                        >
-                                            <div>
-                                                <SwiperSlide><img src={TestSlide} alt="" /></SwiperSlide>
-                                                <SwiperSlide><img src={ContactImg} alt="" /></SwiperSlide>
-                                                <SwiperSlide><img src={TestImage} alt="" /></SwiperSlide>
-                                            </div>
 
-                                            <div className='swiper-buttons'>
-                                                <div className='swiper-button-prev'></div>
-                                                <div className='swiper-button-next'></div>
-                                            </div>
-                                        </Swiper>
-
-
+                                        <div className="video-container">
+                                            <video autoPlay loop muted>
+                                                <source src={VideoCoding} alt="video" type='video/mp4' />
+                                            </video>
+                                        </div>
 
                                     </div>
+
+
                                     <div className="right-container">
                                         <div className='card'>
                                             <p>{i18next.t('WE_HELP_YOU_BUILD')} <br />
@@ -770,7 +761,7 @@ const Home = () => {
                                             <p>{i18next.t('WE_CARE_ABOUT')} <br />
                                                 {i18next.t('ATTRACTIVE')} <br />
                                                 {i18next.t('DESIGN_TO')}<span> {i18next.t('EXPERIENCE')} <br />
-                                                    {i18next.t('UNIQUE_AND')}</span></p>
+                                                {i18next.t('UNIQUE_AND')}</span></p>
                                         </div>
                                         <a href='/maintanence'>{i18next.t('GET_STARTED')}</a>
 

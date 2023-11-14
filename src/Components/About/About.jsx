@@ -14,11 +14,8 @@ import ContactImg from '../../Assets/Home/Contact Section/at-dynamic-color.svg'
 
 
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Pagination, Navigation } from "swiper";
+
+
 import i18next from 'i18next'
 
 
@@ -375,7 +372,7 @@ const feedback = (testiomonials) => {
                 </div>
             </div>
 
-
+{/* 
             <Swiper
                 slidesPerView={3}
                 spaceBetween={30}
@@ -419,7 +416,7 @@ const feedback = (testiomonials) => {
                         </div>
                     </SwiperSlide>
                 )}
-            </Swiper>
+            </Swiper> */}
 
 
 

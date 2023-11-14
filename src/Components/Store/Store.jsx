@@ -10,14 +10,6 @@ import { useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async';
 
 
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-
-import "swiper/css/navigation";
 
 // import required modules
 import { Navigation } from "swiper";
@@ -155,7 +147,7 @@ const Store = () => {
 
                     <div className="left-container">
                         <nav className='top-chart'>
-                            <Swiper
+                            {/* <Swiper
                                 navigation={{
                                     prevEl: '#prev-button',
                                     nextEl: '#next-button',
@@ -175,7 +167,7 @@ const Store = () => {
                                 <MdKeyboardArrowLeft id='#prev-button' />
                                 <MdKeyboardArrowRight id='#next-button' />
 
-                            </Swiper>
+                            </Swiper> */}
 
 
                         </nav>
