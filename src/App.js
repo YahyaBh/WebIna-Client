@@ -124,7 +124,6 @@ function App() {
     <ThemeProvider>
       <StoreProvider>
 
-
         <Routes>
 
           {/* English routes */}

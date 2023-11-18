@@ -51,10 +51,12 @@ const Register = () => {
 
 
     useEffect(() => {
-        if(email_home) {
+        if (email_home) {
             setEmail(email_home);
+        } else {
+            setEmail('');
         }
-    },[])
+    }, [])
 
     const handleRegisteration = async (e) => {
 
@@ -65,7 +67,9 @@ const Register = () => {
             if (password === confirmPassword) {
                 if (name.split(' ').length === 2) {
                     if (terms === true) {
+
                         csrf();
+
                         const userData = new FormData();
 
                         userData.append('name', name)
@@ -83,7 +87,7 @@ const Register = () => {
                                 SetImageStep(false);
                             })
                             .catch((err) => {
-                                errorHandler('Oops...!', err?.response?.data?.errors?.email?.map(message => message), 'Cancel', 'Sign In');
+                                errorHandler('Oops...!', err?.response?.data?.errors?.email?.map(message => message) ?? err.message, 'Cancel', 'Sign In');
                             })
 
                     } else {
@@ -248,20 +252,20 @@ const Register = () => {
                         <div className='images-chose-container'>
 
                             <div className='container'>
-                                <img src={AVATAR1} alt="avatar1" className={image === 'avatar1' ? 'active' : ''} onClick={e => handleImageSetting('avatar1')} />
-                                <img src={AVATAR2} alt="avatar2" className={image === 'avatar2' ? 'active' : ''} onClick={e => handleImageSetting('avatar2')} />
-                                <img src={AVATAR3} alt="avatar3" className={image === 'avatar3' ? 'active' : ''} onClick={e => handleImageSetting('avatar3')} />
-                                <img src={AVATAR4} alt="avatar4" className={image === 'avatar4' ? 'active' : ''} onClick={e => handleImageSetting('avatar4')} />
-                                <img src={AVATAR5} alt="avatar5" className={image === 'avatar5' ? 'active' : ''} onClick={e => handleImageSetting('avatar5')} />
+                                <button onClick={e => handleImageSetting('avatar1')}><img src={AVATAR1} alt="avatar1" className={image === 'avatar1' ? 'active' : ''} /></button>
+                                <button onClick={e => handleImageSetting('avatar2')}><img src={AVATAR2} alt="avatar2" className={image === 'avatar2' ? 'active' : ''} /></button>
+                                <button onClick={e => handleImageSetting('avatar3')}><img src={AVATAR3} alt="avatar3" className={image === 'avatar3' ? 'active' : ''} /></button>
+                                <button onClick={e => handleImageSetting('avatar4')}><img src={AVATAR4} alt="avatar4" className={image === 'avatar4' ? 'active' : ''} /></button>
+                                <button onClick={e => handleImageSetting('avatar5')}><img src={AVATAR5} alt="avatar5" className={image === 'avatar5' ? 'active' : ''} /></button>
                             </div>
 
 
                             <div className='container'>
-                                <img src={AVATAR6} alt="avatar6" className={image === 'avatar6' ? 'active' : ''} onClick={e => handleImageSetting('avatar6')} />
-                                <img src={AVATAR7} alt="avatar7" className={image === 'avatar7' ? 'active' : ''} onClick={e => handleImageSetting('avatar7')} />
-                                <img src={AVATAR8} alt="avatar8" className={image === 'avatar8' ? 'active' : ''} onClick={e => handleImageSetting('avatar8')} />
-                                <img src={AVATAR9} alt="avatar9" className={image === 'avatar9' ? 'active' : ''} onClick={e => handleImageSetting('avatar9')} />
-                                <img src={AVATAR10} alt="avatar10" className={image === 'avatar10' ? 'active' : ''} onClick={e => handleImageSetting('avatar10')} />
+                                <button onClick={e => handleImageSetting('avatar6')}><img src={AVATAR6} alt="avatar6" className={image === 'avatar6' ? 'active' : ''} /></button>
+                                <button onClick={e => handleImageSetting('avatar7')}><img src={AVATAR7} alt="avatar7" className={image === 'avatar7' ? 'active' : ''} /></button>
+                                <button onClick={e => handleImageSetting('avatar8')}><img src={AVATAR8} alt="avatar8" className={image === 'avatar8' ? 'active' : ''} /></button>
+                                <button onClick={e => handleImageSetting('avatar9')}><img src={AVATAR9} alt="avatar9" className={image === 'avatar9' ? 'active' : ''} /></button>
+                                <button onClick={e => handleImageSetting('avatar10')}><img src={AVATAR10} alt="avatar10" className={image === 'avatar10' ? 'active' : ''} /></button>
                             </div>
 
                             <button className='finish' onClick={image ? handleRegisteration : ''} disabled={image ? false : true}>FINISH SIGNING UP</button>

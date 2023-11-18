@@ -5,7 +5,7 @@ import { useState } from 'react';
 const baseUrl = 'http://localhost:8000';
 
 axios.defaults.withCredentials = true;
-axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+axios.defaults.headers.common['Access-Control-Allow-Origin'] = 'http://localhost:3000';
 axios.defaults.headers.common['Cache-Control'] = 'no-cache, private';
 axios.defaults.headers.common['X-Xss-Protection'] = '1; mode=block';
 axios.defaults.headers.common['X-Content-Type-Options'] = 'nosniff';
@@ -42,7 +42,7 @@ export default function AuthUser() {
         baseURL: baseUrl,
         headers: {
             'X-Requested-With': 'XMLHttpRequest',
-            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Origin': 'http://localhost:3000',
         },
         withCredentials: true,
     })
@@ -51,7 +51,7 @@ export default function AuthUser() {
         baseURL: baseUrl,
         headers: {
             'Authorization': `Bearer ${accessToken}`,
-            'Access-Control-Allow-Origin': '*'
+            'Access-Control-Allow-Origin': 'http://localhost:3000',
         }
     }) : null;
 
@@ -60,7 +60,7 @@ export default function AuthUser() {
         headers: {
             'content-type': 'multipart/form-data',
             'Authorization': `Bearer ${accessToken}`,
-            'Access-Control-Allow-Origin': '*'
+            'Access-Control-Allow-Origin': 'http://localhost:3000',
         }
     }) : null;
 
@@ -69,7 +69,7 @@ export default function AuthUser() {
         headers: {
             'content-type': 'multipart/form-data',
             'Authorization': `Bearer ${accessToken}`,
-            'Access-Control-Allow-Origin': '*'
+            'Access-Control-Allow-Origin': 'http://localhost:3000',
         }
     }) : null;
 
@@ -77,7 +77,7 @@ export default function AuthUser() {
         baseURL: baseUrl,
         headers: {
             'Authorization': `Bearer ${accessToken}`,
-            'Access-Control-Allow-Origin': '*'
+            'Access-Control-Allow-Origin': 'http://localhost:3000',
         }
     }) : null;
 

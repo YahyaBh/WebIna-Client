@@ -74,12 +74,12 @@ const Home = () => {
     const [scrolled, setScrolled] = useState(false);
     const [isFadeIn, setIsFadeIn] = useState(false);
     const [targetDate, setTargetDate] = useState('');
-    const [videoShort, setvideoShort] = useState('');
+    const [videoShort, setvideoShort] = useState('http://localhost:8000/images/admins/home/edit/video/1700222447.mp4');
 
 
     const [testiomonials, setTestiomonials] = useState([]);
     const [projects, setProjects] = useState([]);
-    const [blogs, setBlogs] = useState();
+    const [blogs, setBlogs] = useState([]);
 
 
     const [currentImage, setCurrentImage] = useState(Computer1);
@@ -154,7 +154,6 @@ const Home = () => {
                 setTestiomonials(res.data.testimonials);
                 setProjects(res.data.projects);
                 setBlogs(res.data.blogs);
-                setBlogs(res.data.news);
                 setTargetDate(res.data.homeData[0].targetDate);
                 setvideoShort(res.data.homeData[0].imageGif);
                 setLoading(false);
@@ -807,7 +806,7 @@ const Home = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div style={{ height: '470px !important' }}>
+                            <div style={{ height: '470px' }}>
                                 <Footer />
                             </div>
                         </div>

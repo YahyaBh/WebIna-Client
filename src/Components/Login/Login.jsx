@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './Login.scss'
 import AuthContext from '../../Context/AuthContext'
 import { ThemeContext } from '../../Context/ThemeContext'
@@ -13,6 +13,7 @@ import Swal from 'sweetalert2'
 import i18next from 'i18next'
 import { Helmet } from 'react-helmet-async'
 import Cookies from 'js-cookie'
+import Loading from '../Loading/Loading'
 
 const Login = () => {
 
@@ -20,22 +21,38 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const { http, csrf, setUser, setAccessToken, setRememberToken } = AuthContext()
+    const [remember, setRemember] = useState(false);
+    const [loading, setLoading] = useState(true);
+
+    const { http, csrf, setUser, setAccessToken, setRememberToken, isAuthenticated } = AuthContext()
     const navigate = useNavigate();
 
     const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
 
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate('/');
+        } else {
+            setLoading(false);
+        }
+    }, [])
+
+
+    const rememberHandler = () => {
+        setRemember(!remember);
+    }
+
     const handleLogin = async (e) => {
         e.preventDefault()
+        csrf();
 
         if (email !== '' || password !== '') {
 
             setLoginLoading(true)
-            csrf();
-            
-            
-            
+
+
+
             const userData = new FormData();
 
             userData.append('email', email)
@@ -48,7 +65,7 @@ const Login = () => {
                     setUser(res.data.user);
                     navigate('/');
                     setLoginLoading(false);
-                    if(Cookies.get('__F_ACCESS')) {
+                    if (Cookies.get('__F_ACCESS')) {
                         Cookies.remove('__F_ACCESS');
                     }
                 })
@@ -123,7 +140,7 @@ const Login = () => {
     }
 
 
-    return (
+    return (loading ? <Loading/> :
         <>
             <Helmet>
                 <title>WEBINA DIGITAL | Login</title>
@@ -170,15 +187,16 @@ const Login = () => {
                                 <input type="password" name='password' autoComplete='off' onChange={e => setPassword(e.target.value)} />
                             </div>
 
+                            <label htmlFor="remember_me" className="control control-checkbox">
+                                <p>{i18next.t("REMEMBER_ME")}</p>
+                                <input checked={remember} onChange={e => rememberHandler()} type="checkbox" name="remember_me" id="remember_me" />
+                                <div className="control_indicator"></div>
+                            </label>
 
                             <button type='submit'>{loginLoading ? <AiOutlineLoading3Quarters className="spin-load" /> : i18next.t("SIGNIN")}</button>
 
 
                             <div className="under-sign">
-                                <div className='agree'>
-                                    <input type="checkbox" name="remember" id="remember" />
-                                    <label htmlFor="remember">{i18next.t("REMEMBER_ME")}</label>
-                                </div>
                                 <a href="/forget-password">{i18next.t("FORGOT_PASSWORD")}</a>
                             </div>
                         </form>
