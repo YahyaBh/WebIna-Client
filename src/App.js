@@ -29,6 +29,7 @@ import { StoreProvider } from "./Context/StoreConetxt";
 import axios from "axios";
 import Swal from "sweetalert2";
 import AuthUser from "./Context/AuthContext";
+import Product from "./Components/Product/Product";
 
 
 
@@ -143,8 +144,8 @@ function App() {
           <Route exact path='/logout' element={<Logout />} />
           <Route exact path='/welcome' element={<Welcome />} />
           <Route exact path='/store' element={<Store />} />
-
           <Route exact path='/store/home' element={<HomeStore />} />
+          <Route exact path='/store/product/:token' element={<Product />} />
 
 
 

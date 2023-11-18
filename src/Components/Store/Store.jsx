@@ -10,9 +10,18 @@ import { useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async';
 
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+
+import './styles.scss';
 
 // import required modules
-import { Navigation } from "swiper";
+import { Navigation } from 'swiper/modules';
+
+
 import AuthContext from '../../Context/AuthContext';
 import { useStoreContext } from '../../Context/StoreConetxt';
 
@@ -147,7 +156,7 @@ const Store = () => {
 
                     <div className="left-container">
                         <nav className='top-chart'>
-                            {/* <Swiper
+                            <Swiper
                                 navigation={{
                                     prevEl: '#prev-button',
                                     nextEl: '#next-button',
@@ -167,7 +176,7 @@ const Store = () => {
                                 <MdKeyboardArrowLeft id='#prev-button' />
                                 <MdKeyboardArrowRight id='#next-button' />
 
-                            </Swiper> */}
+                            </Swiper>
 
 
                         </nav>
@@ -319,7 +328,7 @@ const Store = () => {
 
 
                                     {filteredProducts.map(product => (
-                                        <div key={product.id} className='card' title={product.description}>
+                                        <a href={`/store/product/${product?.token ?? product.token}`} key={product.id} className='card' title={product.description}>
                                             <img src={TestImage} alt="product" />
 
                                             <div className='under-container'>
@@ -336,7 +345,7 @@ const Store = () => {
                                                     <h2>{product.price}$</h2>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     ))}
                                 </>}
                         </div>

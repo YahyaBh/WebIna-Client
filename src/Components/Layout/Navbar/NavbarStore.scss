@@ -15,10 +15,10 @@
     top: 0;
     z-index: 20;
     box-sizing: border-box;
-    background-color: var(--light-color);
+    background-color: var(--primary-color-dark);
     display: block;
     transition: all 0.3s ease;
-    padding: 15px 20px;
+    padding: 16px 20px;
 
     @media screen and (max-width: 900px) {
         display: none;

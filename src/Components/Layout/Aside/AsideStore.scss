@@ -11,13 +11,14 @@ aside {
     width: 60px;
     height: 89dvh;
     overflow: hidden;
-    background-color: var(--light-color);
+    background-color: var(--primary-color-dark);
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     position: fixed;
     transition: all .3s ease;
+    z-index: 89;
 
     .main-container {
         display: flex;
