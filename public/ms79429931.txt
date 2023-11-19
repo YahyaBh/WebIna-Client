@@ -1,0 +1,5 @@
+﻿{
+  "Description": "Domain ownership verification file for Microsoft 365 - place in the website root",
+  "Domain": "webinadigital.com",
+  "Id": "6cf4823f-e584-4778-a7b0-85bdad5ebb7c"
+}
