@@ -27,26 +27,13 @@ i18next
     },
   })
 
-const rootElement = document.getElementById('web-ina-digita-SAf21kDKASJ2DNAKSDML2flFKAMSD');
-const root = ReactDOM.createRoot(rootElement);
-
-const renderApp = () => {
-  root.render(
-    <Suspense fallback={<Loading />}>
-      <HelmetProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </HelmetProvider>
-    </Suspense>
-  );
-};
-
-if (rootElement.hasChildNodes()) {
-  // If the root element already has child nodes, hydrate
-  root.hydrate(<Loading />);
-  renderApp();
-} else {
-  // If the root element is empty, render
-  renderApp();
-}
+const root = ReactDOM.createRoot(document.getElementById('web-ina-digita-SAf21kDKASJ2DNAKSDML2flFKAMSD'));
+root.render(
+  <Suspense fallback={<Loading />}>
+    <HelmetProvider>
+      <BrowserRouter basename='/'>
+        <App />
+      </BrowserRouter>
+    </HelmetProvider>
+  </Suspense>
+);
