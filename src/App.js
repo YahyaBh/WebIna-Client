@@ -11,6 +11,7 @@ import PageUnavailable from "./Build/Error/PageUnavailable";
 import Register from "./Components/Register/Register";
 import Welcome from "./Components/Welcome/Welcome";
 import Login from "./Components/Login/Login";
+import SocialAuthCallback from "./Components/Login/SocialAuthCallback";
 import Logout from "./Components/Logout/Logout";
 import Store from "./Components/Store/Store";
 import Privacy from './Build/Privacy/Privacy'
@@ -133,7 +134,10 @@ function App() {
           <Route exact path='/register' element={<Register />} />
           <Route exact path='/register/:email_home' element={<Register />} />
           <Route exact path='/login' element={<Login />} />
+          <Route path="/auth/:provider/callback" element={<SocialAuthCallback />}></Route>
           <Route exact path='/verify-email/:token/:id/:email' element={<VerifyEmail />} />
+
+
           <Route exact path='/about' element={<About />} />
           <Route exact path='/contact' element={<Contact />} />
           <Route exact path='/privacy-policy' element={<Privacy />} />

@@ -140,7 +140,7 @@ const Store = () => {
             <Helmet>
                 <title>WEBINA DIGITAL | Store</title>
                 <meta name="description" content="Choose your ideal Website , Mobile app , UI/UX design , Desktop Application , with the best price" />
-                <link rel='canonical' content="/login" />
+                <link rel='canonical' content="/store" />
             </Helmet>
 
             <Profiler id='store-prof'>

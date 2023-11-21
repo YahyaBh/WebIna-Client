@@ -4,6 +4,7 @@ import IMAGEJ from '../../Assets/Hiring/image-jobs.png'
 import Logo from '../../Assets/Home/Navbar/WEBINA-Logo.png'
 import validator from 'validator'
 import Swal from 'sweetalert2'
+import { Helmet } from 'react-helmet-async'
 
 const Hiring = () => {
 
@@ -70,6 +71,14 @@ const Hiring = () => {
 
     return (
         <div className='hiring-container'>
+
+
+            <Helmet>
+                <title>WEBINA DIGITAL | Jobs</title>
+                <meta name="description" content="Find your dream IT job positions with webina digital , the #1 Digital Company" />
+                <link rel='canonical' content="/jobs" />
+            </Helmet>
+
 
 
             {sent ?

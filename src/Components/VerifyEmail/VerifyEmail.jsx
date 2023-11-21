@@ -41,7 +41,7 @@ const VerifyEmail = () => {
 
     return (<>
         <Helmet>
-            <title>WEBINA DIGITAL | Email Verification</title>
+            <title>WEBINA DIGITAL | Email Verifying...</title>
         </Helmet>
 
         <Loading />

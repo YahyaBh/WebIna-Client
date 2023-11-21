@@ -66,6 +66,7 @@ import { Tooltip } from 'react-tooltip';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom'
 import i18next from 'i18next'
+import { Helmet } from 'react-helmet-async'
 
 const Home = () => {
 
@@ -293,6 +294,13 @@ const Home = () => {
 
     return (
         <Profiler id='Home'>
+
+            <Helmet>
+                <title>WEBINA DIGITAL </title>
+                <meta name="description" content="Welcome To Webina Digital - Web Development Company, the #1 Digital Company" />
+                <link rel='canonical' content="/" />
+            </Helmet>
+
 
             {loading ? <Loading /> : ''}
 

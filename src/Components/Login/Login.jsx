@@ -14,6 +14,7 @@ import i18next from 'i18next'
 import { Helmet } from 'react-helmet-async'
 import Cookies from 'js-cookie'
 import Loading from '../Loading/Loading'
+import SocialLoginButton from './SocialLoginButton'
 
 const Login = () => {
 
@@ -140,7 +141,7 @@ const Login = () => {
     }
 
 
-    return (loading ? <Loading/> :
+    return (loading ? <Loading /> :
         <>
             <Helmet>
                 <title>WEBINA DIGITAL | Login</title>
@@ -207,8 +208,9 @@ const Login = () => {
 
 
                         <div className="google-facebook">
-                            <button><FaGoogle />Google</button>
-                            <button><FaFacebook />Facebook</button>
+                            <SocialLoginButton provider="facebook" />
+                            <SocialLoginButton provider="google" />
+
                         </div>
                     </div>
 
