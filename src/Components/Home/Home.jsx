@@ -18,7 +18,7 @@ import Computer1 from '../../Assets/Home/Section 1 Main/computer.webp';
 import Computer2 from '../../Assets/Home/Section 1 Main/panel.webp';
 import Computer3 from '../../Assets/Home/Section 1 Main/boy-image.svg';
 import Computer4 from '../../Assets/Home/Section 1 Main/3d-shapes.svg';
-import WebInaPhone from '../../Assets/Home/Section 2/iphone7.png'
+import WebInaPhone from '../../Assets/Home/Section 2/iphone7.webp'
 import floatingRightHatDark from '../../Assets/Home/Section 2/FloatingRightHatDark.png';
 import floatingRightHat from '../../Assets/Home/Section 2/FloatingRightHat.png';
 import OrnamentHoriz from '../../Assets/Home/Section 2/ornamenthoriz.webp';
