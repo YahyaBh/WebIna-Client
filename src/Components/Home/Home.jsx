@@ -18,12 +18,12 @@ import Computer1 from '../../Assets/Home/Section 1 Main/computer.webp';
 import Computer2 from '../../Assets/Home/Section 1 Main/panel.webp';
 import Computer3 from '../../Assets/Home/Section 1 Main/boy-image.svg';
 import Computer4 from '../../Assets/Home/Section 1 Main/3d-shapes.svg';
-import WebInaPhone from '../../Assets/Home/Section 2/iPhone7.png'
+import WebInaPhone from '../../Assets/Home/Section 2/iphone7.png'
 import floatingRightHatDark from '../../Assets/Home/Section 2/FloatingRightHatDark.png';
 import floatingRightHat from '../../Assets/Home/Section 2/FloatingRightHat.png';
-import OrnamentHoriz from '../../Assets/Home/Section 2/OrnamentHoriz.webp';
+import OrnamentHoriz from '../../Assets/Home/Section 2/ornamenthoriz.webp';
 import OrnamentHorizDark from '../../Assets/Home/Section 2/OrnamentHorizDark.png';
-import OrnamentUp from '../../Assets/Home/Section 2/OrnamentUp.webp';
+import OrnamentUp from '../../Assets/Home/Section 2/ornamentup.webp';
 import OrnamentUpDark from '../../Assets/Home/Section 2/OrnamentUpDark.png';
 import DevIcon from '../../Assets/Home/Section 2/dev-icon.svg'
 import SocialIcon from '../../Assets/Home/Section 2/social-icon.svg';
