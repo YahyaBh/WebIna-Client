@@ -296,7 +296,7 @@ const Home = () => {
         <Profiler id='Home'>
 
             <Helmet>
-                <title>WEBINA DIGITAL </title>
+                <title>WEBINA DIGITAL</title>
                 <meta name="description" content="Welcome To Webina Digital - Web Development Company, the #1 Digital Company" />
                 <link rel='canonical' content="/" />
             </Helmet>
