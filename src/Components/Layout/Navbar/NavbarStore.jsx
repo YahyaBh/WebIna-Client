@@ -10,7 +10,6 @@ import { AiOutlineClose, AiOutlineSearch, AiOutlineShoppingCart } from 'react-ic
 import Ecommerce from '../../../Assets/Home/Navbar/Add to Cart-cuate.svg'
 import { ThemeContext } from "../../../Context/ThemeContext";
 import AuthContext from '../../../Context/AuthContext';
-import Profile from '../../../Assets/profiles/default.svg'
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { useStoreContext } from '../../../Context/StoreConetxt';
 
@@ -129,7 +128,7 @@ const NavbarStore = ({ isOpen, transparent }) => {
 
                             {isAuthenticated ?
                                 <li className='drop-down-user' >
-                                    <img src={Profile} alt={user.name + 'profile'} />{user.name} <MdKeyboardArrowDown />
+                                    <img src={user.avatar} alt={user.name + 'profile'} />{user.name} <MdKeyboardArrowDown />
                                     <ul className="dropdown-menu">
                                         <li>Profile</li>
                                         <li>My Recent</li>

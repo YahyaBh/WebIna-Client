@@ -181,7 +181,7 @@ const Navbar = ({ isOpen, transparent }) => {
 
                             {isAuthenticated ?
                                 <li className='drop-down-user' >
-                                    <img src={`/Images/Avatars/${user.avatar}.png`} alt={user.name + 'profile'} />{user.name} <MdKeyboardArrowDown />
+                                    <img src={user.avatar} alt={user.name + ' profile'} />{user.name} <MdKeyboardArrowDown />
                                     <ul className="dropdown-menu">
                                         <li>{i18next.t("PROFILE")}</li>
                                         <li>{i18next.t("MY_RECENT")}</li>
