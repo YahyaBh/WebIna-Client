@@ -1,4 +1,6 @@
 import React from 'react'
+import { Helmet } from 'react-helmet-async';
+
 import Navbar from '../../Components/Layout/Navbar/Navbar'
 import Footer from '../../Components/Layout/Footer/Footer'
 import './Privacy.scss'
@@ -6,6 +8,13 @@ import './Privacy.scss'
 const Privacy = () => {
     return (
         <>
+
+            <Helmet>
+                <title>WEBINA DIGITAL | Privacy Policy</title>
+                <meta name="description" content="Choose your ideal Website , Mobile app , UI/UX design , Desktop Application , with the best price" />
+                <link rel='canonical' content="/privacy-policy" />
+            </Helmet>
+
             <Navbar target={'privacy'} />
 
 
@@ -113,7 +122,7 @@ const Privacy = () => {
             </div>
 
 
-            <Footer/>
+            <Footer />
         </>
 
     )

@@ -28,6 +28,7 @@ import Loading from '../../Components/Loading/Loading'
 import { BiPhone } from 'react-icons/bi'
 import AuthContext from '../../Context/AuthContext'
 import Swal from 'sweetalert2'
+import { Helmet } from 'react-helmet-async'
 
 
 
@@ -97,6 +98,12 @@ const Maintanence = () => {
 
     return (
         <Profiler >
+
+            <Helmet>
+                <title>WEBINA DIGITAL | Maintanence</title>
+                <meta name="description" content="Choose your ideal Website , Mobile app , UI/UX design , Desktop Application , with the best price" />
+                <link rel='canonical' content="/maintanence" />
+            </Helmet>
 
             {loading ? Loading : ''}
 

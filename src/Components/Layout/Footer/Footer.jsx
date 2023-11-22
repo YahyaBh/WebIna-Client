@@ -57,10 +57,10 @@ const Footer = () => {
                 </div>
 
                 <div>
-                    <a href='https://instagram.com/_webina' target='_blank' rel="noreferrer"><FaInstagram /></a>
-                    <a href='https://facebook.com/webinadigital' target='_blank' rel="noreferrer"><FaFacebook /></a>
-                    <a href='https://twitter.com/webina-digital' target='_blank' rel="noreferrer"><FaTwitter /></a>
-                    <a href='https://tiktok.com/@webina.digital' target='_blank' rel="noreferrer"><FaTiktok /></a>
+                    <a href='https://instagram.com/webina.digital' aria-label="Follow us on Instagram" target='_blank' rel="noreferrer"><FaInstagram /></a>
+                    <a href='https://facebook.com/webinadigital' aria-label="Follow us on Facebook" target='_blank' rel="noreferrer"><FaFacebook /></a>
+                    <a href='https://twitter.com/webina-digital' aria-label="Follow us on Twitter/X" target='_blank' rel="noreferrer"><FaTwitter /></a>
+                    <a href='https://tiktok.com/@webina.digital' aria-label="Follow us on TikokT" target='_blank' rel="noreferrer"><FaTiktok /></a>
                 </div>
             </div>
 

@@ -14,23 +14,23 @@ import { BiArrowFromLeft } from 'react-icons/bi'
 
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import BackGroundContainer from '../../Assets/Home/Section 1 Main/ComputerSectionHome.svg'
-import Computer1 from '../../Assets/Home/Section 1 Main/computer.png';
-import Computer2 from '../../Assets/Home/Section 1 Main/panel.png';
+import Computer1 from '../../Assets/Home/Section 1 Main/computer.webp';
+import Computer2 from '../../Assets/Home/Section 1 Main/panel.webp';
 import Computer3 from '../../Assets/Home/Section 1 Main/boy-image.svg';
 import Computer4 from '../../Assets/Home/Section 1 Main/3d-shapes.svg';
 import WebInaPhone from '../../Assets/Home/Section 2/iPhone7.png'
 import floatingRightHatDark from '../../Assets/Home/Section 2/FloatingRightHatDark.png';
 import floatingRightHat from '../../Assets/Home/Section 2/FloatingRightHat.png';
-import OrnamentHoriz from '../../Assets/Home/Section 2/OrnamentHoriz.png';
+import OrnamentHoriz from '../../Assets/Home/Section 2/OrnamentHoriz.webp';
 import OrnamentHorizDark from '../../Assets/Home/Section 2/OrnamentHorizDark.png';
-import OrnamentUp from '../../Assets/Home/Section 2/OrnamentUp.png';
+import OrnamentUp from '../../Assets/Home/Section 2/OrnamentUp.webp';
 import OrnamentUpDark from '../../Assets/Home/Section 2/OrnamentUpDark.png';
 import DevIcon from '../../Assets/Home/Section 2/dev-icon.svg'
 import SocialIcon from '../../Assets/Home/Section 2/social-icon.svg';
 import DesignIcon from '../../Assets/Home/Section 2/design-icon.svg';
 import MobileIcon from '../../Assets/Home/Section 2/mobile-icon.svg';
 import DesktopIcon from '../../Assets/Home/Section 2/desktop-icon.svg';
-import SEO from '../../Assets/Home/SEO Section/seo.png'
+import SEO from '../../Assets/Home/SEO Section/seo.webp'
 import LeftTopArrow from '../../Assets/Home/Perf-Section/Arrow-Left-Top.png';
 import LeftBottomArrow from '../../Assets/Home/Perf-Section/Arrow-Left-Bottom.png';
 import RightTopArrow from '../../Assets/Home/Perf-Section/Arrow-Right-Top.png';
