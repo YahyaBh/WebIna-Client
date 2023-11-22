@@ -41,7 +41,7 @@ import VideoCoding from '../../Assets/Home/Slide Section/pexels-mikhail-nilov-79
 
 import Aos from 'aos';
 import 'aos/dist/aos.css';
-import luxyMin from 'luxy.js';
+
 
 
 import AuthContext from '../../Context/AuthContext'
