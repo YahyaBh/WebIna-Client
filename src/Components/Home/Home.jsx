@@ -107,17 +107,9 @@ const Home = () => {
 
         Aos.init();
 
-
-
         if (isAuthenticated) {
             navigate('/store/home')
         } else {
-            if (window.screen.width > 780) {
-                luxyMin.init({
-                    wrapper: '#luxy',
-                    wrapperSpeed: 0.04
-                });
-            }
 
             window.addEventListener('scroll', handleScroll);
 
@@ -307,8 +299,8 @@ const Home = () => {
             <Navbar target={'home'} />
 
             <div id='Home'>
-                <div id="luxy">
-                    <section id='section-main' className="luxy-el" data-speed-y="20" data-offset="50">
+                <div>
+                    <section id='section-main'>
 
                         <div className='main-container'>
                             <div className="background-grad">
@@ -814,9 +806,7 @@ const Home = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div style={{ height: '470px' }}>
-                                <Footer />
-                            </div>
+                            <Footer />
                         </div>
 
                     </section>
