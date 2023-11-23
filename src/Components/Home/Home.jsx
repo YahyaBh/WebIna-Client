@@ -1,8 +1,61 @@
-import React, { Profiler, useContext, useEffect, useRef, useState } from 'react'
-import Navbar from '../Layout/Navbar/Navbar'
-import ImageComponent from '../Layout/ImageComponenet/ImageComponent'
-import { useCountdown } from '../Layout/Timer/Timer'
-import './Home.scss'
+import React, {
+    Profiler,
+    useContext,
+    useEffect,
+    useRef,
+    useState,
+    lazy,
+    Suspense,
+} from 'react';
+import Navbar from '../Layout/Navbar/Navbar';
+import { useCountdown } from '../Layout/Timer/Timer';
+import { ThemeContext } from '../../Context/ThemeContext';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
+import i18next from 'i18next';
+import { Helmet } from 'react-helmet-async';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/core';
+import './styles.scss';
+import Footer from '../Layout/Footer/Footer';
+import { Tooltip } from 'react-tooltip';
+import Loading from '../Loading/Loading';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'aos/dist/aos.css';
+
+import AuthContext from '../../Context/AuthContext';
+
+
+
+// Unique imports
+import BackGroundContainer from '../../Assets/Home/Section 1 Main/ComputerSectionHome.svg';
+import Computer1 from '../../Assets/Home/Section 1 Main/computer.webp';
+import Computer2 from '../../Assets/Home/Section 1 Main/panel.webp';
+import Computer3 from '../../Assets/Home/Section 1 Main/boy-image.svg';
+import Computer4 from '../../Assets/Home/Section 1 Main/3d-shapes.svg';
+import WebInaPhone from '../../Assets/Home/Section 2/iphone7.webp';
+import floatingRightHatDark from '../../Assets/Home/Section 2/FloatingRightHatDark.png';
+import floatingRightHat from '../../Assets/Home/Section 2/FloatingRightHat.png';
+import OrnamentHoriz from '../../Assets/Home/Section 2/ornamenthoriz.webp';
+import OrnamentHorizDark from '../../Assets/Home/Section 2/OrnamentHorizDark.png';
+import OrnamentUp from '../../Assets/Home/Section 2/ornamentup.webp';
+import OrnamentUpDark from '../../Assets/Home/Section 2/OrnamentUpDark.png';
+import DevIcon from '../../Assets/Home/Section 2/dev-icon.svg';
+import SocialIcon from '../../Assets/Home/Section 2/social-icon.svg';
+import DesignIcon from '../../Assets/Home/Section 2/design-icon.svg';
+import MobileIcon from '../../Assets/Home/Section 2/mobile-icon.svg';
+import DesktopIcon from '../../Assets/Home/Section 2/desktop-icon.svg';
+import SEO from '../../Assets/Home/SEO Section/seo.webp';
+import LeftTopArrow from '../../Assets/Home/Perf-Section/Arrow-Left-Top.png';
+import LeftBottomArrow from '../../Assets/Home/Perf-Section/Arrow-Left-Bottom.png';
+import RightTopArrow from '../../Assets/Home/Perf-Section/Arrow-Right-Top.png';
+import RightBottomArrow from '../../Assets/Home/Perf-Section/Arrow-Right-Bottom.png';
+import TestFeed from '../../Assets/Home/FeedBack Section/TestFeed.png';
+import ContactImg from '../../Assets/Home/Contact Section/at-dynamic-color.svg';
+import VideoCoding from '../../Assets/Home/Slide Section/pexels-mikhail-nilov-7989667 (720p).mp4';
 
 import { SiRubyonrails, SiAdobepremierepro, SiAdobeaftereffects, SiVisualstudio, SiAndroidstudio, SiMysql, SiCplusplus, SiFlutter, SiBlender, SiNuxtdotjs } from 'react-icons/si';
 import { DiRuby } from 'react-icons/di';
@@ -12,100 +65,35 @@ import { HiOutlineArrowRight } from 'react-icons/hi'
 import { IoIosArrowForward, IoIosArrowBack, IoLogoJavascript, IoLogoCss3, IoMdStar, IoMdStarOutline } from 'react-icons/io'
 import { BiArrowFromLeft } from 'react-icons/bi'
 
-import AnchorLink from 'react-anchor-link-smooth-scroll';
-import BackGroundContainer from '../../Assets/Home/Section 1 Main/ComputerSectionHome.svg'
-import Computer1 from '../../Assets/Home/Section 1 Main/computer.webp';
-import Computer2 from '../../Assets/Home/Section 1 Main/panel.webp';
-import Computer3 from '../../Assets/Home/Section 1 Main/boy-image.svg';
-import Computer4 from '../../Assets/Home/Section 1 Main/3d-shapes.svg';
-import WebInaPhone from '../../Assets/Home/Section 2/iphone7.webp'
-import floatingRightHatDark from '../../Assets/Home/Section 2/FloatingRightHatDark.png';
-import floatingRightHat from '../../Assets/Home/Section 2/FloatingRightHat.png';
-import OrnamentHoriz from '../../Assets/Home/Section 2/ornamenthoriz.webp';
-import OrnamentHorizDark from '../../Assets/Home/Section 2/OrnamentHorizDark.png';
-import OrnamentUp from '../../Assets/Home/Section 2/ornamentup.webp';
-import OrnamentUpDark from '../../Assets/Home/Section 2/OrnamentUpDark.png';
-import DevIcon from '../../Assets/Home/Section 2/dev-icon.svg'
-import SocialIcon from '../../Assets/Home/Section 2/social-icon.svg';
-import DesignIcon from '../../Assets/Home/Section 2/design-icon.svg';
-import MobileIcon from '../../Assets/Home/Section 2/mobile-icon.svg';
-import DesktopIcon from '../../Assets/Home/Section 2/desktop-icon.svg';
-import SEO from '../../Assets/Home/SEO Section/seo.webp'
-import LeftTopArrow from '../../Assets/Home/Perf-Section/Arrow-Left-Top.png';
-import LeftBottomArrow from '../../Assets/Home/Perf-Section/Arrow-Left-Bottom.png';
-import RightTopArrow from '../../Assets/Home/Perf-Section/Arrow-Right-Top.png';
-import RightBottomArrow from '../../Assets/Home/Perf-Section/Arrow-Right-Bottom.png';
-import TestFeed from '../../Assets/Home/FeedBack Section/TestFeed.png'
-import ContactImg from '../../Assets/Home/Contact Section/at-dynamic-color.svg'
-import VideoCoding from '../../Assets/Home/Slide Section/pexels-mikhail-nilov-7989667 (720p).mp4'
-
-import Aos from 'aos';
-import 'aos/dist/aos.css';
-
-
-
-import AuthContext from '../../Context/AuthContext'
-import Loading from '../Loading/Loading';
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-
-import './styles.scss';
-
-// import required modules
-import { Navigation, Pagination } from 'swiper/modules';
-
-
-
-import Footer from '../Layout/Footer/Footer';
-import { ThemeContext } from '../../Context/ThemeContext';
-import { Tooltip } from 'react-tooltip';
-import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom'
-import i18next from 'i18next'
-import { Helmet } from 'react-helmet-async'
 
 const Home = () => {
-
     const [loading, setLoading] = useState(true);
     const [emailGetStarted, setEmailGetStarted] = useState('');
     const [scrolled, setScrolled] = useState(false);
     const [isFadeIn, setIsFadeIn] = useState(false);
     const [targetDate, setTargetDate] = useState('');
-    const [videoShort, setvideoShort] = useState('http://localhost:8000/images/admins/home/edit/video/1700222447.mp4');
-
-
+    const [videoShort, setvideoShort] = useState(
+        'http://localhost:8000/images/admins/home/edit/video/1700222447.mp4'
+    );
     const [testiomonials, setTestiomonials] = useState([]);
     const [projects, setProjects] = useState([]);
     const [blogs, setBlogs] = useState([]);
-
-
     const [currentImage, setCurrentImage] = useState(Computer1);
-
-
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
 
-
     const { isDarkMode } = useContext(ThemeContext);
     const { http, csrf, isAuthenticated } = AuthContext();
-
-    const [days, hours, minutes, seconds] = useCountdown(targetDate)
-
-
+    const [days, hours, minutes, seconds] = useCountdown(targetDate);
     const tiltRef = useRef(null);
     const imageRef = useRef(null);
-
-    const navigate = useNavigate()
-
+    const navigate = useNavigate();
 
     useEffect(() => {
-
-        Aos.init();
+        import('aos').then((aos) => {
+            aos.init();
+        });
 
         if (isAuthenticated) {
             navigate('/store/home')
@@ -116,89 +104,64 @@ const Home = () => {
             getHomeData();
 
         }
-
-    }, [])
-
+    }, []);
 
     useEffect(() => {
-
         const images = [Computer1, Computer2, Computer3, Computer4];
-
         const interval = setInterval(() => {
-            // Get the index of the next image
             const currentIndex = images.indexOf(currentImage);
             const nextIndex = (currentIndex + 1) % images.length;
-
-            // Update the current image
             setCurrentImage(images[nextIndex]);
         }, 7000);
-
-        // Clean up the interval on component unmount
         return () => clearInterval(interval);
     }, [currentImage]);
 
-
-
-
-
     const getHomeData = async () => {
-        await http.get('/api/home')
-            .then((res) => {
-                setTestiomonials(res.data.testimonials);
-                setProjects(res.data.projects);
-                setBlogs(res.data.blogs);
-                setTargetDate(res.data.homeData[0].targetDate);
-                setvideoShort(res.data.homeData[0].imageGif);
-                setLoading(false);
-            })
-            .catch((err) => {
-                console.error(err.message);
-            })
-
-        setLoading(false);
-    }
+        try {
+            const res = await http.get('/api/home');
+            setTestiomonials(res.data.testimonials);
+            setProjects(res.data.projects);
+            setBlogs(res.data.blogs);
+            setTargetDate(res.data.homeData[0].targetDate);
+            setvideoShort(res.data.homeData[0].imageGif);
+            setLoading(false);
+        } catch (err) {
+            console.error(err.message);
+            setLoading(false);
+        }
+    };
 
     const handleMouseMove = (e) => {
         const el = tiltRef.current;
         const elSec = imageRef.current;
-
-
         const height = el.clientHeight;
         const width = el.clientWidth;
-
         const xVal = e.nativeEvent.layerX;
         const yVal = e.nativeEvent.layerY;
-
         const yRotation = 8 * ((xVal - width / 2) / width);
         const xRotation = -8 * ((yVal - height / 2) / height);
-
         const yRotationSec = 3 * ((xVal - width / 2) / width);
         const xRotationSec = -3 * ((yVal - height / 2) / height);
-
         const transformValue = `perspective(500px) scale(1) rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
         const transformValueSec = `perspective(500px) scale(1) rotateX(${-xRotationSec}deg) rotateY(${-yRotationSec}deg)`;
-
         el.style.transition = 'transform 0.5s ease-out';
         el.style.transform = transformValue;
         elSec.style.transition = 'transform 0.5s ease-out';
         elSec.style.transform = transformValueSec;
-
     };
 
     const handleMouseOut = () => {
         const el = tiltRef.current;
         const elSec = imageRef.current;
-
-        el.style.transition = 'transform 0.5s ease-out'; // Add transition for smooth animation
+        el.style.transition = 'transform 0.5s ease-out';
         el.style.transform = 'perspective(500px) scale(1) rotateX(0deg) rotateY(0deg)';
-        elSec.style.transition = 'transform 0.5s ease-out'; // Add transition for smooth animation
+        elSec.style.transition = 'transform 0.5s ease-out';
         elSec.style.transform = 'perspective(500px) scale(1) rotateX(0deg) rotateY(0deg)';
     };
 
     const handleMouseDown = () => {
         const el = tiltRef.current;
         el.style.transform = 'perspective(500px) scale(0.97) rotateX(0) rotateY(0)';
-
         const elSec = imageRef.current;
         elSec.style.transform = 'perspective(500px) scale(0.99) rotateX(0) rotateY(0)';
     };
@@ -206,13 +169,11 @@ const Home = () => {
     const handleMouseUp = () => {
         const el = tiltRef.current;
         el.style.transform = 'perspective(500px) scale(1.03) rotateX(0) rotateY(0)';
-
         const elSec = imageRef.current;
         elSec.style.transform = 'perspective(500px) scale(1.01) rotateX(0) rotateY(0)';
     };
 
     const handleScroll = () => {
-        // Update the state based on scroll position
         if (window.pageYOffset > 200) {
             setScrolled(true);
         } else {
@@ -220,69 +181,56 @@ const Home = () => {
         }
     };
 
-
-
-
     const handleContactMessage = async (e) => {
         e.preventDefault();
-
         if (name !== '' && email !== '' && message !== '') {
-
             const contactData = new FormData();
-
-            contactData.append('name', name)
-            contactData.append('email', email)
-            contactData.append('message', message)
-
-            csrf()
-            await http.post('/api/contact', contactData)
-                .then((res) => {
-                    Swal.fire({
-                        title: 'Thank You !',
-                        text: res.data.message,
-                        icon: 'success',
-                        confirmButtonColor: 'var(--black-color)'
-                    })
-                })
-                .catch((err) => {
-                    Swal.fire(
-                        'Error',
-                        err.response.data.message,
-                        'error'
-                    )
-                })
-
+            contactData.append('name', name);
+            contactData.append('email', email);
+            contactData.append('message', message);
+            csrf();
+            try {
+                const res = await http.post('/api/contact', contactData);
+                Swal.fire({
+                    title: 'Thank You !',
+                    text: res.data.message,
+                    icon: 'success',
+                    confirmButtonColor: 'var(--black-color)',
+                });
+            } catch (err) {
+                Swal.fire('Error', err.response.data.message, 'error');
+            }
         }
-
-    }
+    };
 
     const handleEmail = async () => {
         if (emailGetStarted !== '') {
-            const email = new FormData();
-
-            email.append('email', emailGetStarted)
+            const emailFormData = new FormData();
+            emailFormData.append('email', emailGetStarted);
             setEmailGetStarted('');
-
-            csrf()
-            await http.post('/api/register/email', email, { withCredentials: true })
-                .then((res) => {
-                    Swal.fire({
-                        title: 'Thank You',
-                        text: 'We Will Let You Know As Soon As The Website Is Ready , Be Safe !',
-                        icon: 'success',
-                        confirmButtonColor: 'var(--black-color)'
-                    })
-                })
-                .catch((err) => {
-                    Swal.fire({
-                        title: 'Error',
-                        text: err.response.data.message,
-                        icon: 'error',
-                        confirmButtonColor: 'red'
-                    })
-                })
+            csrf();
+            try {
+                const res = await http.post('/api/register/email', emailFormData, {
+                    withCredentials: true,
+                });
+                Swal.fire({
+                    title: 'Thank You',
+                    text: 'We Will Let You Know As Soon As The Website Is Ready , Be Safe !',
+                    icon: 'success',
+                    confirmButtonColor: 'var(--black-color)',
+                });
+            } catch (err) {
+                Swal.fire({
+                    title: 'Error',
+                    text: err.response.data.message,
+                    icon: 'error',
+                    confirmButtonColor: 'red',
+                });
+            }
         }
-    }
+    };
+
+    const ImageComponent = lazy(() => import('../Layout/ImageComponenet/ImageComponent'));
 
     return (
         <Profiler id='Home'>
@@ -509,7 +457,9 @@ const Home = () => {
                                     {blogs?.map((blog, index) => (
                                         <div key={index} className='blog-card' data-aos="fade-down" data-aos-duration="500">
                                             <div className='blog-body'>
-                                                <ImageComponent className="image" src={blog.image} alt={blog.title} />
+                                                <Suspense>
+                                                    <ImageComponent className="image" src={blog.image} alt={blog.title} />
+                                                </Suspense>
                                                 <div className="right-cont">
                                                     <h5>{blog.name.substring(0, 25) + '...'}</h5>
                                                     <p>{blog.description.substring(0, 150) + '...'}</p>
