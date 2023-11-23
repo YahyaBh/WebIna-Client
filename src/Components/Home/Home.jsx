@@ -16,14 +16,18 @@ import i18next from 'i18next';
 import { Helmet } from 'react-helmet-async';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/core';
+import { Navigation, Pagination } from 'swiper/modules';
 import './styles.scss';
+import './Home.scss';
 import Footer from '../Layout/Footer/Footer';
 import { Tooltip } from 'react-tooltip';
 import Loading from '../Loading/Loading';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
+import './styles.scss';
+
+
 import 'aos/dist/aos.css';
 
 import AuthContext from '../../Context/AuthContext';
