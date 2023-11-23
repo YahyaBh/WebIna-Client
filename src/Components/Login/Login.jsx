@@ -188,18 +188,23 @@ const Login = () => {
                                 <input type="password" name='password' autoComplete='off' onChange={e => setPassword(e.target.value)} />
                             </div>
 
-                            <label htmlFor="remember_me" className="control control-checkbox">
-                                <p>{i18next.t("REMEMBER_ME")}</p>
-                                <input checked={remember} onChange={e => rememberHandler()} type="checkbox" name="remember_me" id="remember_me" />
-                                <div className="control_indicator"></div>
-                            </label>
+
+                            <div className="under-inputs">
+                                <label htmlFor="remember_me" className="control control-checkbox">
+                                    <p>{i18next.t("REMEMBER_ME")}</p>
+                                    <input checked={remember} onChange={e => rememberHandler()} type="checkbox" name="remember_me" id="remember_me" />
+                                    <div className="control_indicator"></div>
+                                </label>
+
+                                <div className="under-sign">
+                                    <a href="/forget-password">{i18next.t("FORGOT_PASSWORD")}</a>
+                                </div>
+                            </div>
 
                             <button type='submit'>{loginLoading ? <AiOutlineLoading3Quarters className="spin-load" /> : i18next.t("SIGNIN")}</button>
 
 
-                            <div className="under-sign">
-                                <a href="/forget-password">{i18next.t("FORGOT_PASSWORD")}</a>
-                            </div>
+
                         </form>
 
                         <div className='with-sign'>

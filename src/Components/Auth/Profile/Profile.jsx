@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import AuthContext from '../../Context/AuthContext'
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
-import Loading from '../../../Loading/Loading'
+import Loading from '../../Loading/Loading'
 
 const Profile = () => {
 

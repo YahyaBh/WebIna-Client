@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
@@ -29,9 +29,11 @@ i18next
 
 const root = ReactDOM.createRoot(document.getElementById('web-ina-digita-SAf21kDKASJ2DNAKSDML2flFKAMSD'));
 root.render(
-  <HelmetProvider>
-    <BrowserRouter basename='/'>
-      <App />
-    </BrowserRouter>
-  </HelmetProvider>
+  <Suspense fallback={<Loading />}>
+    <HelmetProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </HelmetProvider>
+  </Suspense>
 );
