@@ -1,30 +1,34 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from "react-router-dom";
 import './Register.scss'
-import AuthContext from '../../Context/AuthContext'
+import AuthContext from '../../../Context/AuthContext'
 import Cookies from 'js-cookie';
 import { MdLanguage } from 'react-icons/md';
 import { FaFacebook, FaGoogle, FaMoon, FaSun } from 'react-icons/fa';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
-import { ThemeContext } from '../../Context/ThemeContext';
-import LogoDark from '../../Assets/Home/Navbar/WEBINA-Logo.png'
-import Logo from '../../Assets/Home/Navbar/WEBINA2.png'
-import SignUp from '../../Assets/SignUp/SignUpGraph.svg'
-import EmailVerf from '../../Assets/SignUp/Confirmed-cuate.svg'
+import { ThemeContext } from '../../../Context/ThemeContext';
+import LogoDark from '../../../Assets/Home/Navbar/WEBINA-Logo.png'
+import Logo from '../../../Assets/Home/Navbar/WEBINA2.png'
+import SignUp from '../../../Assets/SignUp/SignUpGraph.svg'
+import EmailVerf from '../../../Assets/SignUp/Confirmed-cuate.svg'
 import Swal from 'sweetalert2';
 import i18next from 'i18next';
 import { Helmet } from 'react-helmet-async';
-import AVATAR1 from '../../Assets/SignUp/Avatars/avatar1.png'
-import AVATAR2 from '../../Assets/SignUp/Avatars/avatar2.png'
-import AVATAR3 from '../../Assets/SignUp/Avatars/avatar3.png'
-import AVATAR4 from '../../Assets/SignUp/Avatars/avatar4.png'
-import AVATAR5 from '../../Assets/SignUp/Avatars/avatar5.png'
-import AVATAR6 from '../../Assets/SignUp/Avatars/avatar6.png'
-import AVATAR7 from '../../Assets/SignUp/Avatars/avatar7.png'
-import AVATAR8 from '../../Assets/SignUp/Avatars/avatar8.png'
-import AVATAR9 from '../../Assets/SignUp/Avatars/avatar9.png'
-import AVATAR10 from '../../Assets/SignUp/Avatars/avatar10.png'
-import errorIcon from '../../Assets/Icons/wired-outline-1140-error.gif'
+
+
+
+
+import AVATAR1 from '../../../Assets/SignUp/Avatars/avatar1.png'
+import AVATAR2 from '../../../Assets/SignUp/Avatars/avatar2.png'
+import AVATAR3 from '../../../Assets/SignUp/Avatars/avatar3.png'
+import AVATAR4 from '../../../Assets/SignUp/Avatars/avatar4.png'
+import AVATAR5 from '../../../Assets/SignUp/Avatars/avatar5.png'
+import AVATAR6 from '../../../Assets/SignUp/Avatars/avatar6.png'
+import AVATAR7 from '../../../Assets/SignUp/Avatars/avatar7.png'
+import AVATAR8 from '../../../Assets/SignUp/Avatars/avatar8.png'
+import AVATAR9 from '../../../Assets/SignUp/Avatars/avatar9.png'
+import AVATAR10 from '../../../Assets/SignUp/Avatars/avatar10.png'
+import errorIcon from '../../../Assets/Icons/wired-outline-1140-error.gif'
 
 
 const Register = () => {

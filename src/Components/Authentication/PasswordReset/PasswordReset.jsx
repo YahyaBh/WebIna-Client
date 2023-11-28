@@ -1,31 +1,29 @@
 import React, { useContext, useEffect, useState } from 'react'
-import './Login.scss'
-import AuthContext from '../../Context/AuthContext'
-import { ThemeContext } from '../../Context/ThemeContext'
+import './PasswordReset.scss'
+
+import AuthContext from '../../../Context/AuthContext'
+import { ThemeContext } from '../../../Context/ThemeContext'
 import { useNavigate } from 'react-router-dom'
-import LogoDark from '../../Assets/Home/Navbar/WEBINA-Logo.png'
-import Logo from '../../Assets/Home/Navbar/WEBINA2.png'
-import SignIn from '../../Assets/SignIn/SignInGraph.svg'
+import LogoDark from '../../../Assets/Home/Navbar/WEBINA-Logo.png'
+import Logo from '../../../Assets/Home/Navbar/WEBINA2.png'
+import ResetPassword from '../../../Assets/ResetPassword/Reset password-amico.svg'
 import { MdLanguage } from 'react-icons/md'
-import { FaSun, FaMoon, FaGoogle, FaFacebook } from 'react-icons/fa'
+import { FaSun, FaMoon } from 'react-icons/fa'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import Swal from 'sweetalert2'
 import i18next from 'i18next'
 import { Helmet } from 'react-helmet-async'
-import Cookies from 'js-cookie'
-import Loading from '../Loading/Loading'
-import SocialLoginButton from './SocialLoginButton'
+import Loading from '../../Loading/Loading'
 
 const Login = () => {
 
     const [loginLoading, setLoginLoading] = useState(false);
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [sent, setSent] = useState(false);
 
-    const [remember, setRemember] = useState(false);
     const [loading, setLoading] = useState(true);
 
-    const { http, csrf, setUser, setAccessToken, setRememberToken, isAuthenticated } = AuthContext()
+    const { http, csrf, isAuthenticated } = AuthContext()
     const navigate = useNavigate();
 
     const { isDarkMode, toggleTheme } = useContext(ThemeContext);
@@ -40,35 +38,22 @@ const Login = () => {
     }, [])
 
 
-    const rememberHandler = () => {
-        setRemember(!remember);
-    }
 
     const handleLogin = async (e) => {
         e.preventDefault()
         csrf();
 
-        if (email !== '' || password !== '') {
+        if (email !== '') {
 
             setLoginLoading(true)
-
-
 
             const userData = new FormData();
 
             userData.append('email', email)
-            userData.append('password', password)
 
-            await http.post('/api/login', userData)
+            await http.post('/api/forget-password', userData)
                 .then((res) => {
-                    setAccessToken(res.data.token);
-                    res.data.remember_token ? setRememberToken(res.data.token) : setRememberToken()
-                    setUser(res.data.user);
-                    navigate('/');
-                    setLoginLoading(false);
-                    if (Cookies.get('__F_ACCESS')) {
-                        Cookies.remove('__F_ACCESS');
-                    }
+                    setSent(true);
                 })
                 .catch((err) => {
                     setLoginLoading(false)
@@ -77,7 +62,7 @@ const Login = () => {
                         Swal.fire({
                             icon: 'error',
                             title: 'Oops! Something went wrong',
-                            text: 'Email or password is incorrect',
+                            text: "This email address doesn't exists.",
                             customClass: {
                                 container: 'popup-container',
                                 popup: 'popup-popup',
@@ -137,6 +122,7 @@ const Login = () => {
                     }
                 })
         }
+        setLoginLoading(false);
 
     }
 
@@ -144,12 +130,10 @@ const Login = () => {
     return (loading ? <Loading /> :
         <>
             <Helmet>
-                <title>WEBINA DIGITAL | Login</title>
-                <meta name="description" content="Let's Get you Signed in to your Webina Digital Account" />
-                <link rel='canonical' content="/login" />
+                <title>WEBINA DIGITAL | Password Reset</title>
             </Helmet>
 
-            <div id='sign-in' className={isDarkMode ? 'dark-in' : ''}>
+            <div id='password-reset' className={isDarkMode ? 'dark-in' : ''}>
 
 
                 <div className='header'>
@@ -171,9 +155,9 @@ const Login = () => {
 
                         <h4> {i18next.t("DONT_HAVE_ACCOUNT")} <a href='/register'>{i18next.t("SIGNUP")}</a></h4>
 
-                        <h2>{i18next.t("WELCOME_BACK")}</h2>
+                        <h2>IT'S OKAY</h2>
 
-                        <p>{i18next.t("WE_GLAD")}</p>
+                        <p>Reset your password in seconds , securly</p>
 
                         <form onSubmit={handleLogin} autoComplete="off">
 
@@ -183,44 +167,16 @@ const Login = () => {
                             </div>
 
 
-                            <div className="input-container">
-                                <label htmlFor="password">{i18next.t("Password")}</label>
-                                <input type="password" name='password' autoComplete='off' onChange={e => setPassword(e.target.value)} />
-                            </div>
-
-
-                            <div className="under-inputs">
-                                <label htmlFor="remember_me" className="control control-checkbox">
-                                    <p>{i18next.t("REMEMBER_ME")}</p>
-                                    <input checked={remember} onChange={e => rememberHandler()} type="checkbox" name="remember_me" id="remember_me" />
-                                    <div className="control_indicator"></div>
-                                </label>
-
-                                <div className="under-sign">
-                                    <a href="/forget-password">{i18next.t("FORGOT_PASSWORD")}</a>
-                                </div>
-                            </div>
-
-                            <button type='submit'>{loginLoading ? <AiOutlineLoading3Quarters className="spin-load" /> : i18next.t("SIGNIN")}</button>
+                            <button type='submit'>{loginLoading ? <AiOutlineLoading3Quarters className="spin-load" /> : i18next.t("RESET_PASS")}</button>
 
 
 
                         </form>
 
-                        <div className='with-sign'>
-                            <hr /> <h3>{i18next.t("OR_SIGN_IN_WITH")}</h3> <hr />
-                        </div>
-
-
-                        <div className="google-facebook">
-                            <SocialLoginButton provider="facebook" />
-                            <SocialLoginButton provider="google" />
-
-                        </div>
                     </div>
 
                     <div className="right-container">
-                        <img src={SignIn} alt="Sign In Graphique" />
+                        <img src={ResetPassword} alt="Sign In Graphique" />
                     </div>
 
                 </div>

@@ -23,6 +23,18 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: var(--swiper-pagination-bullet-opacity, 1);
+  background: var(--primary-color);
+}
+
+
+
 
 :root {
   --primary-color-dark: #FFE662;

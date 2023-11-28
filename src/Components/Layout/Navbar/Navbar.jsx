@@ -15,6 +15,7 @@ import { ThemeContext } from "../../../Context/ThemeContext";
 import AuthContext from '../../../Context/AuthContext';
 import Profile from '../../../Assets/profiles/default.svg'
 import i18next from 'i18next';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 const Navbar = ({ isOpen, transparent }) => {
 
@@ -177,6 +178,7 @@ const Navbar = ({ isOpen, transparent }) => {
                                 </div>
 
                                 {isDarkMode ? <FaSun onClick={toggleTheme} /> : <FaMoon onClick={toggleTheme} />}
+                                <a href="/cart"><AiOutlineShoppingCart /></a>
                             </div>
 
                             {isAuthenticated ?

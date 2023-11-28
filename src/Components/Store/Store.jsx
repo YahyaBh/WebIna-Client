@@ -329,7 +329,7 @@ const Store = () => {
 
                                     {filteredProducts.map(product => (
                                         <a href={`/store/product/${product?.token ?? product.token}`} key={product.id} className='card' title={product.description}>
-                                            <img src={TestImage} alt="product" />
+                                            <img src={product.image1} alt="product" />
 
                                             <div className='under-container'>
                                                 <div className="left-cont">

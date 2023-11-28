@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import AuthContext from '../../Context/AuthContext';
+import { useLocation , useParams } from "react-router-dom";
+import AuthContext from '../../../Context/AuthContext';
 
-import Loading from '../Loading/Loading'
+import Loading from '../../Loading/Loading'
 
 
 function SocialAuthCallback() {

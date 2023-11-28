@@ -15,7 +15,6 @@
     top: 95px;
     position: relative;
 
-
     .left-container {
         display: flex;
         justify-content: center;
@@ -26,7 +25,7 @@
         margin-left: 60px;
         overflow: hidden;
         background-color: var(--light-color);
-        transition: all .3s ease;
+        transition: all 0.3s ease;
 
         @media screen and (max-width: 900px) {
             margin-left: 0px;
@@ -37,6 +36,14 @@
             gap: 10px;
             background-color: #323232;
             padding: 18px 0;
+
+            .swiper-slide {
+                width: max-content !important;
+            }
+
+            .swiper-wrapper {
+                gap: 20px;
+            }
 
             .mySwiper {
                 display: flex;
@@ -68,13 +75,15 @@
 
     .container {
         display: flex;
-        justify-content: center;
-        align-items: center;
+        justify-content: flex-start;
+        align-items: flex-start;
         flex-direction: row;
         flex-wrap: wrap;
         gap: 10px;
         overflow: hidden;
         height: 100dvh;
+        width: 80%;
+        padding: 20px;
 
         @media screen and (max-width: 900px) {
             gap: 10px;
@@ -102,8 +111,8 @@
             border-radius: 20px;
             transition: all 0.3s ease;
             cursor: pointer;
-            min-width: 248px;
-            max-width: 567px;
+            min-width: 300px;
+            max-width: 500px;
 
             @media screen and (max-width: 900px) {
                 min-width: 200px;

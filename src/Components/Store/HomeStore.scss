@@ -98,6 +98,10 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+
+                svg {
+                    color: #1e1e1e;
+                }
             }
 
             .custom_product {
@@ -105,12 +109,18 @@
                 border: none;
                 color: #1e1e1e;
                 padding: 8px 15px;
-                font-size: 25px;
+                font-size: 22px;
                 width: 300px;
                 height: 40px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                flex-wrap: nowrap;
+                gap: 10px;
+
+                svg {
+                    color: #1e1e1e;
+                }
             }
 
             a {
@@ -713,11 +723,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: all .3s ease;
+            transition: all 0.3s ease;
 
             &:hover {
-                transform: scale(.9);
-                opacity: .8;
+                transform: scale(0.9);
+                opacity: 0.8;
             }
         }
     }

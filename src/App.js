@@ -1,6 +1,11 @@
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "./Context/ThemeContext";
+import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
+import axios from "axios";
+import Swal from "sweetalert2";
+
 
 import './App.css';
 
@@ -8,29 +13,36 @@ import './App.css';
 import Home from './Components/Home/Home';
 import Maintanence from "./Build/Maintanence/Maintanence";
 import PageUnavailable from "./Build/Error/PageUnavailable";
-import Register from "./Components/Register/Register";
 import Welcome from "./Components/Welcome/Welcome";
-import Login from "./Components/Login/Login";
-import SocialAuthCallback from "./Components/Login/SocialAuthCallback";
-import Logout from "./Components/Logout/Logout";
 import Store from "./Components/Store/Store";
 import Privacy from './Build/Privacy/Privacy'
 import Contact from "./Components/Contact/Contact";
 import About from "./Components/About/About";
-
-
-
-
-import Cookies from "js-cookie";
-import { useTranslation } from "react-i18next";
+import Product from "./Components/Product/Product";
 import Hiring from "./Components/Hiring/Hiring";
 import HomeStore from "./Components/Store/HomeStore";
-import VerifyEmail from "./Components/VerifyEmail/VerifyEmail";
-import { StoreProvider } from "./Context/StoreConetxt";
-import axios from "axios";
-import Swal from "sweetalert2";
+
+
+
+//Auth Directories
+import Register from "./Components/Authentication/Register/Register";
+import Login from "./Components/Authentication/Login/Login";
+import PasswordResest from "./Components/Authentication/PasswordReset/PasswordReset";
+import SocialAuthCallback from "./Components/Authentication/Login/SocialAuthCallback";
+import VerifyEmail from "./Components/Authentication/VerifyEmail/VerifyEmail";
+import Logout from "./Components/Authentication/Logout/Logout";
+import Cart from "./Components/Cart/Cart";
+
+
+
 import AuthUser from "./Context/AuthContext";
-import Product from "./Components/Product/Product";
+import { StoreProvider } from "./Context/StoreConetxt";
+
+
+
+
+
+
 
 
 
@@ -134,6 +146,7 @@ function App() {
           <Route exact path='/register' element={<Register />} />
           <Route exact path='/register/:email_home' element={<Register />} />
           <Route exact path='/login' element={<Login />} />
+          <Route exact path='/forget-password' element={<PasswordResest />} />
           <Route path="/auth/:provider/callback" element={<SocialAuthCallback />}></Route>
           <Route exact path='/verify-email/:token/:id/:email' element={<VerifyEmail />} />
 
@@ -150,6 +163,7 @@ function App() {
           <Route exact path='/store' element={<Store />} />
           <Route exact path='/store/home' element={<HomeStore />} />
           <Route exact path='/store/product/:token' element={<Product />} />
+          <Route exact path='/cart' element={<Cart />} />
 
 
 

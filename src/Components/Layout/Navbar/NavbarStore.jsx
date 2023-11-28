@@ -109,7 +109,7 @@ const NavbarStore = ({ isOpen, transparent }) => {
 
                         <div className='left-container'>
                             {isAsideOpen ? <AiOutlineClose className='openAside' onClick={toggleAside} /> : <BsList className='openAside' onClick={toggleAside} />}
-                            <a href='/' className='logo'>
+                            <a href='/store/home' className='logo'>
                                 <img src={isDarkMode ? LogoLight : Logo} alt="logo" />
                             </a>
 
@@ -123,7 +123,7 @@ const NavbarStore = ({ isOpen, transparent }) => {
                             <div className='lang-mode'>
                                 <AiOutlineSearch />
                                 {isDarkMode ? <FaSun onClick={toggleTheme} /> : <FaMoon onClick={toggleTheme} />}
-                                <AiOutlineShoppingCart />
+                                <a href="/cart"><AiOutlineShoppingCart /></a>
                             </div>
 
                             {isAuthenticated ?

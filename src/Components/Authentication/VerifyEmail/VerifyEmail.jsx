@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import AuthUser from '../../Context/AuthContext';
+import AuthUser from '../../../Context/AuthContext';
 import Cookies from 'js-cookie';
 import Swal from 'sweetalert2';
-import Loading from '../Loading/Loading';
+import Loading from '../../Loading/Loading';
 import { Helmet } from 'react-helmet-async';
 
 const VerifyEmail = () => {

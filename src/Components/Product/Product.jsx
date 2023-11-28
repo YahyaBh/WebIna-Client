@@ -51,7 +51,7 @@ const Product = () => {
                 console.log(res.data.product);
             })
             .catch((err) => {
-
+                navigate('/store')
             })
 
     }
@@ -105,7 +105,7 @@ const Product = () => {
                         <div className="container">
 
 
-                            <div className="back-button">
+                            <div className="back-button" onClick={() => navigate(-1)}>
                                 <BiLeftArrow /> Back
                             </div>
 
@@ -115,10 +115,10 @@ const Product = () => {
                                 <div className="left-container">
 
                                     <div className="image-container">
-                                        <img src={'https://placehold.co/600x400'} alt={product.name} />
+                                        <img src={product.image1} alt={product.name} />
 
                                         <div className="bottom-image">
-                                            <img src={'https://placehold.co/600x400'} alt={product.name} />
+                                            <img src={product.image2} alt={product.name} />
                                             <img src={'https://placehold.co/600x400'} alt={product.name} />
                                             <img src={'https://placehold.co/600x400'} alt={product.name} />
                                             <img src={'https://placehold.co/600x400'} alt={product.name} />

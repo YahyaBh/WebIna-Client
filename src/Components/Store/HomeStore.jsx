@@ -10,14 +10,14 @@ import DesignIcon from '../../Assets/Home/Section 2/design-icon.svg';
 import MobileIcon from '../../Assets/Home/Section 2/mobile-icon.svg';
 import DesktopIcon from '../../Assets/Home/Section 2/desktop-icon.svg';
 
-import { BsCart2, BsFillStarFill, BsStar, BsStarHalf , BsVectorPen } from 'react-icons/bs'
+import { BsCart2, BsFillStarFill, BsStar, BsStarHalf, BsVectorPen } from 'react-icons/bs'
 import { FaHotjar } from "react-icons/fa";
-import { IoRestaurantOutline ,IoTicketOutline  } from "react-icons/io5";
-import { RiHotelLine ,RiGalleryLine } from "react-icons/ri"
+import { IoRestaurantOutline, IoTicketOutline } from "react-icons/io5";
+import { RiHotelLine, RiGalleryLine } from "react-icons/ri"
 import { MdOutlineStorefront } from "react-icons/md"
-import { BiArrowFromLeft } from 'react-icons/bi'
-import { PiDotsThreeOutline  } from 'react-icons/pi';
-
+import { BiArrowFromLeft, BiArrowToRight } from 'react-icons/bi'
+import { PiDotsThreeOutline } from 'react-icons/pi';
+import { TbApps } from "react-icons/tb";
 
 import ADS from '../../Assets/Home/Projects Section/TestProjects.png'
 import i18next from 'i18next'
@@ -46,6 +46,8 @@ import './styles.scss'
 // import required modules
 import { Pagination, Navigation } from 'swiper/modules';
 import { useCountdown } from '../Layout/Timer/Timer'
+import Cookies from 'js-cookie'
+import { useNavigate } from 'react-router-dom'
 
 
 const HomeStore = () => {
@@ -58,16 +60,25 @@ const HomeStore = () => {
     const [new_products, setNewProducts] = useState([]);
     const [top_products, setTopProducts] = useState([]);
     const [ads, setAds] = useState([]);
-    const [targetDate, setTargetDate] = useState('2024-10-11');
+    const [targetDate, setTargetDate] = useState('');
 
 
     const [days, hours, minutes, seconds] = useCountdown(targetDate)
 
 
     const { isDarkMode } = useContext(ThemeContext);
+    const navigate = useNavigate();
 
+    
     useEffect(() => {
         Aos.init();
+
+        if (Cookies.get('__F_ACCESS')) {
+            navigate('/welcome')
+        } else {
+            return
+        }
+
     }, [])
 
     const renderStars = (e) => {
@@ -127,8 +138,8 @@ const HomeStore = () => {
 
                                     <p>Lorem Ips incorrectly dedentifies that the application is free <br /> to copy, modify, and distribute copies of the Software</p>
 
-                                    <a href='/store' className='get_started'>GET STARTED</a>
-                                    <a href='/custom/product' className='custom_product'>CUSTOM PRODUCT</a>
+                                    <a href='/store' className='get_started'><BiArrowToRight /> GET STARTED</a>
+                                    <a href='/custom/product' className='custom_product'><TbApps /> CUSTOM APPLICATION</a>
 
                                 </div>
                             </div>
@@ -481,7 +492,7 @@ const HomeStore = () => {
                             </a>
 
                             <a className="card" href='/store'>
-                                <h2><PiDotsThreeOutline  /> Other</h2>
+                                <h2><PiDotsThreeOutline /> Other</h2>
                             </a>
                         </div>
 

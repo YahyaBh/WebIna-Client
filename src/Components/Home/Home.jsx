@@ -7,6 +7,7 @@ import React, {
     lazy,
     Suspense,
 } from 'react';
+
 import Navbar from '../Layout/Navbar/Navbar';
 import { useCountdown } from '../Layout/Timer/Timer';
 import { ThemeContext } from '../../Context/ThemeContext';
@@ -76,9 +77,6 @@ const Home = () => {
     const [scrolled, setScrolled] = useState(false);
     const [isFadeIn, setIsFadeIn] = useState(false);
     const [targetDate, setTargetDate] = useState('');
-    const [videoShort, setvideoShort] = useState(
-        'http://localhost:8000/images/admins/home/edit/video/1700222447.mp4'
-    );
     const [testiomonials, setTestiomonials] = useState([]);
     const [projects, setProjects] = useState([]);
     const [blogs, setBlogs] = useState([]);
@@ -127,7 +125,6 @@ const Home = () => {
             setProjects(res.data.projects);
             setBlogs(res.data.blogs);
             setTargetDate(res.data.homeData[0].targetDate);
-            setvideoShort(res.data.homeData[0].imageGif);
             setLoading(false);
         } catch (err) {
             console.error(err.message);
@@ -501,10 +498,7 @@ const Home = () => {
 
                                         <div className="container-center">
 
-                                            <video autoPlay muted loop>
-                                                <source src={videoShort} type="video/mp4" />
-                                                <source src={videoShort} type="video/ogg" />
-                                            </video>
+                                            <img src="https://webina.cl/wp-content/uploads/2022/10/Rectangle-1.png" alt="gif-auto" />
 
                                         </div>
 

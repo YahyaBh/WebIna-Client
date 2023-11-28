@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import AuthContext from '../../Context/AuthContext'
+import React from 'react'
+import AuthContext from '../../../Context/AuthContext'
 import { FacebookLoginButton, GoogleLoginButton } from 'react-social-login-buttons';
 import { useNavigate } from 'react-router-dom';
 
