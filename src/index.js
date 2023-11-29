@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter } from 'react-router-dom';
+import App from './App';
 import './index.css';
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import HttpApi from 'i18next-http-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import HttpApi from 'i18next-http-backend';
 import Loading from './Components/Loading/Loading';
-import { HelmetProvider } from 'react-helmet-async';
 
 const Root = () => {
   const [loading, setLoading] = useState(true);
@@ -30,19 +30,29 @@ const Root = () => {
           loadPath: '/assets/locales/{{lng}}/translation.json',
         },
       })
-      .then((res) => {
+      .then(() => {
         setLoading(false);
       });
   }, []);
 
+  if (loading) {
+    <Loading />
+    return null;
+  }
+
   return (
-    <HelmetProvider>
-      <BrowserRouter>
-        {loading ? <Loading /> : <App />}
-      </BrowserRouter>
-    </HelmetProvider>
+    <App />
   );
 };
 
-const root = ReactDOM.createRoot(document.getElementById('web-ina-digita-SAf21kDKASJ2DNAKSDML2flFKAMSD'));
-root.render(<Root />);
+
+const root = ReactDOM.createRoot(document.getElementById("web-ina-digita-SAf21kDKASJ2DNAKSDML2flFKAMSD"));
+root.render(
+  <React.StrictMode>
+    <HelmetProvider>
+      <BrowserRouter>
+        <Root />
+      </BrowserRouter>
+    </HelmetProvider>
+  </React.StrictMode>
+);

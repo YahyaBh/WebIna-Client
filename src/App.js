@@ -6,7 +6,6 @@ import { useTranslation } from "react-i18next";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-
 import './App.css';
 
 //English Directions
@@ -37,6 +36,7 @@ import Cart from "./Components/Cart/Cart";
 
 import AuthUser from "./Context/AuthContext";
 import { StoreProvider } from "./Context/StoreConetxt";
+import Loading from "./Components/Loading/Loading";
 
 
 
@@ -75,7 +75,10 @@ function App() {
   const currentLanguage = languages.find((l) => l.code === currentLanguageCode)
 
 
-  const { t } = useTranslation()
+  const { t } = useTranslation();
+
+  
+
 
   useEffect(() => {
     document.body.dir = currentLanguage.dir || 'ltr'

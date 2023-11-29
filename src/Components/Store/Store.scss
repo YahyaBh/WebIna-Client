@@ -114,6 +114,7 @@
             min-width: 300px;
             max-width: 500px;
 
+
             @media screen and (max-width: 900px) {
                 min-width: 200px;
                 padding: 5px;
@@ -129,7 +130,9 @@
             }
 
             img {
-                width: 100%;
+                width: 300px;
+                height: 300px;
+                object-fit: cover;
                 border-radius: 20px;
             }
 

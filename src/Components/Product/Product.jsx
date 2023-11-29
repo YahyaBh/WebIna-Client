@@ -13,7 +13,7 @@ import { BsCart2, BsEye, BsFillStarFill, BsStar, BsStarHalf } from 'react-icons/
 
 import { TbProgressCheck } from "react-icons/tb";
 import { IoMdPricetag } from "react-icons/io";
-import { FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa'
+import { FaExternalLinkAlt, FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa'
 
 import ADS from '../../Assets/Home/Projects Section/TestProjects.png'
 import Footer from '../Layout/Footer/Footer'
@@ -23,8 +23,10 @@ const Product = () => {
 
 
     const [product, setProduct] = useState([])
-
     const [loading, setLoading] = useState(true);
+    const [addToCart, setAddToCart] = useState(false);
+    const [loadingAdding, setLoadingAdding] = useState(false);
+
 
     const { sec_http } = AuthUser();
     const { isAsideOpen } = useStoreContext();
@@ -48,7 +50,6 @@ const Product = () => {
             .then((res) => {
                 setProduct(res.data.product);
                 setLoading(false);
-                console.log(res.data.product);
             })
             .catch((err) => {
                 navigate('/store')
@@ -84,6 +85,23 @@ const Product = () => {
         return stars;
     };
 
+
+    const handleAddToCart = () => {
+
+        setLoadingAdding(true);
+        sec_http.post('/cart/add', { product_token: token })
+            .then((res) => {
+                console.log(res)
+                setAddToCart(!addToCart);
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+
+        setLoadingAdding(true);
+
+    }
+
     return (
         loading ? <Loading /> :
             <>
@@ -97,12 +115,38 @@ const Product = () => {
 
                     <NavbarStore />
 
+                    <div className={"modal-add-to-cart" + (addToCart ? ' active-modal' : '')}>
+
+                        <div className="container">
+                            <div className="head">
+                                <h2><span>{product.name}</span> added to cart !</h2>
+                            </div>
+
+                            <div className="body">
+                                you want to check out right now ?
+
+                                <div className="buttons">
+                                    <button onClick={() => navigate('/cart')}>
+                                        Check Out
+                                    </button>
+
+                                    <button onClick={() => setAddToCart(!addToCart)}>
+                                        Continue Shopping
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
                     <div id='product' className={isAsideOpen ? 'aside-open' : ''}>
 
                         <AsideStore />
 
 
                         <div className="container">
+
+
 
 
                             <div className="back-button" onClick={() => navigate(-1)}>
@@ -113,19 +157,27 @@ const Product = () => {
 
 
                                 <div className="left-container">
+                                    {product.image1 && product.image2 ? (
+                                        <div className="image-container">
+                                            <img src={product.image1} alt={product.name} />
 
-                                    <div className="image-container">
-                                        <img src={product.image1} alt={product.name} />
-
-                                        <div className="bottom-image">
-                                            <img src={product.image2} alt={product.name} />
-                                            <img src={'https://placehold.co/600x400'} alt={product.name} />
-                                            <img src={'https://placehold.co/600x400'} alt={product.name} />
-                                            <img src={'https://placehold.co/600x400'} alt={product.name} />
-                                            <img src={'https://placehold.co/600x400'} alt={product.name} />
-                                            <img src={'https://placehold.co/600x400'} alt={product.name} />
+                                            <div className="bottom-image">
+                                                {[product.image2, product.image3, product.image4, product.image5, product.image6, product.image7].filter(Boolean).map((image, index) => (
+                                                    image ? <img key={index} src={image} alt="" /> : ''
+                                                ))}
+                                            </div>
                                         </div>
-                                    </div>
+                                    ) : (
+                                        <div className="image-container-skeleton">
+                                            <div className="image-skel-main"></div>
+
+                                            <div className="bottom-image-skeleton">
+                                                {[...Array(7)].map((_, index) => (
+                                                    <div key={index} className="image-skel"></div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
 
                                 </div>
 
@@ -155,12 +207,12 @@ const Product = () => {
                                     <div className="infos-container">
                                         <div className="cont">
                                             <h3><TbProgressCheck /> Last Update :</h3>
-                                            <span>{product.updated_at}</span>
+                                            <span>{product.last_updated.split('T')[0]}</span>
                                         </div>
 
                                         <div className="cont">
                                             <h3><TbProgressCheck /> Published :</h3>
-                                            <span>{product.created_at}</span>
+                                            <span>{product.created_at.split('T')[0]}</span>
                                         </div>
 
                                         <div className="cont">
@@ -170,7 +222,7 @@ const Product = () => {
 
                                         <div className="cont">
                                             <h3><TbProgressCheck /> Tags :</h3>
-                                            <span>{product.tags}</span>
+                                            <a href={`/store/${product.tags}`}>{product.tags} <FaExternalLinkAlt /></a>
                                         </div>
 
                                     </div>
@@ -182,7 +234,7 @@ const Product = () => {
 
 
                                     <div className="buttons-container">
-                                        <button>ADD TO CART</button>
+                                        <button onClick={handleAddToCart}>{loadingAdding ? 'Adding...' : 'Add to Cart'}</button>
 
                                         <div className="bottom-buttons">
                                             <button>LIVE PREVIEW</button>
@@ -402,4 +454,12 @@ const Product = () => {
     )
 }
 
+
+
+
 export default Product
+
+
+
+
+

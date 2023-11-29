@@ -329,11 +329,11 @@ const Store = () => {
 
                                     {filteredProducts.map(product => (
                                         <a href={`/store/product/${product?.token ?? product.token}`} key={product.id} className='card' title={product.description}>
-                                            <img src={product.image1} alt="product" />
+                                            <img src={product.image1} className={product?.image1 ? product.image1 : 'loading-skeleton' } alt="product" />
 
                                             <div className='under-container'>
                                                 <div className="left-cont">
-                                                    <h3>{product.name}</h3>
+                                                    <h3>{product.name.lenght > 20 ? product.name.substring(0, 20) + '...' : product.name}</h3>
                                                     <p><BsCart2 /> {product.purchases} purchase</p>
                                                     <div className='stars'>
 
