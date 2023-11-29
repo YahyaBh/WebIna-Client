@@ -13,7 +13,6 @@ import English from '../../../Assets/Home/Navbar/Languages/Flag_of_the_United_Ki
 import French from '../../../Assets/Home/Navbar/Languages/Flag_of_France.svg.png'
 import { ThemeContext } from "../../../Context/ThemeContext";
 import AuthContext from '../../../Context/AuthContext';
-import Profile from '../../../Assets/profiles/default.svg'
 import i18next from 'i18next';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 
@@ -138,13 +137,13 @@ const Navbar = ({ isOpen, transparent }) => {
                             <li>
                                 {i18next.t("PRODUCTS")} <MdKeyboardArrowDown />
                                 <ul className="dropdown-menu">
-                                    {/* <li onClick={e => SetselectedProduct('website')}>Website</li>
+                                    <li onClick={e => SetselectedProduct('website')}>Website</li>
                                     <li onClick={e => SetselectedProduct('ui/ux')}>UI/UX Design</li>
                                     <li onClick={e => SetselectedProduct('mobile-apps')}>Mobile Application</li>
                                     <li onClick={e => SetselectedProduct('desktop-apps')} >Desktop Application</li>
                                     <li onClick={e => SetselectedProduct('games')}>Games</li>
                                     <li onClick={e => SetselectedProduct('social-media-design')}>Social Media Designing</li>
-                                    <li onClick={e => SetselectedProduct('nfts-design')}>NFTs Designing</li> */}
+                                    <li onClick={e => SetselectedProduct('nfts-design')}>NFTs Designing</li>
                                 </ul>
                             </li>
                             <li><a href='/maintanence'>{i18next.t("CUSTOM")}</a></li>
