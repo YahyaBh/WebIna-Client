@@ -1,4 +1,4 @@
-import React, { Profiler } from 'react'
+import React, { Profiler, useEffect, useState } from 'react'
 
 import './Cart.scss'
 
@@ -7,8 +7,8 @@ import NavbarStore from '../Layout/Navbar/NavbarStore'
 import AsideStore from '../Layout/Aside/AsideStore'
 import { BiCart, BiPackage, BiWallet } from 'react-icons/bi'
 import { useStoreContext } from '../../Context/StoreConetxt'
-import { BsStarFill } from 'react-icons/bs'
-
+import { BsFillStarFill, BsStar, BsStarHalf } from 'react-icons/bs'
+import { CgRemove } from "react-icons/cg";
 
 
 
@@ -16,12 +16,97 @@ import Paypal from '../../Assets/Cart/paypal.png'
 import MasterCard from '../../Assets/Cart/mastercard.png'
 import Visa from '../../Assets/Cart/visa.png'
 import Stripe from '../../Assets/Cart/stripe.png'
+import AuthUser from '../../Context/AuthContext'
+
 
 const Cart = () => {
 
+    const [products, setProducts] = useState([]);
+    const [discount, setDiscount] = useState(0);
+
+
+    const [discountNumber, setDiscountNumber] = useState('');
 
     const { isAsideOpen } = useStoreContext();
 
+
+    const { sec_http } = AuthUser();
+
+
+    function calculateTotalPrice() {
+        // Assuming products have a "price" property
+        const totalPrice = products.reduce((acc, product) => acc + product.price, 0);
+
+        // Applying a discount of 10%
+        const dis = discount / 100; // 10%
+
+        // Calculate discounted price
+        const afterDiscountPrice = totalPrice - totalPrice * dis;
+
+        return afterDiscountPrice;
+    }
+
+
+    useEffect(() => {
+
+        getCart();
+
+    }, [])
+
+    const getCart = () => {
+
+        sec_http.get('/api/cart')
+            .then((res) => {
+                setProducts(res.data.products);
+            })
+
+    }
+
+
+    const removeFromCart = (token) => {
+
+        sec_http.post('/api/cart/remove/product', { product_token: token })
+            .then((res) => {
+                getCart();
+            })
+    }
+
+
+    const discountGet = () => {
+
+        sec_http.post('/api/cart/discount/check', { discount: discountNumber })
+            .then((res) => {
+                setDiscount(res.data.discount);
+            })
+    }
+
+    const renderStars = (e) => {
+        const maxRating = 5;
+        const stars = [];
+
+        for (let i = 0; i < maxRating; i++) {
+            let starIcon;
+
+            if (i < Math.floor(e)) {
+                starIcon = <BsFillStarFill />;
+            } else if (i === Math.floor(e) && !Number.isInteger(e)) {
+                starIcon = <BsStarHalf />;
+            } else {
+                starIcon = <BsStar />;
+            }
+
+            stars.push(
+                <div
+                    key={i}
+                    className={`star`}
+                >
+                    {starIcon}
+                </div>
+            );
+        }
+
+        return stars;
+    };
 
     return (
         <>
@@ -70,28 +155,33 @@ const Cart = () => {
 
                         <div className="body-container">
                             <div className="cards-container">
-                                <a href='/product/id' className="card">
-                                    <img src="https://via.placeholder.com/300" alt="product" />
 
-                                    <div className="card-body">
-                                        <div className="left">
-                                            <h3>Product Name</h3>
-                                            <p><BiCart /> 27 Purchase</p>
+                                {products.map((product, index) =>
+                                    <div key={index} className="card">
+                                        <a href={`/store/product/${product.token}`}>
+                                            <img src={product.image1} alt={product.name} />
 
-                                            <div className="rating">
-                                                <BsStarFill />
-                                                <BsStarFill />
-                                                <BsStarFill />
-                                                <BsStarFill />
-                                                <BsStarFill />
+                                            <div className="card-body">
+                                                <div className="left">
+                                                    <h3>{product.name}</h3>
+                                                    <p><BiCart /> {product.purchases} Purchase</p>
+
+                                                    <div className="rating">
+                                                        {renderStars(product?.rating > 0 ? product?.rating : 0)}
+                                                    </div>
+                                                </div>
+
+                                                <div className="right">
+                                                    <h3>{product.price}$</h3>
+                                                </div>
                                             </div>
-                                        </div>
-
-                                        <div className="right">
-                                            <h3>39.00$</h3>
+                                        </a>
+                                        <div className="delete" onClick={() => removeFromCart(product.token)}>
+                                            Remove <CgRemove />
                                         </div>
                                     </div>
-                                </a>
+                                )}
+
                             </div>
 
                             <div className="info-container">
@@ -103,10 +193,12 @@ const Cart = () => {
                                             <h3>Subtotal</h3>
 
                                             <div className='products'>
-                                                <div>
-                                                    <p>Product Name</p>
-                                                    <p>39.00$</p>
-                                                </div>
+                                                {products.map((product, index) =>
+                                                    <div key={index}>
+                                                        <p>{product.name}</p>
+                                                        <p>{product.price}$</p>
+                                                    </div>
+                                                )}
                                             </div>
                                         </div>
                                         <div className="discount">
@@ -144,7 +236,7 @@ const Cart = () => {
 
 
                                     <button className="checkout-btn">
-                                        Checkout | 39.00$
+                                        Checkout | {calculateTotalPrice()}$
                                     </button>
 
 
