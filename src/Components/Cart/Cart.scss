@@ -84,19 +84,20 @@ body {
             width: 100%;
             display: flex;
             justify-content: space-around;
-            align-items: center;
+            align-items: flex-start;
 
             .cards-container {
                 width: 50%;
+                height: 100%;
                 display: flex;
-                justify-content: center;
+                justify-content: flex-start;
                 align-items: flex-start;
                 flex-direction: row;
                 flex-wrap: wrap;
                 gap: 10px;
 
                 .card {
-                    flex-basis: 50%;
+                    flex-basis: 48%;
                     height: 310px;
                     border: 2px solid var(--primary-color);
                     border-radius: 10px;
