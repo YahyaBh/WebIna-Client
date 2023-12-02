@@ -1,6 +1,8 @@
 import axios from 'axios';
 import cookie from 'js-cookie';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const baseUrl = 'http://localhost:8000';
 
@@ -10,7 +12,46 @@ axios.defaults.headers.common['Cache-Control'] = 'no-cache, private';
 axios.defaults.headers.common['X-Xss-Protection'] = '1; mode=block';
 axios.defaults.headers.common['X-Content-Type-Options'] = 'nosniff';
 
+
+
+
 export default function AuthUser() {
+
+
+    useEffect(() => {
+
+        // Add a response interceptor
+        sec_http?.interceptors.response.use(
+            // Handle successful responses
+            (response) => {
+                return response;
+            },
+            // Handle errors
+            (error) => {
+                // Check if the error response status is 401
+                if (error.response && error.response.status === 401) {
+                    // Trigger your function or redirect to login page
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Your session has expired. Please login again.',
+                    });
+
+                    // Remove the token from the cookie
+                    clearUserData();
+                    setTimeout(() => {
+                        navigate('/login')
+                    }, 3000);
+                }
+
+                // If it's not a 401 error, forward the error to the next handler
+                return Promise.reject(error);
+            }
+        );
+
+    }, [])
+
+    const navigate = useNavigate();
 
     const getAdmin = cookie.get('__ADMINISTRAOT_DATA') ? cookie.get('__ADMINISTRAOT_DATA') : null;
     const setAdmin = (data) => { cookie.set('__ADMINISTRAOT_DATA', JSON.stringify(data), { sameSite: 'Lax', secure: true, expires: 3 }) }
@@ -33,6 +74,9 @@ export default function AuthUser() {
 
     const rememberToken = cookie.get('__remember_token') ? cookie.get('__remember_token') : null;
     const setRememberToken = (data) => { cookie.set('__remember_token', data, { sameSite: 'Lax', secure: true }) };
+
+
+    const GetUserSession = cookie.get('__USER_SESSION_LOCAL') ? cookie.get('__USER_SESSION_LOCAL') : null;
 
 
     const csrf = async () => await http.get('/sanctum/csrf-cookie');
@@ -82,14 +126,6 @@ export default function AuthUser() {
         }
     }) : null;
 
-    const logout = () => {
-        if (isAuthenticated) {
-            cookie.remove('__ACCESS_TOKEN');
-            cookie.remove('__USER_DATA');
-        } else {
-            return;
-        }
-    }
 
     const clearUserData = () => {
 
@@ -99,9 +135,46 @@ export default function AuthUser() {
         } else {
             return;
         }
-
     }
 
+
+    const UserSession = () => {
+        const generateRandomString = (len, set) => {
+            if (set.length < 1) set = [...'~!@#$%^&*()_+-=[]{}|;:\'",./<>?']
+            let result = '';
+            for (let i = 0; i < len; i++) {
+                result += set[Math.floor(Math.random() * set.length)]
+            }
+            return result;
+        }
+
+        const sets = {
+            num: generateRandomString(10, [...Array(10)].map((_, i) => String.fromCharCode(48 + i))),
+            alphaLower: generateRandomString(26, [...Array(26)].map((_, i) => String.fromCharCode(97 + i))),
+            alphaUpper: generateRandomString(26, [...Array(26)].map((_, i) => String.fromCharCode(65 + i))),
+            special: generateRandomString(32, [...'~!@#$%^&*()_+-=[]{}|;:\'",./<>?'])
+        };
+
+        const rnd = (len, ...set) => {
+            if (set.length < 1) set = Object.values(sets).flat();
+            return generateRandomString(len, set.flat());
+        };
+
+        cookie.set('__USER_SESSION_LOCAL', rnd(36, sets.alphaLower), { sameSite: 'Lax', secure: true })
+    }
+
+
+    const logout = () => {
+        // if (isAuthenticated) {
+            navigate(`/logout?logout=${GetUserSession}`)
+            cookie.remove('__ACCESS_TOKEN');
+            cookie.remove('__USER_DATA');
+            cookie.remove('__USER_SESSION_LOCAL');
+        // } else {
+        //     clearUserData();
+        //     navigate('/login');
+        // }
+    }
 
     return {
         http,
@@ -125,5 +198,7 @@ export default function AuthUser() {
         isAuthenticated,
         logout,
         clearUserData,
+        GetUserSession,
+        UserSession
     }
 }

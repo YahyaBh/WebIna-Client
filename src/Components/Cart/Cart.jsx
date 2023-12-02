@@ -18,14 +18,15 @@ import Visa from '../../Assets/Cart/visa.png'
 import Stripe from '../../Assets/Cart/stripe.png'
 import AuthUser from '../../Context/AuthContext'
 
+import Swal from 'sweetalert2'
 
 const Cart = () => {
 
     const [products, setProducts] = useState([]);
+
     const [discount, setDiscount] = useState(0);
-
-
     const [discountNumber, setDiscountNumber] = useState('');
+    const [discountAvailable, setDiscountAvailable] = useState(401);
 
     const { isAsideOpen } = useStoreContext();
 
@@ -74,10 +75,24 @@ const Cart = () => {
 
     const discountGet = () => {
 
-        sec_http.post('/api/cart/discount/check', { discount: discountNumber })
-            .then((res) => {
-                setDiscount(res.data.discount);
-            })
+        if (discountNumber.length === 8) {
+            sec_http.post('/api/cart/discount/check', { discount: discountNumber })
+                .then((res) => {
+
+                    if (res.data.status === false) {
+                        setDiscountAvailable(404);
+                    } else {
+                        setDiscount(res.data.discount);
+                        setDiscountAvailable(200);
+                    }
+                })
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Please enter a valid discount code',
+            });
+        }
     }
 
     const renderStars = (e) => {
@@ -225,7 +240,8 @@ const Cart = () => {
 
 
                                     <div className="coupon-form">
-                                        <input type="text" placeholder='Coupon Code' /> <button>Apply</button>
+                                        <div><input type="text" placeholder='Coupon Code' onChange={e => setDiscountNumber(e.target.value)} value={discountNumber} /> <button onClick={discountGet}>Apply</button></div>
+                                        {discountAvailable === 200 ? <p className='available'>Discount applied</p> : discountAvailable === 404 ? <p className='unavailable'>Discount not available</p> : ''}
                                     </div>
 
                                     <hr className='main-line' />

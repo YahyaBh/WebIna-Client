@@ -25,7 +25,7 @@ const Login = () => {
     const [remember, setRemember] = useState(false);
     const [loading, setLoading] = useState(true);
 
-    const { http, csrf, setUser, setAccessToken, setRememberToken, isAuthenticated } = AuthContext()
+    const { http, csrf, setUser, setAccessToken, setRememberToken, isAuthenticated , UserSession } = AuthContext()
     const navigate = useNavigate();
 
     const { isDarkMode, toggleTheme } = useContext(ThemeContext);
@@ -64,7 +64,7 @@ const Login = () => {
                     setAccessToken(res.data.token);
                     res.data.remember_token ? setRememberToken(res.data.token) : setRememberToken()
                     setUser(res.data.user);
-                    navigate('/');
+                    navigate('/store/home');
                     setLoginLoading(false);
                     if (Cookies.get('__F_ACCESS')) {
                         Cookies.remove('__F_ACCESS');
