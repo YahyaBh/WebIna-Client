@@ -48,7 +48,7 @@ export default function AuthUser() {
         baseURL: baseUrl,
         headers: {
             'X-Requested-With': 'XMLHttpRequest',
-            'Access-Control-Allow-Origin': 'http://localhost:3000/',
+            'Access-Control-Allow-Origin': 'http://localhost:3001/',
         },
         withCredentials: true,
     })
@@ -57,7 +57,7 @@ export default function AuthUser() {
         baseURL: baseUrl,
         headers: {
             'Authorization': `Bearer ${accessToken}`,
-            'Access-Control-Allow-Origin': 'http://localhost:3000/',
+            'Access-Control-Allow-Origin': 'http://localhost:3001/',
         },
         withCredentials: true,
     }) : null;
@@ -67,7 +67,7 @@ export default function AuthUser() {
         headers: {
             'content-type': 'multipart/form-data',
             'Authorization': `Bearer ${accessToken}`,
-            'Access-Control-Allow-Origin': 'http://localhost:3000/',
+            'Access-Control-Allow-Origin': 'http://localhost:3001/',
         }
     }) : null;
 
@@ -76,7 +76,7 @@ export default function AuthUser() {
         headers: {
             'content-type': 'multipart/form-data',
             'Authorization': `Bearer ${accessToken}`,
-            'Access-Control-Allow-Origin': 'http://localhost:3000/',
+            'Access-Control-Allow-Origin': 'http://localhost:3001/',
         }
     });
 
