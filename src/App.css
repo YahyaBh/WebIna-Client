@@ -1,6 +1,6 @@
-div:where(.swal2-container).swal2-backdrop-show, div:where(.swal2-container).swal2-noanimation {
+/* div:where(.swal2-container).swal2-backdrop-show, div:where(.swal2-container).swal2-noanimation {
     background: rgba(0, 0, 0, .4);
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(0px);
 }
 
 
@@ -19,7 +19,7 @@ div:where(.swal2-container) div:where(.swal2-popup) {
     font-size: 1rem;
     font-family: 'Inter', sans-serif !important;
 
-}
+} */
 
 
 

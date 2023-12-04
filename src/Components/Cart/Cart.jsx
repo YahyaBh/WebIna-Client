@@ -18,24 +18,22 @@ import Visa from '../../Assets/Cart/visa.png'
 import Stripe from '../../Assets/Cart/stripe.png'
 import AuthUser from '../../Context/AuthContext'
 
-
 import Swal from 'sweetalert2'
-
+import { useNavigate } from 'react-router-dom'
 
 const Cart = () => {
 
     const [products, setProducts] = useState([]);
     const [discount, setDiscount] = useState(0);
-
-    const [discountAvailable, setDiscountAvailable] = useState(401);
-
-
     const [discountNumber, setDiscountNumber] = useState('');
+    const [discountAvailable, setDiscountAvailable] = useState(401);
 
     const { isAsideOpen } = useStoreContext();
 
 
     const { sec_http } = AuthUser();
+
+    const navigate = useNavigate();
 
 
     function calculateTotalPrice() {
@@ -79,15 +77,20 @@ const Cart = () => {
 
     const discountGet = () => {
 
+
         if (discountNumber.length === 8) {
             sec_http.post('/api/cart/discount/check', { discount: discountNumber })
                 .then((res) => {
+
                     if (res.data.status === false) {
                         setDiscountAvailable(404);
                     } else {
                         setDiscount(res.data.discount);
                         setDiscountAvailable(200);
                     }
+                })
+                .catch((err) => {
+                    return;
                 })
         } else {
             Swal.fire({
@@ -243,8 +246,6 @@ const Cart = () => {
 
 
                                     <div className="coupon-form">
-                                        <input type="text" placeholder='Coupon Code' /> <button>Apply</button>
-
                                         <div><input type="text" placeholder='Coupon Code' onChange={e => setDiscountNumber(e.target.value)} value={discountNumber} /> <button onClick={discountGet}>Apply</button></div>
                                         {discountAvailable === 200 ? <p className='available'>Discount applied</p> : discountAvailable === 404 ? <p className='unavailable'>Discount not available</p> : ''}
                                     </div>
@@ -256,7 +257,7 @@ const Cart = () => {
                                     <a href='/store' className='continue-shopping'>Continue Shopping</a>
 
 
-                                    <button className="checkout-btn">
+                                    <button onClick={() => navigate('/checkout')} className="checkout-btn">
                                         Checkout | {calculateTotalPrice()}$
                                     </button>
 

@@ -17,6 +17,7 @@ import { FaExternalLinkAlt, FaFacebook, FaInstagram, FaWhatsapp } from 'react-ic
 
 import ADS from '../../Assets/Home/Projects Section/TestProjects.png'
 import Footer from '../Layout/Footer/Footer'
+import Swal from 'sweetalert2'
 
 
 const Product = () => {
@@ -26,6 +27,7 @@ const Product = () => {
     const [loading, setLoading] = useState(true);
     const [addToCart, setAddToCart] = useState(false);
     const [loadingAdding, setLoadingAdding] = useState(false);
+    const [inCart, setInCart] = useState(false);
 
 
     const { sec_http } = AuthUser();
@@ -38,6 +40,9 @@ const Product = () => {
 
         if (token) {
             getProductsData();
+            handleGetCart();
+            setLoading(false);
+
         } else {
             navigate('/store/home')
         }
@@ -86,28 +91,69 @@ const Product = () => {
     };
 
 
-    const handleAddToCart = () => {
+    const handleAddToCart = async () => {
+        if (!inCart) {
+            await sec_http.post('/api/cart/add/product', { product_token: token })
+                .then((res) => {
+                    setAddToCart(!addToCart);
+                    setInCart(!inCart);
+                    Swal.fire({
+                        toast: true,
+                        icon: 'success',
+                        title: 'Product Added To Cart',
+                        position: 'bottom-right',
+                        showConfirmButton: false,
+                        timer: 4000,
+                        timerProgressBar: true,
+                    })
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+            setLoadingAdding(false);
+        } else {
+            await sec_http.post('/api/cart/remove/product', { product_token: token })
+                .then((res) => {
+                    setInCart(!inCart);
+                    Swal.fire({
+                        toast: true,
+                        icon: 'success',
+                        title: 'Product Removed From Cart',
+                        position: 'bottom-right',
+                        showConfirmButton: false,
+                        timer: 4000,
+                        timerProgressBar: true,
+                    })
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+            setLoadingAdding(false);
+        }
+    }
 
-        setLoadingAdding(true);
-        sec_http.post('/api/cart/add/product', { product_token: token })
+
+    const handleGetCart = async () => {
+        await sec_http.post('/api/cart/product', { product_token: token })
+
             .then((res) => {
-                console.log(res)
-                setAddToCart(!addToCart);
-                setLoadingAdding(false);
+                if (res.data.available === true) {
+                    setInCart(true)
+                } else {
+                    setInCart(false)
+                }
+
             })
             .catch((err) => {
-                setLoadingAdding(false);
                 console.log(err)
             })
-
-
     }
 
     return (
         loading ? <Loading /> :
             <>
                 <Helmet>
-                    <title>WEBINA DIGITAL | {product.name}</title>
+                    <title>{`WEBINA DIGITAL | ${product.name}`}</title>
                     <meta name="description" content={product.description} />
                 </Helmet>
 
@@ -158,12 +204,12 @@ const Product = () => {
 
 
                                 <div className="left-container">
-                                    {product.image1 && product.image2 ? (
+                                    {product?.image1 && product?.image2 ? (
                                         <div className="image-container">
-                                            <img src={product.image1} alt={product.name} />
+                                            <img src={product?.image1} alt={product?.name} />
 
                                             <div className="bottom-image">
-                                                {[product.image2, product.image3, product.image4, product.image5, product.image6, product.image7].filter(Boolean).map((image, index) => (
+                                                {[product?.image2, product?.image3, product?.image4, product?.image5, product?.image6, product?.image7].filter(Boolean).map((image, index) => (
                                                     image ? <img key={index} src={image} alt="" /> : ''
                                                 ))}
                                             </div>
@@ -184,23 +230,23 @@ const Product = () => {
 
                                 <div className="right-container">
                                     <div className="head-text">
-                                        <h2>{product.name}</h2>
-                                        <p>{product.description}</p>
-                                        <h3><IoMdPricetag /> PRICE : <span>{product.price}$</span> <sub>{product.old_price}$</sub></h3>
+                                        <h2>{product?.name}</h2>
+                                        <p>{product?.description}</p>
+                                        <h3><IoMdPricetag /> PRICE : <span>{product?.price}$</span> <sub>{product?.old_price}$</sub></h3>
                                     </div>
 
                                     <div className="details-products">
                                         <div className="cont">
                                             <BiCart />
-                                            <h3><span>{product.purchases}</span> Purchases</h3>
+                                            <h3><span>{product?.purchases}</span> Purchases</h3>
                                         </div>
                                         <div className="cont">
                                             <BiDownload />
-                                            <h3><span>{product.downloads}</span> Downloads</h3>
+                                            <h3><span>{product?.downloads}</span> Downloads</h3>
                                         </div>
                                         <div className="cont">
                                             <BsEye />
-                                            <h3><span>{product.views}</span> Views</h3>
+                                            <h3><span>{product?.views}</span> Views</h3>
                                         </div>
                                     </div>
 
@@ -208,22 +254,22 @@ const Product = () => {
                                     <div className="infos-container">
                                         <div className="cont">
                                             <h3><TbProgressCheck /> Last Update :</h3>
-                                            <span>{product.last_updated.split('T')[0]}</span>
+                                            <span>{product?.last_updated?.split('T')[0]}</span>
                                         </div>
 
                                         <div className="cont">
                                             <h3><TbProgressCheck /> Published :</h3>
-                                            <span>{product.created_at.split('T')[0]}</span>
+                                            <span>{product?.created_at?.split('T')[0]}</span>
                                         </div>
 
                                         <div className="cont">
                                             <h3><TbProgressCheck /> Status :</h3>
-                                            <span>{product.status}</span>
+                                            <span>{product?.status}</span>
                                         </div>
 
                                         <div className="cont">
                                             <h3><TbProgressCheck /> Tags :</h3>
-                                            <a href={`/store/${product.tags}`}>{product.tags} <FaExternalLinkAlt /></a>
+                                            <div className='tags-container'>{product?.tags?.replace(/ /g, '').split(',')?.map((tag) => <><a href={`/store/${tag}`} key={tag}>{tag} </a><FaExternalLinkAlt /></>)}</div>
                                         </div>
 
                                     </div>
@@ -235,7 +281,8 @@ const Product = () => {
 
 
                                     <div className="buttons-container">
-                                        <button onClick={handleAddToCart}>{loadingAdding ? 'Adding...' : 'Add to Cart'}</button>
+                                        <button onClick={handleAddToCart}>{inCart ? 'Remove From Cart' : loadingAdding ? 'Adding...' : 'Add to Cart'}</button>
+
 
                                         <div className="bottom-buttons">
                                             <button>LIVE PREVIEW</button>

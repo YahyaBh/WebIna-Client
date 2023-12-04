@@ -1,10 +1,7 @@
 import axios from 'axios';
 import cookie from 'js-cookie';
 import { useState } from 'react';
-<<<<<<< HEAD
 import { useNavigate } from 'react-router-dom';
-=======
->>>>>>> parent of 254428e (Logout Fixing , Cart NAvbar AuthCOntext)
 
 const baseUrl = 'http://localhost:8000';
 
@@ -14,20 +11,10 @@ axios.defaults.headers.common['Cache-Control'] = 'no-cache, private';
 axios.defaults.headers.common['X-Xss-Protection'] = '1; mode=block';
 axios.defaults.headers.common['X-Content-Type-Options'] = 'nosniff';
 
-<<<<<<< HEAD
-
 
 export default function AuthUser() {
-
 
     const navigate = useNavigate();
-
-=======
-export default function AuthUser() {
-
-    const getAdmin = cookie.get('__ADMINISTRAOT_DATA') ? cookie.get('__ADMINISTRAOT_DATA') : null;
-    const setAdmin = (data) => { cookie.set('__ADMINISTRAOT_DATA', JSON.stringify(data), { sameSite: 'Lax', secure: true, expires: 3 }) }
->>>>>>> parent of 254428e (Logout Fixing , Cart NAvbar AuthCOntext)
 
     const getUser = cookie.get('__USER_DATA') ? cookie.get('__USER_DATA') : null;
     const setUser = (data) => { cookie.set('__USER_DATA', JSON.stringify(data), { sameSite: 'Lax', secure: true, expires: 3 }) }
@@ -90,8 +77,6 @@ export default function AuthUser() {
         }
     });
 
-
-<<<<<<< HEAD
     const UserSession = () => {
         const rnd = (() => {
             const gen = (min, max) => max++ && [...Array(max - min)].map((s, i) => String.fromCharCode(min + i));
@@ -119,15 +104,6 @@ export default function AuthUser() {
         cookie.remove('__ACCESS_TOKEN');
         cookie.remove('__USER_DATA');
         cookie.remove('__USER_SESSION_LOCAL');
-=======
-    const logout = () => {
-        if (isAuthenticated) {
-            cookie.remove('__ACCESS_TOKEN');
-            cookie.remove('__USER_DATA');
-        } else {
-            return;
-        }
->>>>>>> parent of 254428e (Logout Fixing , Cart NAvbar AuthCOntext)
     }
 
     const clearUserData = () => {
@@ -142,7 +118,6 @@ export default function AuthUser() {
 
     }
 
-<<<<<<< HEAD
     const deleteFirstAccess = () => {
         if (isFirstAccess) {
             cookie.remove('__F_ACCESS');
@@ -150,8 +125,6 @@ export default function AuthUser() {
             return;
         }
     }
-=======
->>>>>>> parent of 254428e (Logout Fixing , Cart NAvbar AuthCOntext)
 
     return {
         http,
@@ -171,12 +144,9 @@ export default function AuthUser() {
         isAuthenticated,
         logout,
         clearUserData,
-<<<<<<< HEAD
         UserSession,
         GetUserSession,
         isFirstAccess,
         deleteFirstAccess
-=======
->>>>>>> parent of 254428e (Logout Fixing , Cart NAvbar AuthCOntext)
     }
 }

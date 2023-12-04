@@ -34,6 +34,7 @@ import Cart from "./Components/Cart/Cart";
 
 
 import AuthUser from "./Context/AuthContext";
+import Checkout from "./Components/Checkout/Checkout";
 
 
 
@@ -164,7 +165,7 @@ function App() {
         <Route exact path='/store/home' element={<HomeStore />} />
         <Route exact path='/store/product/:token' element={<Product />} />
         <Route exact path='/cart' element={<Cart />} />
-
+        <Route exact path='/checkout' element={<Checkout />} />
 
 
 
