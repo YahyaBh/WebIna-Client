@@ -31,7 +31,7 @@ const Cart = () => {
     const { isAsideOpen } = useStoreContext();
 
 
-    const { sec_http } = AuthUser();
+    const { sec_http , isAuthenticated} = AuthUser();
 
     const navigate = useNavigate();
 
@@ -52,7 +52,12 @@ const Cart = () => {
 
     useEffect(() => {
 
-        getCart();
+        if (isAuthenticated) {
+            getCart();
+
+        } else {
+            navigate('/')
+        }
 
     }, [])
 
