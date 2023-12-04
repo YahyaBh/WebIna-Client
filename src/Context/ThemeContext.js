@@ -79,8 +79,7 @@ export const ThemeProvider = ({ children }) => {
 
     return (
         <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
-            {loading ? <Loading /> : ''}
-            {children}
+            {loading ? <Loading /> : children}
         </ThemeContext.Provider>
     );
 };

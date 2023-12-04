@@ -14,7 +14,6 @@ import { BsCart2, BsEye, BsFillStarFill, BsStar, BsStarHalf } from 'react-icons/
 import { TbProgressCheck } from "react-icons/tb";
 import { IoMdPricetag } from "react-icons/io";
 import { FaExternalLinkAlt, FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa'
-import Swal from 'sweetalert2'
 
 import ADS from '../../Assets/Home/Projects Section/TestProjects.png'
 import Footer from '../Layout/Footer/Footer'
@@ -27,9 +26,9 @@ const Product = () => {
     const [loading, setLoading] = useState(true);
     const [addToCart, setAddToCart] = useState(false);
     const [loadingAdding, setLoadingAdding] = useState(false);
-    const [inCart, setInCart] = useState(false);
 
-    const { sec_http, user } = AuthUser();
+
+    const { sec_http } = AuthUser();
     const { isAsideOpen } = useStoreContext();
 
     const { token } = useParams();
@@ -39,9 +38,6 @@ const Product = () => {
 
         if (token) {
             getProductsData();
-            handleGetCart();
-            setLoading(false);
-
         } else {
             navigate('/store/home')
         }
@@ -53,6 +49,7 @@ const Product = () => {
         await sec_http.post('/api/store/product', { product_token: token })
             .then((res) => {
                 setProduct(res.data.product);
+                setLoading(false);
             })
             .catch((err) => {
                 navigate('/store')
@@ -89,73 +86,19 @@ const Product = () => {
     };
 
 
-    const handleAddToCart = async () => {
+    const handleAddToCart = () => {
 
-        if (!inCart) {
-            sec_http.post('/api/cart/add/product', { product_token: token, user_id: user.id })
-                .then((res) => {
-                    setAddToCart(!addToCart);
-                    setInCart(!inCart);
-
-                    Swal.fire({
-                        toast: true,
-                        icon: 'success',
-                        title: 'Product Added To Cart',
-                        position: 'bottom-right',
-                        customClass: {
-                            popup: 'colored-toast',
-                        },
-                        showConfirmButton: false,
-                        timer: 2500,
-                        timerProgressBar: true,
-                    })
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
-
-            setLoadingAdding(false);
-        } else {
-            sec_http.post('/api/cart/remove/product', { product_token: token, user_id: user.id })
-                .then((res) => {
-
-                    setInCart(!inCart);
-
-                    Swal.fire({
-                        toast: true,
-                        icon: 'success',
-                        title: 'Product Removed From Cart',
-                        position: 'bottom-right',
-                        showConfirmButton: false,
-                        timer: 2500,
-                        timerProgressBar: true,
-                    })
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
-
-            setLoadingAdding(false);
-        }
-
-    }
-
-
-
-    const handleGetCart = () => {
-
-        sec_http.post('/api/cart/product', { product_token: token, user_id: user.id })
+        setLoadingAdding(true);
+        sec_http.post('/cart/add', { product_token: token })
             .then((res) => {
-                if (res.data.available === true) {
-                    setInCart(true)
-                } else {
-                    setInCart(false)
-                }
+                console.log(res)
+                setAddToCart(!addToCart);
             })
             .catch((err) => {
                 console.log(err)
             })
 
+        setLoadingAdding(true);
 
     }
 
@@ -163,8 +106,8 @@ const Product = () => {
         loading ? <Loading /> :
             <>
                 <Helmet>
-                    <title>{`WEBINA DIGITAL | ${product?.name}`}</title>
-                    <meta name="description" content={product?.description} />
+                    <title>WEBINA DIGITAL | {product.name}</title>
+                    <meta name="description" content={product.description} />
                 </Helmet>
 
                 <Profiler id='store-prof'>
@@ -176,7 +119,7 @@ const Product = () => {
 
                         <div className="container">
                             <div className="head">
-                                <h2><span>{product?.name}</span> added to cart !</h2>
+                                <h2><span>{product.name}</span> added to cart !</h2>
                             </div>
 
                             <div className="body">
@@ -214,12 +157,12 @@ const Product = () => {
 
 
                                 <div className="left-container">
-                                    {product?.image1 && product?.image2 ? (
+                                    {product.image1 && product.image2 ? (
                                         <div className="image-container">
-                                            <img src={product?.image1} alt={product?.name} />
+                                            <img src={product.image1} alt={product.name} />
 
                                             <div className="bottom-image">
-                                                {[product?.image2, product?.image3, product?.image4, product?.image5, product?.image6, product?.image7].filter(Boolean).map((image, index) => (
+                                                {[product.image2, product.image3, product.image4, product.image5, product.image6, product.image7].filter(Boolean).map((image, index) => (
                                                     image ? <img key={index} src={image} alt="" /> : ''
                                                 ))}
                                             </div>
@@ -240,23 +183,23 @@ const Product = () => {
 
                                 <div className="right-container">
                                     <div className="head-text">
-                                        <h2>{product?.name}</h2>
-                                        <p>{product?.description}</p>
-                                        <h3><IoMdPricetag /> PRICE : <span>{product?.price}$</span> <sub>{product?.old_price}$</sub></h3>
+                                        <h2>{product.name}</h2>
+                                        <p>{product.description}</p>
+                                        <h3><IoMdPricetag /> PRICE : <span>{product.price}$</span> <sub>{product.old_price}$</sub></h3>
                                     </div>
 
                                     <div className="details-products">
                                         <div className="cont">
                                             <BiCart />
-                                            <h3><span>{product?.purchases}</span> Purchases</h3>
+                                            <h3><span>{product.purchases}</span> Purchases</h3>
                                         </div>
                                         <div className="cont">
                                             <BiDownload />
-                                            <h3><span>{product?.downloads}</span> Downloads</h3>
+                                            <h3><span>{product.downloads}</span> Downloads</h3>
                                         </div>
                                         <div className="cont">
                                             <BsEye />
-                                            <h3><span>{product?.views}</span> Views</h3>
+                                            <h3><span>{product.views}</span> Views</h3>
                                         </div>
                                     </div>
 
@@ -264,22 +207,22 @@ const Product = () => {
                                     <div className="infos-container">
                                         <div className="cont">
                                             <h3><TbProgressCheck /> Last Update :</h3>
-                                            <span>{product?.last_updated?.split('T')[0]}</span>
+                                            <span>{product.last_updated.split('T')[0]}</span>
                                         </div>
 
                                         <div className="cont">
                                             <h3><TbProgressCheck /> Published :</h3>
-                                            <span>{product?.created_at?.split('T')[0]}</span>
+                                            <span>{product.created_at.split('T')[0]}</span>
                                         </div>
 
                                         <div className="cont">
                                             <h3><TbProgressCheck /> Status :</h3>
-                                            <span>{product?.status}</span>
+                                            <span>{product.status}</span>
                                         </div>
 
                                         <div className="cont">
                                             <h3><TbProgressCheck /> Tags :</h3>
-                                            <a href={`/store/${product?.tags}`}>{product?.tags} <FaExternalLinkAlt /></a>
+                                            <a href={`/store/${product.tags}`}>{product.tags} <FaExternalLinkAlt /></a>
                                         </div>
 
                                     </div>
@@ -291,7 +234,7 @@ const Product = () => {
 
 
                                     <div className="buttons-container">
-                                        <button onClick={handleAddToCart}>{inCart ? 'Remove From Cart' : loadingAdding ? 'Adding...' : 'Add to Cart'}</button>
+                                        <button onClick={handleAddToCart}>{loadingAdding ? 'Adding...' : 'Add to Cart'}</button>
 
                                         <div className="bottom-buttons">
                                             <button>LIVE PREVIEW</button>

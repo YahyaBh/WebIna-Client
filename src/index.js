@@ -48,9 +48,11 @@ const Root = () => {
 
 const root = ReactDOM.createRoot(document.getElementById("web-ina-digita-SAf21kDKASJ2DNAKSDML2flFKAMSD"));
 root.render(
-  <HelmetProvider>
-    <BrowserRouter>
-      <Root />
-    </BrowserRouter>
-  </HelmetProvider>
+  <React.StrictMode>
+    <HelmetProvider>
+      <BrowserRouter>
+        <Root />
+      </BrowserRouter>
+    </HelmetProvider>
+  </React.StrictMode>
 );
