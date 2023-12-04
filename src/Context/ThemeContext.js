@@ -12,15 +12,12 @@ export const ThemeProvider = ({ children }) => {
         setIsDarkMode((prevMode) => !prevMode);
     };
 
-
-
     useEffect(() => {
         const savedThemeMode = Cookies.get("__THEME_MODE");
 
         if (savedThemeMode) {
             setIsDarkMode(savedThemeMode === "true");
         } else {
-
             // Set a default theme mode if no saved value is found
             setIsDarkMode(false);
         }
@@ -79,7 +76,8 @@ export const ThemeProvider = ({ children }) => {
 
     return (
         <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
-            {loading ? <Loading /> : children}
+            {loading ? <Loading /> : ''}
+            {children}
         </ThemeContext.Provider>
     );
 };
