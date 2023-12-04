@@ -9,7 +9,7 @@ const Profile = () => {
     const [loading, setLoading] = useState();
 
 
-    const { user, setUser, sec_http, clearUserData } = useContext(AuthContext);
+    const { user, setUser, sec_http } = useContext(AuthContext);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -17,7 +17,6 @@ const Profile = () => {
         if (user) {
             getUserData();
         } else {
-            clearUserData();
             navigate('/login', { replace: true });
         }
     }, [])

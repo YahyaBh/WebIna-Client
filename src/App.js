@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import { ThemeProvider } from "./Context/ThemeContext";
 import Cookies from "js-cookie";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
@@ -35,8 +34,7 @@ import Cart from "./Components/Cart/Cart";
 
 
 import AuthUser from "./Context/AuthContext";
-import { StoreProvider } from "./Context/StoreConetxt";
-import Loading from "./Components/Loading/Loading";
+
 
 
 
@@ -77,7 +75,7 @@ function App() {
 
   const { t } = useTranslation();
 
-  
+
 
 
   useEffect(() => {
@@ -138,47 +136,45 @@ function App() {
   }
 
   return (
-    <ThemeProvider>
-      <StoreProvider>
+    <>
 
-        <Routes>
+      <Routes>
 
-          {/* English routes */}
-          <Route exact path='/' element={<Home />} />
+        {/* English routes */}
+        <Route exact path='/' element={<Home />} />
 
-          <Route exact path='/register' element={<Register />} />
-          <Route exact path='/register/:email_home' element={<Register />} />
-          <Route exact path='/login' element={<Login />} />
-          <Route exact path='/forget-password' element={<PasswordResest />} />
-          <Route path="/auth/:provider/callback" element={<SocialAuthCallback />}></Route>
-          <Route exact path='/verify-email/:token/:id/:email' element={<VerifyEmail />} />
-
-
-          <Route exact path='/about' element={<About />} />
-          <Route exact path='/contact' element={<Contact />} />
-          <Route exact path='/privacy-policy' element={<Privacy />} />
-          <Route exact path='/jobs' element={<Hiring />} />
+        <Route exact path='/register' element={<Register />} />
+        <Route exact path='/register/:email_home' element={<Register />} />
+        <Route exact path='/login' element={<Login />} />
+        <Route exact path='/forget-password' element={<PasswordResest />} />
+        <Route path="/auth/:provider/callback" element={<SocialAuthCallback />}></Route>
+        <Route exact path='/verify-email/:token/:id/:email' element={<VerifyEmail />} />
 
 
-          {/* Authenticated user */}
-          <Route exact path='/logout' element={<Logout />} />
-          <Route exact path='/welcome' element={<Welcome />} />
-          <Route exact path='/store' element={<Store />} />
-          <Route exact path='/store/home' element={<HomeStore />} />
-          <Route exact path='/store/product/:token' element={<Product />} />
-          <Route exact path='/cart' element={<Cart />} />
+        <Route exact path='/about' element={<About />} />
+        <Route exact path='/contact' element={<Contact />} />
+        <Route exact path='/privacy-policy' element={<Privacy />} />
+        <Route exact path='/jobs' element={<Hiring />} />
 
+
+        {/* Authenticated user */}
+        <Route exact path='/logout' element={<Logout />} />
+        <Route exact path='/welcome' element={<Welcome />} />
+        <Route exact path='/store' element={<Store />} />
+        <Route exact path='/store/home' element={<HomeStore />} />
+        <Route exact path='/store/product/:token' element={<Product />} />
+        <Route exact path='/cart' element={<Cart />} />
 
 
 
-          <Route exact path='/maintanence' element={<Maintanence />} />
-          <Route exact path="*" element={<PageUnavailable />} />
+
+        <Route exact path='/maintanence' element={<Maintanence />} />
+        <Route exact path="*" element={<PageUnavailable />} />
 
 
 
-        </Routes>
-      </StoreProvider>
-    </ThemeProvider>
+      </Routes>
+    </>
 
   );
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLocation , useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import AuthContext from '../../../Context/AuthContext';
 
 import Loading from '../../Loading/Loading'
@@ -11,7 +11,7 @@ function SocialAuthCallback() {
 
 
     const location = useLocation();
-    const { http, setUser, setAccessToken } = AuthContext();
+    const { http, setUser, setAccessToken, UserSession } = AuthContext();
 
     const { provider } = useParams();
 
@@ -26,17 +26,22 @@ function SocialAuthCallback() {
                 return response;
             })
             .then((data) => {
+                console.log(data);
                 setAccessToken(data.data.token);
                 setUser(data.data.user);
                 setLoading(false);
+                UserSession();
                 window.close();
-            });
+            })
+            .catch ((err) => {
+            console.log(err);
+        })
 
-    });
+});
 
-    if (loading) {
-        return <Loading/>
-    }
+if (loading) {
+    return <Loading />
+}
 }
 
 

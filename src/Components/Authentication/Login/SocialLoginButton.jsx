@@ -1,14 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import AuthContext from '../../../Context/AuthContext'
 import { FacebookLoginButton, GoogleLoginButton } from 'react-social-login-buttons';
 import { useNavigate } from 'react-router-dom';
 
 
 const SocialLoginButton = ({ provider }) => {
-    const { http, csrf } = AuthContext()
-    const navigate = useNavigate()
+    const { http, csrf, user } = AuthContext()
 
-    const w = '';
+
 
     const handleSocialLogin = async () => {
 
@@ -37,7 +36,11 @@ const SocialLoginButton = ({ provider }) => {
                     if (popup.closed) {
                         clearInterval(checkPopupClosed);
                         // Perform additional actions after the popup is closed if needed
-                        navigate('/'); // Redirect to the desired page
+                        // navigate('/'); // Redirect to the desired page
+
+                        if (user) {
+                            window.location.reload();
+                        }
                     }
                 }, 1000);
             } else {

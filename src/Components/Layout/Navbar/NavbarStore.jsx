@@ -135,7 +135,7 @@ const NavbarStore = ({ isOpen, transparent }) => {
                                         <li>My Favourite</li>
                                         <li>My Orders</li>
                                         <hr />
-                                        <li onClick={logout()}>Logout</li>
+                                        <li onClick={e => logout()}>Logout</li>
                                     </ul>
                                 </li>
                                 :

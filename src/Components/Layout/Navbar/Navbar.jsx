@@ -190,7 +190,7 @@ const Navbar = ({ isOpen, transparent }) => {
                                         <li>{i18next.t("MY_FAVORITE")}</li>
                                         <li>{i18next.t("MY_ORDERS")}</li>
                                         <hr />
-                                        <li onClick={logout()}>{i18next.t("LOGOUT")}</li>
+                                        <li onClick={e => logout()}>{i18next.t("LOGOUT")}</li>
                                     </ul>
                                 </li>
                                 :

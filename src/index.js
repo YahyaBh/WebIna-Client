@@ -9,6 +9,8 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import HttpApi from 'i18next-http-backend';
 import Loading from './Components/Loading/Loading';
+import { ThemeProvider } from './Context/ThemeContext';
+import { StoreProvider } from './Context/StoreConetxt';
 
 const Root = () => {
   const [loading, setLoading] = useState(true);
@@ -51,7 +53,11 @@ root.render(
   <React.StrictMode>
     <HelmetProvider>
       <BrowserRouter>
-        <Root />
+        <ThemeProvider>
+          <StoreProvider>
+            <Root />
+          </StoreProvider>
+        </ThemeProvider>
       </BrowserRouter>
     </HelmetProvider>
   </React.StrictMode>
