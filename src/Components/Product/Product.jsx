@@ -93,12 +93,13 @@ const Product = () => {
             .then((res) => {
                 console.log(res)
                 setAddToCart(!addToCart);
+                setLoadingAdding(false);
             })
             .catch((err) => {
+                setLoadingAdding(false);
                 console.log(err)
             })
 
-        setLoadingAdding(true);
 
     }
 
