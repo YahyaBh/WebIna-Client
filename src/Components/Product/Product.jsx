@@ -89,7 +89,7 @@ const Product = () => {
     const handleAddToCart = () => {
 
         setLoadingAdding(true);
-        sec_http.post('/cart/add', { product_token: token })
+        sec_http.post('/api/cart/add/product', { product_token: token })
             .then((res) => {
                 console.log(res)
                 setAddToCart(!addToCart);

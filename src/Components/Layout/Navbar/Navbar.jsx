@@ -29,7 +29,7 @@ const Navbar = ({ isOpen, transparent }) => {
 
     const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
-    const { isAuthenticated, user , logout} = AuthContext();
+    const { isAuthenticated, user } = AuthContext();
 
     useEffect(() => {
         const disableScroll = (event) => {
@@ -190,7 +190,11 @@ const Navbar = ({ isOpen, transparent }) => {
                                         <li>{i18next.t("MY_FAVORITE")}</li>
                                         <li>{i18next.t("MY_ORDERS")}</li>
                                         <hr />
+<<<<<<< HEAD
                                         <li onClick={e => logout()}>{i18next.t("LOGOUT")}</li>
+=======
+                                        <li><a href="/logout">{i18next.t("LOGOUT")}</a></li>
+>>>>>>> parent of 254428e (Logout Fixing , Cart NAvbar AuthCOntext)
                                     </ul>
                                 </li>
                                 :

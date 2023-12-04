@@ -22,7 +22,7 @@ const NavbarStore = ({ isOpen, transparent }) => {
     const modalClassName = isOpen ? 'modal-animation active' : 'modal-animation';
 
     const { isDarkMode, toggleTheme } = useContext(ThemeContext);
-    const { isAuthenticated, user , logout } = AuthContext();
+    const { isAuthenticated, user } = AuthContext();
     const { toggleAside, isAsideOpen } = useStoreContext();
 
     useEffect(() => {
@@ -135,7 +135,11 @@ const NavbarStore = ({ isOpen, transparent }) => {
                                         <li>My Favourite</li>
                                         <li>My Orders</li>
                                         <hr />
+<<<<<<< HEAD
                                         <li onClick={e => logout()}>Logout</li>
+=======
+                                        <li><a href="/logout">Logout</a></li>
+>>>>>>> parent of 254428e (Logout Fixing , Cart NAvbar AuthCOntext)
                                     </ul>
                                 </li>
                                 :

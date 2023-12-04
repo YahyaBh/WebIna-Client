@@ -18,15 +18,19 @@ import Visa from '../../Assets/Cart/visa.png'
 import Stripe from '../../Assets/Cart/stripe.png'
 import AuthUser from '../../Context/AuthContext'
 
+
 import Swal from 'sweetalert2'
+
 
 const Cart = () => {
 
     const [products, setProducts] = useState([]);
-
     const [discount, setDiscount] = useState(0);
-    const [discountNumber, setDiscountNumber] = useState('');
+
     const [discountAvailable, setDiscountAvailable] = useState(401);
+
+
+    const [discountNumber, setDiscountNumber] = useState('');
 
     const { isAsideOpen } = useStoreContext();
 
@@ -78,7 +82,6 @@ const Cart = () => {
         if (discountNumber.length === 8) {
             sec_http.post('/api/cart/discount/check', { discount: discountNumber })
                 .then((res) => {
-
                     if (res.data.status === false) {
                         setDiscountAvailable(404);
                     } else {
@@ -240,6 +243,8 @@ const Cart = () => {
 
 
                                     <div className="coupon-form">
+                                        <input type="text" placeholder='Coupon Code' /> <button>Apply</button>
+
                                         <div><input type="text" placeholder='Coupon Code' onChange={e => setDiscountNumber(e.target.value)} value={discountNumber} /> <button onClick={discountGet}>Apply</button></div>
                                         {discountAvailable === 200 ? <p className='available'>Discount applied</p> : discountAvailable === 404 ? <p className='unavailable'>Discount not available</p> : ''}
                                     </div>
