@@ -262,9 +262,9 @@ const Cart = () => {
                                     <a href='/store' className='continue-shopping'>Continue Shopping</a>
 
 
-                                    <button onClick={() => navigate('/checkout')} className="checkout-btn">
+                                    <a href='/checkout' className="checkout-btn">
                                         Checkout | {calculateTotalPrice()}$
-                                    </button>
+                                    </a>
 
 
                                     <div className="secure-payment">

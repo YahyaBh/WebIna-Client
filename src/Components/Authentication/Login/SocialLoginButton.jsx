@@ -23,7 +23,7 @@ const SocialLoginButton = ({ provider }) => {
 
             // Open a pop-up window with the authentication URL
             const popUpWidth = 600;
-            const popUpHeight = 400;
+            const popUpHeight = 600;
             const left = window.innerWidth / 2 - popUpWidth / 2 + window.screenLeft;
             const top = window.innerHeight / 2 - popUpHeight / 2 + window.screenTop;
 
@@ -38,9 +38,7 @@ const SocialLoginButton = ({ provider }) => {
                         // Perform additional actions after the popup is closed if needed
                         // navigate('/'); // Redirect to the desired page
 
-                        if (user) {
-                            window.location.reload();
-                        }
+                        window.location.reload();
                     }
                 }, 1000);
             } else {

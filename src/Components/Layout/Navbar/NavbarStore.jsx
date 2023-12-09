@@ -12,17 +12,18 @@ import { ThemeContext } from "../../../Context/ThemeContext";
 import AuthContext from '../../../Context/AuthContext';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { useStoreContext } from '../../../Context/StoreConetxt';
+import i18next from 'i18next';
 
-
-const NavbarStore = ({ isOpen, transparent }) => {
+const NavbarStore = ({ isOpen, transparent, isNotAside }) => {
 
 
     const [scrolled, setScrolled] = useState(false);
     const [selectedProduct, SetselectedProduct] = useState('');
+    const [language, setLanguage] = useState(false)
     const modalClassName = isOpen ? 'modal-animation active' : 'modal-animation';
 
     const { isDarkMode, toggleTheme } = useContext(ThemeContext);
-    const { isAuthenticated, user , logout} = AuthContext();
+    const { isAuthenticated, user, logout } = AuthContext();
     const { toggleAside, isAsideOpen } = useStoreContext();
 
     useEffect(() => {
@@ -65,7 +66,10 @@ const NavbarStore = ({ isOpen, transparent }) => {
         }
     };
 
-
+    const changeLang = (e) => {
+        i18next.changeLanguage(e)
+        setLanguage('')
+    }
 
 
     return (
@@ -108,7 +112,7 @@ const NavbarStore = ({ isOpen, transparent }) => {
                     <div className='container'>
 
                         <div className='left-container'>
-                            {isAsideOpen ? <AiOutlineClose className='openAside' onClick={toggleAside} /> : <BsList className='openAside' onClick={toggleAside} />}
+                            {!isNotAside ? isAsideOpen ? <AiOutlineClose className='openAside' onClick={toggleAside} /> : <BsList className='openAside' onClick={toggleAside} /> : ''}
                             <a href='/store/home' className='logo'>
                                 <img src={isDarkMode ? LogoLight : Logo} alt="logo" />
                             </a>
@@ -130,12 +134,12 @@ const NavbarStore = ({ isOpen, transparent }) => {
                                 <li className='drop-down-user' >
                                     <img src={user.avatar} alt={user.name + 'profile'} />{user.name} <MdKeyboardArrowDown />
                                     <ul className="dropdown-menu">
-                                        <li>Profile</li>
-                                        <li>My Recent</li>
-                                        <li>My Favourite</li>
-                                        <li>My Orders</li>
+                                        <li ><a href="/profile">{i18next.t("PROFILE")}</a></li>
+                                        <li><a href="/recent">{i18next.t("MY_RECENT")}</a></li>
+                                        <li><a href="/favourite">{i18next.t("MY_FAVORITE")}</a></li>
+                                        <li><a href="/orders">{i18next.t("MY_ORDERS")}</a></li>
                                         <hr />
-                                        <li onClick={e => logout()}>Logout</li>
+                                        <li onClick={e => logout()}>{i18next.t("LOGOUT")}</li>
                                     </ul>
                                 </li>
                                 :

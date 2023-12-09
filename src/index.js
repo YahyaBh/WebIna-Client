@@ -37,12 +37,8 @@ const Root = () => {
       });
   }, []);
 
-  if (loading) {
-    <Loading />
-    return null;
-  }
-
-  return (
+  return (loading ?
+    <Loading /> :
     <App />
   );
 };

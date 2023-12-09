@@ -18,6 +18,7 @@ import { FaExternalLinkAlt, FaFacebook, FaInstagram, FaWhatsapp } from 'react-ic
 import ADS from '../../Assets/Home/Projects Section/TestProjects.png'
 import Footer from '../Layout/Footer/Footer'
 import Swal from 'sweetalert2'
+import ImageLoader from '../Layout/ImageLoader/ImageLoader'
 
 
 const Product = () => {
@@ -206,7 +207,9 @@ const Product = () => {
                                 <div className="left-container">
                                     {product?.image1 && product?.image2 ? (
                                         <div className="image-container">
-                                            <img src={product?.image1} alt={product?.name} />
+
+                                            <ImageLoader imageUrls={[product?.image1]} />
+                                            {/* <img src={product?.image1} alt={product?.name} onLoad={() => this.setState({loaded: true})} /> */}
 
                                             <div className="bottom-image">
                                                 {[product?.image2, product?.image3, product?.image4, product?.image5, product?.image6, product?.image7].filter(Boolean).map((image, index) => (

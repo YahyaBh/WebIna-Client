@@ -178,19 +178,19 @@ const Navbar = ({ isOpen, transparent }) => {
                                 </div>
 
                                 {isDarkMode ? <FaSun onClick={toggleTheme} /> : <FaMoon onClick={toggleTheme} />}
-                                <a href="/cart"><AiOutlineShoppingCart /></a>
+
+                                {isAuthenticated ?? <a href="/cart"><AiOutlineShoppingCart /></a>}
                             </div>
 
                             {isAuthenticated ?
                                 <li className='drop-down-user' >
                                     <img src={user.avatar} alt={user.name + ' profile'} />{user.name} <MdKeyboardArrowDown />
                                     <ul className="dropdown-menu">
-                                        <li>{i18next.t("PROFILE")}</li>
-                                        <li>{i18next.t("MY_RECENT")}</li>
-                                        <li>{i18next.t("MY_FAVORITE")}</li>
-                                        <li>{i18next.t("MY_ORDERS")}</li>
+                                        <li ><a href="/profile">{i18next.t("PROFILE")}</a></li>
+                                        <li><a href="/recent">{i18next.t("MY_RECENT")}</a></li>
+                                        <li><a href="/favourite">{i18next.t("MY_FAVORITE")}</a></li>
+                                        <li><a href="/orders">{i18next.t("MY_ORDERS")}</a></li>
                                         <hr />
-
                                         <li onClick={e => logout()}>{i18next.t("LOGOUT")}</li>
                                     </ul>
                                 </li>

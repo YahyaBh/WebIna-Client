@@ -148,3 +148,21 @@ input:-webkit-autofill:active {
     background-position: 315px 0, 0 0, 0 190px, 50px 195px;
   }
 }
+
+
+.aside-open {
+  .container {
+      margin-left: 260px !important;
+  }
+}
+
+
+.back-button {
+  padding: 10px 40px;
+  color: var(--black-color);
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
