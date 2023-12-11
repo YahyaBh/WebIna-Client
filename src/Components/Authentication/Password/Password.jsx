@@ -1,6 +1,6 @@
 import React, { Profiler, useEffect, useState } from 'react'
 
-import './Profile.scss'
+import './Password.scss'
 
 import { Helmet } from 'react-helmet-async'
 import NavbarStore from '../../Layout/Navbar/NavbarStore'
@@ -22,7 +22,7 @@ import Loading from '../../Loading/Loading'
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 
-const Profile = () => {
+const Password = () => {
 
     const [loading, setLoading] = useState();
     const [phone, setPhone] = useState();
@@ -66,18 +66,18 @@ const Profile = () => {
         <>
 
             <Helmet>
-                <title>WEBINA DIGITAL | Profile</title>
-                <meta name="description" content="Your personal profile configuration" />
-                <link rel='canonical' content="/profile" />
+                <title>WEBINA DIGITAL | Change Password</title>
+                <meta name="description" content="Change Your Account Password Securly" />
+                <link rel='canonical' content="/change-password" />
             </Helmet>
 
 
-            <Profiler>
+            <Profiler id='password-prof'>
 
                 <NavbarStore />
 
 
-                <div id='profile' className={isAsideOpen ? 'aside-open' : ''}>
+                <div id='password' className={isAsideOpen ? 'aside-open' : ''}>
 
                     <AsideStore />
 
@@ -88,13 +88,13 @@ const Profile = () => {
 
                             <div className="left-aside">
                                 <ul>
-                                    <li className="active"><a href="/profile"><BiUser /> Profile</a></li>
+                                    <li ><a href="/profile"><BiUser /> Profile</a></li>
                                     <li><a href="/purchases"><PiCarThin /> Purchases</a></li>
                                     <li><a href="/favourite"><BsHeart /> My Wishlist</a></li>
                                     <li><a href="/user/cards"><CgCreditCard /> My Cards</a></li>
                                     <li><a href="/reports"><TbReport /> My Reports</a></li>
                                     <li><a href="/user/questions"> <BiQuestionMark /> My Questions</a></li>
-                                    <li><a href="/change-password"><CgPassword /> Password</a></li>
+                                    <li className="active"><a href="#"><CgPassword /> Password</a></li>
                                     <li><a href="/logout"><BiExit /> Logout</a></li>
                                 </ul>
                             </div>
@@ -102,48 +102,25 @@ const Profile = () => {
 
                             <div className="right-container">
 
-                                <h2>Personal information</h2>
+                                <h2>Change your password</h2>
 
-                                <h4>Avatar</h4>
-
-                                <div className="avatar-container">
-
-                                    <BiX className='delete-pic' title='delete picture' />
-
-                                    <label htmlFor="avatar" className='avatar'>
-
-                                        <div className="image-container">
-                                            <img src={user?.avatar} alt="avatar" />
-                                            <input type="file" name="avatar" id="avatar" />
-                                            <h3>CHOOSE AN IMAGE</h3>
-                                        </div>
-
-                                    </label>
-                                </div>
 
                                 <div className="infos">
-                                    <div className="full-name">
-                                        <h4>Full Name</h4>
-                                        <input type="text" name='full-name' id='full-name' placeholder='Full Name' />
+                                    <div className="password-inp">
+                                        <h4>Old Password</h4>
+                                        <input type="text" name='old-password' id='old-password' placeholder='Old Password' />
                                     </div>
 
-                                    <div className="phone-number">
-                                        <h4>Phone Number</h4>
-                                        <PhoneInput
-                                            placeholder="Enter phone number"
-                                            value={phone}
-                                            onChange={setPhone}
-                                            defaultCountry="MA"
-                                            smartCaret={true} 
-                                            international={false} 
-                                            limitMaxLength={15}/>
+                                    <div className="password-inp">
+                                        <h4>New Password</h4>
+                                        <input type="password" name='new-password' id='new-password' placeholder='New Password' />
                                     </div>
                                 </div>
 
                                 <div className="infos">
-                                    <div className="email">
-                                        <h4>Email Address</h4>
-                                        <input type="email" name='email' id='email' value={user?.email} disabled={true} />
+                                    <div className="password-inp">
+                                        <h4>Repeat New Password</h4>
+                                        <input type="password" name='rep-new-password' id='rep-new-password' placeholder='Repeat New Password' autoComplete={false} />
                                     </div>
 
                                 </div>
@@ -165,4 +142,4 @@ const Profile = () => {
     )
 }
 
-export default Profile
+export default Password

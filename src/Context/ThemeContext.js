@@ -27,6 +27,10 @@ export const ThemeProvider = ({ children }) => {
         const setTheme = (darkMode) => {
             Cookies.set("__THEME_MODE", darkMode);
             document.documentElement.style.setProperty(
+                "--settings-color",
+                darkMode ? "#131313" : "#FFFFFF"
+            );
+            document.documentElement.style.setProperty(
                 "--primary-color-dark",
                 darkMode ? "#1E1E1E" : "#FFE662"
             );

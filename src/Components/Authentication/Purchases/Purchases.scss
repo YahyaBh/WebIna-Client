@@ -1,0 +1,187 @@
+#purchases {
+    background-color: var(--light-color);
+    height: 100%;
+    top: 95px;
+    position: relative;
+    transition: all 0.3s ease;
+    width: 100%;
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .mid-container {
+            width: 70%;
+            height: 80dvh;
+            margin: 10px;
+            overflow: auto;
+            border-radius: 10px;
+            background-color: var(--settings-color);
+
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction: row;
+
+            .left-aside {
+                height: 100%;
+                flex-basis: 20%;
+                border-right: 2px solid #dddddd5a;
+
+                ul {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+
+                    li {
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        flex-basis: 12.5%;
+                        color: var(--black-color);
+                        border-top-left-radius: 10px;
+                        list-style: none;
+                        width: 100%;
+
+                        a {
+                            padding: 15px 30px;
+                            width: max-content;
+                            font-size: 20px;
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            gap: 10px;
+
+                            svg {
+                                color: var(--primary-color);
+                                font-size: 20px;
+                            }
+                        }
+                    }
+
+                    .active {
+                        background-color: #dddddd5a;
+                        border-top-left-radius: 0px;
+                    }
+                }
+            }
+
+            .right-container {
+                flex-basis: 80%;
+                padding: 40px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                overflow: hidden;
+
+                .cards {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    gap: 10px;
+                    flex-direction: column;
+
+                    .card {
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        gap: 10px;
+                        padding-bottom: 20px;
+                        border-bottom: 2px solid #dddddd5a;
+
+                        .left {
+                            img {
+                                width: 200px;
+                                height: 150px;
+                                border-radius: 10px;
+                                object-fit: cover;
+                                image-rendering: optimizeSpeed;
+                            }
+                        }
+
+                        .right {
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: flex-start;
+                            flex-direction: column;
+                            gap: 30px;
+                            width: 100%;
+
+                            .text {
+                                h5 {
+                                    font-size: 18px;
+                                    opacity: 0.8;
+                                    font-weight: 500;
+                                }
+                            }
+
+                            .bottom {
+                                width: 100%;
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                flex-wrap: nowrap;
+
+                                .prev {
+                                    a {
+                                        text-decoration: underline;
+                                        color: var(--dark-color-primary);
+                                    }
+                                }
+
+                                .actions {
+                                    display: flex;
+                                    gap: 10px;
+                                    justify-content: center;
+                                    align-items: center;
+
+                                
+                                    button {
+                                        flex-basis: 30%;
+                                        padding: 8px 10px;
+                                        font-size: 18px;
+                                        font-weight: 600;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        gap: 5px;
+                                        border-radius: 10px;
+
+                                        &:nth-child(1) {
+                                            color: #1e1e1e;
+                                            svg {
+                                                color: #1e1e1e;
+                                            }
+                                            background-color: var(--primary-color);
+                                            border: 1px solid var(--primary-color);
+                                        }
+
+                                        &:nth-child(2) {
+                                            svg {
+                                                color: var(--primary-color);
+                                            }
+                                            color: var(--primary-color);
+                                            background-color: #1e1e1e;
+                                            border: 1px solid var(--primary-color);
+                                        }
+
+                                        &:nth-child(3) {
+                                            svg {
+                                                color: var(--primary-color);
+                                            }
+                                            color: var(--primary-color);
+                                            background-color: #1e1e1e;
+                                            border: 1px solid var(--primary-color);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

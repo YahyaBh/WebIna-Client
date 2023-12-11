@@ -179,7 +179,7 @@ const Navbar = ({ isOpen, transparent }) => {
 
                                 {isDarkMode ? <FaSun onClick={toggleTheme} /> : <FaMoon onClick={toggleTheme} />}
 
-                                {isAuthenticated ?? <a href="/cart"><AiOutlineShoppingCart /></a>}
+                                {isAuthenticated ? <a href="/cart"><AiOutlineShoppingCart /></a> : ''}
                             </div>
 
                             {isAuthenticated ?

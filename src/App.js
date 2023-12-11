@@ -36,6 +36,11 @@ import Cart from "./Components/Cart/Cart";
 import AuthUser from "./Context/AuthContext";
 import Checkout from "./Components/Checkout/Checkout";
 import Profile from "./Components/Authentication/Profile/Profile";
+import Purchases from "./Components/Authentication/Purchases/Purchases";
+import Cards from "./Components/Authentication/Cards/Cards";
+import Wishlist from "./Components/Authentication/Wishlist/Wishlist";
+import Password from "./Components/Authentication/Password/Password";
+
 
 
 
@@ -161,6 +166,7 @@ function App() {
 
         {/* Authenticated user */}
         <Route exact path='/profile' element={<Profile />} />
+        <Route exact path='/change-password' element={<Password />} />
         <Route exact path='/logout' element={<Logout />} />
         <Route exact path='/welcome' element={<Welcome />} />
         <Route exact path='/store' element={<Store />} />
@@ -168,6 +174,9 @@ function App() {
         <Route exact path='/store/product/:token' element={<Product />} />
         <Route exact path='/cart' element={<Cart />} />
         <Route exact path='/checkout' element={<Checkout />} />
+        <Route exact path='/purchases' element={<Purchases />} />
+        <Route exact path='/user/cards' element={<Cards />} />
+        <Route exact path='/favourite' element={<Wishlist />} />
 
 
 
