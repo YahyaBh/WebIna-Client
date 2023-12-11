@@ -2,6 +2,8 @@ import React, { Profiler, useEffect, useState } from 'react'
 
 import './Checkout.scss'
 
+import Stripe from '../../Assets/Cart/stripe.png'
+
 import Loading from '../Loading/Loading'
 import { Helmet } from 'react-helmet-async'
 import NavbarStore from '../Layout/Navbar/NavbarStore'
@@ -12,7 +14,34 @@ import { IoIosArrowForward } from "react-icons/io";
 
 const Checkout = () => {
 
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
+    const [cardNumber, setCardNumber] = useState('');
+
+
+    const handleCardNumberChange = (event) => {
+        const inputCardNumber = event.target.value;
+
+        // Remove any non-numeric characters
+        const formattedCardNumber = inputCardNumber.replace(/\D/g, '');
+
+        // Add space after every 4 digits if the card number is less than 16 digits
+        let spacedCardNumber;
+        if (formattedCardNumber.length <= 16) {
+            spacedCardNumber = formattedCardNumber.replace(/(\d{4})/g, '$1 ');
+        } else {
+            // Truncate extra digits if the length exceeds 16
+            spacedCardNumber = formattedCardNumber.slice(0, 16).replace(/(\d{4})/g, '$1 ');
+        }
+
+        // Remove spaces for state storage
+        const cardNumberWithoutSpaces = formattedCardNumber;
+
+        // Update state with the formatted card number without spaces
+        setCardNumber(spacedCardNumber.trimRight());
+
+        // If you want to save the card number without spaces in a separate state, uncomment the line below
+        // setCardNumberWithoutSpaces(cardNumberWithoutSpaces);
+    };
 
     useEffect(() => {
 
@@ -387,54 +416,63 @@ const Checkout = () => {
 
                                                 <div className="details">
 
-                                                    <div className="deatil">
+                                                    <div className="detail">
                                                         <div className='info'>
                                                             <h4>Card Holder Name</h4>
                                                             <p>Enter the name on the card</p>
                                                         </div>
-                                                        <input type="text" placeholder="John Doe" />
+                                                        <input type="text" placeholder="John Doe" maxLength={30} />
                                                     </div>
 
-                                                    <div className="deatil">
+                                                    <div className="detail">
                                                         <div className='info'>
                                                             <h4>Card Number</h4>
                                                             <p>Enter the 16-digit card number on the card</p>
                                                         </div>
-                                                        <input type="text" placeholder="1234 1234 1234 1234" />
+                                                        <input type="text" placeholder="1234 1234 1234 1234" value={cardNumber} onChange={handleCardNumberChange} maxLength={19} />
                                                     </div>
 
-                                                    <div className="deatil">
-                                                        <div className="left">
-                                                            <div className="info">
-                                                                <h4>Expiry Date</h4>
-                                                                <p>Enter the expiration date of the card</p>
-                                                            </div>
+                                                    <div className="detail">
+                                                        <div className="info">
+                                                            <h4>Expiry Date</h4>
+                                                            <p>Enter the expiration date of the card</p>
+                                                        </div>
+
+                                                        <div className='info-row'>
                                                             <div className="inps">
-                                                                <input type="text" placeholder="12" />
-                                                                <input type="text" placeholder="24" />
+                                                                <input type="text" placeholder="12" maxLength={2} />
+                                                                <h4>/</h4>
+                                                                <input type="text" placeholder="24" maxLength={2} />
+                                                            </div>
+
+                                                            <div className="cvv">
+                                                                <div className="text">
+                                                                    <h4>CVV</h4>
+                                                                    <p>Security code</p>
+                                                                </div>
+
+                                                                <input type="text" placeholder="123" maxLength={4} />
+
                                                             </div>
                                                         </div>
 
-                                                        <div className="right">
-                                                            <div className="info">
-                                                                <h4>CVV</h4>
-                                                                <p>Security code</p>
-                                                            </div>
-                                                            <input type="text" placeholder="123" />
-                                                        </div>
                                                     </div>
-
                                                 </div>
-                                            </div>
 
+                                            </div>
+                                        </div>
+
+                                        <div className="powered-by">
+                                            <p>Powered by</p>
+                                            <img src={Stripe} alt="stripe" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div className="right-cont">
+                            <div className="right-cont">
 
+                            </div>
                         </div>
                     </div>
                 </div>

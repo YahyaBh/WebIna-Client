@@ -76,7 +76,7 @@ body {
                 flex-basis: 50%;
                 border-radius: 10px;
                 border: 1px solid var(--primary-color);
-                background-color: #dddddd73;
+                background-color: #dddddd28;
                 display: flex;
                 justify-content: center;
                 align-items: flex-start;
@@ -182,7 +182,6 @@ body {
                             width: 100%;
 
                             .topper {
-
                                 h3 {
                                     display: flex;
                                     justify-content: center;
@@ -194,6 +193,120 @@ body {
                                 display: flex;
                                 justify-content: space-between;
                                 align-items: center;
+                            }
+
+                            .bottomer {
+                                padding: 10px;
+                                width: auto;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                flex-direction: column;
+                                gap: 10px;
+
+                                .details {
+                                    width: 100%;
+                                    display: flex;
+                                    flex-direction: column;
+                                    justify-content: center;
+                                    flex-direction: column;
+                                    gap: 10px;
+
+                                    input {
+                                        background-color: var(--light-color);
+                                        color: var(--black-color);
+                                        padding: 6px 10px;
+                                        border-radius: 10px;
+                                        border: 2px solid var(--primary-color);
+                                        outline: none;
+                                        height: 30px;
+                                        font-size: 16px;
+                                        text-transform: uppercase;
+                                    }
+
+                                    .detail {
+                                        display: flex;
+                                        flex-direction: row;
+                                        justify-content: center;
+                                        align-items: center;
+
+                                        .info {
+                                            flex-basis: 46%;
+
+                                            h4 {
+                                                font-size: 18px;
+                                                font-weight: 500;
+                                                color: var(--black-color);
+                                            }
+
+                                            p {
+                                                font-size: 14px;
+                                                color: var(--dark-color-primary);
+                                            }
+                                        }
+
+                                        .info-row {
+                                            flex-basis: 53%;
+                                            width: 100%;
+                                            display: flex;
+                                            justify-content: center;
+                                            gap: 10px;
+
+                                            .inps {
+                                                flex-basis: 50%;
+                                                display: flex;
+                                                justify-content: center;
+                                                align-items: center;
+                                                gap: 10px;
+
+                                                input {
+                                                    width: 50%;
+                                                }
+                                            }
+
+                                            .cvv {
+                                                flex-basis: 50%;
+                                                display: flex;
+                                                justify-content: center;
+                                                align-items: center;
+
+                                                .text {
+                                                    flex-basis: 100%;
+
+                                                    h4 {
+                                                        font-size: 18px;
+                                                        font-weight: 500;
+                                                        color: var(--black-color);
+                                                    }
+
+                                                    p {
+                                                        font-size: 14px;
+                                                        color: var(--dark-color-primary);
+                                                    }
+                                                }
+
+                                                input {
+                                                    width: 50%;
+                                                }
+                                            }
+                                        }
+
+                                        input {
+                                            flex-basis: 50%;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .powered-by {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            padding: 20px 10px;
+
+                            img {
+                                width: 80px;
                             }
                         }
                     }
