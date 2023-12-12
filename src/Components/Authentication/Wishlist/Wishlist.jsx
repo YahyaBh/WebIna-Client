@@ -24,16 +24,16 @@ import { MdReviews } from 'react-icons/md'
 const Profile = () => {
 
     const [loading, setLoading] = useState();
-
+    const [products, setProducts] = useState([]);
 
     const { isAsideOpen } = useStoreContext();
-    const { user, setUser, sec_http } = AuthUser();
+    const { isAuthenticated, sec_http } = AuthUser();
     const navigate = useNavigate();
 
     useEffect(() => {
 
-        if (user) {
-            // getUserData();
+        if (isAuthenticated) {
+            getUserData();
         } else {
             navigate('/login', { replace: true });
         }
@@ -42,9 +42,9 @@ const Profile = () => {
 
     const getUserData = async () => {
 
-        await sec_http.get('/user')
+        await sec_http.post('/api/user/wishlist')
             .then((res) => {
-                setUser(res.data.user)
+                setProducts(res.data.products)
                 setLoading(false)
             })
             .catch((err) => {
@@ -98,37 +98,46 @@ const Profile = () => {
 
                             <div className="right-container">
 
-                                <h2>My Purchase List (10)</h2>
+                                <h2>My Wishlist List ({products.lenght})</h2>
 
 
 
 
                                 <div className="cards">
-                                    <div className="card">
-                                        <div className="left">
-                                            <img src="https://placehold.co/300" alt="pic-card-purchase" />
-                                        </div>
-
-                                        <div className="right">
-                                            <div className="text">
-                                                <h5>Added on Nov 17, 2023</h5>
-                                                <h3>Temprador WooCommerce Landing Page Theme</h3>
+                                    {products.lenght > 0 ? products.map((product, index) => (
+                                        <div className="card" key={index}>
+                                            <div className="left">
+                                                <img src={product.image} alt={"pic-card-purchase" + index} />
                                             </div>
 
-                                            <div className="bottom">
-                                                <div className="prev">
-                                                    <h3>33.00$</h3>
-                                                    <h4><sub>50.00$</sub></h4>
+                                            <div className="right">
+                                                <div className="text">
+                                                    <h5>Added on {new Date(product.createdAt).toLocaleDateString()}</h5>
+                                                    <h3>{product.name}</h3>
                                                 </div>
 
-                                                <div className="actions">
-                                                    <button><BiCartAdd/> Add To Cart</button>
-                                                    <button><BsHeartFill /></button>
+                                                <div className="bottom">
+                                                    <div className="prev">
+                                                        <h3>{product.price}$</h3>
+                                                        <h4><sub>{product.old_price}$</sub></h4>
+                                                    </div>
+
+                                                    <div className="actions">
+                                                        <button><BiCartAdd /> Add To Cart</button>
+                                                        <button><BsHeartFill /></button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    
+                                        </div>))
+                                        :
+
+                                        <div className="empty">
+
+                                            <h3>No Purchases Yet</h3>
+                                            <a href="/">Shop Now</a>
+
+                                        </div>}
+
                                 </div>
 
                             </div>

@@ -81,26 +81,29 @@ const Profile = () => {
         } else {
             if (avatar) {
                 userNewData.append('avatar', avatar)
-                if (name) {
-                    userNewData.append('name', name)
-                    if (phone) {
-                        userNewData.append('phone', phone)
-
-
-                        await sec_http.post('/api/user/update', userNewData)
-                            .then((res) => {
-                                getUserData();
-                            })
-                            .catch((err) => {
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Error',
-                                    text: err?.response?.data?.message
-                                })
-                            })
-                    }
-                }
             }
+
+            if (name) {
+                userNewData.append('name', name)
+
+            }
+            if (phone) {
+                userNewData.append('phone', phone)
+            }
+
+
+            await sec_http.post('/api/user/update', userNewData)
+                .then((res) => {
+                    getUserData();
+                    alert('Profile updated successfully')
+                })
+                .catch((err) => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: err?.response?.data?.message
+                    })
+                })
         }
 
     }
@@ -212,7 +215,7 @@ const Profile = () => {
                                 </div>
 
 
-                                <button className='save-changes'>Save Changes</button>
+                                <button className='save-changes' onClick={e => updateUserInfo(e)}>Save Changes</button>
 
                             </div>
 

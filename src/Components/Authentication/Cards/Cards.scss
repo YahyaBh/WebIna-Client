@@ -134,6 +134,21 @@
                         border: 2px solid var(--primary-color);
                         min-height: 30dvh;
 
+                        .empty {
+                            height: 100%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+
+                            h3 {
+                                padding: 20px 0;
+                                font-size: 22px;
+                                font-weight: 400;
+                                opacity: .6;
+                                color: var(--black-color);
+                            }
+                        }
+
                         .card {
                             padding: 10px 0;
                             display: flex;
@@ -145,6 +160,10 @@
                                 flex-basis: 25%;
                                 font-size: 20px;
                                 font-weight: 500;
+                                display: flex;
+                                justify-content: flex-start;
+                                align-items: center;
+                                gap: 10px;
                                 color: var(--black-color);
                             }
 

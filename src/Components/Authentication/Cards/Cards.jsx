@@ -11,7 +11,7 @@ import AuthUser from '../../../Context/AuthContext'
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
 import { useStoreContext } from '../../../Context/StoreConetxt'
-import { BiDotsHorizontalRounded, BiDownload, BiExit, BiPlus, BiQuestionMark, BiUser, BiX } from 'react-icons/bi'
+import { BiDotsHorizontalRounded, BiDownload, BiExit, BiLogoMastercard, BiPlus, BiQuestionMark, BiUser, BiX } from 'react-icons/bi'
 import { PiCarThin } from 'react-icons/pi'
 import { BsHeart } from 'react-icons/bs'
 import { CgCreditCard, CgPassword } from 'react-icons/cg'
@@ -24,16 +24,16 @@ import { MdReviews } from 'react-icons/md'
 const Profile = () => {
 
     const [loading, setLoading] = useState();
-
+    const [cards, setCards] = useState([]);
 
     const { isAsideOpen } = useStoreContext();
-    const { user, setUser, sec_http } = AuthUser();
+    const { isAuthenticated, sec_http } = AuthUser();
     const navigate = useNavigate();
 
     useEffect(() => {
 
-        if (user) {
-            // getUserData();
+        if (isAuthenticated) {
+            getUserData();
         } else {
             navigate('/login', { replace: true });
         }
@@ -42,9 +42,9 @@ const Profile = () => {
 
     const getUserData = async () => {
 
-        await sec_http.get('/user')
+        await sec_http.post('/api/user/cards')
             .then((res) => {
-                setUser(res.data.user)
+                setCards(res.data.cards)
                 setLoading(false)
             })
             .catch((err) => {
@@ -107,7 +107,7 @@ const Profile = () => {
                                 <div className="table">
 
                                     <div className="top">
-                                        <h3>Card Name</h3>
+                                        <h3>Card Brand</h3>
                                         <h3>Card Number</h3>
                                         <h3>Expiration Date</h3>
                                         <h3>Remove</h3>
@@ -115,12 +115,19 @@ const Profile = () => {
 
 
                                     <div className="body">
-                                        <div className="card">
-                                            <h3>Yahya Bouhsine</h3>
-                                            <h3>******** 4352</h3>
-                                            <h3>03/24</h3>
-                                            <h3><BiX /></h3>
-                                        </div>
+                                        {cards.length > 0 ? cards.map((card, index) => (
+                                            <div className="card" key={index}>
+                                                <h3>{card.card_type === "mastercard" ? `Mastercard  ${< BiLogoMastercard />}` : card.card_type === "visa" ? `Visa ${< BiLogoMastercard />}` : card.card_type === "amex" ? `Amex ${< BiLogoMastercard />}` : card.card_type === 'discover' ? `Discover ${< BiLogoMastercard />}` : ''}</h3>
+                                                <h3>******** 4352</h3>
+                                                <h3>03/24</h3>
+                                                <h3><BiX /></h3>
+                                            </div>
+                                        )) :
+
+                                            <div className="empty">
+                                                <h3>No Cards Added</h3>
+                                            </div>
+                                        }
                                     </div>
 
                                 </div>

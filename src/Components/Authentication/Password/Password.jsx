@@ -25,7 +25,13 @@ import PhoneInput from 'react-phone-number-input'
 const Password = () => {
 
     const [loading, setLoading] = useState();
-    const [phone, setPhone] = useState();
+
+
+    const [oldPass, setOldPass] = useState('');
+
+    const [newPass, setNewPass] = useState('');
+    const [passRepeat, setPassRepeat] = useState('');
+
 
 
     const { isAsideOpen } = useStoreContext();
@@ -35,31 +41,52 @@ const Password = () => {
     useEffect(() => {
 
         if (user) {
-            // getUserData();
+            updateUserInfo();
         } else {
             navigate('/login', { replace: true });
         }
     }, [])
 
 
-    const getUserData = async () => {
 
-        await sec_http.get('/user')
-            .then((res) => {
-                setUser(res.data.user)
-                setLoading(false)
-            })
-            .catch((err) => {
+    const updateUserInfo = async () => {
+
+        if (oldPass && newPass && passRepeat) {
+            if (newPass === passRepeat) {
+
+                const userNewData = new FormData();
+
+                userNewData.append('oldPass', oldPass);
+                userNewData.append('newPass', newPass);
+
+                setLoading(true);
+                await sec_http.post('/user/password/update')
+                    .then((res) => {
+
+                        setLoading(false)
+                    })
+                    .catch((err) => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: err?.response?.data?.message
+                        })
+                    });
+            } else {
                 Swal.fire({
                     icon: 'error',
                     title: 'Error',
-                    text: err?.response?.data?.message
+                    text: 'Passwords do not match'
                 })
-            });
-    }
+            }
+        } else {
 
-    const updateUserInfo = async (e) => {
-        e.preventDefault();
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'All fields are required'
+            })
+        }
     }
 
     return (loading ? <Loading /> :
@@ -102,7 +129,11 @@ const Password = () => {
 
                             <div className="right-container">
 
-                                <h2>Change your password</h2>
+                                <div className='info'>
+                                    <h2>Change your password</h2>
+                                    <p>Make sure to use a strong password that is easy to remember !</p>
+                                </div>
+
 
 
                                 <div className="infos">
@@ -126,7 +157,7 @@ const Password = () => {
                                 </div>
 
 
-                                <button className='save-changes'>Save Changes</button>
+                                <button className='save-changes' onClick={e => updateUserInfo()}>Save Changes</button>
 
                             </div>
 
