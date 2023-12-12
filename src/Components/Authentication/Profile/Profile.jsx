@@ -25,6 +25,11 @@ import PhoneInput from 'react-phone-number-input'
 const Profile = () => {
 
     const [loading, setLoading] = useState();
+
+
+    const [avatar, setAvatar] = useState();
+    const [avatarPrev, setAvatarPrev] = useState();
+    const [name, setName] = useState();
     const [phone, setPhone] = useState();
 
 
@@ -35,7 +40,7 @@ const Profile = () => {
     useEffect(() => {
 
         if (user) {
-            // getUserData();
+            getUserData();
         } else {
             navigate('/login', { replace: true });
         }
@@ -43,10 +48,12 @@ const Profile = () => {
 
 
     const getUserData = async () => {
-
-        await sec_http.get('/user')
+        await sec_http.post('/api/user')
             .then((res) => {
                 setUser(res.data.user)
+
+                res.data.user?.avatar ? setAvatarPrev(res.data.user?.avatar) : setAvatar(null);
+
                 setLoading(false)
             })
             .catch((err) => {
@@ -60,6 +67,60 @@ const Profile = () => {
 
     const updateUserInfo = async (e) => {
         e.preventDefault();
+
+
+        const userNewData = new FormData();
+
+        if (avatar === null && name === user?.name && phone === user?.phone) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No changes were made'
+            })
+            return;
+        } else {
+            if (avatar) {
+                userNewData.append('avatar', avatar)
+                if (name) {
+                    userNewData.append('name', name)
+                    if (phone) {
+                        userNewData.append('phone', phone)
+
+
+                        await sec_http.post('/api/user/update', userNewData)
+                            .then((res) => {
+                                getUserData();
+                            })
+                            .catch((err) => {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    text: err?.response?.data?.message
+                                })
+                            })
+                    }
+                }
+            }
+        }
+
+    }
+
+
+    const imageHandler = (e) => {
+
+        const file = e.target.files[0];
+
+        if (file) {
+            setAvatar(file);
+            setAvatarPrev(URL.createObjectURL(file));
+        }
+    }
+
+    const imageRemove = () => {
+        if (avatarPrev || avatar) {
+            setAvatar(null);
+            setAvatarPrev(null);
+        }
     }
 
     return (loading ? <Loading /> :
@@ -72,7 +133,7 @@ const Profile = () => {
             </Helmet>
 
 
-            <Profiler>
+            <Profiler id='profile-prof'>
 
                 <NavbarStore />
 
@@ -108,13 +169,13 @@ const Profile = () => {
 
                                 <div className="avatar-container">
 
-                                    <BiX className='delete-pic' title='delete picture' />
+                                    <BiX className='delete-pic' title='delete picture' onClick={e => imageRemove()} />
 
                                     <label htmlFor="avatar" className='avatar'>
 
                                         <div className="image-container">
-                                            <img src={user?.avatar} alt="avatar" />
-                                            <input type="file" name="avatar" id="avatar" />
+                                            <img src={avatarPrev} alt="avatar" />
+                                            <input type="file" name="avatar" id="avatar" onChange={e => imageHandler(e)} />
                                             <h3>CHOOSE AN IMAGE</h3>
                                         </div>
 
@@ -124,7 +185,7 @@ const Profile = () => {
                                 <div className="infos">
                                     <div className="full-name">
                                         <h4>Full Name</h4>
-                                        <input type="text" name='full-name' id='full-name' placeholder='Full Name' />
+                                        <input type="text" name='full-name' id='full-name' defaultValue={user?.name} onChange={e => setName(e.target.value)} placeholder='Full Name' />
                                     </div>
 
                                     <div className="phone-number">
@@ -134,9 +195,11 @@ const Profile = () => {
                                             value={phone}
                                             onChange={setPhone}
                                             defaultCountry="MA"
-                                            smartCaret={true} 
-                                            international={false} 
-                                            limitMaxLength={15}/>
+                                            smartCaret={true}
+                                            international={false}
+                                            limitMaxLength={true}
+                                            defaultValue={user?.phone}
+                                        />
                                     </div>
                                 </div>
 
