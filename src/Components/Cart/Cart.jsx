@@ -20,6 +20,7 @@ import AuthUser from '../../Context/AuthContext'
 
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
+import Cookies from 'js-cookie'
 
 const Cart = () => {
 
@@ -28,10 +29,12 @@ const Cart = () => {
     const [discountNumber, setDiscountNumber] = useState('');
     const [discountAvailable, setDiscountAvailable] = useState(401);
 
+    const [subtotal, setSubtotal] = useState(0);
+
     const { isAsideOpen } = useStoreContext();
 
 
-    const { sec_http , isAuthenticated} = AuthUser();
+    const { sec_http, isAuthenticated } = AuthUser();
 
     const navigate = useNavigate();
 
@@ -92,6 +95,7 @@ const Cart = () => {
                     } else {
                         setDiscount(res.data.discount);
                         setDiscountAvailable(200);
+                        setDiscountCheckout();
                     }
                 })
                 .catch((err) => {
@@ -134,6 +138,18 @@ const Cart = () => {
         return stars;
     };
 
+
+    const setDiscountCheckout = (e) => {
+
+
+        if (discount && discountAvailable === 200) {
+            Cookies.set('discount', discount, { expires: 1, secure: true, });
+        } else {
+            return;
+        }
+
+    }
+
     return (
         <>
 
@@ -174,9 +190,7 @@ const Cart = () => {
                             </div>
                         </div>
 
-                        {/* <div className="back-button">
-                            <BiLeftArrow /> Back
-                        </div> */}
+
 
 
                         <div className="body-container">
@@ -232,8 +246,8 @@ const Cart = () => {
 
 
                                             <div className="content">
-                                                <p>0%</p>
-                                                <p>0.00$</p>
+                                                <p>{discount}%</p>
+                                                <p>{subtotal - (subtotal * (discount / 100))}$</p>
                                             </div>
                                         </div>
 

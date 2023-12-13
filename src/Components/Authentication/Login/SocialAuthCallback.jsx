@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import AuthContext from '../../../Context/AuthContext';
 
 import Loading from '../../Loading/Loading'
@@ -14,7 +14,7 @@ function SocialAuthCallback() {
     const { http, setUser, setAccessToken, UserSession } = AuthContext();
 
     const { provider } = useParams();
-
+    const navigate = useNavigate();
     useEffect(() => {
         http(`/api/auth/${provider}/callback${location.search}`, {
             headers: {
@@ -31,7 +31,7 @@ function SocialAuthCallback() {
                 setUser(data.data.user);
                 setLoading(false);
                 UserSession();
-                window.close();
+                navigate('/')
             })
             .catch ((err) => {
             console.log(err);

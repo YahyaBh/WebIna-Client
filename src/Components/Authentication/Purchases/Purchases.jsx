@@ -41,7 +41,7 @@ const Profile = () => {
 
 
     const getUserData = async () => {
-        await sec_http.post('/api/user/purchases')
+        await sec_http.post('/api/user/purchased')
             .then((res) => {
                 setProducts(res.data.products)
                 setLoading(false)
@@ -54,6 +54,7 @@ const Profile = () => {
                 })
             });
     }
+
 
 
 
@@ -106,12 +107,12 @@ const Profile = () => {
                                     {products.length > 0 ? products.map((product, index) => (
                                         <div className="card" key={index}>
                                             <div className="left">
-                                                <img src={product.image} alt={"pic-card-purchase " + index} />
+                                                <img src={product.image1} alt={"pic-card-purchase " + index} />
                                             </div>
 
                                             <div className="right">
                                                 <div className="text">
-                                                    <h5>Purchased on {new Date(product.createdAt).toLocaleDateString()}</h5>
+                                                    <h5>Purchased on {new Date(product.created_at).toLocaleDateString()}</h5>
                                                     <h3>{product.name}</h3>
                                                 </div>
 

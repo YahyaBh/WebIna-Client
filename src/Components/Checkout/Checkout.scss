@@ -109,7 +109,7 @@ body {
                         select {
                             flex-basis: 50%;
                             width: 100%;
-                            height: 35px;
+                            height: 40px;
                             -moz-box-sizing: border-box;
                             -webkit-box-sizing: border-box;
                             box-sizing: border-box;
@@ -119,6 +119,7 @@ body {
                             outline: none;
                             border: 2px solid var(--primary-color);
                             border-radius: 10px;
+                            font-size: 16px;
                         }
 
                         .email-not {
@@ -145,16 +146,34 @@ body {
 
                         .top {
                             width: 100%;
-                            background-color: var(--primary-color);
+                            background-color: transparent;
                             display: flex;
                             justify-content: space-between;
                             align-items: center;
+                            border-top: 1px solid var(--dark-color-primary);
+                            padding: 5px 0;
+                            transition: all 0.3s ease;
+                            cursor: pointer;
+
+                            &:hover {
+                                background-color: var(--light-color);
+                                border-top: 1px solid var(--light-color);
+                            }
 
                             .left {
                                 padding: 15px 20px;
                                 h3 {
-                                    color: var(--light-color);
+                                    color: var(--black-color);
                                 }
+                            }
+
+                            .img-method {
+                                width: 40px;
+                                height: 15px;
+                                background-color: #fff;
+                                object-fit: scale-down;
+                                padding: 4px 10px;
+                                border-radius: 30px;
                             }
 
                             .right {
@@ -164,17 +183,57 @@ body {
                                 align-items: center;
 
                                 svg {
-                                    color: var(--light-color);
+                                    color: var(--black-color);
                                     font-size: 20px;
+                                }
+                            }
+                        }
+
+                        .active-top {
+                            background-color: var(--primary-color);
+
+                            &:hover {
+                                background-color: #dddddd28;
+                                border-top: #dddddd28 1px solid;
+
+                                h3 {
+                                    color: #fff !important;
+                                }
+
+                                svg {
+                                    color: #fff !important;
+                                }
+                            }
+
+                            .left {
+                                h3 {
+                                    color: #1e1e1e;
+                                }
+                            }
+
+                            .right {
+                                svg {
+                                    color: #1e1e1e;
+                                    rotate: 90deg;
                                 }
                             }
                         }
 
                         .bottom {
                             width: 100%;
+                            height: 0px;
+                            opacity: 0;
+                            overflow: hidden;
+                            transition: all 0.3s ease;
+
                             p {
                                 padding: 20px;
                             }
+                        }
+
+                        .active-bottom {
+                            height: 60px;
+                            opacity: 1;
                         }
                     }
 
@@ -186,16 +245,36 @@ body {
 
                         .top {
                             width: 100%;
-                            background-color: var(--primary-color);
+                            background-color: transparent;
                             display: flex;
                             justify-content: space-between;
                             align-items: center;
+                            border-top: 1px solid var(--dark-color-primary);
+                            padding: 5px 0;
+                            transition: all 0.3s ease;
+                            cursor: pointer;
+                            border-bottom-left-radius: 10px;
+                            border-bottom-right-radius: 10px;
+
+                            &:hover {
+                                background-color: var(--light-color);
+                                border-top: 1px solid var(--light-color);
+                            }
 
                             .left {
                                 padding: 15px 20px;
                                 h3 {
-                                    color: var(--light-color);
+                                    color: var(--black-color);
                                 }
+                            }
+
+                            .img-method {
+                                width: 40px;
+                                height: 15px;
+                                background-color: #fff;
+                                object-fit: scale-down;
+                                padding: 4px 10px;
+                                border-radius: 30px;
                             }
 
                             .right {
@@ -203,16 +282,51 @@ body {
                                 display: flex;
                                 justify-content: center;
                                 align-items: center;
+                                gap: 10px;
 
                                 svg {
-                                    color: var(--light-color);
+                                    color: var(--black-color);
                                     font-size: 20px;
+                                }
+                            }
+                        }
+
+                        .active-top {
+                            background-color: var(--primary-color);
+
+                            &:hover {
+                                background-color: #dddddd28;
+                                border-top: #dddddd28 1px solid;
+
+                                h3 {
+                                    color: #fff !important;
+                                }
+
+                                svg {
+                                    color: #fff !important;
+                                }
+                            }
+
+                            .left {
+                                h3 {
+                                    color: #1e1e1e;
+                                }
+                            }
+
+                            .right {
+                                svg {
+                                    color: #1e1e1e;
+                                    rotate: 90deg;
                                 }
                             }
                         }
 
                         .bottom {
                             width: 100%;
+                            height: 0px;
+                            opacity: 0;
+                            overflow: hidden;
+                            transition: all 0.3s ease;
 
                             .topper {
                                 h3 {
@@ -220,6 +334,11 @@ body {
                                     justify-content: center;
                                     align-items: center;
                                     gap: 5px;
+                                }
+
+                                img {
+                                    height: 30px;
+                                    object-fit: scale-down;
                                 }
 
                                 padding: 10px;
@@ -332,6 +451,11 @@ body {
                             }
                         }
 
+                        .active-bottom {
+                            height: max-content;
+                            opacity: 1;
+                        }
+
                         .powered-by {
                             display: flex;
                             justify-content: center;
@@ -406,7 +530,7 @@ body {
                         flex-direction: column;
                         gap: 10px;
                         width: 100%;
-                        padding-bottom: 10px;
+                        padding-bottom: 30px;
                         border-bottom: 1px solid var(--primary-color);
 
                         .card {
@@ -483,6 +607,101 @@ body {
                                 }
                             }
                         }
+                    }
+
+                    .total {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100%;
+                        gap: 15px;
+
+                        hr {
+                            width: 98%;
+                            opacity: 0.8;
+                        }
+
+                        .subtotal {
+                            width: 100%;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            h4 {
+                                font-size: 16px;
+                                color: var(--black-color);
+                                font-weight: 400;
+                            }
+                        }
+
+                        .discount {
+                            width: 100%;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+
+                            h4 {
+                                font-size: 14px;
+                                color: var(--black-color);
+                                font-weight: 500;
+                                opacity: 0.6;
+                            }
+                        }
+
+                        .total-price {
+                            width: 100%;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+
+                            h3 {
+                                font-size: 20px;
+
+                                &:nth-child(2) {
+                                    font-weight: 400;
+                                    color: var(--primary-color);
+                                }
+                            }
+                        }
+                    }
+
+                    .checkout-button {
+                        width: 80%;
+                        background-color: var(--primary-color);
+                        padding: 10px 25px;
+                        outline: none;
+                        border: none;
+                        border-radius: 20px;
+                        margin: auto;
+                        font-size: 20px;
+                        font-weight: 600;
+                        transition:
+                            background-color 0.3s ease,
+                            box-shadow 0.3s ease;
+                        cursor: pointer;
+                        &:hover {
+                            background-color: darken(#ffe662, 10%);
+                            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); // Add a subtle box shadow on hover
+                        }
+                    }
+
+                    .paypal-checkout {
+                        width: 60%;
+                        margin: auto;
+                        text-align: center;
+                        display: flex;
+                        justify-content: center;
+                        flex-direction: column;
+                        gap: 10px;
+                        background-color: var(--primary-color);
+                        padding: 8px 15px;
+                        border-radius: 20px;
+
+
+                        h3 {
+                            color: #1e1e1e;
+                        }
+                        
                     }
                 }
             }

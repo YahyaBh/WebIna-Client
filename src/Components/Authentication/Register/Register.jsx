@@ -1,20 +1,23 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from "react-router-dom";
-import './Register.scss'
-import AuthContext from '../../../Context/AuthContext'
 import Cookies from 'js-cookie';
 import { MdLanguage } from 'react-icons/md';
-import { FaFacebook, FaGoogle, FaMoon, FaSun } from 'react-icons/fa';
+import { FaMoon, FaSun } from 'react-icons/fa';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
+
+import Swal from 'sweetalert2';
+import i18next from 'i18next';
+import { Helmet } from 'react-helmet-async';
+
+
+import './Register.scss'
+import AuthContext from '../../../Context/AuthContext'
 import { ThemeContext } from '../../../Context/ThemeContext';
 import LogoDark from '../../../Assets/Home/Navbar/WEBINA-Logo.png'
 import Logo from '../../../Assets/Home/Navbar/WEBINA2.png'
 import SignUp from '../../../Assets/SignUp/SignUpGraph.svg'
 import EmailVerf from '../../../Assets/SignUp/Confirmed-cuate.svg'
-import Swal from 'sweetalert2';
-import i18next from 'i18next';
-import { Helmet } from 'react-helmet-async';
-
+import SocialLoginButton from '../Login/SocialLoginButton'
 
 
 
@@ -330,8 +333,9 @@ const Register = () => {
 
 
                             <div className="google-facebook">
-                                <button><FaGoogle />Google</button>
-                                <button><FaFacebook />Facebook</button>
+                                <SocialLoginButton provider="facebook" register={true} />
+                                <SocialLoginButton provider="google" register={true} />
+
                             </div>
                         </div>
 
