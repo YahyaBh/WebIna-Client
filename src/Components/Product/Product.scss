@@ -72,6 +72,7 @@
             .buttons {
                 display: flex;
                 gap: 10px;
+                
 
                 button {
                     padding: 10px;
@@ -411,13 +412,20 @@
                         gap: 10px;
                         width: 60%;
 
-                        button:nth-child(1) {
+                        a {
                             width: 50%;
                             height: 40px;
                             background-color: var(--light-color);
                             color: var(--black-color);
                             outline: none;
                             border: 2px var(--black-color) solid;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            font-size: 18px;
+                            transition: all 0.3s ease;
+                            cursor: pointer;
+
 
                             &:hover {
                                 background-color: var(--black-color);
@@ -425,9 +433,19 @@
                             }
                         }
 
-                        button:nth-child(2) {
+                        .disabled {
+                            filter: grayscale(90%);
+                            opacity: .3;
+
+                            &:hover {
+                                background-color: var(--light-color);
+                                color: var(--black-color);
+                            }
+                        }
+
+                        button {
                             width: 50%;
-                            height: 40px;
+                            height: 43px;
                             background-color: var(--black-color);
                             color: var(--light-color);
                             outline: none;

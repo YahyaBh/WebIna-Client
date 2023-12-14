@@ -158,7 +158,7 @@
                 cursor: pointer;
 
                 &:hover {
-                    transform: scale(.97);
+                    transform: scale(0.97);
                 }
             }
 
@@ -206,6 +206,7 @@
             img {
                 width: 50px;
                 border-radius: 50%;
+                height: 50px;
             }
 
             .dropdown-menu {

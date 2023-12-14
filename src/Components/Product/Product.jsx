@@ -23,6 +23,7 @@ import ImageLoader from '../Layout/ImageLoader/ImageLoader'
 
 const Product = () => {
 
+    const [loadingPDF, setLoadingPDF] = useState(false)
 
     const [product, setProduct] = useState([])
     const [loading, setLoading] = useState(true);
@@ -31,7 +32,7 @@ const Product = () => {
     const [inCart, setInCart] = useState(false);
 
 
-    const { sec_http } = AuthUser();
+    const { sec_http, file_download } = AuthUser();
     const { isAsideOpen } = useStoreContext();
 
     const { token } = useParams();
@@ -150,6 +151,24 @@ const Product = () => {
             })
     }
 
+
+    const downloadHandler = () => {
+        setLoadingPDF(true)
+        file_download.get(`/api/store/product/download/${token}`, { responseType: 'blob' })
+            .then((response) => {
+                const url = window.URL.createObjectURL(new Blob([response.data]));
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', 'file.pdf'); //or any other extension
+                document.body.appendChild(link);
+                link.click();
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+
+    }
+
     return (
         loading ? <Loading /> :
             <>
@@ -243,7 +262,7 @@ const Product = () => {
                                             <BiCart />
                                             <h3><span>{product?.purchases}</span> Purchases</h3>
                                         </div>
-                                        <div className="cont">
+                                        <div className="cont" >
                                             <BiDownload />
                                             <h3><span>{product?.downloads}</span> Downloads</h3>
                                         </div>
@@ -288,8 +307,8 @@ const Product = () => {
 
 
                                         <div className="bottom-buttons">
-                                            <button>LIVE PREVIEW</button>
-                                            <button>DOWNLOAD PDF</button>
+                                            <a href={product?.link} target="_blank" rel="noreferrer noopener" className={product?.link ? '' : 'disabled'}  >LIVE PREVIEW</a>
+                                            <button onClick={() => downloadHandler()} className={product?.pdf ? '' : 'disabled'}>{loadingPDF ? 'Getting Info...' : 'Download PDF'}</button>
                                         </div>
                                     </div>
                                 </div>

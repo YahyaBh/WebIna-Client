@@ -49,7 +49,7 @@ const Store = () => {
             setFilter('All');
             getProducts();
         } else {
-            navigate('/', { replace: true });
+            navigate('/login', { replace: true });
         }
     }, []);
 

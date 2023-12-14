@@ -54,7 +54,7 @@ export default function AuthUser() {
         baseURL: baseUrl,
         headers: {
             'Authorization': `Bearer ${accessToken}`,
-            'Access-Control-Allow-Origin': 'http://localhost:3001/',
+            'Access-Control-Allow-Origin': 'http://localhost:3000/',
         },
         withCredentials: true,
     }) : null;
@@ -64,7 +64,7 @@ export default function AuthUser() {
         headers: {
             'content-type': 'multipart/form-data',
             'Authorization': `Bearer ${accessToken}`,
-            'Access-Control-Allow-Origin': 'http://localhost:3001/',
+            'Access-Control-Allow-Origin': 'http://localhost:3000/',
         }
     }) : null;
 
@@ -73,8 +73,19 @@ export default function AuthUser() {
         headers: {
             'content-type': 'multipart/form-data',
             'Authorization': `Bearer ${accessToken}`,
-            'Access-Control-Allow-Origin': 'http://localhost:3001/',
+            'Access-Control-Allow-Origin': 'http://localhost:3000/',
         }
+    });
+
+    const file_download = axios.create({
+        baseURL: `${baseUrl}/`,
+        headers: {
+            'Authorization': `Bearer ${accessToken}`,
+            'Access-Control-Allow-Origin': 'http://localhost:3000/',
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        responseType: 'blob'
     });
 
     const UserSession = () => {
@@ -132,6 +143,7 @@ export default function AuthUser() {
         sec_http,
         image_upload,
         file_upload,
+        file_download,
         getUser,
         setUser,
         getToken,
