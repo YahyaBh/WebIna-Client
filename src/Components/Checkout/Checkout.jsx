@@ -166,7 +166,6 @@ const Checkout = () => {
             paymentData.append('cvv', cvv);
             paymentData.append('saveCard', saveCard);
 
-            paymentData.append('products', products);
             paymentData.append('discount', discount);
             paymentData.append('total', total);
             paymentData.append('subtotal', subTotal);
@@ -709,9 +708,9 @@ const Checkout = () => {
 
                                                         <div className='info-row'>
                                                             <div className="inps">
-                                                                <input type="text" placeholder="12" maxLength={2} value={month} onChange={e => setMonth(e.target.value)} />
+                                                                <input type="text" placeholder="12" maxLength={2} value={month} onChange={e => setMonth(e.target.value)} max={12} />
                                                                 <h4>/</h4>
-                                                                <input type="text" placeholder="24" maxLength={2} value={year} onChange={e => setYear(e.target.value)} />
+                                                                <input type="text" placeholder="24" maxLength={2} value={year} onChange={e => setYear(e.target.value)} max={36} />
                                                             </div>
 
                                                             <div className="cvv">
