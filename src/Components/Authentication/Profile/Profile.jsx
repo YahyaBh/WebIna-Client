@@ -32,10 +32,24 @@ const Profile = () => {
     const [name, setName] = useState();
     const [phone, setPhone] = useState();
 
+    const [isChanged, SetIsChanged] = useState();
 
     const { isAsideOpen } = useStoreContext();
     const { user, setUser, sec_http } = AuthUser();
     const navigate = useNavigate();
+
+
+
+    useEffect(() => {
+
+        if(avatar !== '' || name !== user.name || phone !== user.phone) {
+            SetIsChanged(true)
+        } else {
+            SetIsChanged(false)
+        }
+
+    }, [avatar, avatarPrev, name, phone])
+
 
     useEffect(() => {
 
@@ -51,9 +65,7 @@ const Profile = () => {
         await sec_http.post('/api/user')
             .then((res) => {
                 setUser(res.data.user)
-
-                res.data.user?.avatar ? setAvatarPrev(res.data.user?.avatar) : setAvatar(null);
-
+                res.data.user?.avatar ? setAvatarPrev(res.data.user?.avatar) : setAvatar('http://localhost:8000/images/users/avatar/default/default_user_icon_4_by_karmaanddestiny_de7834s.jpg') && setAvatarPrev('http://localhost:8000/images/users/avatar/default/default_user_icon_4_by_karmaanddestiny_de7834s.jpg');
                 setLoading(false)
             })
             .catch((err) => {
@@ -81,6 +93,8 @@ const Profile = () => {
         } else {
             if (avatar) {
                 userNewData.append('avatar', avatar)
+            } else {
+                userNewData.append('avatar' , 'http://localhost:8000/images/users/avatar/default/default_user_icon_4_by_karmaanddestiny_de7834s.jpg')
             }
 
             if (name) {
@@ -94,8 +108,18 @@ const Profile = () => {
 
             await sec_http.post('/api/user/update', userNewData)
                 .then((res) => {
+
                     getUserData();
-                    alert('Profile updated successfully')
+
+                    Swal.fire({
+                        title: 'Profile Updated Successfully',
+                        text: "All the changments you've made are now saved",
+                        toast: true,
+                        timerProgressBar: true,
+                        timer: 3000,
+                        position: 'bottom-right',
+                        icon: 'success'
+                    })
                 })
                 .catch((err) => {
                     Swal.fire({
@@ -121,8 +145,8 @@ const Profile = () => {
 
     const imageRemove = () => {
         if (avatarPrev || avatar) {
-            setAvatar(null);
-            setAvatarPrev(null);
+            setAvatar('http://localhost:8000/images/users/avatar/default/default_user_icon_4_by_karmaanddestiny_de7834s.jpg')
+            setAvatarPrev('http://localhost:8000/images/users/avatar/default/default_user_icon_4_by_karmaanddestiny_de7834s.jpg');
         }
     }
 
@@ -215,7 +239,7 @@ const Profile = () => {
                                 </div>
 
 
-                                <button className='save-changes' onClick={e => updateUserInfo(e)}>Save Changes</button>
+                                <button className={isChanged ? `save-changes` : `save-changes disabled`} onClick={e => updateUserInfo(e)}>Save Changes</button>
 
                             </div>
 

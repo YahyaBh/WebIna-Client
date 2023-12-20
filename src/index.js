@@ -12,6 +12,7 @@ import Loading from './Components/Loading/Loading';
 import { ThemeProvider } from './Context/ThemeContext';
 import { StoreProvider } from './Context/StoreConetxt';
 
+
 const Root = () => {
   const [loading, setLoading] = useState(true);
 
@@ -51,7 +52,7 @@ root.render(
       <BrowserRouter>
         <ThemeProvider>
           <StoreProvider>
-            <Root />
+              <Root />
           </StoreProvider>
         </ThemeProvider>
       </BrowserRouter>

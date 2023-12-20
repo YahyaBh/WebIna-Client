@@ -33,7 +33,6 @@ import Cart from "./Components/Cart/Cart";
 
 
 
-import AuthUser from "./Context/AuthContext";
 import Checkout from "./Components/Checkout/Checkout";
 import Profile from "./Components/Authentication/Profile/Profile";
 import Purchases from "./Components/Authentication/Purchases/Purchases";
@@ -49,12 +48,8 @@ import Password from "./Components/Authentication/Password/Password";
 
 
 
-
-
 function App() {
 
-
-  const { csrf } = AuthUser();
 
 
   const languages = [
@@ -106,41 +101,6 @@ function App() {
   }, [currentLanguage, t])
 
 
-  useEffect(() => {
-    const responseInterceptor = axios.interceptors.response.use(
-      (response) => {
-        return response;
-      },
-      (error) => {
-        if (error.statusCode === 419) {
-          csrf();
-          window.location.reload();
-        }
-        handleError(error);
-        return Promise.reject(error);
-      }
-    );
-
-    return () => {
-      axios.interceptors.response.eject(responseInterceptor);
-    };
-  }, []);
-
-  const handleError = (error) => {
-    showErrorToast(error.message)
-  };
-
-  const showErrorToast = async (data) => {
-    Swal.fire({
-      text: data,
-      icon: 'error',
-      customClass: {
-        container: 'position-absolute'
-      },
-      toast: true,
-      position: 'bottom-right'
-    })
-  }
 
   return (
     <>
@@ -186,6 +146,7 @@ function App() {
 
 
       </Routes>
+
     </>
 
   );

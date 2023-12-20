@@ -242,6 +242,18 @@
                     outline: none;
                     border: none;
                     cursor: pointer;
+                    transition: all .4s ease;
+                    
+                    
+                    &:hover {
+                        transform: scale(1.09);
+                    }
+                }
+
+                .disabled {
+                    filter: grayscale(90%);
+                    opacity: .7;
+                    transform: scale(.97);
                 }
             }
         }

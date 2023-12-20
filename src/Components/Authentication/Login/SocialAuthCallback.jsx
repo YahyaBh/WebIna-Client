@@ -15,33 +15,38 @@ function SocialAuthCallback() {
 
     const { provider } = useParams();
     const navigate = useNavigate();
+
     useEffect(() => {
-        http(`/api/auth/${provider}/callback${location.search}`, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
-        })
-            .then((response) => {
-                return response;
+        if (provider) {
+            http(`/api/auth/${provider}/callback${location.search}`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
             })
-            .then((data) => {
-                console.log(data);
-                setAccessToken(data.data.token);
-                setUser(data.data.user);
-                setLoading(false);
-                UserSession();
-                navigate('/')
-            })
-            .catch ((err) => {
-            console.log(err);
-        })
+                .then((response) => {
+                    return response;
+                })
+                .then((data) => {
+                    console.log(data);
+                    setAccessToken(data.data.token);
+                    setUser(data.data.user);
+                    setLoading(false);
+                    UserSession();
+                    navigate('/')
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        } else {
+            navigate('/login', { replace: true })
+        }
 
-});
+    });
 
-if (loading) {
-    return <Loading />
-}
+    if (loading) {
+        return <Loading />
+    }
 }
 
 
