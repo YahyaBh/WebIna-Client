@@ -112,8 +112,14 @@ const Profile = () => {
 
                                             <div className="right">
                                                 <div className="text">
-                                                    <h5>Purchased on {new Date(product.created_at).toLocaleDateString()}</h5>
-                                                    <h3>{product.name}</h3>
+                                                    <div className="left-cont">
+                                                        <h5>Purchased on {new Date(product.created_at).toLocaleDateString()}</h5>
+                                                        <h3>{product.name}</h3>
+                                                    </div>
+
+                                                    <div className="right-cont">
+                                                        <p>Proccessing order</p>
+                                                    </div>
                                                 </div>
 
                                                 <div className="bottom">

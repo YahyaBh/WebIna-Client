@@ -39,6 +39,9 @@ import Purchases from "./Components/Authentication/Purchases/Purchases";
 import Cards from "./Components/Authentication/Cards/Cards";
 import Wishlist from "./Components/Authentication/Wishlist/Wishlist";
 import Password from "./Components/Authentication/Password/Password";
+import Success from "./Components/Checkout/Success/Success";
+import Failed from "./Components/Checkout/Failed/Failed";
+
 
 
 
@@ -132,12 +135,15 @@ function App() {
         <Route exact path='/store' element={<Store />} />
         <Route exact path='/store/home' element={<HomeStore />} />
         <Route exact path='/store/product/:token' element={<Product />} />
-        <Route exact path='/cart' element={<Cart />} />
-        <Route exact path='/checkout' element={<Checkout />} />
         <Route exact path='/purchases' element={<Purchases />} />
         <Route exact path='/user/cards' element={<Cards />} />
         <Route exact path='/favourite' element={<Wishlist />} />
 
+        {/* Payment routes */}
+        <Route exact path='/cart' element={<Cart />} />
+        <Route exact path='/checkout' element={<Checkout />} />
+        <Route exact path='/order/success' element={<Success />} />
+        <Route exact path='/order/failed' element={<Failed />} />
 
 
         <Route exact path='/maintanence' element={<Maintanence />} />

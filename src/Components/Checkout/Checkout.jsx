@@ -172,11 +172,9 @@ const Checkout = () => {
 
             await sec_http.post('/api/order/checkout', paymentData)
                 .then((res) => {
-                    console.log(res);
                     navigate('/order/success', { replace: true })
                 })
                 .catch((err) => {
-                    console.error(err);
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
