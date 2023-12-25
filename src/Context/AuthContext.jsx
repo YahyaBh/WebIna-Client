@@ -37,6 +37,9 @@ export default function AuthUser() {
     const setRememberToken = (data) => { cookie.set('__remember_token', data, { sameSite: 'Lax', secure: true }) };
 
 
+    const setPaymentSuccess = cookie.set('__PAYMENT', true, { sameSite: 'Lax', secure: true });
+    const setPaymentFailed = cookie.set('__PAYMENT', false, { sameSite: 'Lax', secure: true });
+
     const csrf = async () => await http.get('/sanctum/csrf-cookie');
 
 
@@ -137,6 +140,14 @@ export default function AuthUser() {
         }
     }
 
+    const clearPaymentStatus = () => {
+        if (isAuthenticated) {
+            cookie.remove('__PAYMENT');
+        } else {
+            return;
+        }
+    }
+
     return {
         http,
         csrf,
@@ -159,6 +170,9 @@ export default function AuthUser() {
         UserSession,
         GetUserSession,
         isFirstAccess,
-        deleteFirstAccess
+        deleteFirstAccess,
+        setPaymentSuccess,
+        setPaymentFailed,
+        clearPaymentStatus
     }
 }

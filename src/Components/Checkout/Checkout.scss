@@ -800,7 +800,30 @@ body {
                             background-color: darken(#ffe662, 10%);
                             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); // Add a subtle box shadow on hover
                         }
+
+                        .spinner-loading {
+                            svg {
+                                color: #1e1e1e;
+                                animation: spinning infinite 2s ease-in;
+
+                                @keyframes spinning {
+                                    0% {
+                                        rotate: 0deg;
+                                    }
+
+                                    75% {
+                                        rotate : 250deg;
+                                    }
+
+                                    100% {
+                                        rotate: 360deg;
+                                    }
+                                }
+                            }
+                        }
                     }
+
+                    .disabled-checkout
 
                     .paypal-checkout {
                         width: 60%;

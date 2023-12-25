@@ -12,7 +12,7 @@ import { BiCart, BiPackage, BiWallet } from 'react-icons/bi'
 import { MdVerified } from 'react-icons/md'
 import { BsFillStarFill, BsStar, BsStarHalf } from 'react-icons/bs'
 import { IoIosArrowForward, IoMdDocument } from "react-icons/io";
-
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 import StripePIC from '../../Assets/Cart/stripe.png'
 import PayPal from '../../Assets/Checkout/paypal.png'
@@ -23,6 +23,7 @@ import AuthUser from '../../Context/AuthContext'
 import Swal from 'sweetalert2'
 import { CLIENT_ID } from '../../config'
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import Cookies from 'js-cookie'
 
 
 const Checkout = () => {
@@ -40,7 +41,7 @@ const Checkout = () => {
 
     const [paypalOrder, setPaypalOrder] = useState({});
 
-    const { sec_http, isAuthenticated } = AuthUser();
+    const { sec_http, isAuthenticated , setPaymentSuccess } = AuthUser();
 
 
     const [nameInput, setNameInput] = useState('');
@@ -56,6 +57,9 @@ const Checkout = () => {
     const [cvv, setCvv] = useState('');
 
     const [saveCard, setSaveCard] = useState(false);
+
+
+    const [paymentProcessing, setPaymentProcessing] = useState(false);
 
     const navigate = useNavigate();
 
@@ -115,7 +119,6 @@ const Checkout = () => {
 
 
 
-
     const renderStars = (e) => {
         const maxRating = 5;
         const stars = [];
@@ -145,12 +148,11 @@ const Checkout = () => {
     };
 
 
-
     const handlePayment = async () => {
 
         if (method === 'card') {
 
-
+            setPaymentProcessing(true);
             // Prepare form data including the token
             const paymentData = new FormData();
 
@@ -172,7 +174,11 @@ const Checkout = () => {
 
             await sec_http.post('/api/order/checkout', paymentData)
                 .then((res) => {
+                    if (res.data.success) {
+                        setPaymentSuccess();
+                    }
                     navigate('/order/success', { replace: true })
+                    setPaymentProcessing(false);
                 })
                 .catch((err) => {
                     Swal.fire({
@@ -180,10 +186,10 @@ const Checkout = () => {
                         title: 'Error',
                         text: err?.response?.data?.message,
                     });
+                    setPaymentProcessing(false);
                     // Handle error
                 });
         }
-
 
         else if (method === 'paypal') {
 
@@ -201,6 +207,7 @@ const Checkout = () => {
                 })
 
         }
+
     }
 
     const createOrder = (data, actions) => {
@@ -301,14 +308,9 @@ const Checkout = () => {
             spacedCardNumber = formattedCardNumber.slice(0, 16).replace(/(\d{4})/g, '$1 ');
         }
 
-        // Remove spaces for state storage
-        const cardNumberWithoutSpaces = formattedCardNumber;
-
         // Update state with the formatted card number without spaces
         setCardNumber(spacedCardNumber.trimRight());
 
-        // If you want to save the card number without spaces in a separate state, uncomment the line below
-        // setCardNumberWithoutSpaces(cardNumberWithoutSpaces);
     };
 
     return (loading ? <Loading /> :
@@ -810,7 +812,7 @@ const Checkout = () => {
                                     </div>
 
                                     {method === '' ? '' : method === 'card' ? <button className="checkout-button" onClick={e => handlePayment()}>
-                                        CHECKOUT YOUR ORDER
+                                        {paymentProcessing ? <span className="spinner-loading"><AiOutlineLoading3Quarters /></span> : "CHECKOUT YOUR ORDER"}
 
                                     </button> :
                                         <div className="paypal-checkout">
