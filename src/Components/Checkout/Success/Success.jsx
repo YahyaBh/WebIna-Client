@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 
 import Loading from '../../Loading/Loading'
 
+import './Success.scss'
+
 import { Helmet } from 'react-helmet-async'
 
 import { RiVerifiedBadgeFill } from "react-icons/ri";
@@ -31,8 +33,6 @@ const Success = () => {
     useEffect(() => {
 
         if (isAuthenticated) {
-
-
             if (Cookies.get('__PAYMENT') === 'success') {
                 setLoading(false);
                 Cookies.remove('__PAYMENT');
