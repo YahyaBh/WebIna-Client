@@ -11,15 +11,17 @@ import AuthUser from '../../../Context/AuthContext'
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
 import { useStoreContext } from '../../../Context/StoreConetxt'
-import { BiDotsHorizontalRounded, BiDownload, BiExit, BiLogoMastercard, BiPlus, BiQuestionMark, BiUser, BiX } from 'react-icons/bi'
+import { BiCreditCard, BiExit, BiPlus, BiQuestionMark, BiUser, BiX } from 'react-icons/bi';
+import { RiVisaFill } from "react-icons/ri";
+import { RiMastercardLine } from "react-icons/ri";
 import { PiCarThin } from 'react-icons/pi'
 import { BsHeart } from 'react-icons/bs'
 import { CgCreditCard, CgPassword } from 'react-icons/cg'
 import { TbReport } from 'react-icons/tb'
 import Loading from '../../Loading/Loading'
+import { FaCcDiscover } from 'react-icons/fa'
 
 
-import { MdReviews } from 'react-icons/md'
 
 const Profile = () => {
 
@@ -115,11 +117,11 @@ const Profile = () => {
 
 
                                     <div className="body">
-                                        {cards.length > 0 ? cards.map((card, index) => (
+                                        {cards?.length > 0 ? cards?.map((card, index) => (
                                             <div className="card" key={index}>
-                                                <h3>{card.card_type === "mastercard" ? `Mastercard  ${< BiLogoMastercard />}` : card.card_type === "visa" ? `Visa ${< BiLogoMastercard />}` : card.card_type === "amex" ? `Amex ${< BiLogoMastercard />}` : card.card_type === 'discover' ? `Discover ${< BiLogoMastercard />}` : ''}</h3>
-                                                <h3>******** 4352</h3>
-                                                <h3>03/24</h3>
+                                                <h3 className='card-brand'>{card.card_type}{card.card_type === 'mastercard' ? <RiMastercardLine /> : card.card_type === 'visa' ?  <RiVisaFill /> : card.card_type === 'discover' ? <FaCcDiscover /> : <BiCreditCard />}</h3>
+                                                <h3>******** {card.card_last_four}</h3>
+                                                <h3>{card.exp_month}/{card.exp_year}</h3>
                                                 <h3><BiX /></h3>
                                             </div>
                                         )) :

@@ -142,8 +142,8 @@ function App() {
         {/* Payment routes */}
         <Route exact path='/cart' element={<Cart />} />
         <Route exact path='/checkout' element={<Checkout />} />
-        <Route exact path='/order/success' element={<Success />} />
-        <Route exact path='/order/failed' element={<Failed />} />
+        <Route exact path='/payment/success' element={<Success />} />
+        <Route exact path='/payment/failed' element={<Failed />} />
 
 
         <Route exact path='/maintanence' element={<Maintanence />} />

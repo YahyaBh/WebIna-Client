@@ -41,7 +41,7 @@ const Checkout = () => {
 
     const [paypalOrder, setPaypalOrder] = useState({});
 
-    const { sec_http, isAuthenticated , setPaymentSuccess } = AuthUser();
+    const { sec_http, isAuthenticated} = AuthUser();
 
 
     const [nameInput, setNameInput] = useState('');
@@ -104,7 +104,7 @@ const Checkout = () => {
 
     const getCartProduct = async () => {
 
-        await sec_http.post('/api/user/incart')
+        await sec_http.post('/api/user/cart/incart')
             .then((res) => {
                 setProducts(res.data.products);
             })
@@ -174,21 +174,15 @@ const Checkout = () => {
 
             await sec_http.post('/api/order/checkout', paymentData)
                 .then((res) => {
-                    if (res.data.success) {
-                        setPaymentSuccess();
-                    }
-                    navigate('/order/success', { replace: true })
-                    setPaymentProcessing(false);
+                    navigate('/payment/success', { replace: true })
+                    Cookies.set('__PAYMENT', 'success', { sameSite: 'Lax', secure: true })
                 })
                 .catch((err) => {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: err?.response?.data?.message,
-                    });
-                    setPaymentProcessing(false);
-                    // Handle error
+                    navigate('/payment/failed', { replace: true })
+                    Cookies.set('__PAYMENT', 'failed', { sameSite: 'Lax', secure: true })
+                    console.log(err);
                 });
+            setPaymentProcessing(false);
         }
 
         else if (method === 'paypal') {
@@ -821,6 +815,7 @@ const Checkout = () => {
                                                 style={{ layout: "vertical", color: 'white', lebel: 'CHECKOUT YOUR ORDER' }}
                                                 createOrder={createOrder}
                                                 onApprove={onApprove}
+                                                onError={onError}
                                             />
                                         </div>}
                                 </div>

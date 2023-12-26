@@ -37,8 +37,6 @@ export default function AuthUser() {
     const setRememberToken = (data) => { cookie.set('__remember_token', data, { sameSite: 'Lax', secure: true }) };
 
 
-    const setPaymentSuccess = cookie.set('__PAYMENT', true, { sameSite: 'Lax', secure: true });
-    const setPaymentFailed = cookie.set('__PAYMENT', false, { sameSite: 'Lax', secure: true });
 
     const csrf = async () => await http.get('/sanctum/csrf-cookie');
 
@@ -171,8 +169,6 @@ export default function AuthUser() {
         GetUserSession,
         isFirstAccess,
         deleteFirstAccess,
-        setPaymentSuccess,
-        setPaymentFailed,
         clearPaymentStatus
     }
 }

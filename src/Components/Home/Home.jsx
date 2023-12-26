@@ -98,7 +98,7 @@ const Home = () => {
         });
 
         if (isAuthenticated) {
-            navigate('/store/home')
+            navigate('/store')
         } else {
 
             window.addEventListener('scroll', handleScroll);

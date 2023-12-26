@@ -165,6 +165,17 @@
                                 align-items: center;
                                 gap: 10px;
                                 color: var(--black-color);
+
+                                &:nth-child(1) {
+                                    text-transform: capitalize;
+                                }
+                                
+                            }
+
+                            .card-brand {
+                                svg {
+                                    font-size: 30px;
+                                }
                             }
 
                             svg {

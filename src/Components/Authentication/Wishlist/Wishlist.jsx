@@ -42,7 +42,7 @@ const Profile = () => {
 
     const getUserData = async () => {
 
-        await sec_http.post('/api/user/wishlist')
+        await sec_http.post('/api/user/cart/wishlist')
             .then((res) => {
                 setProducts(res.data.products)
                 setLoading(false)

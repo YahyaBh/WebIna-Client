@@ -41,7 +41,7 @@ const Profile = () => {
 
 
     const getUserData = async () => {
-        await sec_http.post('/api/user/purchased')
+        await sec_http.post('/api/user/cart/purchased')
             .then((res) => {
                 setProducts(res.data.products)
                 setLoading(false)

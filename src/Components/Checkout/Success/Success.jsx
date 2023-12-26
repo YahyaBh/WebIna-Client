@@ -11,11 +11,12 @@ import { RiVerifiedBadgeFill } from "react-icons/ri";
 
 import AuthUser from '../../../Context/AuthContext'
 import Cookies from 'js-cookie'
+import NavbarStore from '../../Layout/Navbar/NavbarStore'
 
 
 const Success = () => {
 
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
 
 
@@ -41,10 +42,11 @@ const Success = () => {
             } else {
                 navigate('/', { replace: true })
             }
-
         } else {
-            navigate('/', { replace: true })
+            navigate('/login', { replace: true })
         }
+
+
     }, []);
 
 
@@ -58,6 +60,9 @@ const Success = () => {
             </Helmet>
 
 
+            <NavbarStore />
+
+
             <Profiler id="success-payment">
 
                 <div className="checkout-success">
@@ -68,6 +73,13 @@ const Success = () => {
                         <h1>Your order is confirmed</h1>
 
                         <p>Thank you for your order , we're processing it right now , please wait until one of our customer service agents contact you for further details about the product configruation.</p>
+
+
+                        <div className="buttons">
+                            <button onClick={() => navigate('/')}>Home</button>
+
+                            <button onClick={() => navigate('/purchases')}>Orders</button>
+                        </div>
                     </div>
                 </div>
             </Profiler>
