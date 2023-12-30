@@ -41,6 +41,7 @@ import Wishlist from "./Components/Authentication/Wishlist/Wishlist";
 import Password from "./Components/Authentication/Password/Password";
 import Success from "./Components/Checkout/Success/Success";
 import Failed from "./Components/Checkout/Failed/Failed";
+import Custom from "./Components/Custom/Custom";
 
 
 
@@ -135,6 +136,9 @@ function App() {
         <Route exact path='/store' element={<Store />} />
         <Route exact path='/store/home' element={<HomeStore />} />
         <Route exact path='/store/product/:token' element={<Product />} />
+
+        <Route exact path='/custom' element={<Custom />} />
+
         <Route exact path='/purchases' element={<Purchases />} />
         <Route exact path='/user/cards' element={<Cards />} />
         <Route exact path='/favourite' element={<Wishlist />} />

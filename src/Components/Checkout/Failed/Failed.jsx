@@ -32,10 +32,13 @@ const Failed = () => {
 
     useEffect(() => {
 
-        if(isAuthenticated) {
+        if (isAuthenticated) {
             if (Cookies.get('__PAYMENT') === 'failed') {
                 setLoading(false);
-                Cookies.remove('__PAYMENT');
+
+                setTimeout(() => {
+                    Cookies.remove('__PAYMENT');
+                }, 3000);
             } else if (Cookies.get('__PAYMENT') === 'success') {
                 navigate('/order/success', { replace: true })
             } else {
@@ -44,7 +47,7 @@ const Failed = () => {
         } else {
             navigate('/login', { replace: true })
         }
-        
+
 
 
     }, []);

@@ -1,19 +1,21 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Logo from '../../../Assets/Home/Navbar/WEBINA2.png';
 import LogoLight from '../../../Assets/Home/Navbar/WEBINA-Logo.png';
+
+
 import './Navbar.scss'
+
+
 import { MdLanguage, MdKeyboardArrowDown } from 'react-icons/md'
 import { FaMoon, FaSun } from 'react-icons/fa'
 import { BiUser } from 'react-icons/bi'
 import { FiUserPlus } from 'react-icons/fi'
 import { BsListNested } from 'react-icons/bs';
-import Ecommerce from '../../../Assets/Home/Navbar/Add to Cart-cuate.svg'
 import Morocco from '../../../Assets/Home/Navbar/Languages/Flag_of_Morocco.svg.png'
 import English from '../../../Assets/Home/Navbar/Languages/Flag_of_the_United_Kingdom.svg.png'
 import French from '../../../Assets/Home/Navbar/Languages/Flag_of_France.svg.png'
 import { ThemeContext } from "../../../Context/ThemeContext";
 import AuthContext from '../../../Context/AuthContext';
-import Profile from '../../../Assets/profiles/default.svg'
 import i18next from 'i18next';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 
@@ -21,34 +23,14 @@ const Navbar = ({ isOpen, transparent }) => {
 
 
     const [scrolled, setScrolled] = useState(false);
-    const [selectedProduct, SetselectedProduct] = useState('');
     const [asideShow, setAsideShow] = useState(false)
     const [language, setLanguage] = useState(false)
-    const modalClassName = isOpen ? 'modal-animation active' : 'modal-animation';
 
 
     const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
-    const { isAuthenticated, user , logout } = AuthContext();
+    const { isAuthenticated, user, logout , cartCounter } = AuthContext();
 
-    useEffect(() => {
-        const disableScroll = (event) => {
-            event.preventDefault();
-        };
-
-
-        if (selectedProduct) {
-            // Disable scrolling when the component mounts and the state is not empty
-            document.body.style.overflow = 'hidden';
-            document.addEventListener('wheel', disableScroll);
-        }
-
-        return () => {
-            // Enable scrolling and remove event listener when the component unmounts
-            document.body.style.overflow = 'auto';
-            document.removeEventListener('wheel', disableScroll);
-        };
-    }, [selectedProduct]);
 
     useEffect(() => {
         // Add event listener when the component mounts
@@ -94,37 +76,7 @@ const Navbar = ({ isOpen, transparent }) => {
             <nav id='navbar' className={scrolled ? 'scrolled' : '' || transparent ? 'transparent' : ''}>
 
 
-                <div className={`modal-products ${modalClassName}  ${selectedProduct ? 'active' : ''}`}>
-                    <div className="modal-content">
-                        <span className="close" onClick={e => SetselectedProduct('')}>&times;</span>
-                        <h2>Categories</h2>
-                        <div className='categories-container'>
-                            <div className='category'>
-                                <img src={Ecommerce} alt="E-commerce" />
-                                <h3>E-commerce</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa saepe molestiae, ipsum consequatur aperiam.</p>
-                            </div>
 
-                            <div className='category'>
-                                <img src={Ecommerce} alt="E-commerce" />
-                                <h3>E-commerce</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa saepe molestiae, ipsum consequatur aperiam.</p>
-                            </div>
-
-                            <div className='category'>
-                                <img src={Ecommerce} alt="E-commerce" />
-                                <h3>E-commerce</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa saepe molestiae, ipsum consequatur aperiam.</p>
-                            </div>
-
-                            <div className='category'>
-                                <img src={Ecommerce} alt="E-commerce" />
-                                <h3>E-commerce</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa saepe molestiae, ipsum consequatur aperiam.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
 
 
@@ -136,24 +88,24 @@ const Navbar = ({ isOpen, transparent }) => {
 
                         <ul>
                             <li>
-                                {i18next.t("PRODUCTS")} <MdKeyboardArrowDown />
+                                Services <MdKeyboardArrowDown />
                                 <ul className="dropdown-menu">
-                                    {/* <li onClick={e => SetselectedProduct('website')}>Website</li>
-                                    <li onClick={e => SetselectedProduct('ui/ux')}>UI/UX Design</li>
-                                    <li onClick={e => SetselectedProduct('mobile-apps')}>Mobile Application</li>
-                                    <li onClick={e => SetselectedProduct('desktop-apps')} >Desktop Application</li>
-                                    <li onClick={e => SetselectedProduct('games')}>Games</li>
-                                    <li onClick={e => SetselectedProduct('social-media-design')}>Social Media Designing</li>
-                                    <li onClick={e => SetselectedProduct('nfts-design')}>NFTs Designing</li> */}
+                                    <li >Website</li>
+                                    <li >UI/UX Design</li>
+                                    <li >Mobile Application</li>
+                                    <li  >Desktop Application</li>
+                                    <li >Games</li>
+                                    <li >Social Media Designing</li>
+                                    <li >NFTs Designing</li>
                                 </ul>
                             </li>
-                            <li><a href='/maintanence'>{i18next.t("CUSTOM")}</a></li>
-                            <li><a href='/maintanence'>{i18next.t("PRICING")}</a></li>
-                            <li><a href='/maintanence'>{i18next.t("BLOGS")}</a></li>
+                            <li><a href='/custom'>{i18next.t("CUSTOM")}</a></li>
+                            <li><a href='/custom'>{i18next.t("PRICING")}</a></li>
+                            <li><a href='/blogs'>{i18next.t("BLOGS")}</a></li>
                             <li><a href='/about'>{i18next.t("ABOUT_US")}</a></li>
-                            <li><a href='/maintanence'>{i18next.t("FAQs")}</a></li>
+                            <li><a href='/faqs'>{i18next.t("FAQs")}</a></li>
                             <li><a href='/jobs'>{i18next.t("HIRE_ME")}</a></li>
-                            <li><a href='/maintanence'>{i18next.t("CONTACT_US")}</a></li>
+                            <li><a href='/contact'>{i18next.t("CONTACT_US")}</a></li>
                         </ul>
 
                         <div className='right-container'>
@@ -179,7 +131,7 @@ const Navbar = ({ isOpen, transparent }) => {
 
                                 {isDarkMode ? <FaSun onClick={toggleTheme} /> : <FaMoon onClick={toggleTheme} />}
 
-                                {isAuthenticated ? <a href="/cart"><AiOutlineShoppingCart /></a> : ''}
+                                {isAuthenticated ? <a href="/cart"><AiOutlineShoppingCart />{cartCounter > 0 ? <span>{cartCounter}</span> : null}</a> : ''}
                             </div>
 
                             {isAuthenticated ?
@@ -235,23 +187,24 @@ const Navbar = ({ isOpen, transparent }) => {
 
                         <ul className='list'>
                             <li>
-                                {i18next.t("PRODUCTS")} <MdKeyboardArrowDown />
+                                Services <MdKeyboardArrowDown />
                                 <ul className="dropdown-menu">
-                                    {/* <li onClick={e => SetselectedProduct('website')}>Website</li>
-                                    <li onClick={e => SetselectedProduct('ui/ux')}>UI/UX Design</li>
-                                    <li onClick={e => SetselectedProduct('mobile-apps')}>Mobile Application</li>
-                                    <li onClick={e => SetselectedProduct('desktop-apps')} >Desktop Application</li>
-                                    <li onClick={e => SetselectedProduct('games')}>Games</li>
-                                    <li onClick={e => SetselectedProduct('social-media-design')}>Social Media Designing</li>
-                                    <li onClick={e => SetselectedProduct('nfts-design')}>NFTs Designing</li> */}
+                                    <li >Website</li>
+                                    <li >UI/UX Design</li>
+                                    <li >Mobile Application</li>
+                                    <li  >Desktop Application</li>
+                                    <li >Games</li>
+                                    <li >Social Media Designing</li>
+                                    <li >NFTs Designing</li>
                                 </ul>
                             </li>
-                            <li><a href='/maintanence'>{i18next.t("PRICING")}</a></li>
-                            <li><a href='/maintanence'>{i18next.t("BLOGS")}</a></li>
+                            <li><a href='/custom'>{i18next.t("CUSTOM")}</a></li>
+                            <li><a href='/custom'>{i18next.t("PRICING")}</a></li>
+                            <li><a href='/blogs'>{i18next.t("BLOGS")}</a></li>
                             <li><a href='/about'>{i18next.t("ABOUT_US")}</a></li>
-                            <li><a href='/maintanence'>{i18next.t("FAQs")}</a></li>
-                            <li><a href='/maintanence'>{i18next.t("HIRE_ME")}</a></li>
-                            <li><a href='/maintanence'>{i18next.t("CONTACT_US")}</a></li>
+                            <li><a href='/faqs'>{i18next.t("FAQs")}</a></li>
+                            <li><a href='/jobs'>{i18next.t("HIRE_ME")}</a></li>
+                            <li><a href='/contact'>{i18next.t("CONTACT_US")}</a></li>
                         </ul>
                     </aside>
                 </div>

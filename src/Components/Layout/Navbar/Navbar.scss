@@ -322,6 +322,13 @@
             z-index: 1;
             top: 25px;
             transition: all 0.5s ease-in;
+            height: 0px;
+            overflow: hidden;
+
+            &:hover {
+                height: 300px !important;
+                transition: all 0.5s ease-in;
+            }
         }
 
         .dropdown-menu li {
@@ -338,7 +345,7 @@
         }
 
         li:hover .dropdown-menu {
-            height: 220px !important;
+            height: 300px !important;
             transition: all 0.5s ease-in;
         }
 

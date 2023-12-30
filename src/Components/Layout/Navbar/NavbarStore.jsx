@@ -7,7 +7,6 @@ import { BiUser } from 'react-icons/bi'
 import { FiUserPlus } from 'react-icons/fi'
 import { BsList } from 'react-icons/bs';
 import { AiOutlineClose, AiOutlineSearch, AiOutlineShoppingCart } from 'react-icons/ai'
-import Ecommerce from '../../../Assets/Home/Navbar/Add to Cart-cuate.svg'
 import { ThemeContext } from "../../../Context/ThemeContext";
 import AuthContext from '../../../Context/AuthContext';
 import { MdKeyboardArrowDown } from 'react-icons/md';
@@ -18,32 +17,12 @@ const NavbarStore = ({ isOpen, transparent, isNotAside }) => {
 
 
     const [scrolled, setScrolled] = useState(false);
-    const [selectedProduct, SetselectedProduct] = useState('');
     const [language, setLanguage] = useState(false)
-    const modalClassName = isOpen ? 'modal-animation active' : 'modal-animation';
 
     const { isDarkMode, toggleTheme } = useContext(ThemeContext);
-    const { isAuthenticated, user, logout } = AuthContext();
     const { toggleAside, isAsideOpen } = useStoreContext();
 
-    useEffect(() => {
-        const disableScroll = (event) => {
-            event.preventDefault();
-        };
-
-
-        if (selectedProduct) {
-            // Disable scrolling when the component mounts and the state is not empty
-            document.body.style.overflow = 'hidden';
-            document.addEventListener('wheel', disableScroll);
-        }
-
-        return () => {
-            // Enable scrolling and remove event listener when the component unmounts
-            document.body.style.overflow = 'auto';
-            document.removeEventListener('wheel', disableScroll);
-        };
-    }, [selectedProduct]);
+    const { isAuthenticated, user, logout , cartCounter } = AuthContext();
 
     useEffect(() => {
         // Add event listener when the component mounts
@@ -75,37 +54,6 @@ const NavbarStore = ({ isOpen, transparent, isNotAside }) => {
     return (
         <>
             <nav id='store-navbar' className={scrolled ? 'scrolled-store' : '' || transparent ? 'transparent-store' : ''}>
-                <div className={`modal-products ${modalClassName}  ${selectedProduct ? 'active' : ''}`}>
-                    <div className="modal-content">
-                        <span className="close" onClick={e => SetselectedProduct('')}>&times;</span>
-                        <h2>Categories</h2>
-                        <div className='categories-container'>
-                            <div className='category'>
-                                <img src={Ecommerce} alt="E-commerce" />
-                                <h3>E-commerce</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa saepe molestiae, ipsum consequatur aperiam.</p>
-                            </div>
-
-                            <div className='category'>
-                                <img src={Ecommerce} alt="E-commerce" />
-                                <h3>E-commerce</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa saepe molestiae, ipsum consequatur aperiam.</p>
-                            </div>
-
-                            <div className='category'>
-                                <img src={Ecommerce} alt="E-commerce" />
-                                <h3>E-commerce</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa saepe molestiae, ipsum consequatur aperiam.</p>
-                            </div>
-
-                            <div className='category'>
-                                <img src={Ecommerce} alt="E-commerce" />
-                                <h3>E-commerce</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa saepe molestiae, ipsum consequatur aperiam.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
 
                 <div className='navbar'>
@@ -127,7 +75,7 @@ const NavbarStore = ({ isOpen, transparent, isNotAside }) => {
                             <div className='lang-mode'>
                                 <AiOutlineSearch />
                                 {isDarkMode ? <FaSun onClick={toggleTheme} /> : <FaMoon onClick={toggleTheme} />}
-                                <a href="/cart"><AiOutlineShoppingCart /></a>
+                                <a href="/cart"><AiOutlineShoppingCart />{cartCounter > 0 ? <span>{cartCounter}</span> : null}</a>
                             </div>
 
                             {isAuthenticated ?

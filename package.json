@@ -32,6 +32,7 @@
     "react-phone-number-input": "^3.3.7",
     "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
+    "react-scroll": "^1.9.0",
     "react-snap": "^1.23.0",
     "react-social-login": "^3.4.17",
     "react-social-login-buttons": "^3.9.1",

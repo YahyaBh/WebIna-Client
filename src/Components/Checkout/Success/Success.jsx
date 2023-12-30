@@ -36,7 +36,10 @@ const Success = () => {
         if (isAuthenticated) {
             if (Cookies.get('__PAYMENT') === 'success') {
                 setLoading(false);
-                Cookies.remove('__PAYMENT');
+
+                setTimeout(() => {
+                    Cookies.remove('__PAYMENT');
+                }, 3000);
             } else if (Cookies.get('__PAYMENT') === 'failed') {
                 navigate('/order/failed', { replace: true })
             } else {

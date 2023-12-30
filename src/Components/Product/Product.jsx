@@ -32,7 +32,7 @@ const Product = () => {
     const [inCart, setInCart] = useState(false);
 
 
-    const { sec_http, file_download } = AuthUser();
+    const { sec_http, file_download, setCartCounter } = AuthUser();
     const { isAsideOpen } = useStoreContext();
 
     const { token } = useParams();
@@ -99,6 +99,7 @@ const Product = () => {
                 .then((res) => {
                     setAddToCart(!addToCart);
                     setInCart(!inCart);
+                    setCartCounter(res.data.cart_count);
                     Swal.fire({
                         toast: true,
                         icon: 'success',
@@ -117,6 +118,7 @@ const Product = () => {
             await sec_http.post('/api/cart/remove/product', { product_token: token })
                 .then((res) => {
                     setInCart(!inCart);
+                    setCartCounter(res.data.cart_count);
                     Swal.fire({
                         toast: true,
                         icon: 'success',

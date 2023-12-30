@@ -36,7 +36,8 @@ export default function AuthUser() {
     const rememberToken = cookie.get('__remember_token') ? cookie.get('__remember_token') : null;
     const setRememberToken = (data) => { cookie.set('__remember_token', data, { sameSite: 'Lax', secure: true }) };
 
-
+    const cartCounter = cookie.get('CART_COUNTER__') ? cookie.get('CART_COUNTER__') : null;
+    const setCartCounter = (number) => { cookie.set('CART_COUNTER__', number, { sameSite: 'Lax', secure: true }) }
 
     const csrf = async () => await http.get('/sanctum/csrf-cookie');
 
@@ -169,6 +170,8 @@ export default function AuthUser() {
         GetUserSession,
         isFirstAccess,
         deleteFirstAccess,
-        clearPaymentStatus
+        clearPaymentStatus,
+        cartCounter,
+        setCartCounter
     }
 }

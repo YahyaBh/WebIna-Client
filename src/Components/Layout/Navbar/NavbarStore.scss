@@ -281,6 +281,24 @@
                     height: 22px;
                     padding: 5px;
                 }
+
+                a {
+                    position: relative;
+                    span {
+                        top: -5px;
+                        right: -5px;
+                        position: absolute;
+                        font-size: 12px;
+                        background-color: var(--black-color);
+                        color: var(--light-color);
+                        width: 15px;
+                        height: 15px;
+                        border-radius: 50%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
             }
 
             .sign-buttons {

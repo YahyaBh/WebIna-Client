@@ -8,7 +8,7 @@ import AsideStore from '../Layout/Aside/AsideStore'
 import { BiCart, BiPackage, BiWallet } from 'react-icons/bi'
 import { useStoreContext } from '../../Context/StoreConetxt'
 import { BsFillStarFill, BsStar, BsStarHalf } from 'react-icons/bs'
-import { CgRemove } from "react-icons/cg";
+import { CgRemove, CgShoppingCart } from "react-icons/cg";
 
 
 
@@ -34,7 +34,7 @@ const Cart = () => {
     const { isAsideOpen } = useStoreContext();
 
 
-    const { sec_http, isAuthenticated } = AuthUser();
+    const { sec_http, isAuthenticated, setCartCounter } = AuthUser();
 
     const navigate = useNavigate();
 
@@ -79,6 +79,7 @@ const Cart = () => {
         sec_http.post('/api/cart/remove/product', { product_token: token })
             .then((res) => {
                 getCart();
+                setCartCounter(res.data.cart_count);
             })
     }
 
@@ -196,7 +197,7 @@ const Cart = () => {
                         <div className="body-container">
                             <div className="cards-container">
 
-                                {products.map((product, index) =>
+                                {products > 0 ? products.map((product, index) =>
                                     <div key={index} className="card">
                                         <a href={`/store/product/${product.token}`}>
                                             <img src={product.image1} alt={product.name} />
@@ -220,7 +221,19 @@ const Cart = () => {
                                             Remove <CgRemove />
                                         </div>
                                     </div>
-                                )}
+                                ) :
+
+                                    <div className='empty-container'>
+
+                                        <h2>Your Cart Is Empty</h2>
+
+                                        <CgShoppingCart />
+
+                                        <button onClick={() => navigate('/store')}>SHOP NOW</button>
+
+                                    </div>
+
+                                }
 
                             </div>
 
