@@ -21,6 +21,7 @@ import AuthUser from '../../Context/AuthContext'
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
 import Cookies from 'js-cookie'
+import Loading from '../Loading/Loading'
 
 const Cart = () => {
 
@@ -33,6 +34,7 @@ const Cart = () => {
 
     const { isAsideOpen } = useStoreContext();
 
+    const [loading, setLoading] = useState(true);
 
     const { sec_http, isAuthenticated, setCartCounter } = AuthUser();
 
@@ -69,6 +71,7 @@ const Cart = () => {
         sec_http.get('/api/cart')
             .then((res) => {
                 setProducts(res.data.products);
+                setLoading(false);
             })
 
     }
@@ -160,7 +163,7 @@ const Cart = () => {
                 <link rel='canonical' content="/cart" />
             </Helmet>
 
-
+            {loading ? <Loading /> : ''}
             <Profiler>
 
                 <NavbarStore />
@@ -197,7 +200,7 @@ const Cart = () => {
                         <div className="body-container">
                             <div className="cards-container">
 
-                                {products > 0 ? products.map((product, index) =>
+                                {products.length > 0 ? products.map((product, index) =>
                                     <div key={index} className="card">
                                         <a href={`/store/product/${product.token}`}>
                                             <img src={product.image1} alt={product.name} />
@@ -289,9 +292,9 @@ const Cart = () => {
                                     <a href='/store' className='continue-shopping'>Continue Shopping</a>
 
 
-                                    <a href='/checkout' className="checkout-btn">
+                                    {subtotal === 0 ? '' : <a href='/checkout' className="checkout-btn">
                                         Checkout | {calculateTotalPrice()}$
-                                    </a>
+                                    </a>}
 
 
                                     <div className="secure-payment">

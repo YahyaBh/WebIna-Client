@@ -17,12 +17,14 @@ const NavbarStore = ({ isOpen, transparent, isNotAside }) => {
 
 
     const [scrolled, setScrolled] = useState(false);
-    const [language, setLanguage] = useState(false)
+    const [language, setLanguage] = useState(false);
+    const [search, setSearch] = useState(false);
+    const [searchInput, setSearchInput] = useState('');
 
     const { isDarkMode, toggleTheme } = useContext(ThemeContext);
     const { toggleAside, isAsideOpen } = useStoreContext();
 
-    const { isAuthenticated, user, logout , cartCounter } = AuthContext();
+    const { isAuthenticated, user, logout, cartCounter } = AuthContext();
 
     useEffect(() => {
         // Add event listener when the component mounts
@@ -73,7 +75,10 @@ const NavbarStore = ({ isOpen, transparent, isNotAside }) => {
 
 
                             <div className='lang-mode'>
-                                <AiOutlineSearch />
+                                <div className={`search-section ${search ? 'active-search' : ''}`}>
+                                    <input type="text" name='search' id='search' value={searchInput} onChange={(e) => setSearchInput(e.target.value)} placeholder={i18next.t("SEARCH")} />
+                                    <AiOutlineSearch onClick={() => setSearch(!search)} />
+                                </div>
                                 {isDarkMode ? <FaSun onClick={toggleTheme} /> : <FaMoon onClick={toggleTheme} />}
                                 <a href="/cart"><AiOutlineShoppingCart />{cartCounter > 0 ? <span>{cartCounter}</span> : null}</a>
                             </div>
