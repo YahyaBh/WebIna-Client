@@ -42,6 +42,7 @@ import Password from "./Components/Authentication/Password/Password";
 import Success from "./Components/Checkout/Success/Success";
 import Failed from "./Components/Checkout/Failed/Failed";
 import Custom from "./Components/Custom/Custom";
+import TermsConditions from "./Build/TermsConditions/TermsConditions";
 
 
 
@@ -125,6 +126,7 @@ function App() {
         <Route exact path='/about' element={<About />} />
         <Route exact path='/contact' element={<Contact />} />
         <Route exact path='/privacy-policy' element={<Privacy />} />
+        <Route exact path='/terms&conditions' element={<TermsConditions />} />
         <Route exact path='/jobs' element={<Hiring />} />
 
 

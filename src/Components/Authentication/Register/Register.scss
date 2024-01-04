@@ -459,6 +459,16 @@
                 flex-direction: row;
                 flex-wrap: wrap;
                 width: 100%;
+                gap: 10px;
+
+                p {
+                    font-size: 14px;
+                    color: var(--black-color);
+                    a {
+                        text-decoration: underline;
+                    }
+                }
+
                 button {
                     width: 45%;
                     height: 40px;

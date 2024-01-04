@@ -157,7 +157,7 @@ const Login = () => {
 
                         <h2>IT'S OKAY</h2>
 
-                        <p>Reset your password in seconds , securly</p>
+                        <p>Reset your password in seconds , securly and easily</p>
 
                         <form onSubmit={handleLogin} autoComplete="off">
 
@@ -167,7 +167,7 @@ const Login = () => {
                             </div>
 
 
-                            <button type='submit'>{loginLoading ? <AiOutlineLoading3Quarters className="spin-load" /> : i18next.t("RESET_PASS")}</button>
+                            <button type='submit'>{loginLoading ? <AiOutlineLoading3Quarters className="spin-load" /> : 'RESET PASSWORD'}</button>
 
 
 

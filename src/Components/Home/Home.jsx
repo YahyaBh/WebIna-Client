@@ -58,6 +58,7 @@ import LeftTopArrow from '../../Assets/Home/Perf-Section/Arrow-Left-Top.png';
 import LeftBottomArrow from '../../Assets/Home/Perf-Section/Arrow-Left-Bottom.png';
 import RightTopArrow from '../../Assets/Home/Perf-Section/Arrow-Right-Top.png';
 import RightBottomArrow from '../../Assets/Home/Perf-Section/Arrow-Right-Bottom.png';
+import VideoMIDDLE from '../../Assets/Home/Perf-Section/INTRO WEBINA COMMUNITY 2 .mp4'
 import TestFeed from '../../Assets/Home/FeedBack Section/TestFeed.png';
 import ContactImg from '../../Assets/Home/Contact Section/at-dynamic-color.svg';
 import VideoCoding from '../../Assets/Home/Slide Section/pexels-mikhail-nilov-7989667 (720p).mp4';
@@ -206,561 +207,543 @@ const Home = () => {
 
     const handleEmail = async () => {
         if (emailGetStarted !== '') {
-            const emailFormData = new FormData();
-            emailFormData.append('email', emailGetStarted);
-            setEmailGetStarted('');
-            csrf();
-            try {
-                const res = await http.post('/api/register/email', emailFormData, {
-                    withCredentials: true,
-                });
-                Swal.fire({
-                    title: 'Thank You',
-                    text: 'We Will Let You Know As Soon As The Website Is Ready , Be Safe !',
-                    icon: 'success',
-                    confirmButtonColor: 'var(--black-color)',
-                });
-            } catch (err) {
-                Swal.fire({
-                    title: 'Error',
-                    text: err.response.data.message,
-                    icon: 'error',
-                    confirmButtonColor: 'red',
-                });
-            }
+            navigate('/register?email=' + emailGetStarted);
+        } else {
+            return
         }
     };
 
     const ImageComponent = lazy(() => import('../Layout/ImageComponenet/ImageComponent'));
 
     return (
-        <Profiler id='Home'>
+        loading ? <Loading /> :
+            <Profiler id='Home'>
 
-            <Helmet>
-                <title>WEBINA DIGITAL</title>
-                <meta name="description" content="Welcome To Webina Digital - Web Development Company, the #1 Digital Company" />
-                <link rel='canonical' content="/" />
-            </Helmet>
-
-
-            {loading ? <Loading /> : ''}
-
-            <Navbar target={'home'} />
-
-            <div id='Home'>
-                <div>
-                    <section id='section-main'>
-
-                        <div className='main-container'>
-                            <div className="background-grad">
-                                <div className='left-container'>
-                                    <h1 data-aos="fade-down">{i18next.t('GET')}<span> {i18next.t('YOUR')} </span>{i18next.t('WEBSITE')}</h1>
-
-                                    <p data-aos="fade-down">{i18next.t('HOME_DESCRIPTION')}</p>
-
-                                    <a href='/maintanence' className='res-button-start'>{i18next.t('GET_STARTED')}</a>
+                <Helmet>
+                    <title>WEBINA DIGITAL</title>
+                    <meta name="description" content="Welcome To Webina Digital - Web Development Company, the #1 Digital Company" />
+                    <link rel='canonical' content="/" />
+                </Helmet>
 
 
-                                    <div id='email-get-started' className='email-get-started'>
-                                        <input data-aos="fade-down" onChange={e => setEmailGetStarted(e.target.value)} type="email" name='email' id='email-get-started-input' placeholder={i18next.t("ENTER_EMAIL_ADDRESS")} minLength={'8'} />
-                                        <button onClick={emailGetStarted ? e => handleEmail() : null} className={emailGetStarted ? 'active' : ''} disabled={emailGetStarted ? false : true}>{i18next.t('GET_STARTED')}</button>
+                {loading ? <Loading /> : ''}
+
+                <Navbar target={'home'} />
+
+                <div id='Home'>
+                    <div>
+                        <section id='section-main'>
+
+                            <div className='main-container'>
+                                <div className="background-grad">
+                                    <div className='left-container'>
+                                        <h1 data-aos="fade-down">{i18next.t('GET')}<span> {i18next.t('YOUR')} </span>{i18next.t('WEBSITE')}</h1>
+
+                                        <p data-aos="fade-down">{i18next.t('HOME_DESCRIPTION')}</p>
+
+                                        <a href='/maintanence' className='res-button-start'>{i18next.t('GET_STARTED')}</a>
+
+
+                                        <div id='email-get-started' className='email-get-started'>
+                                            <input data-aos="fade-down" onChange={e => setEmailGetStarted(e.target.value)} type="email" name='email' id='email-get-started-input' placeholder={i18next.t("ENTER_EMAIL_ADDRESS")} minLength={'8'} />
+                                            <button onClick={emailGetStarted ? e => handleEmail() : null} className={emailGetStarted ? 'active' : ''} disabled={emailGetStarted ? false : true}>{i18next.t('GET_STARTED')}</button>
+                                        </div>
+
+
+                                        <div data-aos="fade-down" className='undertext' id='res-undertext'>
+                                            <BsArrowRight />
+                                            <h4>{i18next.t('CHANGE_YOUR')} <br /> {i18next.t('IDEA_TO_A_BUSINESS')}</h4>
+                                        </div>
+
+                                    </div>
+
+                                    <div className='right-container changing-image-container'
+                                        data-aos="fade-left"
+                                        onMouseMove={handleMouseMove}
+                                        onMouseLeave={handleMouseOut}
+                                        onMouseDown={handleMouseDown}
+                                        onMouseUp={handleMouseUp}>
+                                        <img
+                                            rel="preload"
+                                            ref={imageRef}
+                                            className={`over-top-image changing-image ${isFadeIn ? 'fade-in' : ''}`}
+                                            onLoad={() => setIsFadeIn(true)}
+                                            src={currentImage}
+                                            alt="computer-science" />
+                                        <img ref={tiltRef} src={BackGroundContainer} alt="container" />
                                     </div>
 
 
-                                    <div data-aos="fade-down" className='undertext' id='res-undertext'>
+
+                                    <div data-aos="fade-down" className='res-undertext' >
                                         <BsArrowRight />
                                         <h4>{i18next.t('CHANGE_YOUR')} <br /> {i18next.t('IDEA_TO_A_BUSINESS')}</h4>
                                     </div>
 
                                 </div>
-
-                                <div className='right-container changing-image-container'
-                                    data-aos="fade-left"
-                                    onMouseMove={handleMouseMove}
-                                    onMouseLeave={handleMouseOut}
-                                    onMouseDown={handleMouseDown}
-                                    onMouseUp={handleMouseUp}>
-                                    <img
-                                        rel="preload"
-                                        ref={imageRef}
-                                        className={`over-top-image changing-image ${isFadeIn ? 'fade-in' : ''}`}
-                                        onLoad={() => setIsFadeIn(true)}
-                                        src={currentImage}
-                                        alt="computer-science" />
-                                    <img ref={tiltRef} src={BackGroundContainer} alt="container" />
-                                </div>
-
-
-
-                                <div data-aos="fade-down" className='res-undertext' >
-                                    <BsArrowRight />
-                                    <h4>{i18next.t('CHANGE_YOUR')} <br /> {i18next.t('IDEA_TO_A_BUSINESS')}</h4>
-                                </div>
-
                             </div>
-                        </div>
-                    </section>
+                        </section>
 
-                    <section id='section-second' className={scrolled ? 'active' : ''}>
-                        <AnchorLink href='#section-secondary' className={`zipper-pull`}>
-                            <div className="scroll-downs">
-                                <div className="mousey">
-                                    <div className="scroller"></div>
+                        <section id='section-second' className={scrolled ? 'active' : ''}>
+                            <AnchorLink href='#section-secondary' className={`zipper-pull`}>
+                                <div className="scroll-downs">
+                                    <div className="mousey">
+                                        <div className="scroller"></div>
+                                    </div>
                                 </div>
-                            </div>
-                            <h4>{i18next.t('SCROLL')}</h4>
-                        </AnchorLink>
+                                <h4>{i18next.t('SCROLL')}</h4>
+                            </AnchorLink>
 
-                        <div className="background-all-divs">
-                            <div className='section-container' id='section-secondary'>
+                            <div className="background-all-divs">
+                                <div className='section-container' id='section-secondary'>
 
-                                <div className='test-example'>
-                                    <div className='ht' data-aos="fade-right">
+                                    <div className='test-example'>
+                                        <div className='ht' data-aos="fade-right">
 
-                                        <div className='responsive-why-web'>
-                                            <h2>{i18next.t('WHY_WEBINA')}</h2>
-                                            <p>{i18next.t('WHY_WEBINA_PAG')}</p>
+                                            <div className='responsive-why-web'>
+                                                <h2>{i18next.t('WHY_WEBINA')}</h2>
+                                                <p>{i18next.t('WHY_WEBINA_PAG')}</p>
+                                                <a href='/store/home'>{i18next.t('GET_STARTED')}</a>
+                                            </div>
+
+                                            <img className='webina-phone' src={WebInaPhone} alt="webina phone" />
+
+                                            <img className='OrnamentHoriz-res' src={isDarkMode ? OrnamentHorizDark : OrnamentHoriz} alt="OrnamentHoriz" />
+                                            <img className='OrnamentUp' src={isDarkMode ? OrnamentUpDark : OrnamentUp} alt="OrnamentUp" />
+
+
+
+                                        </div>
+
+                                        <div className='th' data-aos="fade-up">
+
+
+
+                                            <img className='floating-right' src={isDarkMode ? floatingRightHatDark : floatingRightHat} alt="webina floating hat" />
+
+                                            <h2>{i18next.t('WHY')} <span>{i18next.t('WEBINA')}</span></h2>
+
+                                            <p>
+                                                {i18next.t('WHY_WEBINA_PAG_SEC')}
+                                            </p>
+
+                                            <a href='/store/home'>{i18next.t('GET_STARTED')}</a>
+
+                                            <img className='OrnamentHoriz' src={isDarkMode ? OrnamentHorizDark : OrnamentHoriz} alt="OrnamentHoriz" />
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+                                <div className="second-section-container" id='second-section'>
+                                    <div className="cards-text-container" >
+                                        <div className="text-left">
+                                            <h3>
+                                                {i18next.t('OUR_SPECIAL')}
+                                                <br /> {i18next.t('COMMON_SERVICES')}
+                                            </h3>
+                                            <p>
+                                                {i18next.t('COMMON_SERVICES_PAG')}
+                                            </p>
+                                        </div>
+                                        <div data-aos="fade-down" className={isDarkMode ? 'dark card-right' : 'card-right'}>
+                                            <img src={DevIcon} alt="Dev Websites" />
+                                            <div>
+                                                <h4>{i18next.t('WEBSITE_DESIGN_AND_DEV')}</h4>
+                                                <p>
+                                                    {i18next.t('WEBSITE_DESIGN_AND_DEV_PAG')}
+                                                </p>
+                                                <a href='/store/home'>{i18next.t('GET_STARTED')}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className='cards-container' >
+                                        <div data-aos="fade-down" className={isDarkMode === true ? 'dark card' : 'card'}>
+                                            <img src={SocialIcon} alt="social media Icon" />
+                                            <h4>{i18next.t('SOCIAL_MEDIA_MARKETING')}</h4>
+                                            <p>
+                                                {i18next.t('SOCIAL_MEDIA_MARKETING_PAG')}
+                                            </p>
                                             <a href='/store/home'>{i18next.t('GET_STARTED')}</a>
                                         </div>
 
-                                        <img className='webina-phone' src={WebInaPhone} alt="webina phone" />
-
-                                        <img className='OrnamentHoriz-res' src={isDarkMode ? OrnamentHorizDark : OrnamentHoriz} alt="OrnamentHoriz" />
-                                        <img className='OrnamentUp' src={isDarkMode ? OrnamentUpDark : OrnamentUp} alt="OrnamentUp" />
-
-
-
-                                    </div>
-
-                                    <div className='th' data-aos="fade-up">
-
-
-
-                                        <img className='floating-right' src={isDarkMode ? floatingRightHatDark : floatingRightHat} alt="webina floating hat" />
-
-                                        <h2>{i18next.t('WHY')} <span>{i18next.t('WEBINA')}</span></h2>
-
-                                        <p>
-                                            {i18next.t('WHY_WEBINA_PAG_SEC')}
-                                        </p>
-
-                                        <a href='/store/home'>{i18next.t('GET_STARTED')}</a>
-
-                                        <img className='OrnamentHoriz' src={isDarkMode ? OrnamentHorizDark : OrnamentHoriz} alt="OrnamentHoriz" />
-                                    </div>
-                                </div>
-
-
-                            </div>
-
-
-                            <div className="second-section-container" id='second-section'>
-                                <div className="cards-text-container" >
-                                    <div className="text-left">
-                                        <h3>
-                                            {i18next.t('OUR_SPECIAL')}
-                                            <br /> {i18next.t('COMMON_SERVICES')}
-                                        </h3>
-                                        <p>
-                                            {i18next.t('COMMON_SERVICES_PAG')}
-                                        </p>
-                                    </div>
-                                    <div data-aos="fade-down" className={isDarkMode ? 'dark card-right' : 'card-right'}>
-                                        <img src={DevIcon} alt="Dev Websites" />
-                                        <div>
-                                            <h4>{i18next.t('WEBSITE_DESIGN_AND_DEV')}</h4>
+                                        <div data-aos="fade-down" data-aos-duration="200" className={isDarkMode === true ? 'dark card' : 'card'}>
+                                            <img src={DesignIcon} alt="Design" />
+                                            <h4>{i18next.t('DESIGN')}</h4>
                                             <p>
-                                                {i18next.t('WEBSITE_DESIGN_AND_DEV_PAG')}
+                                                {i18next.t('DESIGN_PAG')}
+                                            </p>
+                                            <a href='/store/home'>{i18next.t('GET_STARTED')}</a>
+                                        </div>
+
+                                        <div data-aos="fade-down" data-aos-duration="400" className={isDarkMode === true ? 'dark card' : 'card'}>
+                                            <img src={MobileIcon} alt="Mobile Apps Development" />
+                                            <h4>{i18next.t('MOBILE_APPS')}</h4>
+                                            <p>
+                                                {i18next.t('MOBILE_APPS_PAG')}
+                                            </p>
+                                            <a href='/store/home'>{i18next.t('GET_STARTED')}</a>
+                                        </div>
+
+                                        <div data-aos="fade-down" data-aos-duration="600" className={isDarkMode === true ? 'dark card' : 'card'}>
+                                            <img src={DesktopIcon} alt="Desktop App Dev" />
+                                            <h4>{i18next.t('DESKTOP_APPS')}</h4>
+                                            <p>
+                                                {i18next.t('DESKTOP_APPS_PAG')}
                                             </p>
                                             <a href='/store/home'>{i18next.t('GET_STARTED')}</a>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className='cards-container' >
-                                    <div data-aos="fade-down" className={isDarkMode === true ? 'dark card' : 'card'}>
-                                        <img src={SocialIcon} alt="social media Icon" />
-                                        <h4>{i18next.t('SOCIAL_MEDIA_MARKETING')}</h4>
-                                        <p>
-                                            {i18next.t('SOCIAL_MEDIA_MARKETING_PAG')}
-                                        </p>
-                                        <a href='/store/home'>{i18next.t('GET_STARTED')}</a>
-                                    </div>
-
-                                    <div data-aos="fade-down" data-aos-duration="200" className={isDarkMode === true ? 'dark card' : 'card'}>
-                                        <img src={DesignIcon} alt="Design" />
-                                        <h4>{i18next.t('DESIGN')}</h4>
-                                        <p>
-                                            {i18next.t('DESIGN_PAG')}
-                                        </p>
-                                        <a href='/store/home'>{i18next.t('GET_STARTED')}</a>
-                                    </div>
-
-                                    <div data-aos="fade-down" data-aos-duration="400" className={isDarkMode === true ? 'dark card' : 'card'}>
-                                        <img src={MobileIcon} alt="Mobile Apps Development" />
-                                        <h4>{i18next.t('MOBILE_APPS')}</h4>
-                                        <p>
-                                            {i18next.t('MOBILE_APPS_PAG')}
-                                        </p>
-                                        <a href='/store/home'>{i18next.t('GET_STARTED')}</a>
-                                    </div>
-
-                                    <div data-aos="fade-down" data-aos-duration="600" className={isDarkMode === true ? 'dark card' : 'card'}>
-                                        <img src={DesktopIcon} alt="Desktop App Dev" />
-                                        <h4>{i18next.t('DESKTOP_APPS')}</h4>
-                                        <p>
-                                            {i18next.t('DESKTOP_APPS_PAG')}
-                                        </p>
-                                        <a href='/store/home'>{i18next.t('GET_STARTED')}</a>
-                                    </div>
-                                </div>
-                            </div>
 
 
+                                <div className='seo-section' id='seo-section'>
 
-                            <div className='seo-section' id='seo-section'>
+                                    <div data-aos="fade-down" className='text-container'>
+                                        <h2>{i18next.t('FIRST_SEO')}</h2>
 
-                                <div data-aos="fade-down" className='text-container'>
-                                    <h2>{i18next.t('FIRST_SEO')}</h2>
+                                        <p>{i18next.t('FIRST_SEO_PAG')}</p>
 
-                                    <p>{i18next.t('FIRST_SEO_PAG')}</p>
-
-                                    <a href='/store/home'>{i18next.t('GET_YOUR_WEBSITE')}</a>
-                                </div>
-
-
-                                <img data-aos="fade-up" src={SEO} alt="seo-pic" />
-
-                            </div>
-
-
-                            <div className='make-yoursite-container' id='make-site'>
-                                <div data-aos="fade-right" className='text-container'>
-                                    <h3><div>{i18next.t('CREATE_YOUR')} <span>{i18next.t('DESIGN_W')}</span></div> <HiOutlineArrowRight /></h3>
-                                </div>
-
-                                <a href='/store/home' data-aos="fade-right">{i18next.t('ORDER_NOW')}</a>
-                            </div>
-
-
-                            <div className='new-skills-section' id='skills-section'>
-                                <div className='left-container' data-aos="fade-right">
-                                    <h3>{i18next.t('INSPIRED')} <br />
-                                        {i18next.t('SKILLS')}<br />
-                                        {i18next.t('SEE_WHATS')}<br />
-                                        {i18next.t('TRENDING')}<span> </span>
-                                    </h3>
-
-                                    <a href='/blogs'>{i18next.t('EXPLORE_BLOGS')}</a>
-                                </div>
-
-                                <div className="right-container">
-                                    {blogs?.map((blog, index) => (
-                                        <div key={index} className='blog-card' data-aos="fade-down" data-aos-duration="500">
-                                            <div className='blog-body'>
-                                                <Suspense>
-                                                    <ImageComponent className="image" src={blog.image} alt={blog.title} />
-                                                </Suspense>
-                                                <div className="right-cont">
-                                                    <h5>{blog.name.substring(0, 25) + '...'}</h5>
-                                                    <p>{blog.description.substring(0, 150) + '...'}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ))}
-
-                                </div>
-                            </div>
-
-
-                            <div className='performance-section' id='perf-section'>
-                                <div className='container'>
-
-                                    <div className='top-container'>
-                                        <div className='container-corner' data-aos="fade-down">
-                                            <h3>{i18next.t('HIGH_QUALITY_DESIGN')}</h3>
-                                            <span>01</span>
-                                        </div>
-
-                                        <div className='container-corner' data-aos="fade-down">
-                                            <span>02</span>
-                                            <h3>{i18next.t('FULL_STACK_DEVELOPMENT')}</h3>
-                                        </div>
+                                        <a href='/store/home'>{i18next.t('GET_YOUR_WEBSITE')}</a>
                                     </div>
 
 
-                                    <div className='center-contaienr' data-aos="zoom-in">
-                                        <div className='container-left'>
-                                            <img src={LeftTopArrow} alt="left-top-arrow" className={isDarkMode ? '' : 'dark'} />
-
-                                            <img src={LeftBottomArrow} alt="left-bottom-arrow" />
-                                        </div>
-
-                                        <div className="container-center">
-
-                                            <img src="https://webina.cl/wp-content/uploads/2022/10/Rectangle-1.png" alt="gif-auto" />
-
-                                        </div>
-
-                                        <div className="container-right">
-                                            <img src={RightTopArrow} alt="right-bottom-arrow" className={isDarkMode ? '' : 'dark'} />
-
-                                            <img src={RightBottomArrow} alt="right-bottom-arrow" />
-                                        </div>
-                                    </div>
-
-                                    <div className="bottom-container">
-                                        <div className='container-corner' data-aos="fade-up">
-                                            <h3>{i18next.t('FUNCTION_ISSUES')}</h3>
-                                            <span>03</span>
-                                        </div>
-
-                                        <div className='container-corner' data-aos="fade-up">
-                                            <span>04</span>
-                                            <h3>{i18next.t('LANGUAGE_MISTAKES')}</h3>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-
-                            <div className="countdown-section" id='countdown-section'>
-                                <div className='left-section'>
-                                    <h2 data-aos="fade-right">{i18next.t('UP_TO')}<span>40%</span></h2>
-
-                                    <div className="timer">
-                                        <div className='time-sec' data-aos="fade-down">
-                                            {days}
-                                        </div>
-                                        <span> : </span>
-                                        <div className='time-sec' data-aos="fade-down">
-                                            {hours}
-                                        </div>
-                                        <span> : </span>
-
-                                        <div className='time-sec' data-aos="fade-down">
-                                            {minutes}
-                                        </div>
-                                        <span> : </span>
-
-                                        <div className='time-sec' data-aos="fade-down">
-                                            {seconds}
-                                        </div>
-                                    </div>
-
-                                    <a href='/store/home' data-aos="fade-right">{i18next.t('GET_STARTED')}</a>
+                                    <img data-aos="fade-up" src={SEO} alt="seo-pic" />
 
                                 </div>
 
 
-                                <div className="right-section">
-                                    <h2 data-aos="fade-down">{i18next.t('EVERYTHING')} <br />
-                                        {i18next.t('YOU_NEED_TO')} <br />
-                                        <span>{i18next.t('CREATE_A_WEBSITE')}</span>
-                                    </h2>
-                                </div>
-                            </div>
-
-
-                            <div className="background-sections-techs-pros">
-
-                                <div className="projects-section">
-                                    <h2>{i18next.t('RECENT')} <span>{i18next.t('PROJECTS')}</span></h2>
-
-
-                                    <div className="projects-container">
-
-
-                                        {projects.map((project, index) => (
-                                            <div key={index} className="card">
-                                                <img src={project.image} alt={project.name + '' + index} />
-
-                                                <h3>{project.name}</h3>
-
-                                                <div className='categories'>
-                                                    <span>{project.category}</span>
-                                                </div>
-
-                                                <a href={`/project/${project.name}`} className='details-button'>{i18next.t("SHOW_DETAILS")}</a>
-                                            </div>
-                                        ))}
+                                <div className='make-yoursite-container' id='make-site'>
+                                    <div data-aos="fade-right" className='text-container'>
+                                        <h3><div>{i18next.t('CREATE_YOUR')} <span>{i18next.t('DESIGN_W')}</span></div> <HiOutlineArrowRight /></h3>
                                     </div>
-                                </div>
 
-                                <div className="technologies-section">
-                                    <h2>{i18next.t('TECHS')}</h2>
-
-
-                                    <div className="technologies-container">
-                                        <Tooltip id="nuxt-tooltip" />
-                                        <SiNuxtdotjs data-tooltip-id="nuxt-tooltip" data-tooltip-content="Nuxt Js" />
-                                        <Tooltip id="ruby-tooltip" />
-                                        <DiRuby data-tooltip-id="ruby-tooltip" data-tooltip-content="Ruby" />
-                                        <Tooltip id="ruby-on-rails-tooltip" />
-                                        <SiRubyonrails data-tooltip-id="ruby-on-rails-tooltip" data-tooltip-content="Ruby On Rails" />
-                                        <Tooltip id="php-tooltip" />
-                                        <FaPhp data-tooltip-id="php-tooltip" data-tooltip-content="Php" />
-                                        <Tooltip id="adobe-premier-pro-tooltip" />
-                                        <SiAdobepremierepro data-tooltip-id="adobe-premier-pro-tooltip" data-tooltip-content="Adobe Premiere Pro" />
-                                        <Tooltip id="javascript-tooltip" />
-                                        <IoLogoJavascript data-tooltip-id="javascript-tooltip" data-tooltip-content="JavaScript" />
-                                        <Tooltip id="bootstrap-tooltip" />
-                                        <FaBootstrap data-tooltip-id="bootstrap-tooltip" data-tooltip-content="Bootstrap" />
-                                        <Tooltip id="css-tooltip" />
-                                        <IoLogoCss3 data-tooltip-id="css-tooltip" data-tooltip-content="Css" />
-                                        <Tooltip id="c-plus-plus-tooltip" />
-                                        <SiCplusplus data-tooltip-id="c-plus-plus-tooltip" data-tooltip-content="C++" />
-                                        <Tooltip id="adobe-after-effects-tooltip" />
-                                        <SiAdobeaftereffects data-tooltip-id="adobe-after-effects-tooltip" data-tooltip-content="Adobe After Effects" />
-                                        <Tooltip id="vs-code-tooltip" />
-                                        <SiVisualstudio data-tooltip-id="vs-code-tooltip" data-tooltip-content="Visual Studio Code" />
-                                        <Tooltip id="wordpress-tooltip" />
-                                        <BsWordpress data-tooltip-id="wordpress-tooltip" data-tooltip-content="WordPress" />
-                                    </div>
-                                    <div className="technologies-container">
-                                        <Tooltip id="figma-tooltip" />
-                                        <FaFigma data-tooltip-id="figma-tooltip" data-tooltip-content="Figma" />
-                                        <Tooltip id="flutter-tooltip" />
-                                        <SiFlutter data-tooltip-id="flutter-tooltip" data-tooltip-content="Flutter" />
-                                        <Tooltip id="docker-tooltip" />
-                                        <FaDocker data-tooltip-id="docker-tooltip" data-tooltip-content="Docker" />
-                                        <Tooltip id="android-studio-tooltip" />
-                                        <SiAndroidstudio data-tooltip-id="android-studio-tooltip" data-tooltip-content="Android Studio" />
-                                        <Tooltip id="blender-tooltip" />
-                                        <SiBlender data-tooltip-id="blender-tooltip" data-tooltip-content="Blender" />
-                                        <Tooltip id="mysql-tooltip" />
-                                        <SiMysql data-tooltip-id="mysql-tooltip" data-tooltip-content="MySQL" />
-                                        <Tooltip id="python-tooltip" />
-                                        <FaPython data-tooltip-id="python-tooltip" data-tooltip-content="Python" />
-                                        <Tooltip id="swift-tooltip" />
-                                        <FaSwift data-tooltip-id="swift-tooltip" data-tooltip-content="Swift" />
-                                        <Tooltip id="unity-tooltip" />
-                                        <BsUnity data-tooltip-id="unity-tooltip" data-tooltip-content="Unity" />
-                                        <Tooltip id="sketch-tooltip" />
-                                        <FaSketch data-tooltip-id="sketch-tooltip" data-tooltip-content="Sketch" />
-                                        <Tooltip id="react-tooltip" />
-                                        <FaReact data-tooltip-id="react-tooltip" data-tooltip-content="ReactJs" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className={`background-sections-double ${isDarkMode ? 'dark-section' : ''}`} >
-                                <div className="contact-section">
-                                    <h2>{i18next.t('WE_ARE_HERE_FOR_YOU')}</h2>
-
-
-                                    <div className='container'>
-                                        <div>
-                                            <h3>{i18next.t('GET_ANSWERS')}</h3>
-                                            <p>{i18next.t('GET_ANSWERS_PAG')}</p>
-
-                                            <a href="/contact/help">{i18next.t('GO_TO_HELP_CENTER')} <BiArrowFromLeft /></a>
-                                        </div>
-
-                                        <div>
-                                            <h3>{i18next.t('CONTACT_US')}</h3>
-                                            <p>{i18next.t('CONTACT_US_PAG')}</p>
-
-                                            <a href="/contact/chat">{i18next.t('CHAT_WITH_US')} <BiArrowFromLeft /></a>
-                                        </div>
-
-                                        <div>
-                                            <h3>{i18next.t('HIRE_A_PRO')}</h3>
-                                            <p>{i18next.t('HIRE_A_PRO_PAG')}</p>
-
-                                            <a href="/contact">{i18next.t('BROWSE_ALL_SERVICES')} <BiArrowFromLeft /></a>
-                                        </div>
-
-                                    </div>
+                                    <a href='/store/home' data-aos="fade-right">{i18next.t('ORDER_NOW')}</a>
                                 </div>
 
 
-                                <div className="slider-container">
+                                <div className='new-skills-section' id='skills-section'>
+                                    <div className='left-container' data-aos="fade-right">
+                                        <h3>{i18next.t('INSPIRED')} <br />
+                                            {i18next.t('SKILLS')}<br />
+                                            {i18next.t('SEE_WHATS')}<br />
+                                            {i18next.t('TRENDING')}<span> </span>
+                                        </h3>
 
-                                    <div className='left-container' id='container-pics'>
-
-                                        <div className="video-container">
-                                            <video autoPlay loop muted>
-                                                <source src={VideoCoding} alt="video" type='video/mp4' />
-                                            </video>
-                                        </div>
-
+                                        <a href='/blogs'>{i18next.t('EXPLORE_BLOGS')}</a>
                                     </div>
-
 
                                     <div className="right-container">
-                                        <div className='card'>
-                                            <p>{i18next.t('WE_HELP_YOU_BUILD')} <br />
-                                                {i18next.t('EXPANDABLE_AND_UPGRADABLE')} <br />
-                                                {i18next.t('TO_KEEP_PACE')}<span> {i18next.t('THE_DEVELOPMENT')} <br />
-                                                    {i18next.t('OF_YOUR_BUSINESS')}</span></p>
-                                        </div>
-
-                                        <div className='card'>
-                                            <p>{i18next.t('WE_OFFER_COMPLETE')} <br />
-                                                {i18next.t('WEBSITE_DEV')}<br />
-                                                <span> {i18next.t('OPTIMIZED')} <br />
-                                                    {i18next.t('FOR_OPTIMAL_PERF')}</span></p>
-                                        </div>
-
-                                        <div className='card'>
-                                            <p>{i18next.t('WE_CARE_ABOUT')} <br />
-                                                {i18next.t('ATTRACTIVE')} <br />
-                                                {i18next.t('DESIGN_TO')}<span> {i18next.t('EXPERIENCE')} <br />
-                                                    {i18next.t('UNIQUE_AND')}</span></p>
-                                        </div>
-                                        <a href='/store/home'>{i18next.t('GET_STARTED')}</a>
+                                        {blogs?.map((blog, index) => (
+                                            <div key={index} className='blog-card' data-aos="fade-down" data-aos-duration="500">
+                                                <div className='blog-body'>
+                                                    <Suspense>
+                                                        <ImageComponent className="image" src={blog.image} alt={blog.title} />
+                                                    </Suspense>
+                                                    <div className="right-cont">
+                                                        <h5>{blog.name.substring(0, 25) + '...'}</h5>
+                                                        <p>{blog.description.substring(0, 150) + '...'}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
 
                                     </div>
-
-
                                 </div>
 
 
-                                <div className="background-div-fed-cont">
-                                    <div className='customers-feedback'>
-                                        {feedback(testiomonials)}
+                                <div className='performance-section' id='perf-section'>
+                                    <div className='container'>
 
-                                        <div className="swiper-pag"></div>
+                                        <div className='top-container'>
+                                            <div className='container-corner' data-aos="fade-down">
+                                                <h3>{i18next.t('HIGH_QUALITY_DESIGN')}</h3>
+                                                <span>01</span>
+                                            </div>
+
+                                            <div className='container-corner' data-aos="fade-down">
+                                                <span>02</span>
+                                                <h3>{i18next.t('FULL_STACK_DEVELOPMENT')}</h3>
+                                            </div>
+                                        </div>
+
+
+                                        <div className='center-contaienr' data-aos="zoom-in">
+                                            <div className='container-left'>
+                                                <img src={LeftTopArrow} alt="left-top-arrow" className={isDarkMode ? '' : 'dark'} />
+
+                                                <img src={LeftBottomArrow} alt="left-bottom-arrow" />
+                                            </div>
+
+                                            <div className="container-center">
+
+                                                <video src={VideoMIDDLE} autoPlay loop muted />
+
+                                            </div>
+
+                                            <div className="container-right">
+                                                <img src={RightTopArrow} alt="right-bottom-arrow" className={isDarkMode ? '' : 'dark'} />
+
+                                                <img src={RightBottomArrow} alt="right-bottom-arrow" />
+                                            </div>
+                                        </div>
+
+                                        <div className="bottom-container">
+                                            <div className='container-corner' data-aos="fade-up">
+                                                <h3>{i18next.t('FUNCTION_ISSUES')}</h3>
+                                                <span>03</span>
+                                            </div>
+
+                                            <div className='container-corner' data-aos="fade-up">
+                                                <span>04</span>
+                                                <h3>{i18next.t('LANGUAGE_MISTAKES')}</h3>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
+                                <div className="countdown-section" id='countdown-section'>
+                                    <div className='left-section'>
+                                        <h2 data-aos="fade-right">{i18next.t('UP_TO')}<span>40%</span></h2>
+
+                                        <div className="timer">
+                                            <div className='time-sec' data-aos="fade-down">
+                                                {days}
+                                            </div>
+                                            <span> : </span>
+                                            <div className='time-sec' data-aos="fade-down">
+                                                {hours}
+                                            </div>
+                                            <span> : </span>
+
+                                            <div className='time-sec' data-aos="fade-down">
+                                                {minutes}
+                                            </div>
+                                            <span> : </span>
+
+                                            <div className='time-sec' data-aos="fade-down">
+                                                {seconds}
+                                            </div>
+                                        </div>
+
+                                        <a href='/store/home' data-aos="fade-right">{i18next.t('GET_STARTED')}</a>
 
                                     </div>
 
 
-                                    <div className='contact-us'>
+                                    <div className="right-section">
+                                        <h2 data-aos="fade-down">{i18next.t('EVERYTHING')} <br />
+                                            {i18next.t('YOU_NEED_TO')} <br />
+                                            <span>{i18next.t('CREATE_A_WEBSITE')}</span>
+                                        </h2>
+                                    </div>
+                                </div>
 
-                                        <h2>{i18next.t('CONTACT_US')}</h2>
+
+                                <div className="background-sections-techs-pros">
+
+                                    <div className="projects-section">
+                                        <h2>{i18next.t('RECENT')} <span>{i18next.t('PROJECTS')}</span></h2>
+
+
+                                        <div className="projects-container">
+
+
+                                            {projects.map((project, index) => (
+                                                <div key={index} className="card">
+                                                    <img src={project.image} alt={project.name + '' + index} />
+
+                                                    <h3>{project.name}</h3>
+
+                                                    <div className='categories'>
+                                                        <span>{project.category}</span>
+                                                    </div>
+
+                                                    <a href={`/project/${project.name}`} className='details-button'>{i18next.t("SHOW_DETAILS")}</a>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    <div className="technologies-section">
+                                        <h2>{i18next.t('TECHS')}</h2>
+
+
+                                        <div className="technologies-container">
+                                            <Tooltip id="nuxt-tooltip" />
+                                            <SiNuxtdotjs data-tooltip-id="nuxt-tooltip" data-tooltip-content="Nuxt Js" />
+                                            <Tooltip id="ruby-tooltip" />
+                                            <DiRuby data-tooltip-id="ruby-tooltip" data-tooltip-content="Ruby" />
+                                            <Tooltip id="ruby-on-rails-tooltip" />
+                                            <SiRubyonrails data-tooltip-id="ruby-on-rails-tooltip" data-tooltip-content="Ruby On Rails" />
+                                            <Tooltip id="php-tooltip" />
+                                            <FaPhp data-tooltip-id="php-tooltip" data-tooltip-content="Php" />
+                                            <Tooltip id="adobe-premier-pro-tooltip" />
+                                            <SiAdobepremierepro data-tooltip-id="adobe-premier-pro-tooltip" data-tooltip-content="Adobe Premiere Pro" />
+                                            <Tooltip id="javascript-tooltip" />
+                                            <IoLogoJavascript data-tooltip-id="javascript-tooltip" data-tooltip-content="JavaScript" />
+                                            <Tooltip id="bootstrap-tooltip" />
+                                            <FaBootstrap data-tooltip-id="bootstrap-tooltip" data-tooltip-content="Bootstrap" />
+                                            <Tooltip id="css-tooltip" />
+                                            <IoLogoCss3 data-tooltip-id="css-tooltip" data-tooltip-content="Css" />
+                                            <Tooltip id="c-plus-plus-tooltip" />
+                                            <SiCplusplus data-tooltip-id="c-plus-plus-tooltip" data-tooltip-content="C++" />
+                                            <Tooltip id="adobe-after-effects-tooltip" />
+                                            <SiAdobeaftereffects data-tooltip-id="adobe-after-effects-tooltip" data-tooltip-content="Adobe After Effects" />
+                                            <Tooltip id="vs-code-tooltip" />
+                                            <SiVisualstudio data-tooltip-id="vs-code-tooltip" data-tooltip-content="Visual Studio Code" />
+                                            <Tooltip id="wordpress-tooltip" />
+                                            <BsWordpress data-tooltip-id="wordpress-tooltip" data-tooltip-content="WordPress" />
+                                        </div>
+                                        <div className="technologies-container">
+                                            <Tooltip id="figma-tooltip" />
+                                            <FaFigma data-tooltip-id="figma-tooltip" data-tooltip-content="Figma" />
+                                            <Tooltip id="flutter-tooltip" />
+                                            <SiFlutter data-tooltip-id="flutter-tooltip" data-tooltip-content="Flutter" />
+                                            <Tooltip id="docker-tooltip" />
+                                            <FaDocker data-tooltip-id="docker-tooltip" data-tooltip-content="Docker" />
+                                            <Tooltip id="android-studio-tooltip" />
+                                            <SiAndroidstudio data-tooltip-id="android-studio-tooltip" data-tooltip-content="Android Studio" />
+                                            <Tooltip id="blender-tooltip" />
+                                            <SiBlender data-tooltip-id="blender-tooltip" data-tooltip-content="Blender" />
+                                            <Tooltip id="mysql-tooltip" />
+                                            <SiMysql data-tooltip-id="mysql-tooltip" data-tooltip-content="MySQL" />
+                                            <Tooltip id="python-tooltip" />
+                                            <FaPython data-tooltip-id="python-tooltip" data-tooltip-content="Python" />
+                                            <Tooltip id="swift-tooltip" />
+                                            <FaSwift data-tooltip-id="swift-tooltip" data-tooltip-content="Swift" />
+                                            <Tooltip id="unity-tooltip" />
+                                            <BsUnity data-tooltip-id="unity-tooltip" data-tooltip-content="Unity" />
+                                            <Tooltip id="sketch-tooltip" />
+                                            <FaSketch data-tooltip-id="sketch-tooltip" data-tooltip-content="Sketch" />
+                                            <Tooltip id="react-tooltip" />
+                                            <FaReact data-tooltip-id="react-tooltip" data-tooltip-content="ReactJs" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className={`background-sections-double ${isDarkMode ? 'dark-section' : ''}`} >
+                                    <div className="contact-section">
+                                        <h2>{i18next.t('WE_ARE_HERE_FOR_YOU')}</h2>
+
+
                                         <div className='container'>
-                                            <div className='left-container'>
-                                                <form onSubmit={e => handleContactMessage(e)}>
-                                                    <input type="text" placeholder={i18next.t("NAME")} name='name' id='name' onChange={e => setName(e.target.value)} value={name} />
+                                            <div>
+                                                <h3>{i18next.t('GET_ANSWERS')}</h3>
+                                                <p>{i18next.t('GET_ANSWERS_PAG')}</p>
 
-                                                    <input type="email" placeholder={i18next.t("EMAIL")} name='email' id='email' onChange={e => setEmail(e.target.value)} value={email} />
-
-                                                    <textarea name="message" id="message" placeholder={i18next.t("MESSAGE")} cols="30" rows="10" onChange={e => setMessage(e.target.value)} value={message} />
-
-                                                    <button type='submit' >{i18next.t('SEND_MESSAGE')}</button>
-                                                </form>
+                                                <a href="/contact/help">{i18next.t('GO_TO_HELP_CENTER')} <BiArrowFromLeft /></a>
                                             </div>
 
+                                            <div>
+                                                <h3>{i18next.t('CONTACT_US')}</h3>
+                                                <p>{i18next.t('CONTACT_US_PAG')}</p>
 
-                                            <div className="right-container">
-                                                <img src={ContactImg} alt="contact-img" />
+                                                <a href="/contact/chat">{i18next.t('CHAT_WITH_US')} <BiArrowFromLeft /></a>
+                                            </div>
+
+                                            <div>
+                                                <h3>{i18next.t('HIRE_A_PRO')}</h3>
+                                                <p>{i18next.t('HIRE_A_PRO_PAG')}</p>
+
+                                                <a href="/contact">{i18next.t('BROWSE_ALL_SERVICES')} <BiArrowFromLeft /></a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div className="slider-container">
+
+                                        <div className='left-container' id='container-pics'>
+
+                                            <div className="video-container">
+                                                <video autoPlay loop muted>
+                                                    <source src={VideoCoding} alt="video" type='video/mp4' />
+                                                </video>
                                             </div>
 
                                         </div>
 
+
+                                        <div className="right-container">
+                                            <div className='card'>
+                                                <p>{i18next.t('WE_HELP_YOU_BUILD')} <br />
+                                                    {i18next.t('EXPANDABLE_AND_UPGRADABLE')} <br />
+                                                    {i18next.t('TO_KEEP_PACE')}<span> {i18next.t('THE_DEVELOPMENT')} <br />
+                                                        {i18next.t('OF_YOUR_BUSINESS')}</span></p>
+                                            </div>
+
+                                            <div className='card'>
+                                                <p>{i18next.t('WE_OFFER_COMPLETE')} <br />
+                                                    {i18next.t('WEBSITE_DEV')}<br />
+                                                    <span> {i18next.t('OPTIMIZED')} <br />
+                                                        {i18next.t('FOR_OPTIMAL_PERF')}</span></p>
+                                            </div>
+
+                                            <div className='card'>
+                                                <p>{i18next.t('WE_CARE_ABOUT')} <br />
+                                                    {i18next.t('ATTRACTIVE')} <br />
+                                                    {i18next.t('DESIGN_TO')}<span> {i18next.t('EXPERIENCE')} <br />
+                                                        {i18next.t('UNIQUE_AND')}</span></p>
+                                            </div>
+                                            <a href='/store/home'>{i18next.t('GET_STARTED')}</a>
+
+                                        </div>
+
+
+                                    </div>
+
+
+                                    <div className="background-div-fed-cont">
+                                        <div className='customers-feedback'>
+                                            {feedback(testiomonials)}
+
+                                            <div className="swiper-pag"></div>
+
+                                        </div>
+
+
+                                        <div className='contact-us'>
+
+                                            <h2>{i18next.t('CONTACT_US')}</h2>
+                                            <div className='container'>
+                                                <div className='left-container'>
+                                                    <form onSubmit={e => handleContactMessage(e)}>
+                                                        <input type="text" placeholder={i18next.t("NAME")} name='name' id='name' onChange={e => setName(e.target.value)} value={name} />
+
+                                                        <input type="email" placeholder={i18next.t("EMAIL")} name='email' id='email' onChange={e => setEmail(e.target.value)} value={email} />
+
+                                                        <textarea name="message" id="message" placeholder={i18next.t("MESSAGE")} cols="30" rows="10" onChange={e => setMessage(e.target.value)} value={message} />
+
+                                                        <button type='submit' >{i18next.t('SEND_MESSAGE')}</button>
+                                                    </form>
+                                                </div>
+
+
+                                                <div className="right-container">
+                                                    <img src={ContactImg} alt="contact-img" />
+                                                </div>
+
+                                            </div>
+
+                                        </div>
                                     </div>
                                 </div>
+                                <Footer />
                             </div>
-                            <Footer />
-                        </div>
 
-                    </section>
-                </div>
-            </div >
-        </Profiler >
+                        </section>
+                    </div>
+                </div >
+            </Profiler >
 
     )
 }

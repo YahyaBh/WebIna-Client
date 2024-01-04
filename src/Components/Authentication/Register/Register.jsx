@@ -32,6 +32,7 @@ import AVATAR8 from '../../../Assets/SignUp/Avatars/avatar8.png'
 import AVATAR9 from '../../../Assets/SignUp/Avatars/avatar9.png'
 import AVATAR10 from '../../../Assets/SignUp/Avatars/avatar10.png'
 import errorIcon from '../../../Assets/Icons/wired-outline-1140-error.gif'
+import Loading from '../../Loading/Loading';
 
 
 const Register = () => {
@@ -42,6 +43,8 @@ const Register = () => {
     const [confirmPassword, setConfirmPassword] = useState('')
     const [image, setImage] = useState('');
     const [terms, setTerms] = useState(false);
+
+    const [loading, setLoading] = useState(true);
 
     const [registerLoad, setRegisterLoad] = useState(false);
 
@@ -54,15 +57,14 @@ const Register = () => {
 
     const { isDarkMode, toggleTheme } = useContext(ThemeContext)
 
-    const { email_home } = useParams();
+    const urlSearchString = window.location.search;
 
+    const params = new URLSearchParams(urlSearchString);
 
     useEffect(() => {
-        if (email_home) {
-            setEmail(email_home);
-        } else {
-            setEmail('');
-        }
+        setEmail(params.get('email'));
+
+        setLoading(false);
     }, [])
 
     const handleRegisteration = async (e) => {
@@ -211,7 +213,7 @@ const Register = () => {
         setTerms(!terms);
     };
 
-    return (
+    return (loading ? <Loading /> :
         <>
             <Helmet>
                 <title>WEBINA DIGITAL | Sign up</title>
@@ -318,7 +320,7 @@ const Register = () => {
                                 </div>
 
                                 <label htmlFor="terms&privacy" className="control control-checkbox">
-                                    <a href="/terms&conditions">{i18next.t("TERMS_PRIVACY")}</a>
+                                    <a href="/terms&conditions" target='blank'>I Agree To Webina Digital Terms & Conditions</a>
                                     <input checked={terms} onChange={e => termsHandler()} type="checkbox" name="terms&privacy" id="terms&privacy" />
                                     <div className="control_indicator"></div>
                                 </label>
@@ -333,9 +335,9 @@ const Register = () => {
 
 
                             <div className="google-facebook">
+                                <p>By registering you agree on the <a href="/terms&conditions">terms & conditions</a></p>
                                 <SocialLoginButton provider="facebook" register={true} />
                                 <SocialLoginButton provider="google" register={true} />
-
                             </div>
                         </div>
 
