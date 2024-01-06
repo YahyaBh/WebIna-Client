@@ -107,6 +107,7 @@ const Home = () => {
             getHomeData();
 
         }
+    // eslint-disable-next-line
     }, []);
 
     useEffect(() => {
@@ -321,7 +322,7 @@ const Home = () => {
 
                                             <img className='floating-right' src={isDarkMode ? floatingRightHatDark : floatingRightHat} alt="webina floating hat" />
 
-                                            <h2>{i18next.t('WHY')} <span>{i18next.t('WEBINA')}</span></h2>
+                                            <h2>{i18next.t('WHY')} {i18next.t('WEBINA')}</h2>
 
                                             <p>
                                                 {i18next.t('WHY_WEBINA_PAG_SEC')}

@@ -113,8 +113,11 @@
         justify-content: center;
         align-items: center;
         flex-direction: row;
-
         padding: 20px 50px;
+
+        @media screen and (max-width: 900px) {
+            padding: 20px 20px;
+        }
 
         .images-chose-container {
             display: flex;
@@ -222,7 +225,7 @@
                 font-size: 50px;
 
                 @media screen and (max-width: 900px) {
-                    font-size: 40px;
+                    font-size: 32px;
                 }
             }
 
@@ -233,6 +236,7 @@
 
                 @media screen and (max-width: 900px) {
                     width: 100%;
+                    font-size: 14px;
                 }
             }
 
@@ -269,6 +273,10 @@
                     label {
                         color: var(--black-color);
                         text-transform: uppercase;
+
+                        @media screen and (max-width: 900px) {
+                            font-size: 16px;
+                        }
                     }
 
                     input {
@@ -325,6 +333,10 @@
 
                     a {
                         text-decoration: underline;
+
+                        @media screen and (max-width: 900px) {
+                            font-size: 14px;
+                        }
                     }
                 }
                 .control input {
@@ -466,6 +478,12 @@
                     color: var(--black-color);
                     a {
                         text-decoration: underline;
+
+                        
+                    }
+
+                    @media screen and (max-width: 900px) {
+                        font-size: 12px;
                     }
                 }
 
@@ -540,8 +558,8 @@
     }
 
     .footer {
-        height: 20px;
-        top: -5px;
+        height: 40px;
+        top: 20px;
         padding: 5px;
         position: relative;
         color: var(--black-color);
@@ -549,6 +567,8 @@
 
         h4 {
             float: right;
+            font-size: 12px;
+            
 
             @media screen and (max-width: 900px) {
                 float: none;

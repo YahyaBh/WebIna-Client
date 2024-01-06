@@ -468,12 +468,12 @@
     }
 }
 
-#responsive-navbar {
-    display: none;
+#responsive-navbar-s {
     width: 100%;
     height: 80px;
     position: fixed;
     top: 0;
+    left: 0;
     z-index: 20;
     background-color: var(--light-color, "5b");
     -webkit-backdrop-filter: blur(20px);
@@ -537,39 +537,115 @@
 
     .div-active {
         background-color: #00000071;
-        display: block !important;
+        width: 100%;
     }
 
     .aside-container {
-        width: 100%;
+        width: 0%;
         height: 100dvh;
-        display: none;
         z-index: 20;
         position: fixed;
+        transition: all 0.3s ease;
+        overflow: hidden;
+        top: 80px;
 
         .aside-active {
-            width: 300px !important;
+            width: 100%;
+
+            .under-container {
+                opacity: 1 !important;
+            }
         }
 
         aside {
-            width: 0;
+            width: 0px;
             height: 100dvh;
-            z-index: 22;
-            background-color: var(--light-color);
-            transition: all 3s ease;
+            overflow: hidden;
+            background-color: var(--primary-color-dark);
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: column;
+            position: fixed;
+            transition: all 0.3s ease;
+            z-index: 89;
 
             .list {
-                padding: 40px 40px;
                 list-style: none;
                 display: flex;
-                justify-content: center;
+                justify-content: flex-start;
                 align-items: flex-start;
-                gap: 30px;
+                gap: 20px;
                 flex-direction: column;
+                width: 80%;
+                padding: 35px 10px;
 
-                li {
-                    font-size: 22px;
-                    font-weight: bold;
+                .dropdown-trigger {
+                    position: relative;
+
+                    .dropdown-menu {
+                        height: 0px;
+                        overflow: hidden;
+                        list-style: none;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+
+                        li {
+                            color: var(--black-color);
+                        }
+                    }
+
+                    &:hover {
+                        .dropdown-menu {
+                            height: 100%;
+                            width: 100%;
+                            padding: 10px 20px;
+                        }
+                    }
+                }
+
+                .sign-buttons {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: row;
+                    gap: 10px;
+
+                    button {
+                        background-color: transparent;
+                        border: 1px solid var(--primary-color);
+                        outline: none;
+                        padding: 6px 25px;
+                        border-radius: 6px;
+
+                        gap: 5px;
+                        font-size: 16px;
+
+                        a {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            flex-wrap: nowrap;
+                            gap: 10px;
+                        }
+                    }
+
+                    button:nth-child(1) {
+                        border: 1px solid var(--black-color);
+                    }
+
+                    button:nth-child(2) {
+                        background-color: var(--primary-color);
+
+                        svg {
+                            color: #1e1e1e !important;
+                        }
+
+                        h3 {
+                            color: #1e1e1e !important;
+                        }
+                    }
                 }
             }
         }

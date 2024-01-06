@@ -29,7 +29,7 @@ const Navbar = ({ isOpen, transparent }) => {
 
     const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
-    const { isAuthenticated, user, logout , cartCounter } = AuthContext();
+    const { isAuthenticated, user, logout, cartCounter } = AuthContext();
 
 
     useEffect(() => {
@@ -74,11 +74,6 @@ const Navbar = ({ isOpen, transparent }) => {
 
 
             <nav id='navbar' className={scrolled ? 'scrolled' : '' || transparent ? 'transparent' : ''}>
-
-
-
-
-
 
                 <div className='navbar'>
                     <div className='container'>
@@ -169,7 +164,7 @@ const Navbar = ({ isOpen, transparent }) => {
             </nav>
 
 
-            <nav id='responsive-navbar'>
+            <nav id='responsive-navbar-s'>
 
                 <div className='main-show'>
                     <a href='/' className='logo'>
@@ -186,7 +181,7 @@ const Navbar = ({ isOpen, transparent }) => {
                     <aside className={asideShow ? 'aside-active' : ''}>
 
                         <ul className='list'>
-                            <li>
+                            <li className='dropdown-trigger'>
                                 Services <MdKeyboardArrowDown />
                                 <ul className="dropdown-menu">
                                     <li >Website</li>
@@ -205,7 +200,45 @@ const Navbar = ({ isOpen, transparent }) => {
                             <li><a href='/faqs'>{i18next.t("FAQs")}</a></li>
                             <li><a href='/jobs'>{i18next.t("HIRE_ME")}</a></li>
                             <li><a href='/contact'>{i18next.t("CONTACT_US")}</a></li>
+
+                            <div className='sign-buttons'>
+                                <button>
+                                    <a href='/login'>
+                                        <BiUser />
+                                        <h3>{i18next.t("SIGNIN")}</h3>
+                                    </a>
+                                </button>
+
+                                <button>
+                                    <a href='/register'>
+                                        <FiUserPlus />
+                                        <h3>{i18next.t("SIGNUP")}</h3>
+                                    </a>
+                                </button>
+                            </div>
+
                         </ul>
+
+
+
+                        <div className="dropdown-container">
+                            <MdLanguage className='svg-dropdown' onClick={e => setLanguage(true)} />
+
+                            <div className="options">
+                                <div className="option" onClick={e => changeLang('en')}>
+                                    <img src={English} alt="English" />
+                                    <h3>English</h3>
+                                </div>
+                                <div className="option" onClick={e => changeLang('fr')}>
+                                    <img src={French} alt="French" />
+                                    <h3>Francais</h3>
+                                </div>
+                                <div className="option" onClick={e => changeLang('ar')}>
+                                    <img src={Morocco} alt="Arabic" />
+                                    <h3>العربية</h3>
+                                </div>
+                            </div>
+                        </div>
                     </aside>
                 </div>
 

@@ -8,6 +8,7 @@
         rgba(255, 230, 98, 1) 84%,
         rgba(30, 30, 30, 1) 100%
     );
+    overflow-x: hidden;
 
     .view_all {
         padding: 10px 60px;
@@ -33,14 +34,15 @@
     }
 
     .store_header {
-        height: 80dvh;
+        height: 100dvh;
 
         #outer {
             text-align: center;
             position: relative;
             overflow: hidden;
-            min-height: 80vh;
+            height: 100%;
         }
+
         #home-top-video:before {
             content: "";
             position: absolute;
@@ -80,11 +82,19 @@
                 text-transform: uppercase;
                 font-size: 65px;
                 color: #fff;
+
+                @media screen and (max-width: 900px) {
+                    font-size: 38px;
+                }
             }
 
             p {
                 font-size: 24px;
                 color: #fff;
+
+                @media screen and (max-width: 900px) {
+                    font-size: 16px;
+                }
             }
 
             .get_started {
@@ -181,14 +191,27 @@
             .text-left {
                 width: 60%;
 
+                @media screen and (max-width: 900px) {
+                    margin: 10px 0;
+                }
+
                 h3 {
                     font-size: 46px;
                     color: #fff;
+
+                    @media screen and (max-width: 900px) {
+                        font-size: 32px !important;
+                        line-height: 1.8rem !important;
+                    }
                 }
 
                 p {
                     color: #fff;
                     font-size: 20px;
+
+                    @media screen and (max-width: 900px) {
+                        font-size: 14px;
+                    }
                 }
             }
 
@@ -288,7 +311,7 @@
                 gap: 20px !important;
 
                 .card {
-                    width: 40%;
+                    width: 100%;
                     gap: 5px;
                     padding: 10px 12px !important;
 
@@ -320,12 +343,11 @@
                 flex-direction: column;
                 gap: 25px;
                 border-radius: 10px;
-                max-width: 265px;
                 text-align: center;
                 min-height: 500px;
 
                 @media screen and (max-width: 900px) {
-                    min-height: 350px;
+                    min-height: 30dvh;
                 }
 
                 h4 {
@@ -380,13 +402,19 @@
                 text-transform: uppercase;
                 font-size: 50px;
                 position: relative;
+                width: max-content;
+                margin: auto;
+
+                @media screen and (max-width: 900px) {
+                    font-size: 34px;
+                }
 
                 svg {
-                    color: #ff7900;
-                    position: absolute;
-                    top: -29px;
-                    left: 5px;
-                    font-size: 57px;
+                    color: #ff7900 ;
+                    position: absolute ;
+                    top: -23px ;
+                    left: -12px ;
+                    font-size: 36px ;
                 }
 
                 span {
@@ -678,11 +706,21 @@
         h2 {
             font-size: 80px;
             color: #1e1e1e;
+
+            @media screen and (max-width: 900px) {
+                font-size: 24px;
+                text-align: center;
+            }
         }
 
         p {
             font-size: 30px;
             color: #131313;
+
+            @media screen and (max-width: 900px) {
+                font-size: 18px;
+                text-align: center;
+            }
         }
 
         .container-select {
@@ -693,6 +731,10 @@
             flex-wrap: wrap;
             gap: 20px;
 
+            @media screen and (max-width: 900px) {
+                padding: 20px 0;
+            }
+
             .card {
                 flex-basis: 20%;
                 background-color: var(--black-color);
@@ -702,8 +744,10 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                width: 100%;
 
                 h2 {
+                    width: max-content;
                     font-size: 20px;
                     color: var(--light-color);
                     display: flex;
@@ -951,6 +995,12 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
+
+                    @media screen and (max-width: 900px) {
+                        width: 30px;
+                        height: 30px;
+                        font-size: 28px;
+                    }
                 }
             }
         }
@@ -966,7 +1016,7 @@
 
             @media screen and (max-width: 997px) {
                 width: 100%;
-                padding: 30px;
+                padding: 30px 0;
                 gap: 40px;
             }
 
@@ -999,8 +1049,9 @@
             font-size: 48px;
             color: var(--dark-color-primary);
             text-align: center;
+
             @media screen and (max-width: 900px) {
-                font-size: 40px;
+                font-size: 32px;
             }
         }
 
@@ -1027,12 +1078,20 @@
                     padding: 10px 0;
                     font-size: 38px;
                     color: var(--dark-color-primary);
+
+                    @media screen and (max-width: 1200px) {
+                        font-size: 24px;
+                    }
                 }
 
                 p {
                     color: var(--dark-color-primary);
                     font-size: 20px;
                     padding: 10px 0;
+
+                    @media screen and (max-width: 1200px) {
+                        font-size: 14px;
+                    }
                 }
 
                 a {
@@ -1044,6 +1103,10 @@
                     svg {
                         color: var(--dark-color-primary);
                         transition: all 0.3s ease;
+                    }
+
+                    @media screen and (max-width: 1200px) {
+                        font-size: 18px;
                     }
 
                     &:hover {

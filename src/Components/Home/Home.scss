@@ -1,4 +1,6 @@
 #Home {
+    overflow-x: hidden;
+
     #section-main {
         background-color: var(--light-color);
         background: linear-gradient(141deg, var(--light-color) 0%, var(--light-color) 100%);
@@ -161,8 +163,9 @@
                     }
 
                     @media screen and (max-width: 900px) {
-                        font-size: 34px;
+                        font-size: 26px;
                         margin-top: 30px;
+                        padding-top: 30px;
                     }
                 }
 
@@ -170,7 +173,7 @@
                     font-size: 20px;
 
                     @media screen and (max-width: 1200px) {
-                        font-size: 18px;
+                        font-size: 14px;
                     }
                 }
 
@@ -782,6 +785,10 @@
                         .webina-phone {
                             width: 400px !important;
                             margin-left: 20px !important;
+
+                            @media screen and (max-width: 1200px) {
+                                width: 300px !important;
+                            }
                         }
 
                         .OrnamentHoriz-res {
@@ -810,12 +817,22 @@
                             h2 {
                                 color: var(--black-color) !important;
                                 font-size: 35px;
+
+                                @media screen and (max-width: 1200px) {
+                                    text-align: center;
+                                    font-size: 26px;
+                                }
                             }
 
                             p {
                                 color: var(--black-color) !important;
                                 font-size: 20px;
                                 text-align: justify;
+
+                                @media screen and (max-width: 1200px) {
+                                    text-align: center;
+                                    font-size: 14px;
+                                }
                             }
 
                             a {
@@ -848,8 +865,8 @@
                     img {
                         width: 100%;
 
-                        @media screen and (max-width: 1200px) {
-                            width: 50%;
+                        @media screen and (max-width: 900px) {
+                            width: 30% !important;
                         }
                     }
 
@@ -858,11 +875,19 @@
                         bottom: 10px;
                         left: 0;
                         position: absolute;
+
+                        @media screen and (max-width: 900px) {
+                            display: none;
+                        }
                     }
 
                     .OrnamentHoriz-res {
                         @media screen and (min-width: 450px) {
                             display: none !important;
+                        }
+
+                        @media screen and (max-width: 900px) {
+                            display: none;
                         }
                     }
                 }
@@ -899,19 +924,31 @@
                     align-items: flex-start;
                     flex-direction: column;
 
-                    @media screen and (max-width: 1200px) {
-                        display: none;
+                    @media screen and (max-width: 900px) {
+                        padding: 0;
+                        text-align: center;
                     }
 
                     .floating-right {
                         margin-left: auto;
                         width: 150px;
                         display: block;
+
+                        @media screen and (max-width: 900px) {
+                            display: none;
+                        }
                     }
 
                     h2 {
                         font-size: 60px;
                         color: var(--black-color);
+
+                        @media screen and (max-width: 900px) {
+                            font-size: 26px;
+                            text-align: center;
+                            margin: auto;
+                            margin-bottom: 20px;
+                        }
                     }
 
                     .OrnamentHoriz {
@@ -919,12 +956,20 @@
                         width: 150px;
                         bottom: -100px;
                         right: 100px;
+
+                        @media screen and (max-width: 900px) {
+                            display: none;
+                        }
                     }
 
                     p {
                         color: var(--black-color);
+                        font-size: 20px;
 
-                        font-size: 24px;
+                        @media screen and (max-width: 1200px) {
+                            text-align: center;
+                            font-size: 14px;
+                        }
                     }
 
                     a {
@@ -937,11 +982,14 @@
                         width: 250px;
                         border: none;
                         outline: none;
-                        margin-top: 30px;
                         font-weight: bold;
                         display: flex;
                         justify-content: center;
                         align-items: center;
+
+                        @media screen and (max-width: 900px) {
+                            margin: 20px auto;
+                        }
                     }
                 }
             }
@@ -997,11 +1045,20 @@
                     h3 {
                         font-size: 46px;
                         color: var(--black-color);
+
+                        @media screen and (max-width: 1200px) {
+                            font-size: 25px !important;
+                            line-height: 1.6rem !important;
+                        }
                     }
 
                     p {
                         color: var(--black-color);
                         font-size: 20px;
+
+                        @media screen and (max-width: 1200px) {
+                            font-size: 14px;
+                        }
                     }
                 }
 
@@ -1100,7 +1157,7 @@
                     gap: 20px !important;
 
                     .card {
-                        width: 40%;
+                        width: 100%;
                         gap: 5px;
                         padding: 10px 12px !important;
 
@@ -1130,14 +1187,15 @@
                     justify-content: space-between;
                     align-items: center;
                     flex-direction: column;
+                    flex-wrap: wrap;
                     gap: 25px;
                     border-radius: 10px;
-                    max-width: 265px;
+                    max-width: 100%;
                     text-align: center;
                     min-height: 500px;
 
                     @media screen and (max-width: 900px) {
-                        min-height: 350px;
+                        min-height: 30dvh;
                     }
 
                     h4 {
@@ -1216,6 +1274,10 @@
                 p {
                     font-size: 22px;
                     color: var(--black-color);
+
+                    @media screen and (max-width: 1200px) {
+                        font-size: 14px;
+                    }
                 }
 
                 a {
@@ -1242,6 +1304,10 @@
 
             img {
                 width: 400px;
+
+                @media screen and (max-width: 1200px) {
+                    width: 300px;
+                }
             }
         }
 
@@ -1346,6 +1412,10 @@
                     font-size: 42px;
                     font-weight: bold;
                     color: var(--black-color);
+
+                    @media screen and (max-width: 1200px) {
+                        font-size: 32px;
+                    }
 
                     span {
                         color: var(--dark-color-primary);
@@ -1576,7 +1646,7 @@
 
                 @media screen and (max-width: 997px) {
                     width: 100%;
-                    padding: 30px;
+                    padding: 20px 0px;
                     gap: 40px;
                 }
 
@@ -1710,7 +1780,7 @@
 
                 @media screen and (max-width: 997px) {
                     width: 100%;
-                    padding: 30px;
+                    padding: 20px 0px;
                     gap: 40px;
                 }
 
@@ -1718,6 +1788,11 @@
                     font-size: 48px;
                     color: var(--black-color);
                     text-align: center;
+
+                    @media screen and (max-width: 1200px) {
+                        font-size: 34px;
+                    }
+
                     span {
                         color: var(--dark-color-primary);
                     }
@@ -1820,12 +1895,20 @@
                             padding: 10px 0;
                             font-size: 38px;
                             color: var(--dark-color-primary);
+
+                            @media screen and (max-width: 1200px) {
+                                font-size: 24px;
+                            }
                         }
 
                         p {
                             color: var(--dark-color-primary);
                             font-size: 20px;
                             padding: 10px 0;
+
+                            @media screen and (max-width: 1200px) {
+                                font-size: 14px;
+                            }
                         }
 
                         a {
@@ -1833,6 +1916,10 @@
                             font-size: 22px;
                             text-decoration: none;
                             font-weight: bold;
+
+                            @media screen and (max-width: 1200px) {
+                                font-size: 18px;
+                            }
 
                             svg {
                                 color: var(--dark-color-primary);
@@ -1958,8 +2045,18 @@
                         h2 {
                             font-size: 40px;
 
+                            @media screen and (max-width: 1200px) {
+                                font-size: 28px;
+                            }
+
                             span {
                                 color: var(--dark-color-primary);
+                            }
+                        }
+
+                        p {
+                            @media screen and (max-width: 1200px) {
+                                font-size: 14px;
                             }
                         }
                     }
@@ -1970,7 +2067,7 @@
                     justify-content: space-around;
                     align-items: center;
                     flex-direction: column;
-                    
+
                     gap: 50px;
 
                     h2 {
@@ -2015,7 +2112,6 @@
                             flex-direction: column-reverse;
                         }
                     }
-
 
                     .left-container {
                         flex-basis: 50%;

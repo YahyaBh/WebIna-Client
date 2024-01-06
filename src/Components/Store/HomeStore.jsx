@@ -69,7 +69,7 @@ const HomeStore = () => {
     const { isDarkMode } = useContext(ThemeContext);
     const navigate = useNavigate();
 
-    
+
     useEffect(() => {
         Aos.init();
 
@@ -223,6 +223,12 @@ const HomeStore = () => {
                             slidesPerView={3}
                             spaceBetween={10}
                             navigation={true}
+                            breakpoints={{
+                                320: { slidesPerView: 1, spaceBetween: 80 },
+                                480: { slidesPerView: 2, spaceBetween: 80 },
+                                768: { slidesPerView: 3, spaceBetween: 50 },
+                                1024: { slidesPerView: 3, spaceBetween: 150 },
+                            }}
                             pagination={{
                                 clickable: true,
                             }}
