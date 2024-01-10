@@ -345,6 +345,7 @@
                 border-radius: 10px;
                 text-align: center;
                 min-height: 500px;
+                flex-basis: 20%;
 
                 @media screen and (max-width: 900px) {
                     min-height: 30dvh;
@@ -410,11 +411,11 @@
                 }
 
                 svg {
-                    color: #ff7900 ;
-                    position: absolute ;
-                    top: -23px ;
-                    left: -12px ;
-                    font-size: 36px ;
+                    color: #ff7900;
+                    position: absolute;
+                    top: -23px;
+                    left: -12px;
+                    font-size: 36px;
                 }
 
                 span {
@@ -441,15 +442,15 @@
             transition: all 0.3s ease;
             cursor: pointer;
             width: 80%;
-            background-color: var(--black-color);
+            background-color: #fff;
+
 
             @media screen and (max-width: 900px) {
                 min-width: 200px;
                 padding: 5px;
                 border: none;
                 border-radius: 20px;
-                padding: 0;
-                background-color: #1e1e1e;
+                padding: 5px;
                 gap: 0px;
             }
 

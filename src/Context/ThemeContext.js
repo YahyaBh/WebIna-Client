@@ -62,6 +62,23 @@ export const ThemeProvider = ({ children }) => {
                 "--cards-color",
                 darkMode ? "#F9EA9B" : "#131313"
             );
+            document.documentElement.style.setProperty(
+                "--ecd-to-black",
+                darkMode ? "#1e1e1e" : "#ECD777"
+            )
+
+            document.documentElement.style.setProperty(
+                "--ecd-to-grey",
+                darkMode ? "#3d3d3d" : "#ECD777"
+            )
+            document.documentElement.style.setProperty(
+                "--primary-to-grey",
+                darkMode ? "#3d3d3d" : "#FFE662"
+            )
+            document.documentElement.style.setProperty(
+                "--golry-to-black",
+                darkMode ? "#1e1e1e" : "#3A3832"
+            )
 
             // Additional Style Properties
             document.documentElement.style.setProperty(

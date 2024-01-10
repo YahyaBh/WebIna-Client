@@ -9,9 +9,13 @@ import { BsList } from 'react-icons/bs';
 import { AiOutlineClose, AiOutlineSearch, AiOutlineShoppingCart } from 'react-icons/ai'
 import { ThemeContext } from "../../../Context/ThemeContext";
 import AuthContext from '../../../Context/AuthContext';
-import { MdKeyboardArrowDown } from 'react-icons/md';
+import { MdKeyboardArrowDown, MdLanguage } from 'react-icons/md';
 import { useStoreContext } from '../../../Context/StoreConetxt';
 import i18next from 'i18next';
+import Morocco from '../../../Assets/Home/Navbar/Languages/Flag_of_Morocco.svg.png'
+import English from '../../../Assets/Home/Navbar/Languages/Flag_of_the_United_Kingdom.svg.png'
+import French from '../../../Assets/Home/Navbar/Languages/Flag_of_France.svg.png'
+
 
 const NavbarStore = ({ isOpen, transparent, isNotAside }) => {
 
@@ -22,7 +26,7 @@ const NavbarStore = ({ isOpen, transparent, isNotAside }) => {
     const [searchInput, setSearchInput] = useState('');
 
     const { isDarkMode, toggleTheme } = useContext(ThemeContext);
-    const { toggleAside, isAsideOpen } = useStoreContext();
+    const { toggleAside, isAsideOpen, toggleAsideRes, isAsideResOpen } = useStoreContext();
 
     const { isAuthenticated, user, logout, cartCounter } = AuthContext();
 
@@ -115,8 +119,41 @@ const NavbarStore = ({ isOpen, transparent, isNotAside }) => {
                         </div>
                     </div>
                 </div>
+
             </nav>
 
+            <nav id='responsive-navbar-store'>
+
+                <div className='main-show'>
+                {!isNotAside ? isAsideResOpen ? <AiOutlineClose className='openAside' onClick={toggleAsideRes} /> : <BsList className='openAside' onClick={toggleAsideRes} /> : ''}
+
+                    <a href='/' className='logo'>
+                        <img src={isDarkMode ? LogoLight : Logo} alt="logo" />
+                    </a>
+
+                    <div className='mode-res'>
+                        <div className="aside-swit">
+                        </div>
+                        {isAuthenticated ? <a href="/cart"><AiOutlineShoppingCart />{cartCounter > 0 ? <span>{cartCounter}</span> : null}</a> : ''}
+                        {isDarkMode ? <FaSun onClick={toggleTheme} /> : <FaMoon onClick={toggleTheme} />}
+                        {isAuthenticated ?
+                            <li className='drop-down-user' >
+                                <img src={user.avatar} alt={user.name + ' profile'} />
+                                <ul className="dropdown-menu">
+                                    <li ><a href="/profile">{i18next.t("PROFILE")}</a></li>
+                                    <li><a href="/recent">{i18next.t("MY_RECENT")}</a></li>
+                                    <li><a href="/favourite">{i18next.t("MY_FAVORITE")}</a></li>
+                                    <li><a href="/purchases">{i18next.t("MY_ORDERS")}</a></li>
+                                    <hr />
+                                    <li onClick={e => logout()}>{i18next.t("LOGOUT")}</li>
+                                </ul>
+                            </li>
+                            :
+                            ''}
+                    </div>
+                </div>
+
+            </nav>
 
         </>
     )

@@ -31,9 +31,19 @@ body {
             background-color: #3b3b3b;
             padding: 12px 0;
 
+            @media screen and (max-width: 900px) {
+                gap: 10px;
+                padding: 15px 10px;
+                box-sizing: border-box;
+            }
+
             hr {
                 color: var(--dark-color-primary);
                 width: 150px;
+
+                @media screen and (max-width: 900px) {
+                    width: 20px;
+                }
             }
 
             div {
@@ -45,6 +55,10 @@ body {
                 h4 {
                     font-size: 18px;
                     color: var(--black-color);
+
+                    @media screen and (max-width: 900px) {
+                        font-size: 14px;
+                    }
                 }
 
                 .active {
@@ -59,6 +73,11 @@ body {
                     border-radius: 50%;
                     padding: 5px;
                     color: #1e1e1e;
+
+                    @media screen and (max-width: 900px) {
+                        width: 15px !important;
+                        height: 15px !important;
+                    }
                 }
             }
         }
@@ -71,6 +90,13 @@ body {
             width: 90%;
             padding: 10px 40px;
             gap: 20px;
+
+            @media screen and (max-width: 900px) {
+                flex-direction: column-reverse;
+                padding: 0px 10px;
+                box-sizing: border-box;
+                width: 100%;
+            }
 
             .left-cont {
                 flex-basis: 60%;
@@ -99,6 +125,11 @@ body {
                         gap: 10px;
                         width: 100%;
 
+                        @media screen and (max-width: 900px) {
+                            align-items: flex-start;
+                            flex-direction: column;
+                        }
+
                         label {
                             flex-basis: 50%;
                             font-size: 18px;
@@ -120,6 +151,10 @@ body {
                             border: 2px solid var(--primary-color);
                             border-radius: 10px;
                             font-size: 16px;
+
+                            @media screen and (max-width: 900px) {
+                                padding: 8px 5px;
+                            }
                         }
 
                         .email-not {
@@ -164,6 +199,10 @@ body {
                                 padding: 15px 20px;
                                 h3 {
                                     color: var(--black-color);
+                                
+                                    @media screen and (max-width: 900px) {
+                                        font-size: 16px;
+                                    }
                                 }
                             }
 
@@ -232,7 +271,7 @@ body {
                         }
 
                         .active-bottom {
-                            height: 60px;
+                            height: 70px;
                             opacity: 1;
                         }
                     }
@@ -265,6 +304,10 @@ body {
                                 padding: 15px 20px;
                                 h3 {
                                     color: var(--black-color);
+
+                                    @media screen and (max-width: 900px) {
+                                        font-size: 16px;
+                                    }
                                 }
                             }
 
@@ -334,11 +377,19 @@ body {
                                     justify-content: center;
                                     align-items: center;
                                     gap: 5px;
+
+                                    @media screen and (max-width: 900px) {
+                                        font-size: 14px;
+                                    }
                                 }
 
                                 img {
                                     height: 30px;
                                     object-fit: scale-down;
+
+                                    @media screen and (max-width: 900px) {
+                                        height: 20px;
+                                    }
                                 }
 
                                 padding: 10px;
@@ -355,6 +406,12 @@ body {
                                 justify-content: center;
                                 flex-direction: column;
                                 gap: 10px;
+
+                                p {
+                                    @media screen and (max-width: 900px) {
+                                        text-align: center;
+                                    }
+                                }
 
                                 .details {
                                     width: 100%;
@@ -374,6 +431,12 @@ body {
                                         height: 30px;
                                         font-size: 16px;
                                         text-transform: uppercase;
+
+                                        @media screen and (max-width: 900px) {
+                                            box-sizing: border-box;
+                                            padding: 10px 10px;
+                                            margin-top: 10px;
+                                        }
                                     }
 
                                     .detail {
@@ -382,6 +445,11 @@ body {
                                         justify-content: center;
                                         align-items: center;
 
+                                        @media screen and (max-width: 900px) {
+                                            flex-direction: column;
+                                            align-items: flex-start;
+                                        }
+
                                         .info {
                                             flex-basis: 46%;
 
@@ -389,11 +457,16 @@ body {
                                                 font-size: 18px;
                                                 font-weight: 500;
                                                 color: var(--black-color);
+                                            
                                             }
 
                                             p {
                                                 font-size: 14px;
                                                 color: var(--dark-color-primary);
+
+                                                @media screen and (max-width: 900px) {
+                                                    font-size: 12px;
+                                                }
                                             }
                                         }
 
@@ -413,6 +486,10 @@ body {
 
                                                 input {
                                                     width: 50%;
+
+                                                    @media screen and (max-width: 900px) {
+                                                        padding: 18px 10px;
+                                                    }
                                                 }
                                             }
 
@@ -439,12 +516,20 @@ body {
 
                                                 input {
                                                     width: 50%;
+
+                                                    @media screen and (max-width: 900px) {
+                                                        padding: 18px 10px;
+                                                    }
                                                 }
                                             }
                                         }
 
                                         input {
                                             flex-basis: 50%;
+
+                                            @media screen and (max-width: 900px) {
+                                                width: 100%;
+                                            }
                                         }
                                     }
                                 }
@@ -599,6 +684,12 @@ body {
                 flex-basis: 40%;
                 gap: 20px;
 
+                @media screen and (max-width: 900px) {
+                    padding: 10px 5px;
+                    width: 100%;
+                    box-sizing: border-box;
+                }
+
                 .top {
                     display: flex;
                     justify-content: flex-start;
@@ -668,6 +759,10 @@ body {
                                     object-fit: cover;
                                     border-radius: 10px;
                                     border: 2px solid var(--primary-color);
+
+                                    @media screen and (max-width: 900px) {
+                                        width: 160px;
+                                    }
                                 }
 
                                 .text {
@@ -716,6 +811,10 @@ body {
                                 h3 {
                                     color: var(--black-color);
                                     font-weight: 400;
+
+                                    @media screen and (max-width: 900px) {
+                                        font-size: 12px;
+                                    }
                                 }
 
                                 svg {
@@ -796,6 +895,11 @@ body {
                             background-color 0.3s ease,
                             box-shadow 0.3s ease;
                         cursor: pointer;
+
+                        @media screen and (max-width: 900px) {
+                            font-size: 16px;
+                        }
+
                         &:hover {
                             background-color: darken(#ffe662, 10%);
                             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); // Add a subtle box shadow on hover
@@ -812,7 +916,7 @@ body {
                                     }
 
                                     75% {
-                                        rotate : 250deg;
+                                        rotate: 250deg;
                                     }
 
                                     100% {
@@ -823,9 +927,7 @@ body {
                         }
                     }
 
-                    .disabled-checkout
-
-                    .paypal-checkout {
+                    .disabled-checkout .paypal-checkout {
                         width: 60%;
                         margin: auto;
                         text-align: center;

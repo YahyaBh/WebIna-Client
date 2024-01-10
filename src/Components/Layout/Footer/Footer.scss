@@ -57,11 +57,20 @@ footer {
                 color: #fff;
             }
 
+            li {
+                list-style: none;
+            }
+
             li,
             a {
                 font-size: 18px;
                 margin-left: 10px;
-                color: #fff;
+                color: #ffffffaf;
+                cursor: pointer;
+
+                &:hover {
+                    color: #fff;
+                }
             }
         }
     }
@@ -86,10 +95,10 @@ footer {
 
             h2 {
                 color: #1e1e1e;
-                font-size: 20px;
+                font-size: 16px;
 
                 @media screen and (max-width: 900px) {
-                    font-size: 12px;
+                    font-size: 10px;
                 }
             }
 
@@ -113,8 +122,8 @@ footer {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                height: 40px;
-                width: 40px;
+                height: 30px;
+                width: 30px;
                 border-radius: 50%;
                 background-color: var(--black-color);
                 display: flex;

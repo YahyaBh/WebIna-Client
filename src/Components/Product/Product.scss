@@ -47,15 +47,13 @@
         padding: 40px;
         background-color: var(--black-color);
         border-radius: 20px;
+        margin: 0 10px;
 
         .head {
             h2 {
                 font-size: 24px;
                 color: var(--light-color);
 
-                span {
-                    color: var(--primary-color);
-                }
             }
         }
 
@@ -72,7 +70,6 @@
             .buttons {
                 display: flex;
                 gap: 10px;
-                
 
                 button {
                     padding: 10px;
@@ -111,6 +108,10 @@
     position: relative;
     transition: all 0.3s ease;
 
+    @media screen and (max-width: 900px) {
+        top: 80px;
+    }
+
     .container {
         display: flex;
         justify-content: center;
@@ -118,6 +119,13 @@
         flex-direction: column;
         margin-left: 60px;
         position: relative;
+        padding: 10px;
+        box-sizing: border-box;
+
+        @media screen and (max-width: 900px) {
+            margin-left: 0;
+            width: 100%;
+        }
 
         .head_container {
             display: flex;
@@ -127,18 +135,28 @@
             gap: 10px;
             overflow: hidden;
 
+            @media screen and (max-width: 900px) {
+                flex-direction: column;
+                width: 100%;
+            }
+
             .left-container {
                 flex-basis: 50%;
                 padding: 10px;
                 display: flex;
                 justify-content: center;
 
+                @media screen and (max-width: 900px) {
+                    display: block;
+                    width: 100%;
+                    padding: 0;
+                }
+
                 .image-container {
-                    width: 90%;
+                    width: 100%;
 
                     img {
                         width: 100%;
-                        min-width: 500px;
                         height: 60%;
                         object-fit: cover;
                     }
@@ -303,13 +321,17 @@
                         }
 
                         span {
-                            font-size: 22px;
+                            font-size: 18px;
                             color: var(--dark-color-primary);
                         }
 
                         .tags-container {
                             display: flex;
                             gap: 10px;
+
+                            @media screen and (max-width: 900px) {
+                                flex-direction: column;
+                            }
 
                             a {
                                 font-size: 20px;
@@ -333,6 +355,11 @@
                     flex-wrap: nowrap;
                     width: 90%;
                     gap: 30px;
+
+                    @media screen and (max-width: 900px) {
+                        flex-direction: column;
+                        width: 100%;
+                    }
 
                     .social {
                         display: flex;
@@ -389,6 +416,10 @@
                     flex-direction: column;
                     gap: 10px;
 
+                    @media screen and (max-width: 900px) {
+                        width: 100%;
+                    }
+
                     button {
                         width: 60%;
                         height: 40px;
@@ -399,6 +430,10 @@
                         font-size: 18px;
                         transition: all 0.3s ease;
                         cursor: pointer;
+
+                        @media screen and (max-width: 900px) {
+                            width: 90%;
+                        }
 
                         &:hover {
                             background-color: var(--light-color);
@@ -411,6 +446,10 @@
                         flex-direction: row;
                         gap: 10px;
                         width: 60%;
+
+                        @media screen and (max-width: 900px) {
+                            width: 90%;
+                        }
 
                         a {
                             width: 50%;
@@ -426,7 +465,6 @@
                             transition: all 0.3s ease;
                             cursor: pointer;
 
-
                             &:hover {
                                 background-color: var(--black-color);
                                 color: var(--light-color);
@@ -435,7 +473,7 @@
 
                         .disabled {
                             filter: grayscale(90%);
-                            opacity: .3;
+                            opacity: 0.3;
 
                             &:hover {
                                 background-color: var(--light-color);
@@ -489,6 +527,12 @@
                 width: 100%;
                 gap: 10px;
 
+                @media screen and (max-width: 900px) {
+                    flex-direction: column;
+                    padding: 10px;
+                    box-sizing: border-box;
+                }
+
                 .feedback-container {
                     flex-basis: 60%;
                     display: flex;
@@ -521,6 +565,10 @@
                             border-bottom: 3px solid #3b3b3b;
                             padding: 20px 0;
                             width: 90%;
+
+                            @media screen and (max-width: 900px) {
+                                width: 100%;
+                            }
 
                             img {
                                 width: 60px;
@@ -589,21 +637,26 @@
                             gap: 10px;
                             flex-direction: column;
 
+                            @media screen and (max-width: 900px) {
+                                width: 100%;
+                            }
+
                             input {
                                 width: 100%;
                                 height: 30px;
-                                padding: 5px 10px;
+                                padding: 20px 10px;
                                 border-radius: 10px;
                                 border: 2px solid var(--primary-color);
                                 background-color: var(--light-color);
                                 color: var(--dark-color-primary);
                                 outline: none;
                                 font-size: 18px;
+                                box-sizing: border-box;
                             }
 
                             textarea {
                                 width: 100%;
-                                height: 50px;
+                                height: 170px;
                                 padding: 10px 10px;
                                 border-radius: 10px;
                                 border: 2px solid var(--primary-color);
@@ -612,6 +665,7 @@
                                 outline: none;
                                 font-size: 18px;
                                 resize: vertical;
+                                box-sizing: border-box;
                             }
                         }
 
@@ -628,6 +682,10 @@
                             cursor: pointer;
                             transition: all 0.3s ease;
 
+                            @media screen and (max-width: 900px) {
+                                width: 100%;
+                            }
+
                             &:hover {
                                 transform: scale(0.98);
                                 opacity: 0.7;
@@ -640,6 +698,10 @@
                     flex-basis: 30%;
                     height: 800px;
                     border: 3px solid var(--primary-color);
+
+                    @media screen and (max-width: 900px) {
+                        display: none;
+                    }
                 }
             }
 
@@ -649,6 +711,10 @@
                 h2 {
                     font-size: 34px;
                     color: var(--black-color);
+
+                    @media screen and (max-width: 900px) {
+                        text-align: center;
+                    }
                 }
 
                 .cards-container {
@@ -678,13 +744,12 @@
                         background-color: var(--light-color);
 
                         @media screen and (max-width: 900px) {
-                            min-width: 200px;
-                            padding: 5px;
-                            border: none;
+                            border: 2px solid var(--primary-color);
                             border-radius: 20px;
-                            padding: 0;
+                            padding: 5px;
                             background-color: #1e1e1e;
                             gap: 0px;
+                            min-width: max-content;
                         }
 
                         &:hover {

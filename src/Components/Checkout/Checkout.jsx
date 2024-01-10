@@ -7,6 +7,7 @@ import './Checkout.scss'
 import Loading from '../Loading/Loading'
 import { Helmet } from 'react-helmet-async'
 import NavbarStore from '../Layout/Navbar/NavbarStore'
+import Footer from '../Layout/Footer/Footer'
 
 import { BiCart, BiPackage, BiWallet } from 'react-icons/bi'
 import { MdVerified } from 'react-icons/md'
@@ -41,7 +42,7 @@ const Checkout = () => {
 
     const [paypalOrder, setPaypalOrder] = useState({});
 
-    const { sec_http, isAuthenticated} = AuthUser();
+    const { sec_http, isAuthenticated } = AuthUser();
 
 
     const [nameInput, setNameInput] = useState('');
@@ -327,7 +328,7 @@ const Checkout = () => {
 
                         <div className="progress-bar">
                             <div className="shopping-cart">
-                                <BiCart /> <h4>Shopping Cart</h4>
+                                <BiCart /> <h4>Shopping</h4>
                             </div>
 
                             <hr />
@@ -339,7 +340,7 @@ const Checkout = () => {
                             <hr />
 
                             <div className="shopping-cart">
-                                <BiPackage /> <h4>Order Dilevery</h4>
+                                <BiPackage /> <h4>Dilevery</h4>
                             </div>
                         </div>
 
@@ -768,7 +769,7 @@ const Checkout = () => {
                                                     </div>
                                                 </div>
                                                 <div className="price">
-                                                    <h3>$ {product.price}</h3>
+                                                    <h3>${product.price}</h3>
                                                     <IoIosArrowForward />
                                                 </div>
                                             </div>
@@ -786,7 +787,7 @@ const Checkout = () => {
 
                                         <div className="subtotal">
                                             <h4>Subtotal</h4>
-                                            <h4>$ {subTotal.toFixed(2)}</h4>
+                                            <h4>${subTotal.toFixed(2)}</h4>
                                         </div>
 
                                         <hr />
@@ -801,7 +802,7 @@ const Checkout = () => {
 
                                         <div className="total-price">
                                             <h3>Total Price</h3>
-                                            <h3>$ {total.toFixed(2)}</h3>
+                                            <h3>${total.toFixed(2)}</h3>
                                         </div>
                                     </div>
 
@@ -825,7 +826,14 @@ const Checkout = () => {
                 </div>
 
             </Profiler >
+
+
+            <div style={{ marginTop : '95px'}}>
+                <Footer />
+
+            </div>
         </PayPalScriptProvider>
+
     )
 }
 

@@ -293,7 +293,7 @@ const Product = () => {
 
                                         <div className="cont">
                                             <h3><TbProgressCheck /> Tags :</h3>
-                                            <div className='tags-container'>{product?.tags?.replace(/ /g, '').split(',')?.map((tag) => <><a href={`/store/${tag}`} key={tag}>{tag} </a><FaExternalLinkAlt /></>)}</div>
+                                            <div className='tags-container'>{product?.tags?.replace(/ /g, '').split(',')?.map((tag) => <span><a href={`/store/${tag}`} key={tag}>{tag} </a><FaExternalLinkAlt /></span>)}</div>
                                         </div>
 
                                     </div>

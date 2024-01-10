@@ -5,6 +5,8 @@ import './Cart.scss'
 import { Helmet } from 'react-helmet-async'
 import NavbarStore from '../Layout/Navbar/NavbarStore'
 import AsideStore from '../Layout/Aside/AsideStore'
+import Footer from '../Layout/Footer/Footer'
+
 import { BiCart, BiPackage, BiWallet } from 'react-icons/bi'
 import { useStoreContext } from '../../Context/StoreConetxt'
 import { BsFillStarFill, BsStar, BsStarHalf } from 'react-icons/bs'
@@ -178,7 +180,7 @@ const Cart = () => {
 
                         <div className="progress-bar">
                             <div className="shopping-cart">
-                                <BiCart /> <h4 className='active'>Shopping Cart</h4>
+                                <BiCart /> <h4 className='active'>Shopping</h4>
                             </div>
 
                             <hr />
@@ -190,7 +192,7 @@ const Cart = () => {
                             <hr />
 
                             <div className="shopping-cart">
-                                <BiPackage /> <h4>Order Dilevery</h4>
+                                <BiPackage /> <h4>Dilevery</h4>
                             </div>
                         </div>
 
@@ -200,7 +202,7 @@ const Cart = () => {
                         <div className="body-container">
                             <div className="cards-container">
 
-                                {products.length > 0 ? products.map((product, index) =>
+                                {products ? products.map((product, index) =>
                                     <div key={index} className="card">
                                         <a href={`/store/product/${product.token}`}>
                                             <img src={product.image1} alt={product.name} />
@@ -220,9 +222,9 @@ const Cart = () => {
                                                 </div>
                                             </div>
                                         </a>
-                                        <div className="delete" onClick={() => removeFromCart(product.token)}>
+                                        {/* <div className="delete" onClick={() => removeFromCart(product.token)}>
                                             Remove <CgRemove />
-                                        </div>
+                                        </div> */}
                                     </div>
                                 ) :
 
@@ -292,7 +294,7 @@ const Cart = () => {
                                     <a href='/store' className='continue-shopping'>Continue Shopping</a>
 
 
-                                    {subtotal === 0 ? '' : <a href='/checkout' className="checkout-btn">
+                                    {calculateTotalPrice() === 0 ? '' : <a href='/checkout' className="checkout-btn">
                                         Checkout | {calculateTotalPrice()}$
                                     </a>}
 
@@ -315,7 +317,13 @@ const Cart = () => {
                     </div>
                 </div>
 
+
+
             </Profiler>
+
+            <div style={{ marginTop: '95px' }}>
+                <Footer />
+            </div>
 
         </>
     )

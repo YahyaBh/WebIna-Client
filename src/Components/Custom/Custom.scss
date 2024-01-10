@@ -8,9 +8,21 @@
         align-items: center;
         gap: 30px;
 
+        @media screen and (max-width: 900px) {
+            flex-direction: column-reverse;
+            margin-top: 75px;
+            padding: 10px 10px;
+            box-sizing: border-box;
+            border-bottom: 1px solid #ffffff1e;
+        }
+
         img {
             flex-basis: 40%;
             width: 100%;
+
+            @media screen and (max-width: 900px) {
+                width: 70%;
+            }
         }
 
         div {
@@ -26,6 +38,10 @@
                 font-size: 45px;
                 span {
                     color: var(--primary-color);
+                }
+
+                @media screen and (max-width: 900px) {
+                    font-size: 28px;
                 }
             }
 
@@ -44,6 +60,10 @@
                 transition: all 0.3s ease;
                 cursor: pointer;
                 position: relative;
+
+                @media screen and (max-width: 900px) {
+                    display: none;
+                }
 
                 svg {
                     color: #1e1e1e;
@@ -77,12 +97,20 @@
         flex-direction: column;
         gap: 30px;
 
+        @media screen and (max-width: 900px) {
+            padding-top: 20px;
+        }
+
         .packs_web {
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             gap: 25px;
+
+            @media screen and (max-width: 900px) {
+                width: 100%;
+            }
 
             h2 {
                 text-align: center;
@@ -92,11 +120,19 @@
                 span {
                     color: var(--primary-color);
                 }
+
+                @media screen and (max-width: 900px) {
+                    font-size: 26px;
+                }
             }
 
             p {
                 font-size: 22px;
                 font-weight: 400;
+
+                @media screen and (max-width: 900px) {
+                    font-size: 18px;
+                }
             }
 
             .cards-container {
@@ -105,17 +141,32 @@
                 align-items: center;
                 gap: 15px;
 
+                @media screen and (max-width: 900px) {
+                    flex-direction: column;
+                    width: 100%;
+                }
+
                 .card {
                     background-color: #dddddd5c;
                     border: 2px solid var(--dark-color-primary);
                     height: 550px;
                     width: 320px;
                     border-radius: 20px;
+
+                    @media screen and (max-width: 900px) {
+                        height: 300px;
+                        width: 80%;
+                    }
                 }
 
                 .middle {
                     height: 600px;
                     width: 350px;
+
+                    @media screen and (max-width: 900px) {
+                        height: 330px;
+                        width: 82%;
+                    }
                 }
             }
         }
@@ -132,12 +183,15 @@
         h2 {
             font-size: 30px;
 
-
             span {
                 color: var(--primary-color);
             }
-        }
 
+            @media screen and (max-width: 900px) {
+                font-size: 22px;
+                text-align: center;
+            }
+        }
 
         .contact {
             display: flex;
@@ -177,16 +231,24 @@
                     justify-content: center;
                     align-items: center;
 
+                    @media screen and (max-width: 900px) {
+                        width: 240px;
+                    }
+
                     h4 {
                         font-size: 18px;
                         font-weight: 500;
 
+                        @media screen and (max-width: 900px) {
+                            font-size: 16px;
+                        }
+
                         svg {
                             cursor: pointer;
-                            transition: all .3s ease;
+                            transition: all 0.3s ease;
 
                             &:hover {
-                                opacity: .8;
+                                opacity: 0.8;
                                 transform: scale(1.1);
                             }
                         }

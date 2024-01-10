@@ -161,7 +161,6 @@ const Store = () => {
                                     prevEl: '#prev-button',
                                     nextEl: '#next-button',
                                 }}
-                                draggable={true}
                                 slidesPerView={6}
                                 spaceBetween={0}
                                 modules={[Navigation]}
@@ -333,7 +332,7 @@ const Store = () => {
 
                                             <div className='under-container'>
                                                 <div className="left-cont">
-                                                    <h3>{product.name.lenght > 20 ? product.name.substring(0, 20) + '...' : product.name}</h3>
+                                                    <h3>{product.name.lenght > 10 ? product.name.substring(0, 10) + '...' : product.name}</h3>
                                                     <p><BsCart2 /> {product.purchases} purchase</p>
                                                     <div className='stars'>
 

@@ -38,13 +38,15 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import 'swiper/css/free-mode';
+
 
 
 import './styles.scss'
 
 
 // import required modules
-import { Pagination, Navigation } from 'swiper/modules';
+import { Pagination, Navigation, FreeMode } from 'swiper/modules';
 import { useCountdown } from '../Layout/Timer/Timer'
 import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router-dom'
@@ -219,23 +221,16 @@ const HomeStore = () => {
                             <p>Check out , our new hot deals added to our shop</p>
                         </div>
 
+
                         <Swiper
                             slidesPerView={3}
                             spaceBetween={10}
-                            navigation={true}
-                            breakpoints={{
-                                320: { slidesPerView: 1, spaceBetween: 80 },
-                                480: { slidesPerView: 2, spaceBetween: 80 },
-                                768: { slidesPerView: 3, spaceBetween: 50 },
-                                1024: { slidesPerView: 3, spaceBetween: 150 },
-                            }}
+                            freeMode={true}
                             pagination={{
                                 clickable: true,
                             }}
-                            modules={[Pagination, Navigation]}
-                            className="mySwiper"
+                            modules={[FreeMode, Pagination]}
                         >
-
                             <SwiperSlide>
                                 <div className='card'>
                                     <img src={ADS} alt="product" />
@@ -256,7 +251,6 @@ const HomeStore = () => {
                                     </div>
                                 </div>
                             </SwiperSlide>
-
                             <SwiperSlide>
                                 <div className='card'>
                                     <img src={ADS} alt="product" />
@@ -277,7 +271,6 @@ const HomeStore = () => {
                                     </div>
                                 </div>
                             </SwiperSlide>
-
                             <SwiperSlide>
                                 <div className='card'>
                                     <img src={ADS} alt="product" />
@@ -298,7 +291,26 @@ const HomeStore = () => {
                                     </div>
                                 </div>
                             </SwiperSlide>
+                            <SwiperSlide>
+                                <div className='card'>
+                                    <img src={ADS} alt="product" />
 
+                                    <div className='under-container'>
+                                        <div className="left-cont">
+                                            <h3>Test new</h3>
+                                            <p><BsCart2 /> 2000 purchase</p>
+                                            <div className='stars'>
+
+                                                {renderStars(4.5)}
+                                            </div>
+                                        </div>
+
+                                        <div className="right-cont">
+                                            <h2>150$</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
                             <SwiperSlide>
                                 <div className='card'>
                                     <img src={ADS} alt="product" />

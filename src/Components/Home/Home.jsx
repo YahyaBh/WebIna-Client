@@ -18,8 +18,7 @@ import { Helmet } from 'react-helmet-async';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
-import './styles.scss';
-import './Home.scss';
+
 import Footer from '../Layout/Footer/Footer';
 import { Tooltip } from 'react-tooltip';
 import Loading from '../Loading/Loading';
@@ -34,6 +33,11 @@ import 'aos/dist/aos.css';
 import AuthContext from '../../Context/AuthContext';
 
 
+import './styles.scss';
+import './Home.scss';
+
+
+import WallWord from './WallWord/WallWord'
 
 // Unique imports
 import BackGroundContainer from '../../Assets/Home/Section 1 Main/ComputerSectionHome.svg';
@@ -416,6 +420,8 @@ const Home = () => {
                                     <img data-aos="fade-up" src={SEO} alt="seo-pic" />
 
                                 </div>
+
+                                <WallWord/>
 
 
                                 <div className='make-yoursite-container' id='make-site'>

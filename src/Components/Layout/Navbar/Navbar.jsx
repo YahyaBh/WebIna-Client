@@ -8,16 +8,21 @@ import './Navbar.scss'
 
 import { MdLanguage, MdKeyboardArrowDown } from 'react-icons/md'
 import { FaMoon, FaSun } from 'react-icons/fa'
-import { BiUser } from 'react-icons/bi'
+import { BiLogOut, BiUser } from 'react-icons/bi'
 import { FiUserPlus } from 'react-icons/fi'
 import { BsListNested } from 'react-icons/bs';
+import { CiUser , CiHeart , CiShoppingCart } from "react-icons/ci";
+import { MdHistory } from 'react-icons/md';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
+
+
+
 import Morocco from '../../../Assets/Home/Navbar/Languages/Flag_of_Morocco.svg.png'
 import English from '../../../Assets/Home/Navbar/Languages/Flag_of_the_United_Kingdom.svg.png'
 import French from '../../../Assets/Home/Navbar/Languages/Flag_of_France.svg.png'
 import { ThemeContext } from "../../../Context/ThemeContext";
 import AuthContext from '../../../Context/AuthContext';
 import i18next from 'i18next';
-import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 const Navbar = ({ isOpen, transparent }) => {
 
@@ -133,12 +138,12 @@ const Navbar = ({ isOpen, transparent }) => {
                                 <li className='drop-down-user' >
                                     <img src={user.avatar} alt={user.name + ' profile'} />{user.name} <MdKeyboardArrowDown />
                                     <ul className="dropdown-menu">
-                                        <li ><a href="/profile">{i18next.t("PROFILE")}</a></li>
-                                        <li><a href="/recent">{i18next.t("MY_RECENT")}</a></li>
-                                        <li><a href="/favourite">{i18next.t("MY_FAVORITE")}</a></li>
-                                        <li><a href="/purchases">{i18next.t("MY_ORDERS")}</a></li>
+                                        <li ><a href="/profile"><CiUser /> {i18next.t("PROFILE")}</a></li>
+                                        <li><a href="/recent"><MdHistory /> {i18next.t("MY_RECENT")}</a></li>
+                                        <li><a href="/favourite"><CiHeart/> {i18next.t("MY_FAVORITE")}</a></li>
+                                        <li><a href="/purchases"><CiShoppingCart/> {i18next.t("MY_ORDERS")}</a></li>
                                         <hr />
-                                        <li onClick={e => logout()}>{i18next.t("LOGOUT")}</li>
+                                        <li onClick={e => logout()}><BiLogOut/> {i18next.t("LOGOUT")}</li>
                                     </ul>
                                 </li>
                                 :
@@ -172,8 +177,25 @@ const Navbar = ({ isOpen, transparent }) => {
                     </a>
 
                     <div className='mode-res'>
-                        <BsListNested onClick={handleAsideShow} />
+                        <div className="aside-swit">
+                            <BsListNested onClick={handleAsideShow} />
+                        </div>
+                        {isAuthenticated ? <a href="/cart"><AiOutlineShoppingCart />{cartCounter > 0 ? <span>{cartCounter}</span> : null}</a> : ''}
                         {isDarkMode ? <FaSun onClick={toggleTheme} /> : <FaMoon onClick={toggleTheme} />}
+                        {isAuthenticated ?
+                            <li className='drop-down-user' >
+                                <img src={user.avatar} alt={user.name + ' profile'} />
+                                <ul className="dropdown-menu">
+                                    <li ><a href="/profile">{i18next.t("PROFILE")}</a></li>
+                                    <li><a href="/recent">{i18next.t("MY_RECENT")}</a></li>
+                                    <li><a href="/favourite">{i18next.t("MY_FAVORITE")}</a></li>
+                                    <li><a href="/purchases">{i18next.t("MY_ORDERS")}</a></li>
+                                    <hr />
+                                    <li onClick={e => logout()}>{i18next.t("LOGOUT")}</li>
+                                </ul>
+                            </li>
+                            :
+                            ''}
                     </div>
                 </div>
 

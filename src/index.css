@@ -56,6 +56,13 @@ body {
   --settings-color: #FFFFFF;
 
   --grey-to-dark: #3b3b3b;
+
+  --ecd-to-black : #ECD777;
+  --ecd-to-grey : #ECD777;
+
+  --primary-to-grey : #FFE662;
+  --golry-to-black : #3A3832;
+
 }
 
 
@@ -156,17 +163,25 @@ input:-webkit-autofill:active {
 
 .aside-open {
   .container {
-      margin-left: 260px !important;
+    margin-left: 260px !important;
   }
 }
 
 
 .back-button {
   padding: 10px 40px;
+
   color: var(--black-color);
   font-size: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+
+.back-button {
+  @media screen and (max-width: 900px) {
+    padding: 10px 10px;
+
+  }
 }
