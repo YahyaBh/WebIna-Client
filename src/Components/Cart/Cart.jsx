@@ -10,7 +10,7 @@ import Footer from '../Layout/Footer/Footer'
 import { BiCart, BiPackage, BiWallet } from 'react-icons/bi'
 import { useStoreContext } from '../../Context/StoreConetxt'
 import { BsFillStarFill, BsStar, BsStarHalf } from 'react-icons/bs'
-import { CgRemove, CgShoppingCart } from "react-icons/cg";
+import {  CgShoppingCart } from "react-icons/cg";
 
 
 

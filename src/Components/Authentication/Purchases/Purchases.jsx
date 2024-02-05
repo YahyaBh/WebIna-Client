@@ -98,23 +98,23 @@ const Profile = () => {
 
                             <div className="right-container">
 
-                                <h2>My Purchase List ({products.length})</h2>
+                                <h2>My Purchase List ({products?.length})</h2>
 
 
 
 
                                 <div className="cards">
-                                    {products.length > 0 ? products.map((product, index) => (
+                                    {products?.length > 0 ? products?.map((product, index) => (
                                         <div className="card" key={index}>
                                             <div className="left">
-                                                <img src={product.image1} alt={"pic-card-purchase " + index} />
+                                                <img src={product?.image1} alt={"pic-card-purchase " + index} />
                                             </div>
 
                                             <div className="right">
                                                 <div className="text">
                                                     <div className="left-cont">
-                                                        <h5>Purchased on {new Date(product.created_at).toLocaleDateString()}</h5>
-                                                        <h3>{product.name}</h3>
+                                                        <h5>Purchased on {new Date(product?.created_at).toLocaleDateString()}</h5>
+                                                        <h3>{product?.name}</h3>
                                                     </div>
 
                                                     <div className="right-cont">
@@ -124,7 +124,7 @@ const Profile = () => {
 
                                                 <div className="bottom">
                                                     <div className="prev">
-                                                        <a href={`/product/${product.token}`}>Preview</a>
+                                                        <a href={`/product/${product?.token}`}>Preview</a>
                                                     </div>
 
                                                     <div className="actions">

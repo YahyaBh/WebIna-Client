@@ -19,6 +19,7 @@ import ADS from '../../Assets/Home/Projects Section/TestProjects.png'
 import Footer from '../Layout/Footer/Footer'
 import Swal from 'sweetalert2'
 import ImageLoader from '../Layout/ImageLoader/ImageLoader'
+import moment from 'moment'
 
 
 const Product = () => {
@@ -30,6 +31,30 @@ const Product = () => {
     const [addToCart, setAddToCart] = useState(false);
     const [loadingAdding, setLoadingAdding] = useState(false);
     const [inCart, setInCart] = useState(false);
+
+    const [feedbacks, setFeedbacks] = useState([]);
+
+
+    const [title, setTitle] = useState('')
+    const [text, setText] = useState('')
+    const [rating, setRating] = useState(0);
+    const [lodaingAddingFeedback, setLoadingAddingFeedback] = useState(false)
+    const [hoveredRating, setHoveredRating] = useState(0);
+
+    const handleStarClick = (selectedRating) => {
+        setRating(selectedRating);
+    };
+
+    const handleStarHover = (hoveredRating) => {
+        setHoveredRating(hoveredRating);
+    };
+
+    const handleMouseLeave = () => {
+        setHoveredRating(0);
+    };
+
+    const stars = Array.from({ length: 5 }, (_, index) => index + 1);
+
 
 
     const { sec_http, file_download, setCartCounter } = AuthUser();
@@ -43,6 +68,7 @@ const Product = () => {
         if (token) {
             getProductsData();
             handleGetCart();
+            handleGetFeedbacks();
             setLoading(false);
 
         } else {
@@ -50,6 +76,7 @@ const Product = () => {
         }
 
     }, [])
+
 
 
     const getProductsData = async () => {
@@ -62,6 +89,17 @@ const Product = () => {
                 navigate('/store')
             })
 
+    }
+
+
+    const handleGetFeedbacks = async () => {
+        await sec_http.post('/api/store/product/feedbacks', { product_token: token })
+            .then((res) => {
+                setFeedbacks(res.data.feedbacks);
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }
 
     const renderStars = (e) => {
@@ -133,6 +171,22 @@ const Product = () => {
                     console.log(err)
                 })
             setLoadingAdding(false);
+        }
+    }
+
+    const handeAddFeedback = async () => {
+
+        if (rating > 0 && title && text) {
+            setLoadingAddingFeedback(true);
+            await sec_http.post('/api/store/feedback/add', { title: title, text: text, product_token: token, rating: rating })
+                .then((res) => {
+                    setRating(0);
+                    handleGetFeedbacks();
+                    setLoadingAddingFeedback(false);
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
         }
     }
 
@@ -256,7 +310,7 @@ const Product = () => {
                                     <div className="head-text">
                                         <h2>{product?.name}</h2>
                                         <p>{product?.description}</p>
-                                        <h3><IoMdPricetag /> PRICE : <span>{product?.price}$</span> <sub>{product?.old_price}$</sub></h3>
+                                        <h3><IoMdPricetag /> PRICE : <span>{product?.price}$</span> {product.old_price ? <sub>{product?.old_price}$</sub> : ''}</h3>
                                     </div>
 
                                     <div className="details-products">
@@ -331,25 +385,22 @@ const Product = () => {
 
                                         <div className="cards-container">
 
-                                            <div className="card">
+                                            {feedbacks?.filter((feedback) => feedback?.status === 'active').map((feedback) =>
+                                                <div className="card" key={feedback?.id}>
 
-                                                <img src={'https://placehold.co/600x400'} alt="customer-img" />
+                                                    <img src={feedback.user.avatar} alt="customer-img" />
 
-                                                <div className="body">
-                                                    <h3>Nicolas Burdano <span>3 days ago</span></h3>
-                                                    <div className="stars-container">
-                                                        <BsFillStarFill />
-                                                        <BsFillStarFill />
-                                                        <BsFillStarFill />
-                                                        <BsFillStarFill />
-                                                        <BsFillStarFill />
+                                                    <div className="body">
+                                                        <h3>{feedback.user.name} <span>{moment(feedback.created_at).fromNow()}</span></h3>
+                                                        <div className="stars-container">
+                                                            {renderStars(feedback.rating)}
+                                                        </div>
+                                                        <h4>{feedback.title}</h4>
+                                                        <p>{feedback.text}</p>
                                                     </div>
-                                                    <h4>Great Product</h4>
-                                                    <p>There are many variations of passages of Lorem Ipsum available, but the
-                                                        majority have suffered alteration in some form, by injected humour</p>
-                                                </div>
 
-                                            </div>
+                                                </div>)
+                                            }
 
                                         </div>
 
@@ -359,22 +410,29 @@ const Product = () => {
                                             <h5>What is it like to this product ?</h5>
 
                                             <div className="stars-container">
-                                                <BsFillStarFill />
-                                                <BsFillStarFill />
-                                                <BsFillStarFill />
-                                                <BsFillStarFill />
-                                                <BsFillStarFill />
+                                                {stars.map((star) => (
+                                                    <BsFillStarFill
+                                                        key={star}
+                                                        onClick={() => handleStarClick(star)}
+                                                        onMouseEnter={() => handleStarHover(star)}
+                                                        onMouseLeave={handleMouseLeave}
+                                                        style={{
+                                                            cursor: 'pointer',
+                                                            color: star <= (hoveredRating || rating) ? '#ffe662' : 'gray',
+                                                        }}
+                                                    />
+                                                ))}
                                             </div>
 
                                             <label htmlFor="review_title">Review Title
-                                                <input type="text" name='review_title' placeholder='Enter your review title' />
+                                                <input type="text" name='review_title' placeholder='Enter your review title' onChange={(e) => setTitle(e.target.value)} value={title} />
                                             </label>
 
                                             <label htmlFor="review_content">Review Content
-                                                <textarea name='review_content' placeholder='Enter your review content' />
+                                                <textarea name='review_content' placeholder='Enter your review content' onChange={(e) => setText(e.target.value)} value={text} />
                                             </label>
 
-                                            <button>Send my review</button>
+                                            <button onClick={() => handeAddFeedback()}>{lodaingAddingFeedback ? 'Sending...' : 'Send Your Review'}</button>
                                         </div>
 
                                     </div>

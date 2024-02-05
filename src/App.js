@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useTranslation } from "react-i18next";
-import axios from "axios";
-import Swal from "sweetalert2";
 
 import './App.css';
 
