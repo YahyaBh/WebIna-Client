@@ -9,23 +9,19 @@ export const ThemeProvider = ({ children }) => {
         const savedThemeMode = Cookies.get("__THEME_MODE");
         return savedThemeMode === "true";
     });
-    const [loading, setLoading] = useState(false);
 
     const toggleTheme = useCallback(() => {
         setIsDarkMode((prevMode) => !prevMode);
     }, []);
 
-    useLayoutEffect(() => {
-        setLoading(true);
-        const randomLoadingNumber = Math.floor(Math.random() * (2000 - 500 + 1)) + 500;
-        setTimeout(() => {
-            setLoading(false);
-        }, randomLoadingNumber);
-    }, []);
+
 
     useEffect(() => {
+
+
+
         const setTheme = (darkMode) => {
-            Cookies.set("__THEME_MODE", darkMode);
+
             document.documentElement.style.setProperty(
                 "--settings-color",
                 darkMode ? "#131313" : "#FFFFFF"
@@ -89,6 +85,8 @@ export const ThemeProvider = ({ children }) => {
                 "--another-property",
                 darkMode ? "#dark-mode-value" : "#light-mode-value"
             );
+            Cookies.set("__THEME_MODE", darkMode, { sameSite: 'Lax', expires: 365 }); // Expires in 1 year
+
         };
 
         setTheme(isDarkMode);
@@ -104,7 +102,6 @@ export const ThemeProvider = ({ children }) => {
 
     return (
         <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
-            {loading ? <Loading /> : null}
             {children}
         </ThemeContext.Provider>
     );

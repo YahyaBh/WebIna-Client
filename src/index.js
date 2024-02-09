@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter } from 'react-router-dom';
@@ -10,6 +10,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import HttpApi from 'i18next-http-backend';
 import { ThemeProvider } from './Context/ThemeContext';
 import { StoreProvider } from './Context/StoreConetxt';
+import Loading from './Components/Loading/Loading';
 
 
 i18next
@@ -35,14 +36,16 @@ i18next
 const root = ReactDOM.createRoot(document.getElementById("web-ina-digita-SAf21kDKASJ2DNAKSDML2flFKAMSD"));
 root.render(
   <React.StrictMode>
-    <HelmetProvider>
-      <BrowserRouter>
-        <ThemeProvider>
-          <StoreProvider>
-            <App />
-          </StoreProvider>
-        </ThemeProvider>
-      </BrowserRouter>
-    </HelmetProvider>
+    <Suspense fallback={<Loading />}>
+      <HelmetProvider>
+        <BrowserRouter>
+          <ThemeProvider>
+            <StoreProvider>
+              <App />
+            </StoreProvider>
+          </ThemeProvider>
+        </BrowserRouter>
+      </HelmetProvider>
+    </Suspense>
   </React.StrictMode>
 );

@@ -1,17 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Logo from '../../../Assets/Home/Navbar/WEBINA2.png';
 import LogoLight from '../../../Assets/Home/Navbar/WEBINA-Logo.png';
-
+import WEBSITEIMAGENAV from '../../../Assets/Home/Navbar/Domain names-bro.svg';
 
 import './Navbar.scss'
 
 
 import { MdLanguage, MdKeyboardArrowDown } from 'react-icons/md'
 import { FaMoon, FaSun } from 'react-icons/fa'
-import { BiLogOut, BiUser } from 'react-icons/bi'
+import { BiArrowToRight, BiLogOut, BiUser } from 'react-icons/bi'
 import { FiUserPlus } from 'react-icons/fi'
 import { BsListNested } from 'react-icons/bs';
-import { CiUser , CiHeart , CiShoppingCart } from "react-icons/ci";
+import { CiUser, CiHeart, CiShoppingCart } from "react-icons/ci";
 import { MdHistory } from 'react-icons/md';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 
@@ -87,17 +87,25 @@ const Navbar = ({ isOpen, transparent }) => {
                         </a>
 
                         <ul>
-                            <li>
+                            <li className='dropdown-list'>
                                 Services <MdKeyboardArrowDown />
-                                <ul className="dropdown-menu">
-                                    <li >Website</li>
-                                    <li >UI/UX Design</li>
-                                    <li >Mobile Application</li>
-                                    <li  >Desktop Application</li>
-                                    <li >Games</li>
-                                    <li >Social Media Designing</li>
-                                    <li >NFTs Designing</li>
-                                </ul>
+                                <div className="container-drop">
+                                    <ul className="dropdown-menu">
+                                        <li >Website</li>
+                                        <li >UI/UX Design</li>
+                                        <li >Mobile Application</li>
+                                        <li >Desktop Application</li>
+                                        <li >Games</li>
+                                        <li >Social Media Designing</li>
+                                        <li >NFTs Designing</li>
+                                    </ul>
+                                    <div className="ele-container">
+                                        <div className="cont-li">
+                                            <img src={WEBSITEIMAGENAV} alt="" />
+                                            <button>GET STARTED <BiArrowToRight /></button>
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                             <li><a href='/custom'>{i18next.t("CUSTOM")}</a></li>
                             <li><a href='/custom'>{i18next.t("PRICING")}</a></li>
@@ -140,10 +148,10 @@ const Navbar = ({ isOpen, transparent }) => {
                                     <ul className="dropdown-menu">
                                         <li ><a href="/profile"><CiUser /> {i18next.t("PROFILE")}</a></li>
                                         <li><a href="/recent"><MdHistory /> {i18next.t("MY_RECENT")}</a></li>
-                                        <li><a href="/favourite"><CiHeart/> {i18next.t("MY_FAVORITE")}</a></li>
-                                        <li><a href="/purchases"><CiShoppingCart/> {i18next.t("MY_ORDERS")}</a></li>
+                                        <li><a href="/favourite"><CiHeart /> {i18next.t("MY_FAVORITE")}</a></li>
+                                        <li><a href="/purchases"><CiShoppingCart /> {i18next.t("MY_ORDERS")}</a></li>
                                         <hr />
-                                        <li onClick={e => logout()}><BiLogOut/> {i18next.t("LOGOUT")}</li>
+                                        <li onClick={e => logout()}><BiLogOut /> {i18next.t("LOGOUT")}</li>
                                     </ul>
                                 </li>
                                 :

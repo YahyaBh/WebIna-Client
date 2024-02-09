@@ -34,48 +34,48 @@ const WallWord = () => {
 
 
         <div className='wall-container'>
-            <div class="wrap">
-                <div class="line">
-                    <div class="left">
-                        <div class="content">
-                            <span class="spanSlow">Creativity</span>
+            <div className="wrap">
+                <div className="line">
+                    <div className="left">
+                        <div className="content">
+                            <span className="spanSlow">Creativity</span>
                         </div>
-                    </div><div class="right">
-                        <div class="content">
-                            <span class="spanSlow">Creativity</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="line">
-                    <div class="left">
-                        <div class="content">
-                            <span class="spanSlow">Never</span>
-                        </div>
-                    </div><div class="right">
-                        <div class="content">
-                            <span class="spanSlow">Never</span>
+                    </div><div className="right">
+                        <div className="content">
+                            <span className="spanSlow">Creativity</span>
                         </div>
                     </div>
                 </div>
-                <div class="line">
-                    <div class="left">
-                        <div class="content">
-                            <span class="spanFast">End</span>
+                <div className="line">
+                    <div className="left">
+                        <div className="content">
+                            <span className="spanSlow">Never</span>
                         </div>
-                    </div><div class="right">
-                        <div class="content">
-                            <span class="spanFast">End</span>
+                    </div><div className="right">
+                        <div className="content">
+                            <span className="spanSlow">Never</span>
                         </div>
                     </div>
                 </div>
-                <div class="line">
-                    <div class="left">
-                        <div class="content">
-                            <span class="spanSlow">WITH-US</span>
+                <div className="line">
+                    <div className="left">
+                        <div className="content">
+                            <span className="spanFast">End</span>
                         </div>
-                    </div><div class="right">
-                        <div class="content">
-                            <span class="spanSlow">WITH-US</span>
+                    </div><div className="right">
+                        <div className="content">
+                            <span className="spanFast">End</span>
+                        </div>
+                    </div>
+                </div>
+                <div className="line">
+                    <div className="left">
+                        <div className="content">
+                            <span className="spanSlow">WITH-US</span>
+                        </div>
+                    </div><div className="right">
+                        <div className="content">
+                            <span className="spanSlow">WITH-US</span>
                         </div>
                     </div>
                 </div>

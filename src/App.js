@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Cookies from "js-cookie";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
 
 import './App.css';
 
@@ -80,12 +82,11 @@ function App() {
 
   const { t } = useTranslation();
 
-
-
-
   useEffect(() => {
-    document.body.dir = currentLanguage.dir || 'ltr'
-    document.title = t('app_title')
+    
+    // Apply language-specific styles
+    document.body.dir = currentLanguage.dir || 'ltr';
+    document.title = t('app_title');
 
     if (currentLanguage.code === 'ar') {
       const buttons = document.querySelectorAll('button');
@@ -95,14 +96,14 @@ function App() {
         button.style.fontFamily = 'Cairo';
       });
 
-      document.body.style.fontFamily = 'Cairo'
+      document.body.style.fontFamily = 'Cairo';
       document.getElementById('email-get-started')?.classList.add('rtl');
+
       if (document.getElementById('res-undertext')) {
         document.getElementById('res-undertext').style.display = 'none';
       }
     }
-  }, [currentLanguage, t])
-
+  }, [currentLanguage, t]);
 
 
   return (
