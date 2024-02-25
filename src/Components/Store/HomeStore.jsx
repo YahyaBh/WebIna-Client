@@ -46,10 +46,11 @@ import './styles.scss'
 
 
 // import required modules
-import { Pagination, Navigation, FreeMode } from 'swiper/modules';
+import { Pagination, FreeMode } from 'swiper/modules';
 import { useCountdown } from '../Layout/Timer/Timer'
 import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router-dom'
+import AuthUser from '../../Context/AuthContext'
 
 
 const HomeStore = () => {
@@ -57,10 +58,10 @@ const HomeStore = () => {
 
     const [loading, setLoading] = useState(false);
 
-    const [categories, setCategories] = useState([]);
+
+    const [hotProducts, setHotProducts] = useState([]);
+    const [projects, setProjects] = useState([]);
     const [products, setProducts] = useState([]);
-    const [new_products, setNewProducts] = useState([]);
-    const [top_products, setTopProducts] = useState([]);
     const [ads, setAds] = useState([]);
     const [targetDate, setTargetDate] = useState('');
 
@@ -69,6 +70,9 @@ const HomeStore = () => {
 
 
     const { isDarkMode } = useContext(ThemeContext);
+
+    const { http } = AuthUser()
+
     const navigate = useNavigate();
 
 
@@ -76,12 +80,25 @@ const HomeStore = () => {
         Aos.init();
 
         if (Cookies.get('__F_ACCESS')) {
-            navigate('/welcome')
+            navigate('/welcome');
         } else {
-            return
+            fetchData();
         }
 
     }, [])
+
+
+    const fetchData = async () => {
+        await http.get('/api/store')
+            .then(res => {
+                setProducts(res.data.products)
+                setHotProducts(res.data.hot_products)
+                setAds(res.data.ad)
+                setTargetDate(res.data.targetDate)
+                setProjects(res.data.projects)
+                setLoading(false)
+            })
+    }
 
     const renderStars = (e) => {
         const maxRating = 5;
@@ -222,116 +239,42 @@ const HomeStore = () => {
                         </div>
 
 
-                        <Swiper
-                            slidesPerView={3}
-                            spaceBetween={10}
-                            freeMode={true}
-                            pagination={{
-                                clickable: true,
-                            }}
-                            modules={[FreeMode, Pagination]}
-                        >
-                            <SwiperSlide>
-                                <div className='card'>
-                                    <img src={ADS} alt="product" />
+                        {hotProducts > 0 && (
+                            <Swiper
+                                slidesPerView={3}
+                                spaceBetween={10}
+                                freeMode={true}
+                                pagination={{
+                                    clickable: true,
+                                }}
+                                modules={[FreeMode, Pagination]}
+                            >
 
-                                    <div className='under-container'>
-                                        <div className="left-cont">
-                                            <h3>Test new</h3>
-                                            <p><BsCart2 /> 2000 purchase</p>
-                                            <div className='stars'>
+                                {hotProducts?.map((product) => (
+                                    <SwiperSlide key={product.token}>
+                                        <div className='card'>
+                                            <img src={product.image1} alt={product.token} />
 
-                                                {renderStars(4.5)}
+                                            <div className='under-container'>
+                                                <div className="left-cont">
+                                                    <h3>{product.name}</h3>
+                                                    <p><BsCart2 /> {product.purchases} purchase</p>
+                                                    <div className='stars'>
+
+                                                        {renderStars(product.rating)}
+                                                    </div>
+                                                </div>
+
+                                                <div className="right-cont">
+                                                    <h2>{product.price}$</h2>
+                                                </div>
                                             </div>
                                         </div>
+                                    </SwiperSlide>
 
-                                        <div className="right-cont">
-                                            <h2>150$</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className='card'>
-                                    <img src={ADS} alt="product" />
-
-                                    <div className='under-container'>
-                                        <div className="left-cont">
-                                            <h3>Test new</h3>
-                                            <p><BsCart2 /> 2000 purchase</p>
-                                            <div className='stars'>
-
-                                                {renderStars(4.5)}
-                                            </div>
-                                        </div>
-
-                                        <div className="right-cont">
-                                            <h2>150$</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className='card'>
-                                    <img src={ADS} alt="product" />
-
-                                    <div className='under-container'>
-                                        <div className="left-cont">
-                                            <h3>Test new</h3>
-                                            <p><BsCart2 /> 2000 purchase</p>
-                                            <div className='stars'>
-
-                                                {renderStars(4.5)}
-                                            </div>
-                                        </div>
-
-                                        <div className="right-cont">
-                                            <h2>150$</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className='card'>
-                                    <img src={ADS} alt="product" />
-
-                                    <div className='under-container'>
-                                        <div className="left-cont">
-                                            <h3>Test new</h3>
-                                            <p><BsCart2 /> 2000 purchase</p>
-                                            <div className='stars'>
-
-                                                {renderStars(4.5)}
-                                            </div>
-                                        </div>
-
-                                        <div className="right-cont">
-                                            <h2>150$</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className='card'>
-                                    <img src={ADS} alt="product" />
-
-                                    <div className='under-container'>
-                                        <div className="left-cont">
-                                            <h3>Test new</h3>
-                                            <p><BsCart2 /> 2000 purchase</p>
-                                            <div className='stars'>
-
-                                                {renderStars(4.5)}
-                                            </div>
-                                        </div>
-
-                                        <div className="right-cont">
-                                            <h2>150$</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                        </Swiper>
+                                ))}
+                            </Swiper>
+                        )}
 
                         <a className='view_all' href='/store'>View All</a>
                     </div>
@@ -339,133 +282,39 @@ const HomeStore = () => {
 
 
                     <div className="store_ad">
-                        <img src={ADS} alt="ad" />
+                        <img src={ads?.image} alt="ad" />
                     </div>
 
                     <div className="store_top_selled">
 
                         <div className="upper_container">
-                            <h2 className='main_text'><span>RECENT</span> PROJECTS</h2>
+                            <h2 className='main_text'><span>RECENT</span> PRODUCT</h2>
                             <p>Find the most recent developed products</p>
                         </div>
 
 
                         <div className="bottom_container">
 
-                            <div className='card'>
-                                <img src={ADS} alt="product" />
+                            {products.map((product) =>
+                                <div className='card' key={product.token}>
+                                    <img src={product.image1} alt="product" />
 
-                                <div className='under-container'>
-                                    <div className="left-cont">
-                                        <h3>Test new</h3>
-                                        <p><BsCart2 /> 2000 purchase</p>
-                                        <div className='stars'>
+                                    <div className='under-container'>
+                                        <div className="left-cont">
+                                            <h3>{product.name}</h3>
+                                            <p><BsCart2 /> {product.purchases} purchase</p>
+                                            <div className='stars'>
 
-                                            {renderStars(4.5)}
+                                                {renderStars(product.rating)}
+                                            </div>
+                                        </div>
+
+                                        <div className="right-cont">
+                                            <h2>{product.price}$</h2>
                                         </div>
                                     </div>
-
-                                    <div className="right-cont">
-                                        <h2>150$</h2>
-                                    </div>
                                 </div>
-                            </div>
-
-                            <div className='card'>
-                                <img src={ADS} alt="product" />
-
-                                <div className='under-container'>
-                                    <div className="left-cont">
-                                        <h3>Test new</h3>
-                                        <p><BsCart2 /> 2000 purchase</p>
-                                        <div className='stars'>
-
-                                            {renderStars(4.5)}
-                                        </div>
-                                    </div>
-
-                                    <div className="right-cont">
-                                        <h2>150$</h2>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className='card'>
-                                <img src={ADS} alt="product" />
-
-                                <div className='under-container'>
-                                    <div className="left-cont">
-                                        <h3>Test new</h3>
-                                        <p><BsCart2 /> 2000 purchase</p>
-                                        <div className='stars'>
-
-                                            {renderStars(4.5)}
-                                        </div>
-                                    </div>
-
-                                    <div className="right-cont">
-                                        <h2>150$</h2>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className='card'>
-                                <img src={ADS} alt="product" />
-
-                                <div className='under-container'>
-                                    <div className="left-cont">
-                                        <h3>Test new</h3>
-                                        <p><BsCart2 /> 2000 purchase</p>
-                                        <div className='stars'>
-
-                                            {renderStars(4.5)}
-                                        </div>
-                                    </div>
-
-                                    <div className="right-cont">
-                                        <h2>150$</h2>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div className='card'>
-                                <img src={ADS} alt="product" />
-
-                                <div className='under-container'>
-                                    <div className="left-cont">
-                                        <h3>Test new</h3>
-                                        <p><BsCart2 /> 2000 purchase</p>
-                                        <div className='stars'>
-
-                                            {renderStars(4.5)}
-                                        </div>
-                                    </div>
-
-                                    <div className="right-cont">
-                                        <h2>150$</h2>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className='card'>
-                                <img src={ADS} alt="product" />
-
-                                <div className='under-container'>
-                                    <div className="left-cont">
-                                        <h3>Test new</h3>
-                                        <p><BsCart2 /> 2000 purchase</p>
-                                        <div className='stars'>
-
-                                            {renderStars(4.5)}
-                                        </div>
-                                    </div>
-
-                                    <div className="right-cont">
-                                        <h2>150$</h2>
-                                    </div>
-                                </div>
-                            </div>
+                            )}
 
 
                             <a className='view_all' href='/store'>View All</a>

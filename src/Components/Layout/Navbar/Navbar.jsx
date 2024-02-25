@@ -87,26 +87,7 @@ const Navbar = ({ isOpen, transparent }) => {
                         </a>
 
                         <ul>
-                            <li className='dropdown-list'>
-                                Services <MdKeyboardArrowDown />
-                                <div className="container-drop">
-                                    <ul className="dropdown-menu">
-                                        <li >Website</li>
-                                        <li >UI/UX Design</li>
-                                        <li >Mobile Application</li>
-                                        <li >Desktop Application</li>
-                                        <li >Games</li>
-                                        <li >Social Media Designing</li>
-                                        <li >NFTs Designing</li>
-                                    </ul>
-                                    <div className="ele-container">
-                                        <div className="cont-li">
-                                            <img src={WEBSITEIMAGENAV} alt="" />
-                                            <button>GET STARTED <BiArrowToRight /></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                            <li><a href="/services">Services</a> <MdKeyboardArrowDown /></li>
                             <li><a href='/custom'>{i18next.t("CUSTOM")}</a></li>
                             <li><a href='/custom'>{i18next.t("PRICING")}</a></li>
                             <li><a href='/blogs'>{i18next.t("BLOGS")}</a></li>
